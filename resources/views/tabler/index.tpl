@@ -29,11 +29,11 @@
             <div class="navbar-nav flex-row order-md-last">
                 <a href="/auth/login" class="btn btn-outline-primary me-2">
                     <i class="ti ti-login icon"></i>
-                    Login
+                    <span data-i18n="login">Login</span>
                 </a>
                 <a href="/auth/register" class="btn btn-primary">
                     <i class="ti ti-user-plus icon"></i>
-                    Register
+                    <span data-i18n="register">Register</span>
                 </a>
             </div>
         </div>
@@ -46,21 +46,21 @@
                 <div class="row align-items-center justify-content-center" style="min-height: 70vh;">
                     <div class="col-lg-6 text-center text-lg-start">
                         <h1 class="display-4 fw-bold mb-3">
-                            Secure & Fast
-                            <span class="text-primary">VPN Service</span>
+                            <span data-i18n="hero_title_1">Secure & Fast</span>
+                            <span class="text-primary" data-i18n="hero_title_2">VPN Service</span>
                         </h1>
-                        <p class="text-secondary fs-3 mb-4">
+                        <p class="text-secondary fs-3 mb-4" data-i18n="hero_desc">
                             Access the internet freely, securely, and without limits.
                             Powered by next-generation protocols for the best experience.
                         </p>
                         <div class="d-flex gap-2 justify-content-center justify-content-lg-start">
                             <a href="/auth/register" class="btn btn-primary btn-lg px-4">
                                 <i class="ti ti-rocket icon"></i>
-                                Get Started
+                                <span data-i18n="get_started">Get Started</span>
                             </a>
                             <a href="/auth/login" class="btn btn-outline-primary btn-lg px-4">
                                 <i class="ti ti-login icon"></i>
-                                Sign In
+                                <span data-i18n="sign_in">Sign In</span>
                             </a>
                         </div>
                     </div>
@@ -79,8 +79,8 @@
         <div class="page-body border-top">
             <div class="container-xl py-4">
                 <div class="text-center mb-4">
-                    <h2 class="h1">Why Choose Us?</h2>
-                    <p class="text-secondary">Everything you need for secure internet access</p>
+                    <h2 class="h1" data-i18n="why_choose">Why Choose Us?</h2>
+                    <p class="text-secondary" data-i18n="why_choose_desc">Everything you need for secure internet access</p>
                 </div>
                 <div class="row row-cards">
                     <div class="col-md-6 col-lg-3">
@@ -91,8 +91,8 @@
                                         <i class="ti ti-bolt fs-1"></i>
                                     </span>
                                 </div>
-                                <h3 class="card-title">Lightning Fast</h3>
-                                <p class="text-secondary">High-performance servers with optimized routing for the best speeds.</p>
+                                <h3 class="card-title" data-i18n="feat_fast">Lightning Fast</h3>
+                                <p class="text-secondary" data-i18n="feat_fast_desc">High-performance servers with optimized routing for the best speeds.</p>
                             </div>
                         </div>
                     </div>
@@ -104,8 +104,8 @@
                                         <i class="ti ti-shield-lock fs-1"></i>
                                     </span>
                                 </div>
-                                <h3 class="card-title">Fully Encrypted</h3>
-                                <p class="text-secondary">Military-grade encryption protects your data and privacy at all times.</p>
+                                <h3 class="card-title" data-i18n="feat_encrypt">Fully Encrypted</h3>
+                                <p class="text-secondary" data-i18n="feat_encrypt_desc">Military-grade encryption protects your data and privacy at all times.</p>
                             </div>
                         </div>
                     </div>
@@ -117,8 +117,8 @@
                                         <i class="ti ti-world fs-1"></i>
                                     </span>
                                 </div>
-                                <h3 class="card-title">Global Network</h3>
-                                <p class="text-secondary">Servers worldwide give you unrestricted access to any content.</p>
+                                <h3 class="card-title" data-i18n="feat_global">Global Network</h3>
+                                <p class="text-secondary" data-i18n="feat_global_desc">Servers worldwide give you unrestricted access to any content.</p>
                             </div>
                         </div>
                     </div>
@@ -130,8 +130,8 @@
                                         <i class="ti ti-devices fs-1"></i>
                                     </span>
                                 </div>
-                                <h3 class="card-title">Multi-Platform</h3>
-                                <p class="text-secondary">Works on Windows, macOS, iOS, Android, and Linux with easy setup.</p>
+                                <h3 class="card-title" data-i18n="feat_multi">Multi-Platform</h3>
+                                <p class="text-secondary" data-i18n="feat_multi_desc">Works on Windows, macOS, iOS, Android, and Linux with easy setup.</p>
                             </div>
                         </div>
                     </div>
@@ -143,8 +143,8 @@
         <div class="page-body">
             <div class="container-xl py-4">
                 <div class="text-center mb-4">
-                    <h2 class="h1">Supported Protocols</h2>
-                    <p class="text-secondary">Latest protocols for the best performance and security</p>
+                    <h2 class="h1" data-i18n="protocols_title">Supported Protocols</h2>
+                    <p class="text-secondary" data-i18n="protocols_desc">Latest protocols for the best performance and security</p>
                 </div>
                 <div class="row row-cards justify-content-center">
                     <div class="col-auto">
@@ -166,11 +166,11 @@
         <!-- CTA Section -->
         <div class="page-body border-top bg-primary-lt">
             <div class="container-xl py-5 text-center">
-                <h2 class="h1 mb-3">Ready to Get Started?</h2>
-                <p class="text-secondary fs-3 mb-4">Join now and experience the internet without boundaries.</p>
+                <h2 class="h1 mb-3" data-i18n="cta_title">Ready to Get Started?</h2>
+                <p class="text-secondary fs-3 mb-4" data-i18n="cta_desc">Join now and experience the internet without boundaries.</p>
                 <a href="/auth/register" class="btn btn-primary btn-lg px-5">
                     <i class="ti ti-rocket icon"></i>
-                    Create Free Account
+                    <span data-i18n="cta_btn">Create Free Account</span>
                 </a>
             </div>
         </div>
@@ -182,13 +182,13 @@
                     <div class="col-12">
                         <ul class="list-inline list-inline-dots mb-0">
                             <li class="list-inline-item">
-                                &copy; {$smarty.now|date_format:"%Y"} {$config['appName']}. All rights reserved.
+                                &copy; {$smarty.now|date_format:"%Y"} {$config['appName']}. <span data-i18n="footer_rights">All rights reserved.</span>
                             </li>
                             <li class="list-inline-item">
-                                <a href="/tos" class="link-secondary">Terms of Service</a>
+                                <a href="/tos" class="link-secondary" data-i18n="footer_tos">Terms of Service</a>
                             </li>
                             <li class="list-inline-item">
-                                <a href="/staff" class="link-secondary">Staff</a>
+                                <a href="/staff" class="link-secondary" data-i18n="footer_staff">Staff</a>
                             </li>
                         </ul>
                     </div>

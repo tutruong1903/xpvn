@@ -1,0 +1,14 @@
+vendor/
+.git/
+.github/
+storage/GeoLite2-City/
+storage/GeoLite2-Country/
+storage/framework/smarty/compile/*
+storage/framework/smarty/cache/*
+storage/framework/twig/*
+tests/
+*.md
+.dockerignore
+docker-compose.yml
+phpunit.xml
+phpinsights.php

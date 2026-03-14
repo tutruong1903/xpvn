@@ -1,0 +1,61 @@
+window.i18nLocales = window.i18nLocales || {};
+window.i18nLocales.vn_VN = {
+    // Navbar & chung
+    login: "Đăng nhập",
+    register: "Đăng ký",
+    // Landing - Hero
+    hero_title_1: "An toàn & Nhanh chóng",
+    hero_title_2: "Dịch vụ VPN",
+    hero_desc: "Truy cập internet tự do, an toàn và không giới hạn. Sử dụng giao thức thế hệ mới mang đến trải nghiệm tốt nhất.",
+    get_started: "Bắt đầu ngay",
+    sign_in: "Đăng nhập",
+    // Landing - Features
+    why_choose: "Tại sao chọn chúng tôi?",
+    why_choose_desc: "Tất cả những gì bạn cần để truy cập internet an toàn",
+    feat_fast: "Tốc độ cực nhanh",
+    feat_fast_desc: "Máy chủ hiệu suất cao với định tuyến tối ưu mang đến tốc độ tốt nhất.",
+    feat_encrypt: "Mã hóa toàn diện",
+    feat_encrypt_desc: "Mã hóa cấp quân sự bảo vệ dữ liệu và quyền riêng tư của bạn mọi lúc.",
+    feat_global: "Mạng lưới toàn cầu",
+    feat_global_desc: "Máy chủ trên toàn thế giới giúp bạn truy cập không giới hạn mọi nội dung.",
+    feat_multi: "Đa nền tảng",
+    feat_multi_desc: "Hỗ trợ Windows, macOS, iOS, Android và Linux với cài đặt dễ dàng.",
+    // Landing - Protocols
+    protocols_title: "Giao thức hỗ trợ",
+    protocols_desc: "Giao thức mới nhất mang đến hiệu suất và bảo mật tốt nhất",
+    // Landing - CTA
+    cta_title: "Sẵn sàng bắt đầu?",
+    cta_desc: "Tham gia ngay và trải nghiệm internet không giới hạn.",
+    cta_btn: "Tạo tài khoản miễn phí",
+    // Landing - Footer
+    footer_rights: "Đã đăng ký bản quyền.",
+    footer_tos: "Điều khoản dịch vụ",
+    footer_staff: "Nhân viên",
+    // Login page
+    login_title: "Đăng nhập vào tài khoản",
+    login_email: "Email",
+    login_password: "Mật khẩu",
+    login_forgot: "Quên mật khẩu",
+    login_remember: "Ghi nhớ thiết bị này",
+    login_btn: "Đăng nhập",
+    login_webauthn: "Đăng nhập bằng WebAuthn",
+    login_no_account: "Chưa có tài khoản?",
+    login_register_link: "Đăng ký tại đây",
+    // Register page
+    register_title: "Tạo tài khoản",
+    register_name: "Biệt danh",
+    register_email: "Địa chỉ email",
+    register_email_code: "Mã xác minh email",
+    register_email_get: "Gửi",
+    register_password: "Mật khẩu",
+    register_confirm: "Xác nhận mật khẩu",
+    register_invite: "Mã mời",
+    register_invite_optional: "(không bắt buộc)",
+    register_invite_required: "(bắt buộc)",
+    register_tos: "Tôi đã đọc và đồng ý với",
+    register_tos_link: "Điều khoản dịch vụ & Chính sách bảo mật",
+    register_btn: "Đăng ký",
+    register_closed: "Hiện tại chưa mở đăng ký. Vui lòng quay lại sau.",
+    register_has_account: "Đã có tài khoản?",
+    register_login_link: "Đăng nhập",
+};

@@ -30,5 +30,13 @@
     <!-- JS files -->
     <script src="/assets/js/fuck.min.js"></script>
     <script src="//{$config['jsdelivr_url']}/npm/htmx.org@v2/dist/htmx.min.js"></script>
-    <script src="/assets/js/i18n.js"></script>
+    <!-- i18n: locale data files -->
+    <script src="/assets/js/locales/en_US.js?v=2"></script>
+    <script src="/assets/js/locales/zh_CN.js?v=2"></script>
+    <script src="/assets/js/locales/zh_TW.js?v=2"></script>
+    <script src="/assets/js/locales/ja_JP.js?v=2"></script>
+    <script src="/assets/js/locales/vn_VN.js?v=2"></script>
+    <!-- i18n: core + switcher -->
+    <script src="/assets/js/i18n.js?v=2"></script>
+    <script src="/assets/js/locale-switcher.js?v=2"></script>
 </head>

@@ -1,0 +1,61 @@
+window.i18nLocales = window.i18nLocales || {};
+window.i18nLocales.en_US = {
+    // Navbar & common
+    login: "Login",
+    register: "Register",
+    // Landing - Hero
+    hero_title_1: "Secure & Fast",
+    hero_title_2: "VPN Service",
+    hero_desc: "Access the internet freely, securely, and without limits. Powered by next-generation protocols for the best experience.",
+    get_started: "Get Started",
+    sign_in: "Sign In",
+    // Landing - Features
+    why_choose: "Why Choose Us?",
+    why_choose_desc: "Everything you need for secure internet access",
+    feat_fast: "Lightning Fast",
+    feat_fast_desc: "High-performance servers with optimized routing for the best speeds.",
+    feat_encrypt: "Fully Encrypted",
+    feat_encrypt_desc: "Military-grade encryption protects your data and privacy at all times.",
+    feat_global: "Global Network",
+    feat_global_desc: "Servers worldwide give you unrestricted access to any content.",
+    feat_multi: "Multi-Platform",
+    feat_multi_desc: "Works on Windows, macOS, iOS, Android, and Linux with easy setup.",
+    // Landing - Protocols
+    protocols_title: "Supported Protocols",
+    protocols_desc: "Latest protocols for the best performance and security",
+    // Landing - CTA
+    cta_title: "Ready to Get Started?",
+    cta_desc: "Join now and experience the internet without boundaries.",
+    cta_btn: "Create Free Account",
+    // Landing - Footer
+    footer_rights: "All rights reserved.",
+    footer_tos: "Terms of Service",
+    footer_staff: "Staff",
+    // Login page
+    login_title: "Sign in to your account",
+    login_email: "Email",
+    login_password: "Password",
+    login_forgot: "Forgot password",
+    login_remember: "Remember this device",
+    login_btn: "Login",
+    login_webauthn: "Login with WebAuthn",
+    login_no_account: "Don't have an account?",
+    login_register_link: "Register here",
+    // Register page
+    register_title: "Create an account",
+    register_name: "Nickname",
+    register_email: "Email address",
+    register_email_code: "Email verification code",
+    register_email_get: "Send",
+    register_password: "Password",
+    register_confirm: "Confirm password",
+    register_invite: "Invite code",
+    register_invite_optional: "(optional)",
+    register_invite_required: "(required)",
+    register_tos: "I have read and agree to the",
+    register_tos_link: "Terms of Service & Privacy Policy",
+    register_btn: "Register",
+    register_closed: "Registration is currently closed. Please check back later.",
+    register_has_account: "Already have an account?",
+    register_login_link: "Sign in",
+};

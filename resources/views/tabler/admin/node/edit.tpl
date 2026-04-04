@@ -3,9 +3,8 @@
 <script src="//{$config['jsdelivr_url']}/npm/jsoneditor@latest/dist/jsoneditor.min.js"></script>
 <link href="//{$config['jsdelivr_url']}/npm/jsoneditor@latest/dist/jsoneditor.min.css" rel="stylesheet" type="text/css">
 
-<div class="page-wrapper">
     <div class="container-xl">
-        <div class="page-header d-print-none text-white">
+        <div class="page-header d-print-none">
             <div class="row align-items-center">
                 <div class="col">
                     <h2 class="page-title">

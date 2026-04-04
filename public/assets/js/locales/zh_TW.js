@@ -151,5 +151,77 @@ window.i18nLocales.zh_TW = {
             dark_mode: "深色模式",
             logout: "登出"
         }
+    },
+    // Admin panel
+    admin: {
+        "side-bar": {
+            panel_switch_user: "使用者",
+            panel_switch_admin: "管理",
+            overview: {
+                title: "概況",
+                dashboard: "儀表板"
+            },
+            management: {
+                title: "管理",
+                users: "使用者",
+                nodes: "節點",
+                system: "系統"
+            },
+            settings: {
+                title: "設定",
+                billing: "財務",
+                email: "郵件",
+                support: "客服",
+                captcha: "驗證",
+                registration: "註冊",
+                referral: "邀請",
+                im: "IM",
+                subscription: "訂閱",
+                cron: "定時任務",
+                feature: "其他設定"
+            },
+            operations: {
+                title: "營運",
+                announcements: "公告",
+                tickets: "工單",
+                docs: "文件"
+            },
+            finance: {
+                title: "財務",
+                products: "商品",
+                orders: "訂單",
+                invoices: "帳單",
+                coupons: "優惠碼",
+                giftcards: "禮品卡"
+            },
+            logs: {
+                title: "日誌",
+                login: "登入",
+                subscribe: "訂閱",
+                rebate: "返利",
+                balance: "餘額",
+                gateway: "支付閘道",
+                online: "在線IP"
+            },
+            audit: {
+                title: "審計",
+                rules: "規則",
+                collision: "碰撞記錄",
+                ban: "封禁記錄"
+            }
+        },
+        header: {
+            light_mode: "淺色模式",
+            dark_mode: "深色模式",
+            logout: "登出"
+        },
+        dialog: {
+            success: "成功",
+            fail: "失敗",
+            notice: "注意",
+            ok: "好",
+            confirm: "確認",
+            cancel: "取消"
+        }
     }
 };

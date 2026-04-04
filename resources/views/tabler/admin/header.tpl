@@ -10,11 +10,21 @@
     <!-- CSS files -->
     <link href="//{$config['jsdelivr_url']}/npm/@tabler/core@latest/dist/css/tabler.min.css" rel="stylesheet"/>
     <link href="//{$config['jsdelivr_url']}/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" rel="stylesheet"/>
+    <link href="/assets/css/user/sidebar.css?v=9" rel="stylesheet"/>
+    <link href="/assets/css/user/header.css?v=7" rel="stylesheet"/>
     <!-- JS files -->
     <script src="//{$config['jsdelivr_url']}/npm/qrcode_js@latest/qrcode.min.js"></script>
     <script src="//{$config['jsdelivr_url']}/npm/clipboard@latest/dist/clipboard.min.js"></script>
     <script src="//{$config['jsdelivr_url']}/npm/jquery/dist/jquery.min.js"></script>
     <script src="//{$config['jsdelivr_url']}/npm/htmx.org@latest/dist/htmx.min.js"></script>
+    <!-- i18n -->
+    <script>window.siteConfig = { appName: '{$config['appName']}' };</script>
+    <script src="/assets/js/locales/en_US.js?v=6"></script>
+    <script src="/assets/js/locales/vn_VN.js?v=6"></script>
+    <script src="/assets/js/locales/zh_CN.js?v=6"></script>
+    <script src="/assets/js/locales/zh_TW.js?v=6"></script>
+    <script src="/assets/js/locales/ja_JP.js?v=6"></script>
+    <script src="/assets/js/i18n.js?v=5"></script>
     <style>
         .home-subtitle {
             font-size: 14px;
@@ -27,261 +37,61 @@
 </head>
 
 {if $user->is_dark_mode}
-<body data-bs-theme="dark">
+<body data-bs-theme="dark" class="layout-fluid">
 {else}
-<body>
+<body class="layout-fluid">
 {/if}
 <div class="page">
-    <header class="navbar navbar-expand-md navbar-overlap d-print-none" data-bs-theme="dark">
-        <div class="container-xl" style="background-image: none;">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu">
-                <span class="navbar-toggler-icon"></span>
+    {include file='admin/sidebar.tpl'}
+    <div class="page-wrapper">
+     <header class="user-header">
+        <div class="d-flex align-items-center w-100">
+            <!-- Sidebar toggle -->
+            <button class="sidebar-toggle-btn" id="sidebar-toggle" title="Toggle sidebar">
+                <i class="ti ti-menu-2"></i>
             </button>
-            <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
-                <img src="/images/uim-logo-round_48x48.png" height="32" alt="SSPanel-UIM Logo"
-                     class="navbar-brand-image" style="filter: none;">
-            </h1>
-            <div class="navbar-nav flex-row order-md-last">
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown"
-                       aria-label="Open user menu">
-                            <span class="avatar avatar-sm"
-                                  style="background-image: url({$user->dice_bear})"></span>
-                        <div class="d-none d-xl-block ps-2">
-                            <div>{$user->email}</div>
-                            <div class="mt-1 small text-secondary">{$user->user_name}</div>
-                        </div>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                        {if $user->is_dark_mode}
-                            <a class="dropdown-item" hx-post="/user/switch_theme_mode" hx-swap="none">
-                                浅色模式
-                            </a>
-                        {else}
-                            <a class="dropdown-item" hx-post="/user/switch_theme_mode" hx-swap="none">
-                                深色模式
-                            </a>
-                        {/if}
-                        <a href="/user/logout" class="dropdown-item">登出</a>
-                    </div>
+            <!-- Mobile brand -->
+            <a href="/admin" class="d-lg-none ms-2 text-reset text-decoration-none fw-bold">{$config['appName']}</a>
+            <!-- Spacer -->
+            <div class="ms-auto"></div>
+            <!-- Language dropdown -->
+            <div class="nav-item dropdown me-3">
+                <a href="#" class="nav-link p-0" data-bs-toggle="dropdown" aria-label="Change language">
+                    <span class="lang-badge" id="lang-badge">🇻🇳 Tiếng Việt</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <a class="dropdown-item header-lang-option" href="#" data-lang="vn_VN">🇻🇳 Tiếng Việt</a>
+                    <a class="dropdown-item header-lang-option" href="#" data-lang="en_US">🇺🇸 English</a>
+                    <a class="dropdown-item header-lang-option" href="#" data-lang="zh_CN">🇨🇳 中文</a>
+                    <a class="dropdown-item header-lang-option" href="#" data-lang="zh_TW">🇹🇼 正體中文</a>
+                    <a class="dropdown-item header-lang-option" href="#" data-lang="ja_JP">🇯🇵 日本語</a>
                 </div>
             </div>
-            <div class="collapse navbar-collapse" id="navbar-menu">
-                <div class="d-flex flex-column flex-md-row flex-fill align-items-stretch align-items-md-center">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/admin">
-                                    <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                        <i class="ti ti-home icon"></i>
-                                    </span>
-                                <span class="nav-link-title">
-                                        概况
-                                    </span>
-                            </a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown"
-                               data-bs-auto-close="outside" role="button" aria-expanded="false">
-                                    <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                        <i class="ti ti-settings icon"></i>
-                                    </span>
-                                <span class="nav-link-title">
-                                        管理
-                                    </span>
-                            </a>
-                            <div class="dropdown-menu">
-                                <div class="dropdown-menu-columns">
-                                    <div class="dropdown-menu-column">
-                                        <div class="dropend">
-                                            <a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown"
-                                               data-bs-auto-close="outside" role="button" aria-expanded="false">
-                                                <i class="ti ti-settings"></i>&nbsp;
-                                                设置
-                                            </a>
-                                            <div class="dropdown-menu">
-                                                <a href="/admin/setting/billing" class="dropdown-item">
-                                                    财务
-                                                </a>
-                                                <a href="/admin/setting/email" class="dropdown-item">
-                                                    邮件
-                                                </a>
-                                                <a href="/admin/setting/support" class="dropdown-item">
-                                                    客服
-                                                </a>
-                                                <a href="/admin/setting/captcha" class="dropdown-item">
-                                                    验证
-                                                </a>
-                                                <a href="/admin/setting/reg" class="dropdown-item">
-                                                    注册
-                                                </a>
-                                                <a href="/admin/setting/ref" class="dropdown-item">
-                                                    邀请
-                                                </a>
-                                                <a href="/admin/setting/im" class="dropdown-item">
-                                                    IM
-                                                </a>
-                                                <a href="/admin/setting/sub" class="dropdown-item">
-                                                    订阅
-                                                </a>
-                                                <a href="/admin/setting/cron" class="dropdown-item">
-                                                    定时任务
-                                                </a>
-                                                <a href="/admin/setting/feature" class="dropdown-item">
-                                                    其他设置
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <a class="dropdown-item" href="/admin/user">
-                                            <i class="ti ti-users"></i>&nbsp;
-                                            用户
-                                        </a>
-                                        <a class="dropdown-item" href="/admin/node">
-                                            <i class="ti ti-server-2"></i>&nbsp;
-                                            节点
-                                        </a>
-                                        <a class="dropdown-item" href="/admin/system">
-                                            <i class="ti ti-tool"></i>&nbsp;
-                                            系统
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#navbar-extra" data-bs-toggle="dropdown"
-                               data-bs-auto-close="outside" role="button" aria-expanded="false">
-                                    <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                        <i class="ti ti-brand-hipchat icon"></i>
-                                    </span>
-                                <span class="nav-link-title">
-                                        运营
-                                    </span>
-                            </a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="/admin/announcement">
-                                    <i class="ti ti-speakerphone"></i>&nbsp;
-                                    公告
-                                </a>
-                                <a class="dropdown-item" href="/admin/ticket">
-                                    <i class="ti ti-messages"></i>&nbsp;
-                                    工单
-                                </a>
-                                <a class="dropdown-item" href="/admin/docs">
-                                    <i class="ti ti-notes"></i>&nbsp;
-                                    文档
-                                </a>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#navbar-extra" data-bs-toggle="dropdown"
-                               data-bs-auto-close="outside" role="button" aria-expanded="false">
-                                    <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                        <i class="ti ti-address-book icon"></i>
-                                    </span>
-                                <span class="nav-link-title">
-                                        日志
-                                    </span>
-                            </a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="/admin/login">
-                                    <i class="ti ti-login"></i>&nbsp;
-                                    登录
-                                </a>
-                                <a class="dropdown-item" href="/admin/subscribe">
-                                    <i class="ti ti-rss"></i>&nbsp;
-                                    订阅
-                                </a>
-                                <a class="dropdown-item" href="/admin/payback">
-                                    <i class="ti ti-friends"></i>&nbsp;
-                                    返利
-                                </a>
-                                <a class="dropdown-item" href="/admin/money">
-                                    <i class="ti ti-coin"></i>&nbsp;
-                                    余额
-                                </a>
-                                <a class="dropdown-item" href="/admin/gateway">
-                                    <i class="ti ti-torii"></i>&nbsp;
-                                    支付网关
-                                </a>
-                                <a class="dropdown-item" href="/admin/online">
-                                    <i class="ti ti-router"></i>&nbsp;
-                                    在线IP
-                                </a>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#navbar-extra" data-bs-toggle="dropdown"
-                               data-bs-auto-close="outside" role="button" aria-expanded="false">
-                                    <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                        <i class="ti ti-shield-check icon"></i>
-                                    </span>
-                                <span class="nav-link-title">
-                                        审计
-                                    </span>
-                            </a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="/admin/detect">
-                                    <i class="ti ti-barrier-block"></i>&nbsp;
-                                    规则
-                                </a>
-                                <a class="dropdown-item" href="/admin/detect/log">
-                                    <i class="ti ti-notes"></i>&nbsp;
-                                    碰撞记录
-                                </a>
-                                <a class="dropdown-item" href="/admin/detect/ban">
-                                    <i class="ti ti-notes"></i>&nbsp;
-                                    封禁记录
-                                </a>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#navbar-layout" data-bs-toggle="dropdown"
-                               data-bs-auto-close="outside" role="button" aria-expanded="false">
-                                    <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                        <i class="ti ti-coin icon"></i>
-                                    </span>
-                                <span class="nav-link-title">
-                                        财务
-                                    </span>
-                            </a>
-                            <div class="dropdown-menu">
-                                <div class="dropdown-menu-columns">
-                                    <div class="dropdown-menu-column">
-                                        <a class="dropdown-item" href="/admin/product">
-                                            <i class="ti ti-list-details"></i>&nbsp;
-                                            商品
-                                        </a>
-                                        <a class="dropdown-item" href="/admin/order">
-                                            <i class="ti ti-receipt"></i>&nbsp;
-                                            订单
-                                        </a>
-                                        <a class="dropdown-item" href="/admin/invoice">
-                                            <i class="ti ti-file-dollar"></i>&nbsp;
-                                            账单
-                                        </a>
-                                        <a class="dropdown-item" href="/admin/coupon">
-                                            <i class="ti ti-ticket"></i>&nbsp;
-                                            优惠码
-                                        </a>
-                                        <a class="dropdown-item" href="/admin/giftcard">
-                                            <i class="ti ti-gift"></i>&nbsp;
-                                            礼品卡
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/user">
-                                    <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                        <i class="ti ti-arrow-back-up icon"></i>
-                                    </span>
-                                <span class="nav-link-title">
-                                        返回用户中心
-                                    </span>
-                            </a>
-                        </li>
-                    </ul>
+            <!-- User dropdown -->
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown"
+                   aria-label="Open user menu">
+                    <span class="avatar avatar-sm"
+                          style="background-image: url({$user->dice_bear})"></span>
+                    <div class="d-none d-xl-block ps-2">
+                        <div>{$user->email}</div>
+                        <div class="mt-1 small text-secondary">{$user->user_name}</div>
+                    </div>
+                </a>
+                <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    {if $user->is_dark_mode}
+                        <a class="dropdown-item" hx-post="/user/switch_theme_mode" hx-swap="none">
+                            <i class="ti ti-sun me-2"></i><span data-i18n="admin.header.light_mode">浅色模式</span>
+                        </a>
+                    {else}
+                        <a class="dropdown-item" hx-post="/user/switch_theme_mode" hx-swap="none">
+                            <i class="ti ti-moon me-2"></i><span data-i18n="admin.header.dark_mode">深色模式</span>
+                        </a>
+                    {/if}
+                    <div class="dropdown-divider"></div>
+                    <a href="/user/logout" class="dropdown-item">
+                        <i class="ti ti-logout me-2"></i><span data-i18n="admin.header.logout">登出</span>
+                    </a>
                 </div>
             </div>
         </div>

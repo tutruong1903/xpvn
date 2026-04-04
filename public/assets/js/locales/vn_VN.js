@@ -151,5 +151,77 @@ window.i18nLocales.vn_VN = {
             dark_mode: "Chế độ tối",
             logout: "Đăng xuất"
         }
+    },
+    // Admin panel
+    admin: {
+        "side-bar": {
+            panel_switch_user: "Người dùng",
+            panel_switch_admin: "Quản trị",
+            overview: {
+                title: "Tổng quan",
+                dashboard: "Bảng điều khiển"
+            },
+            management: {
+                title: "Quản lý",
+                users: "Người dùng",
+                nodes: "Node",
+                system: "Hệ thống"
+            },
+            settings: {
+                title: "Cài đặt",
+                billing: "Tài chính",
+                email: "Email",
+                support: "Hỗ trợ",
+                captcha: "Xác minh",
+                registration: "Đăng ký",
+                referral: "Giới thiệu",
+                im: "IM",
+                subscription: "Đăng ký gói",
+                cron: "Tác vụ định kỳ",
+                feature: "Tính năng khác"
+            },
+            operations: {
+                title: "Vận hành",
+                announcements: "Thông báo",
+                tickets: "Ticket",
+                docs: "Tài liệu"
+            },
+            finance: {
+                title: "Tài chính",
+                products: "Sản phẩm",
+                orders: "Đơn hàng",
+                invoices: "Hóa đơn",
+                coupons: "Mã giảm giá",
+                giftcards: "Thẻ quà tặng"
+            },
+            logs: {
+                title: "Nhật ký",
+                login: "Đăng nhập",
+                subscribe: "Đăng ký",
+                rebate: "Hoàn tiền",
+                balance: "Số dư",
+                gateway: "Cổng thanh toán",
+                online: "IP trực tuyến"
+            },
+            audit: {
+                title: "Kiểm duyệt",
+                rules: "Quy tắc",
+                collision: "Nhật ký va chạm",
+                ban: "Nhật ký cấm"
+            }
+        },
+        header: {
+            light_mode: "Chế độ sáng",
+            dark_mode: "Chế độ tối",
+            logout: "Đăng xuất"
+        },
+        dialog: {
+            success: "Thành công",
+            fail: "Thất bại",
+            notice: "Lưu ý",
+            ok: "OK",
+            confirm: "Xác nhận",
+            cancel: "Hủy"
+        }
     }
 };

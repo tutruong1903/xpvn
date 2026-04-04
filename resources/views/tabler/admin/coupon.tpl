@@ -7,9 +7,8 @@
 <script src="//{$config['jsdelivr_url']}/npm/flatpickr"></script>
 <script src="//{$config['jsdelivr_url']}/npm/flatpickr/dist/l10n/zh.js"></script>
 
-<div class="page-wrapper">
     <div class="container-xl">
-        <div class="page-header d-print-none text-white">
+        <div class="page-header d-print-none">
             <div class="row align-items-center">
                 <div class="col">
                     <h2 class="page-title">

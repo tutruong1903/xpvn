@@ -151,5 +151,77 @@ window.i18nLocales.ja_JP = {
             dark_mode: "ダークモード",
             logout: "ログアウト"
         }
+    },
+    // Admin panel
+    admin: {
+        "side-bar": {
+            panel_switch_user: "ユーザー",
+            panel_switch_admin: "管理",
+            overview: {
+                title: "概要",
+                dashboard: "ダッシュボード"
+            },
+            management: {
+                title: "管理",
+                users: "ユーザー",
+                nodes: "ノード",
+                system: "システム"
+            },
+            settings: {
+                title: "設定",
+                billing: "決済",
+                email: "メール",
+                support: "サポート",
+                captcha: "認証",
+                registration: "登録",
+                referral: "招待",
+                im: "IM",
+                subscription: "サブスクリプション",
+                cron: "定期タスク",
+                feature: "その他設定"
+            },
+            operations: {
+                title: "運営",
+                announcements: "お知らせ",
+                tickets: "チケット",
+                docs: "ドキュメント"
+            },
+            finance: {
+                title: "財務",
+                products: "商品",
+                orders: "注文",
+                invoices: "請求書",
+                coupons: "クーポン",
+                giftcards: "ギフトカード"
+            },
+            logs: {
+                title: "ログ",
+                login: "ログイン",
+                subscribe: "サブスクリプション",
+                rebate: "リベート",
+                balance: "残高",
+                gateway: "決済ゲートウェイ",
+                online: "オンラインIP"
+            },
+            audit: {
+                title: "監査",
+                rules: "ルール",
+                collision: "衝突ログ",
+                ban: "禁止ログ"
+            }
+        },
+        header: {
+            light_mode: "ライトモード",
+            dark_mode: "ダークモード",
+            logout: "ログアウト"
+        },
+        dialog: {
+            success: "成功",
+            fail: "失敗",
+            notice: "注意",
+            ok: "OK",
+            confirm: "確認",
+            cancel: "キャンセル"
+        }
     }
 };

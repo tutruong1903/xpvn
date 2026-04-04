@@ -1,6 +1,5 @@
 {include file='admin/header.tpl'}
 
-<div class="page-wrapper">
     <div class="modal modal-blur fade" id="search-gateway" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
             <div class="modal-content">
@@ -34,7 +33,7 @@
     </div>
 
     <div class="container-xl">
-        <div class="page-header d-print-none text-white">
+        <div class="page-header d-print-none">
             <div class="row align-items-center">
                 <div class="col">
                     <h2 class="page-title">

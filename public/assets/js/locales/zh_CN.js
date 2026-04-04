@@ -151,5 +151,77 @@ window.i18nLocales.zh_CN = {
             dark_mode: "深色模式",
             logout: "登出"
         }
+    },
+    // Admin panel
+    admin: {
+        "side-bar": {
+            panel_switch_user: "用户",
+            panel_switch_admin: "管理",
+            overview: {
+                title: "概况",
+                dashboard: "仪表盘"
+            },
+            management: {
+                title: "管理",
+                users: "用户",
+                nodes: "节点",
+                system: "系统"
+            },
+            settings: {
+                title: "设置",
+                billing: "财务",
+                email: "邮件",
+                support: "客服",
+                captcha: "验证",
+                registration: "注册",
+                referral: "邀请",
+                im: "IM",
+                subscription: "订阅",
+                cron: "定时任务",
+                feature: "其他设置"
+            },
+            operations: {
+                title: "运营",
+                announcements: "公告",
+                tickets: "工单",
+                docs: "文档"
+            },
+            finance: {
+                title: "财务",
+                products: "商品",
+                orders: "订单",
+                invoices: "账单",
+                coupons: "优惠码",
+                giftcards: "礼品卡"
+            },
+            logs: {
+                title: "日志",
+                login: "登录",
+                subscribe: "订阅",
+                rebate: "返利",
+                balance: "余额",
+                gateway: "支付网关",
+                online: "在线IP"
+            },
+            audit: {
+                title: "审计",
+                rules: "规则",
+                collision: "碰撞记录",
+                ban: "封禁记录"
+            }
+        },
+        header: {
+            light_mode: "浅色模式",
+            dark_mode: "深色模式",
+            logout: "登出"
+        },
+        dialog: {
+            success: "成功",
+            fail: "失败",
+            notice: "注意",
+            ok: "好",
+            confirm: "确认",
+            cancel: "取消"
+        }
     }
 };

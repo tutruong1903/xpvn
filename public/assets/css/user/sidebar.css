@@ -85,21 +85,16 @@
     margin-left: 60px;
 }
 
-/* Sidebar brand area */
+/* Sidebar brand area — logo + switch centered as a group */
 .sidebar-brand {
     display: flex;
     align-items: center;
     justify-content: center;
     padding: .75rem 1rem;
     border-bottom: 1px solid rgba(255, 255, 255, .08);
-    gap: .75rem;
+    gap: .5rem;
     min-height: 60px;
     box-sizing: border-box;
-}
-
-/* Admin: logo left, switch right */
-.sidebar-brand.sidebar-brand-admin {
-    justify-content: flex-start;
 }
 
 .sidebar-logo-link {
@@ -120,12 +115,11 @@
     white-space: nowrap;
 }
 
-/* Pill switch (knob + label inside track), avoid Bootstrap .form-check-input on this control */
+/* Pill switch — shared by user & admin sidebars */
 .sidebar-admin-toggle {
     position: relative;
-    display: inline-block;
-    width: 118px;
-    height: 28px;
+    display: inline-flex;
+    height: 24px;
     cursor: pointer;
     margin: 0;
     flex-shrink: 0;
@@ -150,13 +144,15 @@
 }
 
 .sidebar-admin-track {
-    position: absolute;
-    inset: 0;
+    display: inline-flex;
+    align-items: center;
     background: rgba(255, 255, 255, .2);
     border-radius: 999px;
     border: 1px solid rgba(255, 255, 255, .28);
-    overflow: hidden;
     transition: background .25s ease, border-color .25s ease;
+    position: relative;
+    height: 100%;
+    padding: 0 3px;
 }
 
 .sidebar-admin-toggle .sidebar-admin-input:checked + .sidebar-admin-track {
@@ -165,62 +161,51 @@
 }
 
 .sidebar-admin-knob {
-    position: absolute;
-    top: 50%;
-    left: 3px;
-    width: 22px;
-    height: 22px;
-    margin-top: -11px;
+    width: 18px;
+    height: 18px;
     border-radius: 50%;
     background: #fff;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, .25);
-    transition: transform .28s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .25);
+    flex-shrink: 0;
     z-index: 2;
     pointer-events: none;
+    transition: order .01s, margin .01s;
+    order: 0;
 }
 
-/* 118 - 22 - 6 = 90px travel (3px inset each side) */
 .sidebar-admin-toggle .sidebar-admin-input:checked + .sidebar-admin-track .sidebar-admin-knob {
-    transform: translateX(90px);
+    order: 2;
 }
 
 .sidebar-admin-caption {
-    position: absolute;
-    top: 0;
-    bottom: 0;
     display: flex;
     align-items: center;
-    font-size: .65rem;
+    font-size: .6rem;
     font-weight: 600;
     line-height: 1;
     color: rgba(255, 255, 255, .95);
     z-index: 1;
     pointer-events: none;
-    transition: opacity .2s ease;
     white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    padding: 0 5px;
+    transition: opacity .2s ease;
 }
 
 .sidebar-admin-caption--user {
-    left: 30px;
-    right: 8px;
-    justify-content: flex-start;
+    order: 1;
 }
 
 .sidebar-admin-caption--admin {
-    left: 8px;
-    right: 30px;
-    justify-content: flex-end;
-    opacity: 0;
+    order: 1;
+    display: none;
 }
 
 .sidebar-admin-toggle .sidebar-admin-input:checked + .sidebar-admin-track .sidebar-admin-caption--user {
-    opacity: 0;
+    display: none;
 }
 
 .sidebar-admin-toggle .sidebar-admin-input:checked + .sidebar-admin-track .sidebar-admin-caption--admin {
-    opacity: 1;
+    display: flex;
 }
 
 /* Nav section */

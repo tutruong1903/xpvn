@@ -3,12 +3,12 @@
 
 <nav class="sidebar-custom" id="sidebar">
     <!-- Brand -->
-    <div class="sidebar-brand {if $user->is_admin}sidebar-brand-admin{/if}">
+    <div class="sidebar-brand">
         <a href="/user" class="sidebar-logo-link">
             <img src="/images/uim-logo-round_48x48.png" alt="Logo" style="filter:none;">
         </a>
         {if $user->is_admin}
-        <div class="sidebar-admin-switch ms-auto">
+        <div class="sidebar-admin-switch">
             <label class="sidebar-admin-toggle mb-0" for="admin-panel-switch">
                 <input class="sidebar-admin-input" type="checkbox" id="admin-panel-switch">
                 <span class="sidebar-admin-track">

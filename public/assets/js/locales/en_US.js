@@ -151,5 +151,77 @@ window.i18nLocales.en_US = {
             dark_mode: "Dark Mode",
             logout: "Logout"
         }
+    },
+    // Admin panel
+    admin: {
+        "side-bar": {
+            panel_switch_user: "User",
+            panel_switch_admin: "Admin",
+            overview: {
+                title: "Overview",
+                dashboard: "Dashboard"
+            },
+            management: {
+                title: "Management",
+                users: "Users",
+                nodes: "Nodes",
+                system: "System"
+            },
+            settings: {
+                title: "Settings",
+                billing: "Billing",
+                email: "Email",
+                support: "Support",
+                captcha: "Captcha",
+                registration: "Registration",
+                referral: "Referral",
+                im: "IM",
+                subscription: "Subscription",
+                cron: "Cron Jobs",
+                feature: "Features"
+            },
+            operations: {
+                title: "Operations",
+                announcements: "Announcements",
+                tickets: "Tickets",
+                docs: "Docs"
+            },
+            finance: {
+                title: "Finance",
+                products: "Products",
+                orders: "Orders",
+                invoices: "Invoices",
+                coupons: "Coupons",
+                giftcards: "Gift Cards"
+            },
+            logs: {
+                title: "Logs",
+                login: "Login",
+                subscribe: "Subscribe",
+                rebate: "Rebate",
+                balance: "Balance",
+                gateway: "Gateway",
+                online: "Online IP"
+            },
+            audit: {
+                title: "Audit",
+                rules: "Rules",
+                collision: "Collision Log",
+                ban: "Ban Log"
+            }
+        },
+        header: {
+            light_mode: "Light Mode",
+            dark_mode: "Dark Mode",
+            logout: "Logout"
+        },
+        dialog: {
+            success: "Success",
+            fail: "Failed",
+            notice: "Notice",
+            ok: "OK",
+            confirm: "Confirm",
+            cancel: "Cancel"
+        }
     }
 };

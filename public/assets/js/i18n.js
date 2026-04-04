@@ -25,6 +25,9 @@
         if (window.sspanelLocaleSwitcher) {
             window.sspanelLocaleSwitcher.updateAllLabels(locale);
         }
+        if (typeof window.updateCollapsedSidebarTooltips === "function") {
+            window.updateCollapsedSidebarTooltips();
+        }
     }
 
     function getTranslations(locale) {
@@ -32,24 +35,49 @@
         return locales[locale] || locales[defaultLocale] || {};
     }
 
+    function resolveKey(dict, key) {
+        if (key.indexOf('.') === -1) {
+            return dict[key];
+        }
+        var parts = key.split('.');
+        var val = dict;
+        for (var i = 0; i < parts.length; i++) {
+            if (val && typeof val === 'object' && parts[i] in val) {
+                val = val[parts[i]];
+            } else {
+                return undefined;
+            }
+        }
+        return typeof val === 'string' ? val : undefined;
+    }
+
+    function replacePlaceholders(text) {
+        if (!text) return text;
+        var config = window.siteConfig || {};
+        return text.replace(/\{appName\}/g, config.appName || '');
+    }
+
     function applyTranslations(locale) {
         var dict = getTranslations(locale);
         document.querySelectorAll("[data-i18n]").forEach(function (el) {
             var key = el.getAttribute("data-i18n");
-            if (dict[key]) {
-                el.textContent = dict[key];
+            var val = resolveKey(dict, key);
+            if (val) {
+                el.textContent = replacePlaceholders(val);
             }
         });
         document.querySelectorAll("[data-i18n-placeholder]").forEach(function (el) {
             var key = el.getAttribute("data-i18n-placeholder");
-            if (dict[key]) {
-                el.setAttribute("placeholder", dict[key]);
+            var val = resolveKey(dict, key);
+            if (val) {
+                el.setAttribute("placeholder", replacePlaceholders(val));
             }
         });
         document.querySelectorAll("[data-i18n-html]").forEach(function (el) {
             var key = el.getAttribute("data-i18n-html");
-            if (dict[key]) {
-                el.innerHTML = dict[key];
+            var val = resolveKey(dict, key);
+            if (val) {
+                el.innerHTML = replacePlaceholders(val);
             }
         });
     }

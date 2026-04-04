@@ -93,6 +93,31 @@ a { text-decoration: none; }
     color: #fff !important;
 }
 
+/* Language switcher button */
+.nav-btn-outline {
+    background: transparent !important;
+    color: #fff !important;
+    border: 1px solid rgba(255, 255, 255, .35) !important;
+    padding: 7px 16px;
+    font-size: .85rem;
+    transition: background var(--lp-transition);
+}
+
+.nav-btn-outline:hover {
+    background: rgba(255, 255, 255, .15) !important;
+    color: #fff !important;
+}
+
+#navbar.navbar-scrolled .nav-btn-outline {
+    color: var(--lp-dark) !important;
+    border-color: var(--lp-primary) !important;
+    background: transparent !important;
+}
+
+#navbar.navbar-scrolled .nav-btn-outline:hover {
+    background: rgba(var(--lp-primary-rgb, 99, 102, 241), .1) !important;
+}
+
 #navbar.navbar-scrolled .nav-btn {
     background: var(--lp-primary) !important;
     border-color: var(--lp-primary) !important;

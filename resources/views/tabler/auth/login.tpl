@@ -12,16 +12,16 @@
         </div>
         <div class="card card-md">
             <div class="card-body">
-                <h2 class="card-title text-center mb-4" data-i18n="login_title">登录到用户中心</h2>
+                <h2 class="card-title text-center mb-4" data-i18n="auth.login.title">登录到用户中心</h2>
                 <div class="mb-3">
-                    <label class="form-label" data-i18n="login_email">邮箱</label>
+                    <label class="form-label" data-i18n="auth.login.email">邮箱</label>
                     <input id="email" type="email" class="form-control">
                 </div>
                 <div class="mb-2">
                     <label class="form-label">
-                        <span data-i18n="login_password">登录密码</span>
+                        <span data-i18n="auth.login.password">登录密码</span>
                         <span class="form-label-description">
-                                <a href="/password/reset" data-i18n="login_forgot">忘记密码</a>
+                                <a href="/password/reset" data-i18n="auth.login.forgot">忘记密码</a>
                             </span>
                     </label>
                     <div class="input-group input-group-flat">
@@ -31,7 +31,7 @@
                 <div class="mb-2">
                     <label class="form-check">
                         <input id="remember_me" type="checkbox" class="form-check-input"/>
-                        <span class="form-check-label" data-i18n="login_remember">记住此设备</span>
+                        <span class="form-check-label" data-i18n="auth.login.remember">记住此设备</span>
                     </label>
                 </div>
                 <div class="mb-3">
@@ -51,16 +51,16 @@
                                 password: document.getElementById("password").value,
                                 remember_me: document.getElementById("remember_me").checked,
                              }'>
-                        <span data-i18n="login_btn">登录</span>
+                        <span data-i18n="auth.login.btn">登录</span>
                     </button>
                     <button class="btn btn-primary w-100" id="webauthnLogin">
-                        <span data-i18n="login_webauthn">使用WebAuthn登录</span>
+                        <span data-i18n="auth.login.webauthn">使用WebAuthn登录</span>
                     </button>
                 </div>
             </div>
         </div>
         <div class="text-center text-secondary mt-3">
-            <span data-i18n="login_no_account">还没有账户？</span> <a href="/auth/register" tabindex="-1" data-i18n="login_register_link">点击注册</a>
+            <span data-i18n="auth.login.no_account">还没有账户？</span> <a href="/auth/register" tabindex="-1" data-i18n="auth.login.register_link">点击注册</a>
         </div>
     </div>
 </div>

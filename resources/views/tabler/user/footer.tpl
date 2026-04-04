@@ -45,31 +45,134 @@
         </div>
     </div>
 </div>
-
-<footer class="footer footer-transparent d-print-none">
-    <div class="container-xl">
-        <div class="row text-center align-items-center flex-row-reverse">
-            <div class="col-lg-auto ms-lg-auto">
-                <ul class="list-inline list-inline-dots mb-0">
-                    <li class="list-inline-item">
-                        Powered by <a href="/staff" class="link-secondary">SSPanel-UIM</a>
-                        <!-- 删除staff是不尊重每一位开发者的行为 -->
-                    </li>
-                </ul>
-            </div>
-            <div class="col-12 col-lg-auto mt-3 mt-lg-0">
-                <ul class="list-inline list-inline-dots mb-0">
-                    <li class="list-inline-item">
-                        Theme by <a href="https://tabler.io/" class="link-secondary">Tabler</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</footer>
 </div>
 </div>
 <script src="//{$config['jsdelivr_url']}/npm/@tabler/core@latest/dist/js/tabler.min.js"></script>
+<script>
+    /* Sidebar toggle (collapse/expand) */
+    (function () {
+        var sidebar = document.getElementById('sidebar');
+        var overlay = document.getElementById('sidebar-overlay');
+        var toggleBtn = document.getElementById('sidebar-toggle');
+        var isMobile = window.innerWidth < 992;
+        var collapsed = localStorage.getItem('sidebar_collapsed') === '1';
+
+        function applySidebarState() {
+            if (!isMobile && collapsed) {
+                document.body.classList.add('sidebar-collapsed');
+            } else {
+                document.body.classList.remove('sidebar-collapsed');
+            }
+            if (typeof window.updateCollapsedSidebarTooltips === 'function') {
+                window.updateCollapsedSidebarTooltips();
+            }
+        }
+        applySidebarState();
+
+        window.addEventListener('resize', function () {
+            isMobile = window.innerWidth < 992;
+            applySidebarState();
+        });
+
+        if (toggleBtn) {
+            toggleBtn.addEventListener('click', function () {
+                if (isMobile) {
+                    document.body.classList.toggle('sidebar-mobile-open');
+                } else {
+                    collapsed = !collapsed;
+                    localStorage.setItem('sidebar_collapsed', collapsed ? '1' : '0');
+                    applySidebarState();
+                }
+            });
+        }
+        if (overlay) {
+            overlay.addEventListener('click', function () {
+                document.body.classList.remove('sidebar-mobile-open');
+            });
+        }
+    })();
+
+    /* Header language switcher (separate dropdown) */
+    window.updateCollapsedSidebarTooltips = function () {
+        var collapsed = document.body.classList.contains('sidebar-collapsed');
+        document.querySelectorAll('#sidebar .nav-link[data-path]').forEach(function (link) {
+            var titleEl = link.querySelector('.nav-link-title');
+            link.title = collapsed && titleEl ? titleEl.textContent.replace(/\s+/g, ' ').trim() : '';
+        });
+    };
+
+    (function () {
+        var langLabels = {
+            vn_VN: '🇻🇳 Tiếng Việt',
+            en_US: '🇺🇸 English',
+            zh_CN: '🇨🇳 中文',
+            zh_TW: '🇹🇼 正體中文',
+            ja_JP: '🇯🇵 日本語'
+        };
+        var badge = document.getElementById('lang-badge');
+
+        function syncBadge(locale) {
+            if (badge) badge.textContent = langLabels[locale] || locale;
+        }
+
+        var currentLocale = window.sspanelI18n ? window.sspanelI18n.getLocale() : 'en_US';
+        syncBadge(currentLocale);
+
+        document.querySelectorAll('.header-lang-option').forEach(function (el) {
+            if (el.getAttribute('data-lang') === currentLocale) {
+                el.classList.add('active');
+            }
+            el.addEventListener('click', function (e) {
+                e.preventDefault();
+                var lang = this.getAttribute('data-lang');
+                if (window.sspanelI18n) {
+                    window.sspanelI18n.setLocale(lang);
+                }
+                document.querySelectorAll('.header-lang-option').forEach(function (a) {
+                    a.classList.remove('active');
+                });
+                this.classList.add('active');
+                syncBadge(lang);
+                if (typeof window.updateCollapsedSidebarTooltips === 'function') {
+                    window.updateCollapsedSidebarTooltips();
+                }
+            });
+        });
+    })();
+
+    if (typeof window.updateCollapsedSidebarTooltips === 'function') {
+        window.updateCollapsedSidebarTooltips();
+    }
+
+    /* Active sidebar item highlight */
+    (function () {
+        var path = window.location.pathname.replace(/\/$/, '') || '/user';
+        var links = document.querySelectorAll('#sidebar .nav-link[data-path]');
+        var bestMatch = null;
+        var bestLen = 0;
+        links.forEach(function (link) {
+            var linkPath = link.getAttribute('data-path');
+            if (path === linkPath || (path.indexOf(linkPath) === 0 && linkPath.length > bestLen)) {
+                bestMatch = link;
+                bestLen = linkPath.length;
+            }
+        });
+        if (bestMatch) {
+            bestMatch.classList.add('active');
+        }
+    })();
+
+    /* Admin panel switch: pill toggle → /admin when checked */
+    (function () {
+        var sw = document.getElementById('admin-panel-switch');
+        if (!sw) return;
+        sw.addEventListener('change', function () {
+            if (this.checked) {
+                window.location.href = '/admin';
+            }
+        });
+    })();
+</script>
 <script>
     function showToast(message, type = 'success') {
         const toast = document.createElement('div');

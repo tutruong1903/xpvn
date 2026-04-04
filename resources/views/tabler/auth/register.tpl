@@ -11,40 +11,40 @@
         <div class="card card-md">
             {if $public_setting['reg_mode'] !== 'close'}
                 <div class="card-body">
-                    <h2 class="card-title text-center mb-4" data-i18n="register_title">注册账户</h2>
+                    <h2 class="card-title text-center mb-4" data-i18n="auth.register.title">注册账户</h2>
                     <div class="mb-3">
-                        <input id="name" type="text" class="form-control" placeholder="昵称" data-i18n-placeholder="register_name">
+                        <input id="name" type="text" class="form-control" placeholder="昵称" data-i18n-placeholder="auth.register.name">
                     </div>
                     <div class="mb-3">
-                        <input id="email" type="email" class="form-control" placeholder="电子邮箱" data-i18n-placeholder="register_email">
+                        <input id="email" type="email" class="form-control" placeholder="电子邮箱" data-i18n-placeholder="auth.register.email">
                     </div>
                     {if $public_setting['reg_email_verify']}
                     <div class="mb-3">
                         <div class="input-group mb-2">
-                            <input id="emailcode" type="text" class="form-control" placeholder="邮箱验证码" data-i18n-placeholder="register_email_code">
+                            <input id="emailcode" type="text" class="form-control" placeholder="邮箱验证码" data-i18n-placeholder="auth.register.email_code">
                             <button id="send-verify-email" class="btn text-blue" type="button"
                                     hx-post="/auth/send" hx-swap="none" hx-disabled-elt="this"
                                     hx-vals='js:{ email: document.getElementById("email").value }'>
-                                <span data-i18n="register_email_get">获取</span>
+                                <span data-i18n="auth.register.email_get">获取</span>
                             </button>
                         </div>
                     </div>
                     {/if}
                     <div class="mb-3">
                         <div class="input-group input-group-flat">
-                            <input id="password" type="password" class="form-control" placeholder="登录密码" data-i18n-placeholder="register_password">
+                            <input id="password" type="password" class="form-control" placeholder="登录密码" data-i18n-placeholder="auth.register.password">
                         </div>
                     </div>
                     <div class="mb-3">
                         <div class="input-group input-group-flat">
-                            <input id="confirm_password" type="password" class="form-control" placeholder="重复登录密码" data-i18n-placeholder="register_confirm">
+                            <input id="confirm_password" type="password" class="form-control" placeholder="重复登录密码" data-i18n-placeholder="auth.register.confirm">
                         </div>
                     </div>
                     <div class="mb-3">
                         <div class="input-group input-group-flat">
                             <input id="invite_code" type="text" class="form-control"
                                    placeholder="注册邀请码{if $public_setting['reg_mode'] === 'open'}（可选）{else}（必填）{/if}"
-                                   data-i18n-placeholder="register_invite"
+                                   data-i18n-placeholder="auth.register.invite"
                                    value="{$invite_code}">
                         </div>
                     </div>
@@ -52,7 +52,7 @@
                         <label class="form-check">
                             <input id="tos" type="checkbox" class="form-check-input"/>
                             <span class="form-check-label">
-                                    <span data-i18n="register_tos">我已阅读并同意</span> <a href="/tos" tabindex="-1" data-i18n="register_tos_link"> 服务条款与隐私政策 </a>
+                                    <span data-i18n="auth.register.tos">我已阅读并同意</span> <a href="/tos" tabindex="-1" data-i18n="auth.register.tos_link"> 服务条款与隐私政策 </a>
                                 </span>
                         </label>
                     </div>
@@ -79,18 +79,18 @@
                                     invite_code: document.getElementById("invite_code").value,
                                     tos: document.getElementById("tos").checked,
                                  }'>
-                            <span data-i18n="register_btn">注册新账户</span>
+                            <span data-i18n="auth.register.btn">注册新账户</span>
                         </button>
                     </div>
                 </div>
             {else}
                 <div class="card-body">
-                    <p data-i18n="register_closed">还没有开放注册，过两天再来看看吧</p>
+                    <p data-i18n="auth.register.closed">还没有开放注册，过两天再来看看吧</p>
                 </div>
             {/if}
         </div>
         <div class="text-center text-secondary mt-3">
-            <span data-i18n="register_has_account">已有账户？</span> <a href="/auth/login" tabindex="-1" data-i18n="register_login_link">点击登录</a>
+            <span data-i18n="auth.register.has_account">已有账户？</span> <a href="/auth/login" tabindex="-1" data-i18n="auth.register.login_link">点击登录</a>
         </div>
     </div>
 </div>

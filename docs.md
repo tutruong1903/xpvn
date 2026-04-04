@@ -3,8 +3,8 @@ Field	Value
 Connection	MariaDB
 Host	127.0.0.1
 Port	3306
-User	sspanel
-Password	sspanel
+User	sspanel (root)
+Password	sspanel (sspanel_root)
 Database	sspanel
 
 2 tài khoản đã được tạo tự động

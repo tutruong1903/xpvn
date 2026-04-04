@@ -71,3 +71,4 @@ volumes:
 networks:
   sspanel:
     driver: bridge
+    name: sspanel

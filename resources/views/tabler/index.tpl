@@ -25,12 +25,12 @@
     <link rel="stylesheet" href="/assets/css/landing/style.css">
     <!-- i18n -->
     <script>window.siteConfig = { appName: '{$config['appName']}' };</script>
-    <script src="/assets/js/locales/en_US.js?v=4"></script>
-    <script src="/assets/js/locales/vn_VN.js?v=4"></script>
-    <script src="/assets/js/locales/zh_CN.js?v=4"></script>
-    <script src="/assets/js/locales/zh_TW.js?v=4"></script>
-    <script src="/assets/js/locales/ja_JP.js?v=4"></script>
-    <script src="/assets/js/i18n.js?v=4"></script>
+    <script src="/assets/js/locales/en_US.js{asset_ver path="/assets/js/locales/en_US.js"}"></script>
+    <script src="/assets/js/locales/vn_VN.js{asset_ver path="/assets/js/locales/vn_VN.js"}"></script>
+    <script src="/assets/js/locales/zh_CN.js{asset_ver path="/assets/js/locales/zh_CN.js"}"></script>
+    <script src="/assets/js/locales/zh_TW.js{asset_ver path="/assets/js/locales/zh_TW.js"}"></script>
+    <script src="/assets/js/locales/ja_JP.js{asset_ver path="/assets/js/locales/ja_JP.js"}"></script>
+    <script src="/assets/js/i18n.js{asset_ver path="/assets/js/i18n.js"}"></script>
 </head>
 
 <body>

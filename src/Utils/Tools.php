@@ -18,6 +18,8 @@ use function ceil;
 use function closedir;
 use function count;
 use function date;
+use function file_exists;
+use function filemtime;
 use function filter_var;
 use function floor;
 use function hash;
@@ -37,6 +39,8 @@ use function shuffle;
 use function strlen;
 use function strpos;
 use function substr;
+use function time;
+use const BASE_PATH;
 use const FILTER_FLAG_IPV4;
 use const FILTER_FLAG_IPV6;
 use const FILTER_VALIDATE_EMAIL;
@@ -369,5 +373,21 @@ final class Tools
     public static function getSiteDomain(): string
     {
         return parse_url($_ENV['baseUrl'], PHP_URL_HOST);
+    }
+
+    /**
+     * 自动生成静态资源版本号（基于文件修改时间）
+     * 用于 cache busting，当文件更新时自动更新版本号
+     */
+    public static function getAssetVersion(string $path): string
+    {
+        $filePath = BASE_PATH . '/public' . $path;
+        
+        if (file_exists($filePath)) {
+            return '?v=' . filemtime($filePath);
+        }
+        
+        // 如果文件不存在，返回时间戳避免缓存
+        return '?v=' . time();
     }
 }

@@ -10,8 +10,8 @@
     <!-- CSS files -->
     <link href="//{$config['jsdelivr_url']}/npm/@tabler/core@latest/dist/css/tabler.min.css" rel="stylesheet"/>
     <link href="//{$config['jsdelivr_url']}/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" rel="stylesheet"/>
-    <link href="/assets/css/user/sidebar.css?v=9" rel="stylesheet"/>
-    <link href="/assets/css/user/header.css?v=7" rel="stylesheet"/>
+    <link href="/assets/css/user/sidebar.css{asset_ver path="/assets/css/user/sidebar.css"}" rel="stylesheet"/>
+    <link href="/assets/css/user/header.css{asset_ver path="/assets/css/user/header.css"}" rel="stylesheet"/>
     <!-- JS files -->
     <script src="//{$config['jsdelivr_url']}/npm/qrcode_js@latest/qrcode.min.js"></script>
     <script src="//{$config['jsdelivr_url']}/npm/clipboard@latest/dist/clipboard.min.js"></script>
@@ -19,12 +19,12 @@
     <script src="//{$config['jsdelivr_url']}/npm/htmx.org@latest/dist/htmx.min.js"></script>
     <!-- i18n -->
     <script>window.siteConfig = { appName: '{$config['appName']}' };</script>
-    <script src="/assets/js/locales/en_US.js?v=6"></script>
-    <script src="/assets/js/locales/vn_VN.js?v=6"></script>
-    <script src="/assets/js/locales/zh_CN.js?v=6"></script>
-    <script src="/assets/js/locales/zh_TW.js?v=6"></script>
-    <script src="/assets/js/locales/ja_JP.js?v=6"></script>
-    <script src="/assets/js/i18n.js?v=5"></script>
+    <script src="/assets/js/locales/en_US.js{asset_ver path="/assets/js/locales/en_US.js"}"></script>
+    <script src="/assets/js/locales/vn_VN.js{asset_ver path="/assets/js/locales/vn_VN.js"}"></script>
+    <script src="/assets/js/locales/zh_CN.js{asset_ver path="/assets/js/locales/zh_CN.js"}"></script>
+    <script src="/assets/js/locales/zh_TW.js{asset_ver path="/assets/js/locales/zh_TW.js"}"></script>
+    <script src="/assets/js/locales/ja_JP.js{asset_ver path="/assets/js/locales/ja_JP.js"}"></script>
+    <script src="/assets/js/i18n.js{asset_ver path="/assets/js/i18n.js"}"></script>
     <style>
         .home-subtitle {
             font-size: 14px;

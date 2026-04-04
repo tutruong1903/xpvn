@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Services;
 
 use App\Models\Config;
+use App\Utils\Tools;
 use Illuminate\Database\DatabaseManager;
 use Smarty\Smarty;
 use Twig\Environment;
@@ -24,6 +25,10 @@ final class View
         $smarty->setTemplateDir(BASE_PATH . '/resources/views/' . self::getTheme($user) . '/'); //设置模板文件存放目录
         $smarty->setCompileDir(BASE_PATH . '/storage/framework/smarty/compile/'); //设置生成文件存放目录
         $smarty->setCacheDir(BASE_PATH . '/storage/framework/smarty/cache/'); //设置缓存文件存放目录
+        // register asset_ver function for templates
+        $smarty->registerPlugin('function', 'asset_ver', function ($params) {
+            return Tools::getAssetVersion($params['path'] ?? '');
+        });
         // add config
         $smarty->assign('config', self::getConfig());
         $smarty->assign('public_setting', Config::getPublicConfig());

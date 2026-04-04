@@ -1,5 +1,6 @@
 {include file='header.tpl'}
 
+<link rel="stylesheet" href="/assets/css/auth/auth.css">
 <script src="https://unpkg.com/@simplewebauthn/browser/dist/bundle/index.umd.min.js"></script>
 
 <body class="border-top-wide border-primary d-flex flex-column">

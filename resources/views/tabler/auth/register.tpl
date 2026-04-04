@@ -1,5 +1,7 @@
 {include file='header.tpl'}
 
+<link rel="stylesheet" href="/assets/css/auth/auth.css">
+
 <body class="border-top-wide border-primary d-flex flex-column">
 <div class="page page-center">
     <div class="container-tight my-auto">

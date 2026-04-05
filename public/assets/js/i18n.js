@@ -1,11 +1,10 @@
 /**
- * SSPanel-UIM Client-side i18n for guest pages (landing, login, register)
- * Stores language preference in localStorage and swaps text via data-i18n attributes.
+ * SSPanel-UIM Client-side i18n (guest + user panel)
+ * - data-i18n / data-i18n-placeholder / data-i18n-html → window.i18nLocales.{locale}
+ * - data-i18n-user-header / data-i18n-user-sidebar / data-i18n-user-dashboard
+ *   → window.i18nLocales.user.{header|sidebar|dashboard}.{locale}
  *
- * Locale files are loaded from /assets/js/locales/{locale}.js
- * They register themselves on window.i18nLocales.{locale}
- *
- * The language switcher UI is in /assets/js/locale-switcher.js
+ * Language switcher: /assets/js/locale-switcher.js
  */
 (function () {
     var defaultLocale = "en_US";
@@ -28,11 +27,39 @@
         if (typeof window.updateCollapsedSidebarTooltips === "function") {
             window.updateCollapsedSidebarTooltips();
         }
+        // Refresh Platform Hub to update client descriptions
+        if (typeof window.refreshPlatformHub === "function") {
+            window.refreshPlatformHub();
+        }
     }
 
     function getTranslations(locale) {
         var locales = window.i18nLocales || {};
         return locales[locale] || locales[defaultLocale] || {};
+    }
+
+    /**
+     * User panel split locale files: window.i18nLocales.user.{header|sidebar|dashboard}.{locale}
+     */
+    function getUserSectionDict(locale, section) {
+        var user = (window.i18nLocales && window.i18nLocales.user) || {};
+        var sec = user[section];
+        if (!sec || typeof sec !== "object") {
+            return {};
+        }
+        var byLang = sec[locale] || sec[defaultLocale] || {};
+        return typeof byLang === "object" ? byLang : {};
+    }
+
+    function applyAttributeFromDict(selector, attrName, dict) {
+        document.querySelectorAll(selector).forEach(function (el) {
+            var key = el.getAttribute(attrName);
+            if (!key) return;
+            var val = resolveKey(dict, key);
+            if (val) {
+                el.textContent = replacePlaceholders(val);
+            }
+        });
     }
 
     function resolveKey(dict, key) {
@@ -80,6 +107,22 @@
                 el.innerHTML = replacePlaceholders(val);
             }
         });
+
+        applyAttributeFromDict(
+            "[data-i18n-user-header]",
+            "data-i18n-user-header",
+            getUserSectionDict(locale, "header"),
+        );
+        applyAttributeFromDict(
+            "[data-i18n-user-sidebar]",
+            "data-i18n-user-sidebar",
+            getUserSectionDict(locale, "sidebar"),
+        );
+        applyAttributeFromDict(
+            "[data-i18n-user-dashboard]",
+            "data-i18n-user-dashboard",
+            getUserSectionDict(locale, "dashboard"),
+        );
     }
 
     // Initialize

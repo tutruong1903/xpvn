@@ -101,45 +101,6 @@
         });
     };
 
-    (function () {
-        var langLabels = {
-            vn_VN: '🇻🇳 Tiếng Việt',
-            en_US: '🇺🇸 English',
-            zh_CN: '🇨🇳 中文',
-            zh_TW: '🇹🇼 正體中文',
-            ja_JP: '🇯🇵 日本語'
-        };
-        var badge = document.getElementById('lang-badge');
-
-        function syncBadge(locale) {
-            if (badge) badge.textContent = langLabels[locale] || locale;
-        }
-
-        var currentLocale = window.sspanelI18n ? window.sspanelI18n.getLocale() : 'en_US';
-        syncBadge(currentLocale);
-
-        document.querySelectorAll('.header-lang-option').forEach(function (el) {
-            if (el.getAttribute('data-lang') === currentLocale) {
-                el.classList.add('active');
-            }
-            el.addEventListener('click', function (e) {
-                e.preventDefault();
-                var lang = this.getAttribute('data-lang');
-                if (window.sspanelI18n) {
-                    window.sspanelI18n.setLocale(lang);
-                }
-                document.querySelectorAll('.header-lang-option').forEach(function (a) {
-                    a.classList.remove('active');
-                });
-                this.classList.add('active');
-                syncBadge(lang);
-                if (typeof window.updateCollapsedSidebarTooltips === 'function') {
-                    window.updateCollapsedSidebarTooltips();
-                }
-            });
-        });
-    })();
-
     if (typeof window.updateCollapsedSidebarTooltips === 'function') {
         window.updateCollapsedSidebarTooltips();
     }

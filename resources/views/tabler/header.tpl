@@ -65,8 +65,7 @@
                     </div>
                 </div>
             </div>
-            <a class="text-on-surface font-semibold text-sm hover:text-primary transition-colors" href="/auth/login" data-i18n="landing.nav.login">Đăng nhập</a>
-            <a class="bg-primary text-white px-6 py-2 rounded-full font-bold text-sm shadow-lg shadow-primary/20 hover:opacity-90 transition-all" href="/auth/register" data-i18n="landing.nav.get_started">Bắt đầu ngay</a>
+            <a class="bg-primary text-white px-6 py-2 rounded-full font-bold text-sm shadow-lg shadow-primary/20 hover:opacity-90 transition-all" href="/auth/login" data-i18n="landing.nav.login">Đăng nhập</a>
         </div>
     </div>
 </nav>

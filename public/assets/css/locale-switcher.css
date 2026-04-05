@@ -1,0 +1,65 @@
+/* ================================================================
+   Shared — Language dropdown (.lang-dropdown)
+   Used by public/assets/js/locale-switcher.js
+   Include from landing (via tailwind-landing.css @import) or auth pages.
+   ================================================================ */
+
+:root {
+    --locale-dropdown-border: #e2e2e2;
+    --locale-dropdown-surface: #ffffff;
+    --locale-dropdown-text: #1a1c1c;
+    --locale-dropdown-hover-bg: #f3f3f4;
+    --locale-dropdown-active-bg: #712ae2;
+    --locale-dropdown-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+}
+
+.lang-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.lang-dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: var(--locale-dropdown-surface);
+    min-width: 200px;
+    box-shadow: var(--locale-dropdown-shadow);
+    border-radius: 0.75rem;
+    z-index: 1000;
+    margin-top: 0.5rem;
+    border: 1px solid var(--locale-dropdown-border);
+}
+
+.lang-dropdown.active .lang-dropdown-content {
+    display: block;
+}
+
+.lang-dropdown-item {
+    color: var(--locale-dropdown-text);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s;
+    cursor: pointer;
+    font-size: 0.875rem;
+}
+
+.lang-dropdown-item:hover {
+    background-color: var(--locale-dropdown-hover-bg);
+}
+
+.lang-dropdown-item.active {
+    background-color: var(--locale-dropdown-active-bg);
+    color: #fff;
+}
+
+.lang-dropdown-item:first-child {
+    border-radius: 0.75rem 0.75rem 0 0;
+}
+
+.lang-dropdown-item:last-child {
+    border-radius: 0 0 0.75rem 0.75rem;
+}

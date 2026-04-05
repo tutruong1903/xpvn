@@ -15,7 +15,7 @@
     </div>
 </footer>
 
-<script src="/assets/js/landing/landing-page.js{asset_ver path="/assets/js/landing/landing-page.js"}"></script>
+<script src="/assets/js/locale-switcher.js{asset_ver path="/assets/js/locale-switcher.js"}"></script>
 
 </body>
 </html>

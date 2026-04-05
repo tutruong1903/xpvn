@@ -92,6 +92,10 @@
         setLocale: setLocale,
         getLocale: getLocale,
         applyTranslations: applyTranslations,
-        getTranslations: getTranslations
+        getTranslations: getTranslations,
+        /** Alias: re-apply strings for current locale (same as applyTranslations(getLocale())). */
+        updateContent: function () {
+            applyTranslations(getLocale());
+        },
     };
 })();

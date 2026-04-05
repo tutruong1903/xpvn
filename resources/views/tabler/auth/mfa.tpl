@@ -1,5 +1,3 @@
-{include file='header.tpl'}
-
 <link rel="stylesheet" href="/assets/css/auth/auth.css">
 <script src="https://unpkg.com/@simplewebauthn/browser/dist/bundle/index.umd.min.js"></script>
 
@@ -68,8 +66,6 @@
     </div>
 </div>
 
-{include file='footer.tpl'}
-
 {if $method['totp']}
     <script>
         var code = '';
@@ -95,8 +91,6 @@
         });
     </script>
 {/if}
-
-{include file='footer.tpl'}
 
 {if $method['fido']}
 <script>

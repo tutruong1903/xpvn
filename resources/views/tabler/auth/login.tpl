@@ -1,4 +1,4 @@
-{include file='header.tpl'}
+
 
 <link rel="stylesheet" href="/assets/css/auth/auth.css">
 <script src="https://unpkg.com/@simplewebauthn/browser/dist/bundle/index.umd.min.js"></script>
@@ -69,8 +69,6 @@
 {if $public_setting['enable_login_captcha']}
     {include file='captcha/js.tpl'}
 {/if}
-
-{include file='footer.tpl'}
 
 {literal}
     <script>

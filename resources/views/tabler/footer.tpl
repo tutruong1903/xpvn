@@ -1,83 +1,21 @@
-<div class="modal modal-blur fade" id="success-dialog" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            <div class="modal-status bg-success"></div>
-            <div class="modal-body text-center py-4">
-                <i class="ti ti-circle-check icon mb-2 text-green icon-lg" style="font-size:3.5rem;"></i>
-                <p id="success-message" class="text-secondary">成功</p>
-            </div>
-            <div class="modal-footer">
-                <div class="w-100">
-                    <div class="row">
-                        <div class="col">
-                            <a id="success-confirm" href="" class="btn w-100" data-bs-dismiss="modal">
-                                好
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<footer class="w-full border-t border-outline-variant/15 bg-background">
+    <div class="flex flex-col md:flex-row justify-between items-center px-8 py-12 max-w-7xl mx-auto">
+        <div class="mb-8 md:mb-0">
+            <span class="text-lg font-black text-on-surface block mb-2 font-headline">{$config['appName']}</span>
+            <p class="font-body text-xs text-on-surface-variant max-w-xs" data-i18n="landing.footer.desc">Giải pháp VPN tốc độ cao, riêng tư và an toàn hàng đầu thế giới dành cho mọi thiết bị.</p>
+        </div>
+        <div class="flex flex-wrap justify-center gap-8 md:gap-12 mb-8 md:mb-0">
+            <a class="font-body text-xs text-on-surface-variant hover:text-primary underline underline-offset-4 transition-all duration-300" href="/tos" data-i18n="landing.footer.privacy">Privacy Policy</a>
+            <a class="font-body text-xs text-on-surface-variant hover:text-primary underline underline-offset-4 transition-all duration-300" href="/tos" data-i18n="landing.footer.terms">Terms of Service</a>
+            <a class="font-body text-xs text-on-surface-variant hover:text-primary underline underline-offset-4 transition-all duration-300" href="/staff" data-i18n="landing.footer.staff">Staff</a>
+        </div>
+        <div class="text-center md:text-right">
+            <p class="font-body text-xs text-on-surface-variant">&copy; {$smarty.now|date_format:"%Y"} {$config['appName']}. <span data-i18n="landing.footer.rights">The Luminous Guardian.</span></p>
         </div>
     </div>
-</div>
+</footer>
 
-<div class="modal modal-blur fade" id="fail-dialog" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            <div class="modal-status bg-danger"></div>
-            <div class="modal-body text-center py-4">
-                <i class="ti ti-circle-x icon mb-2 text-danger icon-lg" style="font-size:3.5rem;"></i>
-                <p id="fail-message" class="text-secondary">失败</p>
-            </div>
-            <div class="modal-footer">
-                <div class="w-100">
-                    <div class="row">
-                        <div class="col">
-                            <a href="" class="btn btn-danger w-100" data-bs-dismiss="modal">
-                                确认
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script src="//{$config['jsdelivr_url']}/npm/@tabler/core@latest/dist/js/tabler.min.js"></script>
-
-<script>
-    let successDialog = new tabler.bootstrap.Modal(document.getElementById('success-dialog'));
-    let failDialog = new tabler.bootstrap.Modal(document.getElementById('fail-dialog'));
-
-    htmx.on("htmx:afterRequest", function(evt) {
-        if (evt.detail.xhr.getResponseHeader('HX-Redirect'))
-        {
-            return;
-        }
-
-        let res = JSON.parse(evt.detail.xhr.response);
-
-        if (evt.detail.elt.id === 'send-verify-email') {
-            document.getElementById('send-verify-email').disabled = true;
-        }
-
-        if (res.ret === 1) {
-            document.getElementById("success-message").innerHTML = res.msg;
-            successDialog.show();
-        } else {
-            document.getElementById("fail-message").innerHTML = res.msg;
-            failDialog.show();
-        }
-    });
-</script>
-
-{include file='live_chat.tpl'}
-
-{include file='telemetry.tpl'}
+<script src="/assets/js/landing/landing-page.js{asset_ver path="/assets/js/landing/landing-page.js"}"></script>
 
 </body>
-
 </html>

@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ether Velocity - VPN Tốc Độ Cao &amp; Bảo Mật</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "background": "#f9f9f9",
+                      "surface-container-high": "#e8e8e8",
+                      "surface-container-lowest": "#ffffff",
+                      "inverse-surface": "#2f3131",
+                      "surface-dim": "#dadada",
+                      "outline": "#767586",
+                      "on-primary-container": "#fffbff",
+                      "outline-variant": "#c7c4d7",
+                      "on-error": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "on-primary": "#ffffff",
+                      "on-tertiary-fixed-variant": "#682f76",
+                      "surface-bright": "#f9f9f9",
+                      "surface-container": "#eeeeee",
+                      "primary": "#712ae2",
+                      "on-background": "#1a1c1c",
+                      "inverse-on-surface": "#f0f1f1",
+                      "secondary-container": "#316bf3",
+                      "on-secondary-fixed": "#00174b",
+                      "on-surface": "#1a1c1c",
+                      "surface-tint": "#732ee4",
+                      "tertiary-container": "#9a5da8",
+                      "error-container": "#ffdad6",
+                      "secondary": "#0051d5",
+                      "on-primary-fixed": "#25005a",
+                      "on-primary-fixed-variant": "#5a00c6",
+                      "on-secondary-fixed-variant": "#003ea8",
+                      "secondary-fixed-dim": "#b4c5ff",
+                      "tertiary-fixed-dim": "#f3aeff",
+                      "on-tertiary-fixed": "#340042",
+                      "on-tertiary-container": "#fffbff",
+                      "on-error-container": "#93000a",
+                      "inverse-primary": "#d2bbff",
+                      "surface-container-highest": "#e2e2e2",
+                      "primary-fixed-dim": "#d2bbff",
+                      "secondary-fixed": "#dbe1ff",
+                      "on-tertiary": "#ffffff",
+                      "primary-fixed": "#eaddff",
+                      "surface": "#f9f9f9",
+                      "on-surface-variant": "#464554",
+                      "tertiary-fixed": "#fcd6ff",
+                      "surface-variant": "#e2e2e2",
+                      "on-secondary-container": "#fefcff",
+                      "primary-container": "#8a4cfc",
+                      "error": "#ba1a1a",
+                      "surface-container-low": "#f3f3f4",
+                      "tertiary": "#7f458d"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "fontFamily": {
+                      "headline": ["Manrope"],
+                      "body": ["Inter"],
+                      "label": ["Inter"]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #712ae2 0%, #8a4cfc 100%);
+        }
+    </style>
+</head>
+<body class="bg-background font-body text-on-surface antialiased">
+<!-- TopNavBar -->
+<nav class="w-full top-0 sticky z-50 bg-[#F9F9F9] dark:bg-gray-900">
+<div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
+<div class="flex items-center gap-12">
+<span class="text-xl font-bold tracking-tighter text-[#1A1C1C] dark:text-white">Ether Velocity</span>
+<div class="hidden md:flex gap-8 items-center">
+<a class="font-['Manrope'] text-sm tracking-tight font-bold text-[#6366F1] border-b-2 border-[#6366F1] pb-1" href="#">Speed</a>
+<a class="font-['Manrope'] text-sm tracking-tight font-medium text-[#464554] dark:text-gray-400 hover:text-[#712AE2] transition-colors duration-200" href="#">Platforms</a>
+<a class="font-['Manrope'] text-sm tracking-tight font-medium text-[#464554] dark:text-gray-400 hover:text-[#712AE2] transition-colors duration-200" href="#">Streaming</a>
+<a class="font-['Manrope'] text-sm tracking-tight font-medium text-[#464554] dark:text-gray-400 hover:text-[#712AE2] transition-colors duration-200" href="#">Pricing</a>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<button class="text-[#464554] dark:text-gray-400 font-medium text-sm flex items-center gap-2 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-xl">language</span>
+                    Tiếng Việt
+                </button>
+<a class="text-[#1A1C1C] font-semibold text-sm" href="#">Đăng nhập</a>
+<a class="bg-primary text-white px-6 py-2 rounded-full font-bold text-sm shadow-lg shadow-primary/20 hover:opacity-90 transition-all" href="#">Bắt đầu ngay</a>
+</div>
+</div>
+</nav>
+<main>
+<!-- Hero Section -->
+<section class="relative pt-20 pb-32 overflow-hidden bg-surface-container-lowest">
+<div class="max-w-7xl mx-auto px-8 grid lg:grid-cols-12 gap-12 items-center">
+<div class="lg:col-span-7 z-10">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary font-bold text-xs mb-6 uppercase tracking-widest">
+<span class="material-symbols-outlined text-base">verified_user</span>
+                        Mạng riêng ảo an toàn nhất
+                    </div>
+<h1 class="font-headline text-6xl md:text-7xl font-extrabold tracking-tighter text-on-surface leading-[1.05] mb-8">
+                        Duyệt web <br/>
+<span class="text-transparent bg-clip-text hero-gradient">không giới hạn.</span>
+</h1>
+<p class="text-xl text-on-surface-variant max-w-xl mb-12 leading-relaxed">
+                        Ether Velocity cung cấp tốc độ vượt trội, mã hóa cấp quân sự và khả năng truy cập mọi nội dung bạn yêu thích từ bất kỳ đâu trên thế giới.
+                    </p>
+<div class="flex flex-col sm:flex-row gap-4">
+<button class="hero-gradient text-white px-10 py-5 rounded-full font-bold text-lg shadow-2xl shadow-primary/30 flex items-center justify-center gap-3 hover:scale-[1.02] transition-transform">
+                            Bắt đầu ngay
+                            <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<button class="bg-surface-container-low text-on-surface px-10 py-5 rounded-full font-bold text-lg flex items-center justify-center gap-3 hover:bg-surface-container transition-colors">
+                            Xem tính năng
+                        </button>
+</div>
+<div class="mt-12 flex items-center gap-4 text-on-surface-variant text-sm font-medium">
+<div class="flex -space-x-2">
+<img alt="User" class="w-8 h-8 rounded-full border-2 border-white" data-alt="professional male portrait with friendly expression" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7iJw86WbU5OCe-OhWbQF3C42Mtynf8VEoWtx8r3vpU3LeTPcqtSqlFsRjmSfCdPlFUBmU1Xu17VaiD3xvYOWcwZWhTVwbxYqDxzabcxIBRT9ke42SJgPJPp45qVQd2y00T7EAOvcsuGERR9s_AZeq1UvnKHp9_oKM_7sB7u_DSwaI5B0916ISH-Dzyw7ioxD7i_8gqh5MioA3wbzKALgZZPnQNZxrfHNADQsLLGjCqpN3UfYtV4YuPO8oklp1pEIQZuZIkcEmAhs"/>
+<img alt="User" class="w-8 h-8 rounded-full border-2 border-white" data-alt="young professional woman portrait smiling" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6GtiVo6_zns4g-W7qpqA-IM6LIPIN7JnI8kjUQKZ69doQNsiLcPM1kMz8zn5TGI1T5tCMPR6jIrGiNjYrDhUCT7XhXqUk-PZTq-va4yz3fMzcYNB33YyeP-ND35I-ZcmWsvkFj-GicE5ky2xZSt9gv1X9nFMazWhSyuvVF76R_OduO5gKkC3p92eKHd3ND1gx0WIO6jqHhQiRdIj_pA-JDDvbtz-U2SxEq9JelldZ2dDAeYHioOEvywiQuPyhXFC3K7sic7beGvQ"/>
+<img alt="User" class="w-8 h-8 rounded-full border-2 border-white" data-alt="mature professional man portrait with glasses" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQIko9qzsg6_NxGt5JFZ2msH-lUPs1JlQqmwRrRW9G8u1yQYCxe0eDWZ2JDjKE0kLIqv8W4E6LUC7EqVkevik5_0NpBN-go4nBPPyL04PE3SeZjjJ9kz7YziTsxIZXmW9dck3LXKuQOb7oXW4w6JB6oChvxTZH5TX1jIN3lmt8tRHL7RcVTf9iPBdXMg9OOn3FnruC9H61ME4RxTP3bRQSltY3UkixXIf7nRZJeTRsGo-cg1g7xPxrzuNGVgp_du2rOiVuhNNBauA"/>
+</div>
+<span>Hơn 2M+ người dùng tin tưởng</span>
+</div>
+</div>
+<div class="lg:col-span-5 relative">
+<div class="relative z-10 glass-card p-8 rounded-[2.5rem] shadow-2xl shadow-primary/5">
+<div class="flex items-center justify-between mb-10">
+<span class="font-headline font-bold text-lg">Trạng thái</span>
+<span class="px-3 py-1 rounded-full bg-secondary/10 text-secondary font-bold text-xs">ĐÃ BẢO VỆ</span>
+</div>
+<div class="flex flex-col items-center gap-8 mb-12">
+<div class="relative w-48 h-48 rounded-full bg-surface-container-low flex items-center justify-center">
+<div class="absolute inset-0 rounded-full border-4 border-secondary opacity-20 scale-110"></div>
+<div class="absolute inset-0 rounded-full border-2 border-secondary animate-pulse"></div>
+<div class="w-40 h-40 rounded-full hero-gradient flex flex-col items-center justify-center text-white shadow-xl">
+<span class="material-symbols-outlined text-6xl mb-1" style="font-variation-settings: 'FILL' 1;">power_settings_new</span>
+<span class="text-xs font-bold uppercase tracking-widest">Connected</span>
+</div>
+</div>
+<div class="text-center">
+<p class="text-xs text-on-surface-variant uppercase tracking-widest font-bold mb-1">Vị trí hiện tại</p>
+<p class="text-xl font-bold flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-secondary">location_on</span>
+                                    Singapore #14
+                                </p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-container-low p-4 rounded-2xl">
+<span class="text-[10px] text-on-surface-variant uppercase font-bold block mb-1">Download</span>
+<span class="text-lg font-bold text-secondary">854 Mbps</span>
+</div>
+<div class="bg-surface-container-low p-4 rounded-2xl">
+<span class="text-[10px] text-on-surface-variant uppercase font-bold block mb-1">Upload</span>
+<span class="text-lg font-bold text-primary">124 Mbps</span>
+</div>
+</div>
+</div>
+<!-- Decorative Elements -->
+<div class="absolute -top-12 -right-12 w-64 h-64 bg-primary/20 rounded-full blur-[100px]"></div>
+<div class="absolute -bottom-12 -left-12 w-64 h-64 bg-secondary/20 rounded-full blur-[100px]"></div>
+</div>
+</div>
+</section>
+<!-- Features Bento Grid -->
+<section class="py-24 bg-surface">
+<div class="max-w-7xl mx-auto px-8">
+<div class="text-center mb-20">
+<h2 class="font-headline text-4xl font-bold mb-4">Trải nghiệm tốc độ và bảo mật tuyệt đối</h2>
+<p class="text-on-surface-variant max-w-2xl mx-auto">Chúng tôi kết hợp các công nghệ tiên tiến nhất để mang đến trải nghiệm duyệt web mượt mà như không có rào cản.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Feature 1 -->
+<div class="md:col-span-2 bg-surface-container-lowest p-10 rounded-[2rem] flex flex-col md:flex-row gap-10 items-center overflow-hidden">
+<div class="flex-1">
+<div class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-6">
+<span class="material-symbols-outlined text-3xl">bolt</span>
+</div>
+<h3 class="font-headline text-2xl font-bold mb-4">Tốc độ cao, ổn định</h3>
+<p class="text-on-surface-variant leading-relaxed mb-6">Hệ thống máy chủ 10Gbps tại hơn 60 quốc gia giúp bạn xem video 4K mà không lo giật lag hay mất kết nối đột ngột.</p>
+<a class="text-primary font-bold flex items-center gap-2 group" href="#">
+                                Tìm hiểu thêm 
+                                <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">chevron_right</span>
+</a>
+</div>
+<div class="flex-1 relative">
+<img alt="Speed" class="rounded-xl shadow-lg rotate-3" data-alt="close-up of fiber optic cables glowing with blue and purple light in a high-tech data center" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzVSJwN-S2rjjugUknnVV0_nraGFcuLZg3IdtBPoHtgDYKT7ZnC6ZZ-5t29bZOtLRo1JaFklcYMTmekL8iE5_Hpvf55cNNNlJNmkHVdyqrG1Sfq3O1IZHtOnJcGPkHZMBh9uHoyGuW9GeknnbyyrJkpT4yNkEQsZNcx1FkXbfmp2hQ22s_PpWRItKf0J68MTeOXeiaPhVsAMWAPHuwyNUov88MWEdlYXSNEzxu2Sq0lWyRCVZPuVhoLYFAHRwrIoBh37Ry7J1qiyQ"/>
+</div>
+</div>
+<!-- Feature 2 -->
+<div class="bg-primary p-10 rounded-[2rem] text-white flex flex-col justify-between">
+<div>
+<div class="w-12 h-12 rounded-2xl bg-white/20 flex items-center justify-center text-white mb-6">
+<span class="material-symbols-outlined text-3xl">devices</span>
+</div>
+<h3 class="font-headline text-2xl font-bold mb-4">Đa nền tảng</h3>
+<p class="text-white/80 leading-relaxed">Một tài khoản sử dụng cùng lúc cho 10 thiết bị. Hỗ trợ iOS, Android, Windows, Mac và TV.</p>
+</div>
+<div class="mt-8">
+<div class="flex gap-4 opacity-50">
+<span class="material-symbols-outlined">laptop_mac</span>
+<span class="material-symbols-outlined">smartphone</span>
+<span class="material-symbols-outlined">tablet_mac</span>
+<span class="material-symbols-outlined">tv</span>
+</div>
+</div>
+</div>
+<!-- Feature 3 -->
+<div class="bg-surface-container-lowest p-10 rounded-[2rem]">
+<div class="w-12 h-12 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary mb-6">
+<span class="material-symbols-outlined text-3xl">public</span>
+</div>
+<h3 class="font-headline text-2xl font-bold mb-4">Mạng lưới toàn cầu</h3>
+<p class="text-on-surface-variant leading-relaxed">Hơn 5000+ máy chủ được tối ưu hóa cho từng khu vực, đảm bảo độ trễ thấp nhất có thể.</p>
+</div>
+<!-- Feature 4 -->
+<div class="md:col-span-2 bg-surface-container-low p-10 rounded-[2rem] relative overflow-hidden flex items-center">
+<div class="z-10 max-w-md">
+<h3 class="font-headline text-2xl font-bold mb-4">Bảo mật tuyệt đối 100%</h3>
+<p class="text-on-surface-variant leading-relaxed">Chúng tôi áp dụng chính sách không lưu nhật ký (No-Log policy) đã được kiểm chứng bởi các bên độc lập.</p>
+</div>
+<div class="absolute right-0 bottom-0 top-0 w-1/2 opacity-20">
+<span class="material-symbols-outlined text-[20rem] absolute -bottom-20 -right-20 text-primary">verified_user</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Device Compatibility -->
+<section class="py-20 bg-surface-container-lowest border-y border-outline-variant/10">
+<div class="max-w-7xl mx-auto px-8 text-center">
+<p class="text-xs font-bold uppercase tracking-[0.2em] text-on-surface-variant mb-12">Tương thích với mọi thiết bị</p>
+<div class="flex flex-wrap justify-center items-center gap-12 md:gap-24 opacity-60 grayscale hover:grayscale-0 transition-all">
+<span class="font-headline text-2xl font-extrabold flex items-center gap-2"><span class="material-symbols-outlined text-3xl">desktop_windows</span> Windows</span>
+<span class="font-headline text-2xl font-extrabold flex items-center gap-2"><span class="material-symbols-outlined text-3xl">laptop_mac</span> macOS</span>
+<span class="font-headline text-2xl font-extrabold flex items-center gap-2"><span class="material-symbols-outlined text-3xl">smartphone</span> Android</span>
+<span class="font-headline text-2xl font-extrabold flex items-center gap-2"><span class="material-symbols-outlined text-3xl">phone_iphone</span> iOS</span>
+<span class="font-headline text-2xl font-extrabold flex items-center gap-2"><span class="material-symbols-outlined text-3xl">router</span> Router</span>
+</div>
+</div>
+</section>
+<!-- Streaming Unlocking -->
+<section class="py-32 bg-surface-container-lowest relative overflow-hidden">
+<div class="max-w-7xl mx-auto px-8 grid md:grid-cols-2 gap-20 items-center">
+<div>
+<h2 class="font-headline text-4xl font-bold mb-8 leading-tight">Mở khóa nội dung giải trí không giới hạn</h2>
+<p class="text-lg text-on-surface-variant leading-relaxed mb-10">
+                        Đừng để giới hạn địa lý ngăn cản bạn xem các bộ phim bom tấn hay các giải đấu thể thao yêu thích. Ether Velocity vượt qua mọi rào cản từ Netflix, Disney+, Hulu và nhiều dịch vụ khác.
+                    </p>
+<ul class="space-y-4 mb-10">
+<li class="flex items-center gap-3 font-medium">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                            Xem 4K UHD mượt mà
+                        </li>
+<li class="flex items-center gap-3 font-medium">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                            Không giới hạn băng thông
+                        </li>
+<li class="flex items-center gap-3 font-medium">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                            Máy chủ tối ưu cho Streaming
+                        </li>
+</ul>
+<button class="text-primary font-bold text-lg flex items-center gap-2 underline underline-offset-8">
+                        Khám phá các máy chủ giải trí
+                    </button>
+</div>
+<div class="relative">
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-4 pt-12">
+<div class="bg-surface p-6 rounded-3xl shadow-sm border border-outline-variant/10 flex items-center justify-center h-24">
+<span class="font-black text-2xl text-red-600">NETFLIX</span>
+</div>
+<div class="bg-surface p-6 rounded-3xl shadow-sm border border-outline-variant/10 flex items-center justify-center h-24">
+<span class="font-black text-2xl text-blue-800">Disney+</span>
+</div>
+</div>
+<div class="space-y-4">
+<div class="bg-surface p-6 rounded-3xl shadow-sm border border-outline-variant/10 flex items-center justify-center h-24">
+<span class="font-black text-2xl text-green-500">hulu</span>
+</div>
+<div class="bg-surface p-6 rounded-3xl shadow-sm border border-outline-variant/10 flex items-center justify-center h-24">
+<span class="font-black text-2xl text-sky-400">Prime Video</span>
+</div>
+<div class="bg-surface p-6 rounded-3xl shadow-sm border border-outline-variant/10 flex items-center justify-center h-24">
+<span class="font-black text-2xl text-red-500">YouTube</span>
+</div>
+</div>
+</div>
+<div class="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-secondary/5 rounded-full blur-[80px]"></div>
+</div>
+</div>
+</section>
+<!-- Pricing Section -->
+<section class="py-32 bg-surface">
+<div class="max-w-7xl mx-auto px-8">
+<div class="text-center mb-16">
+<h2 class="font-headline text-4xl font-bold mb-4">Lựa chọn gói của bạn</h2>
+<p class="text-on-surface-variant">Tất cả các gói đều bao gồm bảo hành hoàn tiền trong 30 ngày.</p>
+</div>
+<div class="grid md:grid-cols-3 gap-8">
+<!-- Basic -->
+<div class="bg-surface-container-lowest p-10 rounded-[2.5rem] border border-outline-variant/5 shadow-sm flex flex-col h-full">
+<div class="mb-8">
+<p class="text-on-surface-variant font-bold text-xs uppercase tracking-widest mb-2">Gói 1 tháng</p>
+<div class="flex items-baseline gap-1">
+<span class="text-4xl font-black">$12.99</span>
+<span class="text-on-surface-variant">/tháng</span>
+</div>
+</div>
+<ul class="space-y-4 mb-12 flex-grow">
+<li class="flex items-center gap-3 text-sm"><span class="material-symbols-outlined text-green-500 text-lg">check</span> Bảo mật mọi thiết bị</li>
+<li class="flex items-center gap-3 text-sm"><span class="material-symbols-outlined text-green-500 text-lg">check</span> Băng thông không giới hạn</li>
+<li class="flex items-center gap-3 text-sm"><span class="material-symbols-outlined text-green-500 text-lg">check</span> Hỗ trợ 24/7</li>
+</ul>
+<button class="w-full py-4 rounded-full border-2 border-outline-variant font-bold hover:bg-surface-container transition-colors">Chọn gói này</button>
+</div>
+<!-- Popular (Featured) -->
+<div class="bg-surface-container-lowest p-10 rounded-[2.5rem] border-2 border-primary shadow-2xl shadow-primary/10 flex flex-col h-full relative overflow-hidden transform md:-translate-y-4">
+<div class="absolute top-0 right-0 bg-primary text-white text-[10px] font-black px-6 py-2 rounded-bl-2xl uppercase tracking-tighter">Phổ biến nhất</div>
+<div class="mb-8">
+<p class="text-primary font-bold text-xs uppercase tracking-widest mb-2">Gói 2 năm</p>
+<div class="flex items-baseline gap-1">
+<span class="text-5xl font-black text-on-surface">$3.29</span>
+<span class="text-on-surface-variant font-medium">/tháng</span>
+</div>
+<p class="text-secondary font-bold text-sm mt-2">Tiết kiệm 82%</p>
+</div>
+<ul class="space-y-4 mb-12 flex-grow">
+<li class="flex items-center gap-3 text-sm font-bold"><span class="material-symbols-outlined text-green-500 text-lg">check</span> +3 tháng miễn phí</li>
+<li class="flex items-center gap-3 text-sm"><span class="material-symbols-outlined text-green-500 text-lg">check</span> Tốc độ siêu việt 10Gbps</li>
+<li class="flex items-center gap-3 text-sm"><span class="material-symbols-outlined text-green-500 text-lg">check</span> IP tĩnh miễn phí</li>
+<li class="flex items-center gap-3 text-sm"><span class="material-symbols-outlined text-green-500 text-lg">check</span> Tối đa 10 kết nối</li>
+</ul>
+<button class="w-full py-4 rounded-full hero-gradient text-white font-bold shadow-xl shadow-primary/20 hover:scale-[1.02] transition-transform">Bắt đầu ngay</button>
+</div>
+<!-- Advanced -->
+<div class="bg-surface-container-lowest p-10 rounded-[2.5rem] border border-outline-variant/5 shadow-sm flex flex-col h-full">
+<div class="mb-8">
+<p class="text-on-surface-variant font-bold text-xs uppercase tracking-widest mb-2">Gói 1 năm</p>
+<div class="flex items-baseline gap-1">
+<span class="text-4xl font-black">$4.99</span>
+<span class="text-on-surface-variant">/tháng</span>
+</div>
+<p class="text-on-surface-variant text-sm mt-2">Tiết kiệm 45%</p>
+</div>
+<ul class="space-y-4 mb-12 flex-grow">
+<li class="flex items-center gap-3 text-sm"><span class="material-symbols-outlined text-green-500 text-lg">check</span> Mọi tính năng cao cấp</li>
+<li class="flex items-center gap-3 text-sm"><span class="material-symbols-outlined text-green-500 text-lg">check</span> Chặn quảng cáo &amp; mã độc</li>
+<li class="flex items-center gap-3 text-sm"><span class="material-symbols-outlined text-green-500 text-lg">check</span> Trình quản lý mật khẩu</li>
+</ul>
+<button class="w-full py-4 rounded-full border-2 border-outline-variant font-bold hover:bg-surface-container transition-colors">Chọn gói này</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Support Section -->
+<section class="py-24 bg-surface-container-lowest">
+<div class="max-w-5xl mx-auto px-8 bg-surface-container-low rounded-[3rem] p-12 md:p-20 flex flex-col md:flex-row items-center gap-12">
+<div class="flex-1 text-center md:text-left">
+<h2 class="font-headline text-3xl font-bold mb-4">Hỗ trợ khách hàng 24/7</h2>
+<p class="text-on-surface-variant mb-8 leading-relaxed">Đội ngũ chuyên gia của chúng tôi luôn sẵn sàng giải đáp mọi thắc mắc của bạn qua Live Chat hoặc Email bất kể ngày đêm.</p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+<button class="bg-on-surface text-surface px-8 py-4 rounded-full font-bold flex items-center justify-center gap-3">
+<span class="material-symbols-outlined">chat</span>
+                            Chat ngay bây giờ
+                        </button>
+<button class="bg-white text-on-surface px-8 py-4 rounded-full font-bold border border-outline-variant/30 flex items-center justify-center gap-3">
+<span class="material-symbols-outlined">mail</span>
+                            Gửi Email hỗ trợ
+                        </button>
+</div>
+</div>
+<div class="w-48 h-48 relative">
+<img alt="Support" class="w-full h-full rounded-full object-cover shadow-2xl border-4 border-white" data-alt="professional support team member smiling with headset in a clean modern office" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2oEB_ONxpLRHIC0-NyndZ1YpwdL19aHeT3A_FcY6ZiLSX1HBHnyZFWWubG726FmT8oajFNJgftmAsjnvKWPmNoKuRet_VhY8ogOXe9D_n18QXS1K23wk2FTfDO9QcpmqD0m60lOk1v5mX5wD0x6HP4GwRU7RiAkHfkvqCBwiVKZ0qqf8ogGKZ6DFFdwGNmGXvW4BP_Jlk2UMfzJj-wgwoFOE_6HzkaRJsp8grQJxhU9j02zH5MnhELfnysutXyX9_Fw8g0GvK32E"/>
+<div class="absolute -bottom-2 -right-2 w-10 h-10 bg-green-500 border-4 border-white rounded-full"></div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full border-t border-[#C7C4D7]/15 bg-[#F9F9F9] dark:bg-gray-950">
+<div class="flex flex-col md:flex-row justify-between items-center px-8 py-12 max-w-7xl mx-auto">
+<div class="mb-8 md:mb-0">
+<span class="text-lg font-black text-[#1A1C1C] dark:text-white block mb-2">Ether Velocity</span>
+<p class="font-['Inter'] text-xs text-[#464554] dark:text-gray-500 max-w-xs">Giải pháp VPN tốc độ cao, riêng tư và an toàn hàng đầu thế giới dành cho mọi thiết bị.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-8 md:gap-12 mb-8 md:mb-0">
+<a class="font-['Inter'] text-xs text-[#464554] dark:text-gray-500 hover:text-[#6366F1] underline underline-offset-4 transition-all duration-300" href="#">Privacy Policy</a>
+<a class="font-['Inter'] text-xs text-[#464554] dark:text-gray-500 hover:text-[#6366F1] underline underline-offset-4 transition-all duration-300" href="#">Terms of Service</a>
+<a class="font-['Inter'] text-xs text-[#464554] dark:text-gray-500 hover:text-[#6366F1] underline underline-offset-4 transition-all duration-300" href="#">Security Audit</a>
+<a class="font-['Inter'] text-xs text-[#464554] dark:text-gray-500 hover:text-[#6366F1] underline underline-offset-4 transition-all duration-300" href="#">Status</a>
+</div>
+<div class="text-center md:text-right">
+<p class="font-['Inter'] text-xs text-[#464554] dark:text-gray-500">© 2024 Ether Velocity. The Luminous Guardian.</p>
+</div>
+</div>
+</footer>
+</body></html>

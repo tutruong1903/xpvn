@@ -1,0 +1,113 @@
+/* ================================================================
+   Landing Page — Tailwind-based Custom Stylesheet
+   Design System: "The Luminous Guardian"
+   Tailwind theme extension: public/assets/js/landing/tailwind-config.js
+   (CDN Tailwind requires JS config; this file holds tokens + custom CSS.)
+   ================================================================ */
+
+:root {
+    --landing-background: #f9f9f9;
+    --landing-surface: #f9f9f9;
+    --landing-surface-container-low: #f3f3f4;
+    --landing-surface-container: #eeeeee;
+    --landing-outline-variant: #e2e2e2;
+    --landing-on-surface: #1a1c1c;
+    --landing-on-surface-variant: #464554;
+    --landing-primary: #712ae2;
+    --landing-primary-container: #8a4cfc;
+    --landing-secondary: #0051d5;
+}
+
+/* Material Symbols Configuration */
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Custom Utilities */
+.glass-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+.hero-gradient {
+    background: linear-gradient(135deg, var(--landing-primary) 0%, var(--landing-primary-container) 100%);
+}
+
+/* Animations */
+@keyframes pulse-ring {
+    0% { 
+        transform: scale(1); 
+        opacity: 0.8; 
+    }
+    50% { 
+        transform: scale(1.1); 
+        opacity: 0.4; 
+    }
+    100% { 
+        transform: scale(1); 
+        opacity: 0.8; 
+    }
+}
+
+.animate-pulse-ring {
+    animation: pulse-ring 2s ease-in-out infinite;
+}
+
+/* Language Switcher Dropdown */
+.lang-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.lang-dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #fff;
+    min-width: 200px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+    border-radius: 0.75rem;
+    z-index: 1000;
+    margin-top: 0.5rem;
+    border: 1px solid var(--landing-outline-variant);
+}
+
+/* Only show dropdown when active class is present (no hover) */
+.lang-dropdown.active .lang-dropdown-content {
+    display: block;
+}
+
+.lang-dropdown-item {
+    color: var(--landing-on-surface);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s;
+    cursor: pointer;
+    font-size: 0.875rem;
+}
+
+.lang-dropdown-item:hover {
+    background-color: var(--landing-surface-container-low);
+}
+
+.lang-dropdown-item.active {
+    background-color: var(--landing-primary);
+    color: #fff;
+}
+
+.lang-dropdown-item:first-child {
+    border-radius: 0.75rem 0.75rem 0 0;
+}
+
+.lang-dropdown-item:last-child {
+    border-radius: 0 0 0.75rem 0.75rem;
+}
+
+/* Smooth Scroll */
+html {
+    scroll-behavior: smooth;
+}

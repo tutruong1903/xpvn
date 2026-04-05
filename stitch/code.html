@@ -3,331 +3,264 @@
 <html class="light" lang="vi"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Ether Velocity - Luminous Guardian Dashboard</title>
+<title>Ether Velocity - Chỉnh sửa thông tin</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
-        tailwind.config = {
-          darkMode: "class",
-          theme: {
-            extend: {
-              "colors": {
-                      "background": "#f9f9f9",
-                      "inverse-surface": "#2f3131",
-                      "tertiary-fixed-dim": "#f3aeff",
-                      "tertiary-container": "#9a5da8",
-                      "secondary-container": "#316bf3",
-                      "surface-container": "#eeeeee",
-                      "tertiary-fixed": "#fcd6ff",
-                      "on-tertiary": "#ffffff",
-                      "on-surface": "#1a1c1c",
-                      "secondary": "#0051d5",
-                      "surface-tint": "#732ee4",
-                      "surface-container-low": "#f3f3f4",
-                      "on-error": "#ffffff",
-                      "surface-container-high": "#e8e8e8",
-                      "primary-container": "#8a4cfc",
-                      "outline-variant": "#c7c4d7",
-                      "surface-bright": "#f9f9f9",
-                      "on-primary-fixed-variant": "#5a00c6",
-                      "on-secondary": "#ffffff",
-                      "on-tertiary-container": "#fffbff",
-                      "surface-variant": "#e2e2e2",
-                      "on-surface-variant": "#464554",
-                      "inverse-on-surface": "#f0f1f1",
-                      "error-container": "#ffdad6",
-                      "on-primary-container": "#fffbff",
-                      "surface": "#f9f9f9",
-                      "surface-container-highest": "#e2e2e2",
-                      "outline": "#767586",
-                      "error": "#ba1a1a",
-                      "on-primary": "#ffffff",
-                      "secondary-fixed-dim": "#b4c5ff",
-                      "primary-fixed-dim": "#d2bbff",
-                      "surface-dim": "#dadada",
-                      "primary-fixed": "#eaddff",
-                      "on-secondary-fixed": "#00174b",
-                      "secondary-fixed": "#dbe1ff",
-                      "on-tertiary-fixed": "#340042",
-                      "on-primary-fixed": "#25005a",
-                      "tertiary": "#7f458d",
-                      "primary": "#712ae2",
-                      "on-secondary-fixed-variant": "#003ea8",
-                      "on-secondary-container": "#fefcff",
-                      "on-background": "#1a1c1c",
-                      "on-tertiary-fixed-variant": "#682f76",
-                      "inverse-primary": "#d2bbff",
-                      "surface-container-lowest": "#ffffff",
-                      "on-error-container": "#93000a"
-              },
-              "borderRadius": {
-                      "DEFAULT": "0.25rem",
-                      "lg": "0.5rem",
-                      "xl": "0.75rem",
-                      "full": "9999px"
-              },
-              "fontFamily": {
-                      "headline": ["Manrope"],
-                      "body": ["Inter"],
-                      "label": ["Inter"]
-              }
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-fixed-variant": "#003ea8",
+                    "surface-bright": "#f9f9f9",
+                    "secondary-container": "#316bf3",
+                    "on-primary-container": "#fffbff",
+                    "tertiary-fixed": "#fcd6ff",
+                    "on-secondary-container": "#fefcff",
+                    "surface-dim": "#dadada",
+                    "surface": "#f9f9f9",
+                    "primary-fixed": "#eaddff",
+                    "on-primary-fixed-variant": "#5a00c6",
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface-variant": "#464554",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-fixed-variant": "#682f76",
+                    "inverse-primary": "#d2bbff",
+                    "on-tertiary": "#ffffff",
+                    "inverse-on-surface": "#f0f1f1",
+                    "surface-tint": "#732ee4",
+                    "on-tertiary-fixed": "#340042",
+                    "surface-container-low": "#f3f3f4",
+                    "primary-fixed-dim": "#d2bbff",
+                    "surface-container-highest": "#e2e2e2",
+                    "on-secondary-fixed": "#00174b",
+                    "inverse-surface": "#2f3131",
+                    "on-background": "#1a1c1c",
+                    "secondary-fixed-dim": "#b4c5ff",
+                    "surface-container-high": "#e8e8e8",
+                    "error-container": "#ffdad6",
+                    "tertiary-fixed-dim": "#f3aeff",
+                    "surface-variant": "#e2e2e2",
+                    "on-primary-fixed": "#25005a",
+                    "outline-variant": "#c7c4d7",
+                    "on-primary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "error": "#ba1a1a",
+                    "outline": "#767586",
+                    "on-surface": "#1a1c1c",
+                    "surface-container": "#eeeeee",
+                    "secondary-fixed": "#dbe1ff",
+                    "primary": "#712ae2",
+                    "secondary": "#0051d5",
+                    "tertiary": "#7f458d",
+                    "on-tertiary-container": "#fffbff",
+                    "tertiary-container": "#9a5da8",
+                    "primary-container": "#8a4cfc",
+                    "background": "#f9f9f9"
             },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
           },
         }
+      }
     </script>
 <style>
-        body { font-family: 'Inter', sans-serif; background-color: #f9f9f9; }
-        h1, h2, h3, h4 { font-family: 'Manrope', sans-serif; }
-        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
-        .active-pill { @apply bg-primary-container text-white; }
-        .glass-panel { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(20px); }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .font-manrope { font-family: 'Manrope', sans-serif; }
+        
+        /* Custom scrollbar for subtle look */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #e2e2e2; border-radius: 10px; }
     </style>
 </head>
-<body class="text-on-surface">
-<!-- Sidebar Navigation -->
-<aside class="fixed left-0 top-0 h-screen w-64 bg-white border-r border-slate-100 flex flex-col p-4 gap-2 z-50">
-<!-- Sidebar Header -->
-<div class="flex items-center gap-3 px-2 py-4 mb-6">
-<div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-primary-container flex items-center justify-center text-white shadow-lg shadow-primary/20">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">security</span>
-</div>
-<div>
-<h2 class="text-sm font-bold font-headline leading-tight">Của tôi</h2>
-<p class="text-[10px] text-on-surface-variant font-medium">Quản lý hệ thống</p>
+<body class="bg-background text-on-background min-h-screen">
+<!-- TopNavBar -->
+<nav class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl docked full-width top-0 z-50 shadow-sm flex justify-between items-center w-full px-6 py-3 fixed">
+<div class="flex items-center gap-8">
+<span class="text-xl font-bold tracking-tighter text-indigo-600 dark:text-indigo-400">Ether Velocity</span>
+<div class="hidden md:flex gap-6 items-center font-manrope text-sm font-medium tracking-tight">
+<a class="text-slate-500 dark:text-slate-400 hover:text-indigo-500 transition-colors" href="#">Dashboard</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-indigo-500 transition-colors" href="#">Analytics</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-indigo-500 transition-colors" href="#">Security</a>
 </div>
 </div>
-<!-- Navigation Links -->
-<nav class="flex flex-col gap-1">
-<!-- Home (Active) -->
-<a class="flex items-center gap-3 px-3 py-2.5 text-indigo-600 font-bold bg-indigo-50/50 rounded-lg transition-all duration-300 ease-in-out" href="#">
-<span class="material-symbols-outlined" data-icon="home">home</span>
-<span class="text-sm">Trang chủ</span>
-</a>
-<!-- Products with Submenu -->
-<div class="group">
-<button class="w-full flex items-center justify-between px-3 py-2.5 text-slate-600 hover:text-indigo-500 transition-all duration-300">
-<div class="flex items-center gap-3">
-<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
-<span class="text-sm font-medium">Sản phẩm</span>
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block">
+<input class="bg-surface-container-low border-none rounded-full px-4 py-1.5 text-sm w-64 focus:ring-2 focus:ring-primary/20" placeholder="Search settings..." type="text"/>
 </div>
-<span class="material-symbols-outlined text-sm">expand_more</span>
-</button>
-<div class="pl-11 pr-3 flex flex-col gap-1 mt-1">
-<a class="text-xs py-1.5 text-slate-500 hover:text-primary transition-colors" href="#">Danh sách</a>
-<a class="text-xs py-1.5 text-slate-500 hover:text-primary transition-colors" href="#">Thêm mới</a>
+<span class="material-symbols-outlined text-slate-500 cursor-pointer">notifications</span>
+<span class="material-symbols-outlined text-slate-500 cursor-pointer">settings</span>
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center text-white text-xs font-bold overflow-hidden">
+<img alt="User profile avatar" data-alt="minimalist user avatar placeholder with soft geometric shapes and professional indigo color palette" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2sMXL3Yz18CQ5xoRLfcrFHm-7ccnPk2HmUE5mPaNmUqp0IzxphMrywsJRvodBWBFE6P6g2rITAVuGtv9g3yhZPpuUWJYA4zpl0O3RHdWs8s99CuIwbe4mxk-HjFCv6VVOmHUH401BCkBkhRFxihNcSCw2iAMdBItmZ_BjxIvkSXBf3IF7V8tcpKtSXEmCdw7e9pP2SpIn3G3Qth1khmSREGgmF4qegGC7ykIzC5H_aHYNyobsL21khpFdiMWVImB1NY2qz3JtkkA"/>
 </div>
 </div>
-<!-- Orders with Submenu -->
-<div class="group">
-<button class="w-full flex items-center justify-between px-3 py-2.5 text-slate-600 hover:text-indigo-500 transition-all duration-300">
-<div class="flex items-center gap-3">
-<span class="material-symbols-outlined" data-icon="receipt">receipt</span>
-<span class="text-sm font-medium">Đơn hàng</span>
-</div>
-<span class="material-symbols-outlined text-sm">expand_more</span>
-</button>
-<div class="pl-11 pr-3 flex flex-col gap-1 mt-1">
-<a class="text-xs py-1.5 text-slate-500 hover:text-primary transition-colors" href="#">Danh sách</a>
-<a class="text-xs py-1.5 text-slate-500 hover:text-primary transition-colors" href="#">Chi tiết</a>
-</div>
-</div>
-<!-- Invoices -->
-<a class="flex items-center gap-3 px-3 py-2.5 text-slate-600 hover:text-indigo-500 transition-all duration-300" href="#">
-<span class="material-symbols-outlined" data-icon="description">description</span>
-<span class="text-sm font-medium">Hóa đơn</span>
-</a>
 </nav>
-<!-- Bottom Sidebar Toggle -->
-<div class="mt-auto p-4 bg-surface-container-low rounded-2xl">
-<div class="flex items-center justify-between bg-white p-1 rounded-full border border-outline-variant/15">
-<button class="flex-1 py-1.5 text-[10px] font-bold rounded-full bg-primary text-white shadow-sm">User</button>
-<button class="flex-1 py-1.5 text-[10px] font-bold rounded-full text-on-surface-variant hover:bg-slate-50 transition-colors">Admin</button>
+<!-- SideNavBar -->
+<aside class="bg-slate-50 dark:bg-slate-950 h-screen w-64 fixed left-0 top-0 pt-16 flex flex-col gap-2 p-4 border-r-0">
+<div class="mb-6 px-2">
+<h2 class="font-manrope text-lg font-bold text-on-surface">Chỉnh sửa thông tin</h2>
+<p class="text-xs text-on-surface-variant font-medium">Manage your account settings</p>
 </div>
+<div class="space-y-1">
+<a class="flex items-center gap-3 px-3 py-2.5 bg-white dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400 shadow-sm rounded-lg font-manrope text-sm font-semibold transition-all" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span>Profile</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 font-manrope text-sm font-semibold transition-all" href="#">
+<span class="material-symbols-outlined">lock</span>
+<span>Security</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 font-manrope text-sm font-semibold transition-all" href="#">
+<span class="material-symbols-outlined">speed</span>
+<span>Usage</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 font-manrope text-sm font-semibold transition-all" href="#">
+<span class="material-symbols-outlined">tune</span>
+<span>Preferences</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 font-manrope text-sm font-semibold transition-all" href="#">
+<span class="material-symbols-outlined">help</span>
+<span>Help</span>
+</a>
+</div>
+<div class="mt-auto pb-4 space-y-4">
+<button class="w-full bg-primary text-white py-2.5 rounded-lg text-sm font-bold shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all">
+                Upgrade Plan
+            </button>
+<a class="flex items-center gap-3 px-3 py-2.5 text-error hover:bg-error/5 font-manrope text-sm font-semibold rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span>Logout</span>
+</a>
 </div>
 </aside>
-<!-- Main Content Area -->
-<main class="ml-64 min-h-screen flex flex-col">
-<!-- Top Bar -->
-<header class="h-16 px-8 flex items-center justify-between bg-white/80 backdrop-blur-xl sticky top-0 z-40">
-<h1 class="text-xl font-extrabold tracking-tighter text-slate-900 font-headline">Luminous Guardian</h1>
-<div class="flex items-center gap-6">
-<button class="relative p-2 text-slate-500 hover:bg-slate-50 rounded-full transition-colors">
-<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
-<span class="absolute top-2 right-2 w-2 h-2 bg-primary rounded-full border-2 border-white"></span>
-</button>
-<div class="flex items-center gap-3 pl-6 border-l border-slate-100">
-<div class="text-right">
-<p class="text-sm font-bold font-headline">Alex Nguyen</p>
-<p class="text-[10px] text-on-surface-variant font-medium">Pro Member</p>
-</div>
-<img alt="User profile" class="w-10 h-10 rounded-full object-cover ring-2 ring-primary/10" data-alt="professional portrait of a young male software engineer with a friendly expression and short dark hair in a brightly lit studio" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlDs0yNZFjxyACC-mjOEX8uffSliNKk4ovjwSb4wF4dbCtyB9PfMKhd4wB97Sd-JtVO5suX678pWqHhzIr89I1kfRJ375Ntd8FYdZgy9qI6CAFIDrGfXpShiUR2HwVFMiyhTwsGX-_QRf47p0txdNv67fb77TqnnuoLZKebtX7Pd9niObVMGKHc1TJ0pV6RV_sIEzmfhZfuSRHXXsZNtU4RT8svLufPa3uZPxS_O8NavZEQW6vpBSILmXAg7i0H1ZrC5bk6eJ_7es"/>
-</div>
-</div>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-20 p-8 min-h-screen bg-surface">
+<div class="max-w-5xl mx-auto">
+<!-- Content Header -->
+<header class="mb-10">
+<h1 class="text-4xl font-extrabold font-manrope tracking-tight text-on-surface mb-2">Chỉnh sửa thông tin</h1>
+<p class="text-on-surface-variant font-medium">Cập nhật và quản lý các thiết lập tài khoản cá nhân của bạn trên hệ thống Velocity.</p>
 </header>
-<!-- Dashboard Content -->
-<section class="p-8 space-y-8 max-w-7xl mx-auto w-full">
-<!-- Connection Status Hero -->
-<div class="relative overflow-hidden rounded-[2rem] bg-surface-container-lowest p-10 flex flex-col md:flex-row items-center justify-between gap-8 border border-outline-variant/10">
-<div class="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-96 h-96 bg-primary/5 blur-3xl rounded-full"></div>
-<div class="relative z-10 space-y-6 max-w-lg">
-<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-secondary/10 text-secondary border border-secondary/20">
-<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
-<span class="text-xs font-bold tracking-wide uppercase">Connected</span>
+<!-- Tabs Section -->
+<div class="flex items-center gap-8 border-b-0 mb-10 overflow-x-auto whitespace-nowrap">
+<button class="pb-4 text-sm font-bold font-manrope text-primary border-b-2 border-primary">Thông tin</button>
+<button class="pb-4 text-sm font-semibold font-manrope text-on-surface-variant hover:text-primary transition-colors">Đăng nhập</button>
+<button class="pb-4 text-sm font-semibold font-manrope text-on-surface-variant hover:text-primary transition-colors">Sử dụng</button>
+<button class="pb-4 text-sm font-semibold font-manrope text-on-surface-variant hover:text-primary transition-colors">Khác</button>
 </div>
-<h2 class="text-5xl font-extrabold font-headline leading-[1.1] tracking-tight">Singapore #14</h2>
-<p class="text-on-surface-variant leading-relaxed">Your digital path is currently illuminated and protected. Enjoy high-speed browsing through our premium gateway with enterprise-grade encryption.</p>
-<div class="flex items-center gap-4">
-<button class="px-8 py-4 bg-gradient-to-r from-primary to-primary-container text-white rounded-full font-bold shadow-lg shadow-primary/20 hover:scale-95 transition-transform duration-200">
-                            Disconnect
-                        </button>
-<button class="px-6 py-4 text-primary font-bold hover:underline">
-                            Switch Location
-                        </button>
-</div>
-</div>
-<div class="relative w-full md:w-1/2 flex justify-center">
-<!-- Speed Visualization -->
-<div class="relative w-64 h-64 flex items-center justify-center">
-<svg class="w-full h-full -rotate-90">
-<circle class="text-slate-100" cx="128" cy="128" fill="transparent" r="110" stroke="currentColor" stroke-width="12"></circle>
-<circle class="text-secondary" cx="128" cy="128" fill="transparent" r="110" stroke="currentColor" stroke-dasharray="691" stroke-dashoffset="200" stroke-width="12"></circle>
-</svg>
-<div class="absolute inset-0 flex flex-col items-center justify-center text-center">
-<span class="text-3xl font-extrabold font-headline">142.5</span>
-<span class="text-xs font-bold text-on-surface-variant uppercase tracking-widest">Mbps</span>
-</div>
-</div>
-</div>
-</div>
-<!-- Bento Grid Stats & Actions -->
-<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
-<!-- Traffic Monitor -->
-<div class="md:col-span-8 bg-surface-container-lowest rounded-[2rem] p-8 border border-outline-variant/10">
-<div class="flex items-center justify-between mb-8">
-<h3 class="text-lg font-bold font-headline">Real-time Traffic</h3>
-<div class="flex gap-4">
-<div class="flex items-center gap-2">
-<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
-<span class="text-xs font-medium text-on-surface-variant">Download</span>
-</div>
-<div class="flex items-center gap-2">
-<span class="w-2.5 h-2.5 rounded-full bg-primary-container"></span>
-<span class="text-xs font-medium text-on-surface-variant">Upload</span>
-</div>
-</div>
-</div>
-<div class="h-48 w-full flex items-end gap-2 overflow-hidden">
-<!-- Simplified Mock Chart -->
-<div class="flex-1 bg-secondary/10 rounded-t-lg h-32"></div>
-<div class="flex-1 bg-secondary/10 rounded-t-lg h-40"></div>
-<div class="flex-1 bg-secondary/10 rounded-t-lg h-24"></div>
-<div class="flex-1 bg-secondary/10 rounded-t-lg h-48"></div>
-<div class="flex-1 bg-secondary/10 rounded-t-lg h-36"></div>
-<div class="flex-1 bg-secondary/10 rounded-t-lg h-44"></div>
-<div class="flex-1 bg-secondary/10 rounded-t-lg h-52"></div>
-<div class="flex-1 bg-secondary/10 rounded-t-lg h-30"></div>
-<div class="flex-1 bg-secondary/10 rounded-t-lg h-42"></div>
-<div class="flex-1 bg-secondary/10 rounded-t-lg h-38"></div>
-</div>
-<div class="mt-8 grid grid-cols-2 gap-4">
-<div class="p-4 bg-surface-container-low rounded-2xl flex items-center gap-4">
-<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">download</span>
+<!-- Bento Grid 2x2 Layout -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Card 1: Email -->
+<div class="bg-surface-container-lowest p-8 rounded-lg shadow-[0_4px_20px_rgba(0,0,0,0.03)] flex flex-col justify-between">
 <div>
-<p class="text-[10px] uppercase font-bold text-on-surface-variant tracking-wider">Download</p>
-<p class="text-xl font-bold font-headline">824.5 GB</p>
+<div class="flex items-center gap-3 mb-6">
+<div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">mail</span>
 </div>
+<h3 class="font-manrope text-lg font-bold text-on-surface">Email đăng nhập</h3>
 </div>
-<div class="p-4 bg-surface-container-low rounded-2xl flex items-center gap-4">
-<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">upload</span>
-<div>
-<p class="text-[10px] uppercase font-bold text-on-surface-variant tracking-wider">Upload</p>
-<p class="text-xl font-bold font-headline">152.1 GB</p>
-</div>
-</div>
-</div>
-</div>
-<!-- Platform Quick Launch -->
-<div class="md:col-span-4 space-y-6">
-<h3 class="text-lg font-bold font-headline px-2">Platform Hub</h3>
-<div class="grid grid-cols-1 gap-4">
-<!-- Platform Card 1 -->
-<div class="group p-5 bg-white rounded-3xl flex items-center justify-between hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 cursor-pointer border border-transparent hover:border-primary/10">
-<div class="flex items-center gap-4">
-<div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center group-hover:bg-primary/5 transition-colors">
-<span class="material-symbols-outlined text-slate-400 group-hover:text-primary">terminal</span>
+<div class="mb-6">
+<label class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-2">Email hiện tại</label>
+<p class="text-on-surface font-medium bg-surface-container-low px-4 py-2 rounded-lg">user.ether@velocity.io</p>
 </div>
 <div>
-<p class="font-bold text-sm">Clash Verge</p>
-<p class="text-[10px] text-on-surface-variant">Windows / Mac / Linux</p>
+<label class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-2">Email mới</label>
+<input class="w-full bg-white border border-outline-variant/30 rounded-lg px-4 py-3 text-sm focus:ring-2 focus:ring-primary focus:border-primary transition-all" placeholder="Nhập địa chỉ email mới" type="email"/>
 </div>
 </div>
-<span class="material-symbols-outlined text-slate-300 group-hover:text-primary transition-colors">arrow_forward_ios</span>
+<div class="mt-8">
+<button class="w-full bg-primary text-white py-3 rounded-lg text-sm font-bold hover:shadow-lg hover:shadow-primary/20 transition-all">Cập nhật</button>
 </div>
-<!-- Platform Card 2 -->
-<div class="group p-5 bg-white rounded-3xl flex items-center justify-between hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 cursor-pointer border border-transparent hover:border-primary/10">
-<div class="flex items-center gap-4">
-<div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center group-hover:bg-primary/5 transition-colors">
-<span class="material-symbols-outlined text-slate-400 group-hover:text-primary">auto_awesome</span>
+</div>
+<!-- Card 2: Username -->
+<div class="bg-surface-container-lowest p-8 rounded-lg shadow-[0_4px_20px_rgba(0,0,0,0.03)] flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-3 mb-6">
+<div class="w-10 h-10 rounded-xl bg-secondary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary">badge</span>
+</div>
+<h3 class="font-manrope text-lg font-bold text-on-surface">Tên người dùng</h3>
+</div>
+<div class="mb-6">
+<label class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-2">Tên hiện tại</label>
+<p class="text-on-surface font-medium bg-surface-container-low px-4 py-2 rounded-lg">velocity_guardian_99</p>
 </div>
 <div>
-<p class="font-bold text-sm">Nyanpasu</p>
-<p class="text-[10px] text-on-surface-variant">Next-gen UI Client</p>
+<label class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-2">Tên mới</label>
+<input class="w-full bg-white border border-outline-variant/30 rounded-lg px-4 py-3 text-sm focus:ring-2 focus:ring-primary focus:border-primary transition-all" placeholder="Nhập tên người dùng mới" type="text"/>
 </div>
 </div>
-<span class="material-symbols-outlined text-slate-300 group-hover:text-primary transition-colors">arrow_forward_ios</span>
+<div class="mt-8">
+<button class="w-full bg-primary text-white py-3 rounded-lg text-sm font-bold hover:shadow-lg hover:shadow-primary/20 transition-all">Cập nhật</button>
 </div>
-<!-- Platform Card 3 -->
-<div class="group p-5 bg-white rounded-3xl flex items-center justify-between hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 cursor-pointer border border-transparent hover:border-primary/10">
-<div class="flex items-center gap-4">
-<div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center group-hover:bg-primary/5 transition-colors">
-<span class="material-symbols-outlined text-slate-400 group-hover:text-primary">smartphone</span>
+</div>
+<!-- Card 3: IM Link -->
+<div class="bg-surface-container-lowest p-8 rounded-lg shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-10 h-10 rounded-xl bg-tertiary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary">chat</span>
+</div>
+<h3 class="font-manrope text-lg font-bold text-on-surface">Liên kết tài khoản IM</h3>
+</div>
+<div class="space-y-4">
+<div>
+<label class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-2">Loại IM</label>
+<select class="w-full bg-white border border-outline-variant/30 rounded-lg px-4 py-3 text-sm focus:ring-2 focus:ring-primary focus:border-primary transition-all appearance-none cursor-pointer">
+<option>Telegram</option>
+<option>Discord</option>
+<option>Slack</option>
+<option>Zalo</option>
+</select>
 </div>
 <div>
-<p class="font-bold text-sm">V2Ray Mobile</p>
-<p class="text-[10px] text-on-surface-variant">iOS / Android</p>
+<label class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-2">ID / Username</label>
+<input class="w-full bg-white border border-outline-variant/30 rounded-lg px-4 py-3 text-sm focus:ring-2 focus:ring-primary focus:border-primary transition-all" placeholder="@username_hoac_id" type="text"/>
 </div>
 </div>
-<span class="material-symbols-outlined text-slate-300 group-hover:text-primary transition-colors">arrow_forward_ios</span>
-</div>
-<!-- Platform Card 4 -->
-<div class="group p-5 bg-white rounded-3xl flex items-center justify-between hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 cursor-pointer border border-transparent hover:border-primary/10">
-<div class="flex items-center gap-4">
-<div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center group-hover:bg-primary/5 transition-colors">
-<span class="material-symbols-outlined text-slate-400 group-hover:text-primary">shield</span>
-</div>
-<div>
-<p class="font-bold text-sm">Shadowsocks</p>
-<p class="text-[10px] text-on-surface-variant">Lightweight Protocol</p>
+<div class="mt-8">
+<button class="w-full bg-primary text-white py-3 rounded-lg text-sm font-bold hover:shadow-lg hover:shadow-primary/20 transition-all">Lưu liên kết</button>
 </div>
 </div>
-<span class="material-symbols-outlined text-slate-300 group-hover:text-primary transition-colors">arrow_forward_ios</span>
+<!-- Card 4: IM Unlink -->
+<div class="bg-surface-container-low p-8 rounded-lg flex flex-col justify-center border border-transparent hover:border-outline-variant/15 transition-all">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-10 h-10 rounded-xl bg-error/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-error">link_off</span>
+</div>
+<h3 class="font-manrope text-lg font-bold text-on-surface">Hủy liên kết tài khoản IM</h3>
+</div>
+<div class="space-y-4">
+<p class="text-on-surface-variant text-sm leading-relaxed">
+                            Hiện tại bạn không có tài khoản nhắn tin tức thời (IM) nào được liên kết với hệ thống Ether Velocity.
+                        </p>
+<div class="flex items-center gap-2 text-on-surface-variant italic text-xs">
+<span class="material-symbols-outlined text-xs">info</span>
+<span>Trạng thái: Chưa liên kết</span>
 </div>
 </div>
 </div>
 </div>
-<!-- Subscription Status -->
-<div class="bg-indigo-600 rounded-[2rem] p-8 text-white flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden">
-<div class="absolute top-0 left-0 w-full h-full opacity-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white via-transparent to-transparent"></div>
-<div class="relative z-10 flex items-center gap-6">
-<div class="w-16 h-16 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center">
-<span class="material-symbols-outlined text-white text-3xl">workspace_premium</span>
+<!-- Bottom Note -->
+<footer class="mt-12 text-center">
+<p class="text-xs text-on-surface-variant/60 font-medium">Tất cả thay đổi đều yêu cầu xác thực phiên đăng nhập hiện tại để đảm bảo an toàn.</p>
+</footer>
 </div>
-<div>
-<h4 class="text-xl font-bold font-headline">Enterprise Plan</h4>
-<p class="text-indigo-100 text-sm">Next billing cycle: Dec 12, 2024</p>
-</div>
-</div>
-<div class="relative z-10 flex gap-4 w-full md:w-auto">
-<button class="flex-1 md:flex-none px-6 py-3 bg-white text-indigo-600 font-bold rounded-full hover:bg-slate-50 transition-colors">
-                        Manage Plan
-                    </button>
-<button class="flex-1 md:flex-none px-6 py-3 bg-indigo-500/30 text-white border border-white/20 font-bold rounded-full hover:bg-indigo-500/50 transition-colors">
-                        Upgrade
-                    </button>
-</div>
-</div>
-</section>
 </main>
 </body></html>

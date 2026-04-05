@@ -56,6 +56,13 @@
     <script src="/assets/js/locales/user/dashboard/zh_TW.js{asset_ver path="/assets/js/locales/user/dashboard/zh_TW.js"}"></script>
     <script src="/assets/js/locales/user/dashboard/ja_JP.js{asset_ver path="/assets/js/locales/user/dashboard/ja_JP.js"}"></script>
     
+    <!-- i18n - Footer dialog locales (shared across all user pages) -->
+    <script src="/assets/js/locales/user/footer/en_US.js{asset_ver path="/assets/js/locales/user/footer/en_US.js"}"></script>
+    <script src="/assets/js/locales/user/footer/vn_VN.js{asset_ver path="/assets/js/locales/user/footer/vn_VN.js"}"></script>
+    <script src="/assets/js/locales/user/footer/zh_CN.js{asset_ver path="/assets/js/locales/user/footer/zh_CN.js"}"></script>
+    <script src="/assets/js/locales/user/footer/zh_TW.js{asset_ver path="/assets/js/locales/user/footer/zh_TW.js"}"></script>
+    <script src="/assets/js/locales/user/footer/ja_JP.js{asset_ver path="/assets/js/locales/user/footer/ja_JP.js"}"></script>
+    
     <script src="/assets/js/i18n.js{asset_ver path="/assets/js/i18n.js"}"></script>
     
     <style>

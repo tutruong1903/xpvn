@@ -5,14 +5,15 @@
             <div class="modal-status bg-success"></div>
             <div class="modal-body text-center py-4">
                 <i class="ti ti-circle-check icon mb-2 text-green icon-lg" style="font-size:3.5rem;"></i>
-                <p id="success-message" class="text-secondary">成功</p>
+                <p id="success-message" class="text-secondary" data-i18n-user-footer="success_default">成功</p>
             </div>
             <div class="modal-footer">
                 <div class="w-100">
                     <div class="row">
                         <div class="col">
-                            <button type="button" id="success-confirm" class="btn w-100" data-bs-dismiss="modal">
-                                好
+                            <button type="button" id="success-confirm" class="btn w-100" data-bs-dismiss="modal"
+                                    data-i18n-user-footer="btn_ok">
+                                OK
                             </button>
                         </div>
                     </div>
@@ -29,14 +30,15 @@
             <div class="modal-status bg-danger"></div>
             <div class="modal-body text-center py-4">
                 <i class="ti ti-circle-x icon mb-2 text-danger icon-lg" style="font-size:3.5rem;"></i>
-                <p id="fail-message" class="text-secondary">失败</p>
+                <p id="fail-message" class="text-secondary" data-i18n-user-footer="fail_default">失败</p>
             </div>
             <div class="modal-footer">
                 <div class="w-100">
                     <div class="row">
                         <div class="col">
-                            <a href="" class="btn btn-danger w-100" data-bs-dismiss="modal">
-                                确认
+                            <a href="" class="btn btn-danger w-100" data-bs-dismiss="modal"
+                               data-i18n-user-footer="btn_confirm">
+                                Confirm
                             </a>
                         </div>
                     </div>

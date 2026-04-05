@@ -141,6 +141,27 @@
             getUserSectionDict(locale, "dashboard"),
         );
 
+        // User edit section
+        var editDict = getUserSectionDict(locale, "edit");
+        applyAttributeFromDict(
+            "[data-i18n-user-edit]",
+            "data-i18n-user-edit",
+            editDict,
+        );
+        document.querySelectorAll("[data-i18n-user-edit-ph]").forEach(function (el) {
+            var key = el.getAttribute("data-i18n-user-edit-ph");
+            var val = resolveKey(editDict, key);
+            if (val) el.setAttribute("placeholder", val);
+        });
+
+        // User footer section (success/fail dialogs shared across all pages)
+        var footerDict = getUserSectionDict(locale, "footer");
+        applyAttributeFromDict(
+            "[data-i18n-user-footer]",
+            "data-i18n-user-footer",
+            footerDict,
+        );
+
         // Admin panel sections
         applyAttributeFromDict(
             "[data-i18n^='admin.side-bar.']",

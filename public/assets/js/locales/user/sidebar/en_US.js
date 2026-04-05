@@ -3,7 +3,7 @@ window.i18nLocales.user = window.i18nLocales.user || {};
 window.i18nLocales.user.sidebar = window.i18nLocales.user.sidebar || {};
 
 window.i18nLocales.user.sidebar.en_US = {
-    brand_title: "My Account",
+    brand_title: "User",
     panel_switch_user: "User",
     panel_switch_admin: "Admin",
     

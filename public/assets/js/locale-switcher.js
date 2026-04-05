@@ -63,6 +63,11 @@
             });
             this.classList.add('active');
             dropdown.classList.remove('active');
+            
+            // Update sidebar tooltips
+            if (typeof window.updateCollapsedSidebarTooltips === 'function') {
+                window.updateCollapsedSidebarTooltips();
+            }
         });
     });
 

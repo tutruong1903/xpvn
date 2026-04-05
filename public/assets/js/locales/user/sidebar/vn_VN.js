@@ -3,7 +3,7 @@ window.i18nLocales.user = window.i18nLocales.user || {};
 window.i18nLocales.user.sidebar = window.i18nLocales.user.sidebar || {};
 
 window.i18nLocales.user.sidebar.vn_VN = {
-    brand_title: "Của tôi",
+    brand_title: "Người dùng",
     panel_switch_user: "User",
     panel_switch_admin: "Admin",
     

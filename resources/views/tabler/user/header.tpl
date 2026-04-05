@@ -86,7 +86,7 @@
                 <a href="/user" class="d-lg-none ms-2 text-reset text-decoration-none fw-bold">{$config['appName']}</a>
                 
                 <!-- Desktop app title -->
-                <h1 class="header-luminous__title" data-i18n-user-header="app_name">Luminous Guardian</h1>
+                <h1 class="header-luminous__title" data-i18n-user-header="app_name">Trung tâm người dùng</h1>
                 
                 <!-- Spacer -->
                 <div class="header-luminous__spacer"></div>
@@ -151,16 +151,4 @@
         </header>
         
         <script src="/assets/js/locale-switcher.js{asset_ver path="/assets/js/locale-switcher.js"}"></script>
-        <script>
-            (function() {
-                var header = document.getElementById('luminous-header');
-                if (!header) return;
-                window.addEventListener('scroll', function() {
-                    if (window.pageYOffset > 10) {
-                        header.classList.add('header-luminous--scrolled');
-                    } else {
-                        header.classList.remove('header-luminous--scrolled');
-                    }
-                });
-            })();
-        </script>
+        <script src="/assets/js/user/header/scroll-shadow.js{asset_ver path="/assets/js/user/header/scroll-shadow.js"}"></script>

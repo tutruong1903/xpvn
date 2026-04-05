@@ -3,7 +3,7 @@ window.i18nLocales.user = window.i18nLocales.user || {};
 window.i18nLocales.user.sidebar = window.i18nLocales.user.sidebar || {};
 
 window.i18nLocales.user.sidebar.zh_CN = {
-    brand_title: "我的",
+    brand_title: "用户",
     panel_switch_user: "用户",
     panel_switch_admin: "管理",
     

@@ -3,7 +3,7 @@ window.i18nLocales.user = window.i18nLocales.user || {};
 window.i18nLocales.user.sidebar = window.i18nLocales.user.sidebar || {};
 
 window.i18nLocales.user.sidebar.ja_JP = {
-    brand_title: "マイページ",  
+    brand_title: "ユーザー",  
     panel_switch_user: "ユーザー",
     panel_switch_admin: "管理",
     

@@ -3,7 +3,7 @@ window.i18nLocales.user = window.i18nLocales.user || {};
 window.i18nLocales.user.header = window.i18nLocales.user.header || {};
 
 window.i18nLocales.user.header.ja_JP = {
-    app_name: "Luminous Guardian",
+    app_name: "マイページ",
     light_mode: "ライトモード",
     dark_mode: "ダークモード",
     logout: "ログアウト",

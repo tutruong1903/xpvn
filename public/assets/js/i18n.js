@@ -51,6 +51,19 @@
         return typeof byLang === "object" ? byLang : {};
     }
 
+    /**
+     * Admin panel split locale files: window.i18nLocales.admin.{header|sidebar|dialog}.{locale}
+     */
+    function getAdminSectionDict(locale, section) {
+        var admin = (window.i18nLocales && window.i18nLocales.admin) || {};
+        var sec = admin[section];
+        if (!sec || typeof sec !== "object") {
+            return {};
+        }
+        var byLang = sec[locale] || sec[defaultLocale] || {};
+        return typeof byLang === "object" ? byLang : {};
+    }
+
     function applyAttributeFromDict(selector, attrName, dict) {
         document.querySelectorAll(selector).forEach(function (el) {
             var key = el.getAttribute(attrName);
@@ -63,6 +76,10 @@
     }
 
     function resolveKey(dict, key) {
+        // Direct lookup first — handles flat dicts whose keys are full dotted paths
+        if (Object.prototype.hasOwnProperty.call(dict, key)) {
+            return typeof dict[key] === 'string' ? dict[key] : undefined;
+        }
         if (key.indexOf('.') === -1) {
             return dict[key];
         }
@@ -123,6 +140,61 @@
             "data-i18n-user-dashboard",
             getUserSectionDict(locale, "dashboard"),
         );
+
+        // Admin panel sections
+        applyAttributeFromDict(
+            "[data-i18n^='admin.side-bar.']",
+            "data-i18n",
+            flattenAdminSidebar(getAdminSectionDict(locale, "sidebar")),
+        );
+        applyAttributeFromDict(
+            "[data-i18n^='admin.header.']",
+            "data-i18n",
+            flattenAdminSection(getAdminSectionDict(locale, "header"), 'admin.header.'),
+        );
+        applyAttributeFromDict(
+            "[data-i18n^='admin.dialog.']",
+            "data-i18n",
+            flattenAdminSection(getAdminSectionDict(locale, "dialog"), 'admin.dialog.'),
+        );
+    }
+
+    /**
+     * Flatten admin sidebar nested structure to dot notation
+     * Input: { overview: { title: "OVERVIEW", dashboard: "Dashboard" }, ... }
+     * Output: { "admin.side-bar.overview.title": "OVERVIEW", "admin.side-bar.overview.dashboard": "Dashboard", ... }
+     */
+    function flattenAdminSidebar(dict) {
+        var result = {};
+        // Flat keys at root level
+        for (var key in dict) {
+            if (typeof dict[key] === 'string') {
+                result['admin.side-bar.' + key] = dict[key];
+            } else if (typeof dict[key] === 'object') {
+                // Nested keys
+                for (var subKey in dict[key]) {
+                    if (typeof dict[key][subKey] === 'string') {
+                        result['admin.side-bar.' + key + '.' + subKey] = dict[key][subKey];
+                    }
+                }
+            }
+        }
+        return result;
+    }
+
+    /**
+     * Flatten admin section (header/dialog) with prefix
+     * Input: { app_name: "Admin Panel", ... }, prefix: 'admin.header.'
+     * Output: { "admin.header.app_name": "Admin Panel", ... }
+     */
+    function flattenAdminSection(dict, prefix) {
+        var result = {};
+        for (var key in dict) {
+            if (typeof dict[key] === 'string') {
+                result[prefix + key] = dict[key];
+            }
+        }
+        return result;
     }
 
     // Initialize

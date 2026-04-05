@@ -22,11 +22,11 @@ window.i18nLocales.user.dashboard.vn_VN = {
     
     // Real-time Traffic Monitor
     traffic_monitor: {
-        title: "Real-time Traffic",
-        download: "Download",
-        upload: "Upload",
-        label_download: "DOWNLOAD",
-        label_upload: "UPLOAD"
+        title: "Lưu lượng thực tế",
+        download: "Tải xuống",
+        upload: "Tải lên",
+        label_download: "TẢI XUỐNG",
+        label_upload: "TẢI LÊN"
     },
     
     // Account Info
@@ -53,7 +53,7 @@ window.i18nLocales.user.dashboard.vn_VN = {
     
     // Platform Hub
     platform_hub: {
-        title: "Platform Hub",
+        title: "Nền tảng",
         all_platforms: "Tất cả nền tảng",
         no_clients: "Chưa có ứng dụng khuyến nghị cho nền tảng này",
         

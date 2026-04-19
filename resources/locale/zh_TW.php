@@ -48,4 +48,10 @@ return [
         'login_session_expired' => '登入會話已過期',
         'login_success' => '登入成功',
     ],
+    'geoip' => [
+        'not_configured' => 'GeoIP2 服務未設定',
+        'database_resolution' => 'GeoIP2 資料庫解析',
+        'unknown_city' => '未知城市',
+        'unknown_country' => '未知國家',
+    ],
 ];

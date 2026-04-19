@@ -156,6 +156,14 @@
             if (val) el.setAttribute("placeholder", val);
         });
 
+        // User profile section
+        var profileDict = getUserSectionDict(locale, "profile");
+        applyAttributeFromDict(
+            "[data-i18n-user-profile]",
+            "data-i18n-user-profile",
+            profileDict,
+        );
+
         // User footer section (success/fail dialogs shared across all pages)
         var footerDict = getUserSectionDict(locale, "footer");
         applyAttributeFromDict(

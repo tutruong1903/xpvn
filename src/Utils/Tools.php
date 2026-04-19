@@ -7,6 +7,7 @@ namespace App\Utils;
 use App\Models\Config;
 use App\Models\User;
 use App\Services\GeoIP2;
+use App\Services\I18n;
 use GeoIp2\Exception\AddressNotFoundException;
 use MaxMind\Db\Reader\InvalidDatabaseException;
 use Random\RandomException;
@@ -53,9 +54,9 @@ final class Tools
     /**
      * 查询IP归属
      */
-    public static function getIpLocation(string $ip): string
+    public static function getIpLocation(string $ip, string $locale = 'en_US'): string
     {
-        $data = 'GeoIP2 服务未配置';
+        $data = I18n::trans('geoip.not_configured', $locale);
         $city = null;
         $country = null;
 
@@ -69,13 +70,13 @@ final class Tools
             try {
                 $city = $geoip->getCity($ip);
             } catch (AddressNotFoundException|InvalidDatabaseException) {
-                $city = '未知城市';
+                $city = I18n::trans('geoip.unknown_city', $locale);
             }
 
             try {
                 $country = $geoip->getCountry($ip);
             } catch (AddressNotFoundException|InvalidDatabaseException) {
-                $country = '未知国家';
+                $country = I18n::trans('geoip.unknown_country', $locale);
             }
         }
 

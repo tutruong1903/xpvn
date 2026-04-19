@@ -1,0 +1,602 @@
+/* ================================================================
+   Luminous Guardian Design System — User Profile Page
+   Scoped under .ev-profile-page to avoid Tabler CSS conflicts
+   Inspired by Material Design 3 and Precision Panel
+   ================================================================ */
+
+/* ---- Design Tokens ---- */
+.ev-profile-page {
+    --ev-primary:                   #0058be;
+    --ev-primary-light:             #d8e2ff;
+    --ev-primary-container:         #2170e4;
+    --ev-secondary:                 #495e8a;
+    --ev-tertiary:                  #924700;
+    --ev-error:                     #ba1a1a;
+    --ev-success:                   #007a4d;
+    --ev-surface:                   #f8f9fa;
+    --ev-surface-container-lowest:  #ffffff;
+    --ev-surface-container-low:     #f3f4f5;
+    --ev-surface-container-high:    #e7e8e9;
+    --ev-on-surface:                #191c1d;
+    --ev-on-surface-variant:        #424754;
+    --ev-outline:                   #727785;
+    --ev-outline-variant:           #c2c6d6;
+    --ev-slate-50:                  rgb(248 250 252);
+    --ev-emerald-50:                rgb(236 253 245);
+    --ev-emerald-500:               rgb(16 185 129);
+    --ev-emerald-600:               rgb(5 150 105);
+    --ev-emerald-700:               rgb(4 120 87);
+    --ev-blue-50:                   rgb(239 246 255);
+    --ev-blue-400:                  rgb(96 165 250);
+    --ev-blue-600:                  rgb(37 99 235);
+}
+
+/* ---- Page Layout ---- */
+.ev-profile-page {
+    padding: 2.5rem 3rem 4rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    font-family: 'Inter', sans-serif;
+    color: var(--ev-on-surface);
+    background: rgba(241, 245, 249, 0.5);
+    min-height: 100vh;
+}
+
+/* ---- Page Header ---- */
+.ev-profile-header {
+    margin-bottom: 2.5rem;
+}
+
+.ev-profile-header__title {
+    font-family: 'Manrope', sans-serif;
+    font-size: 1.875rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--ev-on-surface);
+    margin: 0 0 0.5rem 0;
+    line-height: 1.2;
+}
+
+.ev-profile-header__subtitle {
+    font-size: 1rem;
+    color: var(--ev-on-surface-variant);
+    font-weight: 400;
+    line-height: 1.65;
+    margin: 0;
+    max-width: 48rem;
+}
+
+/* ---- Upper Grid: Identity + Active Connections ---- */
+.ev-upper-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+    align-items: stretch;
+}
+
+/* ---- Identity Card (4 columns) ---- */
+.ev-identity-card {
+    grid-column: span 4;
+    background: var(--ev-surface-container-lowest);
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03), 0 0 0 1px rgba(0, 0, 0, 0.02);
+    transition: box-shadow 0.2s ease-in-out;
+    display: flex;
+    flex-direction: column;
+}
+
+.ev-identity-card:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0, 0, 0, 0.03);
+}
+
+.ev-identity-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+}
+
+.ev-identity-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 0.75rem;
+    background: rgba(0, 88, 190, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ev-primary);
+}
+
+.ev-identity-icon .material-symbols-outlined {
+    font-size: 1.5rem;
+}
+
+.ev-identity-title {
+    font-family: 'Manrope', sans-serif;
+    font-size: 1.125rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--ev-on-surface);
+    margin: 0;
+}
+
+.ev-identity-body {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    flex: 1;
+}
+
+.ev-identity-field {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.ev-identity-field .material-symbols-outlined {
+    color: rgba(114, 119, 133, 0.5);
+    font-size: 1.25rem;
+    margin-top: 0.25rem;
+}
+
+.ev-identity-field-content {
+    flex: 1;
+}
+
+.ev-identity-field-label {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ev-outline);
+    margin-bottom: 0.25rem;
+}
+
+.ev-identity-field-value {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--ev-on-surface);
+    word-break: break-all;
+}
+
+.ev-identity-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.ev-identity-grid-item {
+    padding-left: 1rem;
+}
+
+.ev-identity-grid-item:last-child {
+    border-left: 1px solid var(--ev-surface-container-high);
+}
+
+.ev-identity-grid .ev-identity-field-label {
+    font-size: 0.6875rem;
+}
+
+.ev-identity-grid .ev-identity-field-value {
+    font-size: 0.875rem;
+}
+
+/* ---- Active Connections Card (8 columns) ---- */
+.ev-connections-card {
+    grid-column: span 8;
+    background: var(--ev-surface-container-lowest);
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03), 0 0 0 1px rgba(0, 0, 0, 0.02);
+    transition: box-shadow 0.2s ease-in-out;
+}
+
+.ev-connections-card:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0, 0, 0, 0.03);
+}
+
+.ev-connections-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+.ev-connections-header-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.ev-connections-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 0.75rem;
+    background: var(--ev-emerald-50);
+    color: var(--ev-emerald-600);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ev-connections-icon .material-symbols-outlined {
+    font-size: 1.5rem;
+}
+
+.ev-connections-title-group h3 {
+    font-family: 'Manrope', sans-serif;
+    font-size: 1.125rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--ev-on-surface);
+    margin: 0 0 0.25rem 0;
+}
+
+.ev-connections-title-group p {
+    font-size: 0.75rem;
+    color: var(--ev-on-surface-variant);
+    font-weight: 500;
+    margin: 0;
+}
+
+.ev-live-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.375rem 0.75rem;
+    border-radius: 9999px;
+    background: var(--ev-emerald-50);
+    color: var(--ev-emerald-700);
+}
+
+.ev-live-badge-dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background: var(--ev-emerald-500);
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.ev-live-badge-text {
+    font-size: 0.625rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/* ---- Table Section ---- */
+.ev-table-section {
+    margin-bottom: 2.5rem;
+}
+
+.ev-audit-card {
+    background: var(--ev-surface-container-lowest);
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03), 0 0 0 1px rgba(0, 0, 0, 0.02);
+    overflow: hidden;
+    transition: box-shadow 0.2s ease-in-out;
+}
+
+.ev-audit-card:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0, 0, 0, 0.03);
+}
+
+.ev-audit-header {
+    padding: 2rem;
+    border-bottom: 1px solid var(--ev-surface-container-high);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+@media (min-width: 768px) {
+    .ev-audit-header {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+.ev-audit-header-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.ev-audit-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 0.75rem;
+    background: var(--ev-blue-50);
+    color: var(--ev-blue-600);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ev-audit-icon .material-symbols-outlined {
+    font-size: 1.5rem;
+}
+
+.ev-audit-title-group h3 {
+    font-family: 'Manrope', sans-serif;
+    font-size: 1.125rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--ev-on-surface);
+    margin: 0 0 0.25rem 0;
+}
+
+.ev-audit-title-group p {
+    font-size: 0.75rem;
+    color: var(--ev-on-surface-variant);
+    font-weight: 500;
+    margin: 0;
+}
+
+/* ---- Audit Table ---- */
+.ev-audit-table-wrapper {
+    overflow-x: auto;
+}
+
+.ev-audit-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.ev-audit-table thead {
+    background: rgba(248, 250, 252, 0.5);
+}
+
+.ev-audit-table thead th {
+    padding: 1rem 2rem;
+    text-align: left;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ev-outline);
+    border: none;
+}
+
+.ev-audit-table thead th:first-child {
+    border-right: 1px solid rgba(194, 198, 214, 0.4);
+}
+
+.ev-audit-table tbody tr {
+    border-bottom: 1px solid rgba(194, 198, 214, 0.25);
+    transition: background 0.15s;
+}
+
+.ev-audit-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.ev-audit-table tbody tr:hover {
+    background: rgba(248, 250, 252, 0.4);
+}
+
+.ev-audit-table tbody td {
+    padding: 1rem 2rem;
+    font-size: 0.875rem;
+    color: var(--ev-on-surface);
+    border: none;
+}
+
+.ev-audit-table tbody td:first-child {
+    font-family: 'Courier New', monospace;
+    font-weight: 600;
+    border-right: 1px solid rgba(194, 198, 214, 0.3);
+}
+
+.ev-audit-table tbody td:nth-child(2) {
+    color: var(--ev-on-surface-variant);
+}
+
+.ev-audit-table tbody td:last-child {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    font-weight: 500;
+    color: rgba(25, 28, 29, 0.8);
+}
+
+/* Location indicator */
+.ev-location-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.ev-location-dot {
+    width: 0.375rem;
+    height: 0.375rem;
+    border-radius: 50%;
+    background: var(--ev-blue-400);
+}
+
+/* ---- Connections Table (in card) ---- */
+.ev-connections-table-wrapper {
+    overflow: hidden;
+}
+
+.ev-connections-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.ev-connections-table thead th {
+    padding-bottom: 1rem;
+    text-align: left;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(114, 119, 133, 0.8);
+    border-bottom: 1px solid var(--ev-surface-container-high);
+}
+
+.ev-connections-table thead th:last-child {
+    text-align: right;
+}
+
+.ev-connections-table tbody {
+    font-size: 0.875rem;
+}
+
+.ev-connections-table tbody tr {
+    border-bottom: 1px solid rgba(194, 198, 214, 0.25);
+    transition: background 0.15s;
+}
+
+.ev-connections-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.ev-connections-table tbody tr:hover {
+    background: rgba(248, 250, 252, 0.8);
+}
+
+.ev-connections-table tbody td {
+    padding: 1.25rem 0;
+}
+
+.ev-connections-table tbody td:first-child {
+    font-family: 'Courier New', monospace;
+    font-weight: 600;
+    color: var(--ev-on-surface);
+}
+
+.ev-connections-table tbody td:last-child {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    font-weight: 500;
+}
+
+.ev-connections-location {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+}
+
+.ev-connections-location .material-symbols-outlined {
+    font-size: 1.125rem;
+    color: rgba(114, 119, 133, 0.6);
+}
+
+.ev-connections-location span:last-child {
+    font-weight: 500;
+}
+
+.ev-node-badge {
+    display: inline-block;
+    padding: 0.25rem 0.625rem;
+    border-radius: 0.375rem;
+    background: rgb(241 245 249);
+    color: rgb(71 85 105);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+.ev-time-just-now {
+    color: var(--ev-emerald-600);
+}
+
+.ev-time-ago {
+    color: var(--ev-on-surface-variant);
+}
+
+
+/* ---- Responsive Design ---- */
+@media (max-width: 1024px) {
+    .ev-upper-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .ev-identity-card,
+    .ev-connections-card {
+        grid-column: span 1;
+    }
+    
+    .ev-profile-page {
+        padding: 2rem 1.5rem 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .ev-profile-header__title {
+        font-size: 1.5rem;
+    }
+    
+    .ev-profile-header__subtitle {
+        font-size: 0.875rem;
+    }
+    
+    .ev-audit-table thead th,
+    .ev-audit-table tbody td {
+        padding: 0.875rem 1rem;
+        font-size: 0.8125rem;
+    }
+    
+    .ev-connections-table tbody td {
+        padding: 1rem 0;
+    }
+    
+    .ev-identity-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .ev-identity-grid-item:last-child {
+        border-left: none;
+        border-top: 1px solid var(--ev-surface-container-high);
+        padding-left: 0;
+        padding-top: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .ev-profile-page {
+        padding: 1.5rem 1rem 2.5rem;
+    }
+    
+    .ev-upper-grid,
+    .ev-table-section {
+        margin-bottom: 1.5rem;
+    }
+    
+    .ev-identity-card,
+    .ev-connections-card,
+    .ev-audit-card {
+        border-radius: 0.75rem;
+        padding: 1.5rem;
+    }
+    
+    .ev-audit-header {
+        padding: 1.5rem;
+    }
+}
+
+/* ---- Empty State ---- */
+.ev-empty-state {
+    padding: 3rem 2rem;
+    text-align: center;
+    color: var(--ev-on-surface-variant);
+    font-size: 0.875rem;
+}
+
+/* ---- Material Icons Configuration ---- */
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+

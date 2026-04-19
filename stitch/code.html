@@ -1,266 +1,326 @@
 <!DOCTYPE html>
 
-<html class="light" lang="vi"><head>
+<html class="light" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Ether Velocity - Chỉnh sửa thông tin</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            "colors": {
-                    "on-secondary-fixed-variant": "#003ea8",
-                    "surface-bright": "#f9f9f9",
-                    "secondary-container": "#316bf3",
-                    "on-primary-container": "#fffbff",
-                    "tertiary-fixed": "#fcd6ff",
-                    "on-secondary-container": "#fefcff",
-                    "surface-dim": "#dadada",
-                    "surface": "#f9f9f9",
-                    "primary-fixed": "#eaddff",
-                    "on-primary-fixed-variant": "#5a00c6",
-                    "surface-container-lowest": "#ffffff",
-                    "on-surface-variant": "#464554",
-                    "on-secondary": "#ffffff",
-                    "on-tertiary-fixed-variant": "#682f76",
-                    "inverse-primary": "#d2bbff",
-                    "on-tertiary": "#ffffff",
-                    "inverse-on-surface": "#f0f1f1",
-                    "surface-tint": "#732ee4",
-                    "on-tertiary-fixed": "#340042",
-                    "surface-container-low": "#f3f3f4",
-                    "primary-fixed-dim": "#d2bbff",
-                    "surface-container-highest": "#e2e2e2",
-                    "on-secondary-fixed": "#00174b",
-                    "inverse-surface": "#2f3131",
-                    "on-background": "#1a1c1c",
-                    "secondary-fixed-dim": "#b4c5ff",
-                    "surface-container-high": "#e8e8e8",
-                    "error-container": "#ffdad6",
-                    "tertiary-fixed-dim": "#f3aeff",
-                    "surface-variant": "#e2e2e2",
-                    "on-primary-fixed": "#25005a",
-                    "outline-variant": "#c7c4d7",
-                    "on-primary": "#ffffff",
-                    "on-error": "#ffffff",
-                    "on-error-container": "#93000a",
-                    "error": "#ba1a1a",
-                    "outline": "#767586",
-                    "on-surface": "#1a1c1c",
-                    "surface-container": "#eeeeee",
-                    "secondary-fixed": "#dbe1ff",
-                    "primary": "#712ae2",
-                    "secondary": "#0051d5",
-                    "tertiary": "#7f458d",
-                    "on-tertiary-container": "#fffbff",
-                    "tertiary-container": "#9a5da8",
-                    "primary-container": "#8a4cfc",
-                    "background": "#f9f9f9"
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline": "#727785",
+                        "on-secondary-fixed": "#001a42",
+                        "on-primary-fixed": "#001a42",
+                        "surface-tint": "#005ac2",
+                        "on-secondary-container": "#405682",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed": "#d8e2ff",
+                        "primary": "#0058be",
+                        "tertiary-fixed-dim": "#ffb786",
+                        "surface-container-high": "#e7e8e9",
+                        "surface-container-low": "#f3f4f5",
+                        "on-secondary": "#ffffff",
+                        "surface": "#f8f9fa",
+                        "outline-variant": "#c2c6d6",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary": "#495e8a",
+                        "secondary-container": "#b6ccff",
+                        "background": "#f8f9fa",
+                        "on-error": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "on-surface-variant": "#424754",
+                        "error": "#ba1a1a",
+                        "on-tertiary-container": "#fffbff",
+                        "primary-fixed": "#d8e2ff",
+                        "inverse-primary": "#adc6ff",
+                        "tertiary": "#924700",
+                        "on-background": "#191c1d",
+                        "surface-container-highest": "#e1e3e4",
+                        "on-surface": "#191c1d",
+                        "surface-bright": "#f8f9fa",
+                        "surface-variant": "#e1e3e4",
+                        "surface-dim": "#d9dadb",
+                        "surface-container": "#edeeef",
+                        "inverse-on-surface": "#f0f1f2",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed": "#ffdcc6",
+                        "primary-container": "#2170e4",
+                        "on-tertiary-fixed-variant": "#723600",
+                        "on-tertiary-fixed": "#311400",
+                        "on-primary": "#ffffff",
+                        "on-primary-container": "#fefcff",
+                        "primary-fixed-dim": "#adc6ff",
+                        "secondary-fixed-dim": "#b1c6f9",
+                        "tertiary-container": "#b75b00",
+                        "on-primary-fixed-variant": "#004395",
+                        "on-secondary-fixed-variant": "#304671",
+                        "inverse-surface": "#2e3132"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
             },
-            "borderRadius": {
-                    "DEFAULT": "0.25rem",
-                    "lg": "0.5rem",
-                    "xl": "0.75rem",
-                    "full": "9999px"
-            },
-            "fontFamily": {
-                    "headline": ["Manrope"],
-                    "body": ["Inter"],
-                    "label": ["Inter"]
-            }
-          },
         }
-      }
     </script>
 <style>
+        body { font-family: 'Inter', sans-serif; }
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
-        body { font-family: 'Inter', sans-serif; }
-        h1, h2, h3, .font-manrope { font-family: 'Manrope', sans-serif; }
-        
-        /* Custom scrollbar for subtle look */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: #e2e2e2; border-radius: 10px; }
+        .glass-header {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+        }
+        .modern-card {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03), 0 0 0 1px rgba(0, 0, 0, 0.02);
+            transition: box-shadow 0.2s ease-in-out;
+        }
+        .modern-card:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0, 0, 0, 0.03);
+        }
     </style>
 </head>
-<body class="bg-background text-on-background min-h-screen">
-<!-- TopNavBar -->
-<nav class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl docked full-width top-0 z-50 shadow-sm flex justify-between items-center w-full px-6 py-3 fixed">
-<div class="flex items-center gap-8">
-<span class="text-xl font-bold tracking-tighter text-indigo-600 dark:text-indigo-400">Ether Velocity</span>
-<div class="hidden md:flex gap-6 items-center font-manrope text-sm font-medium tracking-tight">
-<a class="text-slate-500 dark:text-slate-400 hover:text-indigo-500 transition-colors" href="#">Dashboard</a>
-<a class="text-slate-500 dark:text-slate-400 hover:text-indigo-500 transition-colors" href="#">Analytics</a>
-<a class="text-slate-500 dark:text-slate-400 hover:text-indigo-500 transition-colors" href="#">Security</a>
-</div>
-</div>
-<div class="flex items-center gap-4">
-<div class="relative hidden sm:block">
-<input class="bg-surface-container-low border-none rounded-full px-4 py-1.5 text-sm w-64 focus:ring-2 focus:ring-primary/20" placeholder="Search settings..." type="text"/>
-</div>
-<span class="material-symbols-outlined text-slate-500 cursor-pointer">notifications</span>
-<span class="material-symbols-outlined text-slate-500 cursor-pointer">settings</span>
-<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center text-white text-xs font-bold overflow-hidden">
-<img alt="User profile avatar" data-alt="minimalist user avatar placeholder with soft geometric shapes and professional indigo color palette" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2sMXL3Yz18CQ5xoRLfcrFHm-7ccnPk2HmUE5mPaNmUqp0IzxphMrywsJRvodBWBFE6P6g2rITAVuGtv9g3yhZPpuUWJYA4zpl0O3RHdWs8s99CuIwbe4mxk-HjFCv6VVOmHUH401BCkBkhRFxihNcSCw2iAMdBItmZ_BjxIvkSXBf3IF7V8tcpKtSXEmCdw7e9pP2SpIn3G3Qth1khmSREGgmF4qegGC7ykIzC5H_aHYNyobsL21khpFdiMWVImB1NY2qz3JtkkA"/>
-</div>
-</div>
-</nav>
-<!-- SideNavBar -->
-<aside class="bg-slate-50 dark:bg-slate-950 h-screen w-64 fixed left-0 top-0 pt-16 flex flex-col gap-2 p-4 border-r-0">
-<div class="mb-6 px-2">
-<h2 class="font-manrope text-lg font-bold text-on-surface">Chỉnh sửa thông tin</h2>
-<p class="text-xs text-on-surface-variant font-medium">Manage your account settings</p>
-</div>
-<div class="space-y-1">
-<a class="flex items-center gap-3 px-3 py-2.5 bg-white dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400 shadow-sm rounded-lg font-manrope text-sm font-semibold transition-all" href="#">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
-<span>Profile</span>
-</a>
-<a class="flex items-center gap-3 px-3 py-2.5 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 font-manrope text-sm font-semibold transition-all" href="#">
-<span class="material-symbols-outlined">lock</span>
-<span>Security</span>
-</a>
-<a class="flex items-center gap-3 px-3 py-2.5 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 font-manrope text-sm font-semibold transition-all" href="#">
-<span class="material-symbols-outlined">speed</span>
-<span>Usage</span>
-</a>
-<a class="flex items-center gap-3 px-3 py-2.5 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 font-manrope text-sm font-semibold transition-all" href="#">
-<span class="material-symbols-outlined">tune</span>
-<span>Preferences</span>
-</a>
-<a class="flex items-center gap-3 px-3 py-2.5 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 font-manrope text-sm font-semibold transition-all" href="#">
-<span class="material-symbols-outlined">help</span>
-<span>Help</span>
-</a>
-</div>
-<div class="mt-auto pb-4 space-y-4">
-<button class="w-full bg-primary text-white py-2.5 rounded-lg text-sm font-bold shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all">
-                Upgrade Plan
-            </button>
-<a class="flex items-center gap-3 px-3 py-2.5 text-error hover:bg-error/5 font-manrope text-sm font-semibold rounded-lg transition-all" href="#">
-<span class="material-symbols-outlined">logout</span>
-<span>Logout</span>
-</a>
-</div>
-</aside>
+<body class="bg-surface text-on-surface antialiased">
 <!-- Main Content Canvas -->
-<main class="ml-64 pt-20 p-8 min-h-screen bg-surface">
-<div class="max-w-5xl mx-auto">
-<!-- Content Header -->
-<header class="mb-10">
-<h1 class="text-4xl font-extrabold font-manrope tracking-tight text-on-surface mb-2">Chỉnh sửa thông tin</h1>
-<p class="text-on-surface-variant font-medium">Cập nhật và quản lý các thiết lập tài khoản cá nhân của bạn trên hệ thống Velocity.</p>
-</header>
-<!-- Tabs Section -->
-<div class="flex items-center gap-8 border-b-0 mb-10 overflow-x-auto whitespace-nowrap">
-<button class="pb-4 text-sm font-bold font-manrope text-primary border-b-2 border-primary">Thông tin</button>
-<button class="pb-4 text-sm font-semibold font-manrope text-on-surface-variant hover:text-primary transition-colors">Đăng nhập</button>
-<button class="pb-4 text-sm font-semibold font-manrope text-on-surface-variant hover:text-primary transition-colors">Sử dụng</button>
-<button class="pb-4 text-sm font-semibold font-manrope text-on-surface-variant hover:text-primary transition-colors">Khác</button>
+<main class="ml-64 pt-24 px-12 pb-12 min-h-screen bg-slate-50/50">
+<div class="max-w-7xl mx-auto space-y-10">
+<!-- Page Header -->
+<div class="flex flex-col gap-2">
+<h2 class="text-3xl font-extrabold tracking-tight text-on-surface">Account Overview</h2>
+<p class="text-on-surface-variant max-w-2xl text-base font-normal leading-relaxed">Manage your core account details, monitor active sessions, and review recent security events from a centralized cockpit.</p>
 </div>
-<!-- Bento Grid 2x2 Layout -->
-<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-<!-- Card 1: Email -->
-<div class="bg-surface-container-lowest p-8 rounded-lg shadow-[0_4px_20px_rgba(0,0,0,0.03)] flex flex-col justify-between">
+<!-- Upper Grid: Identity & Active Connections -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+<!-- Identity Details Card -->
+<div class="lg:col-span-4 bg-white rounded-2xl modern-card flex flex-col">
+<div class="p-8 flex-1">
+<div class="flex items-center space-x-4 mb-10">
+<div class="w-10 h-10 rounded-xl bg-primary/5 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-2xl" data-icon="account_circle">account_circle</span>
+</div>
+<h3 class="text-lg font-bold tracking-tight text-on-surface">Identity Details</h3>
+</div>
+<div class="space-y-8">
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-outline/50 mt-1" data-icon="alternate_email">alternate_email</span>
 <div>
-<div class="flex items-center gap-3 mb-6">
-<div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
-<span class="material-symbols-outlined text-primary">mail</span>
+<p class="text-[11px] font-bold uppercase tracking-wider text-outline mb-1">Username</p>
+<p class="text-base font-semibold text-on-surface">djthememay123</p>
 </div>
-<h3 class="font-manrope text-lg font-bold text-on-surface">Email đăng nhập</h3>
 </div>
-<div class="mb-6">
-<label class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-2">Email hiện tại</label>
-<p class="text-on-surface font-medium bg-surface-container-low px-4 py-2 rounded-lg">user.ether@velocity.io</p>
-</div>
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-outline/50 mt-1" data-icon="mail">mail</span>
 <div>
-<label class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-2">Email mới</label>
-<input class="w-full bg-white border border-outline-variant/30 rounded-lg px-4 py-3 text-sm focus:ring-2 focus:ring-primary focus:border-primary transition-all" placeholder="Nhập địa chỉ email mới" type="email"/>
+<p class="text-[11px] font-bold uppercase tracking-wider text-outline mb-1">Email Address</p>
+<p class="text-base font-semibold text-on-surface">admin@gmail.com</p>
 </div>
 </div>
-<div class="mt-8">
-<button class="w-full bg-primary text-white py-3 rounded-lg text-sm font-bold hover:shadow-lg hover:shadow-primary/20 transition-all">Cập nhật</button>
-</div>
-</div>
-<!-- Card 2: Username -->
-<div class="bg-surface-container-lowest p-8 rounded-lg shadow-[0_4px_20px_rgba(0,0,0,0.03)] flex flex-col justify-between">
+<div class="grid grid-cols-2 gap-4">
+<div class="flex items-start gap-3">
 <div>
-<div class="flex items-center gap-3 mb-6">
-<div class="w-10 h-10 rounded-xl bg-secondary/10 flex items-center justify-center">
-<span class="material-symbols-outlined text-secondary">badge</span>
+<p class="text-[11px] font-bold uppercase tracking-wider text-outline mb-1">Registered</p>
+<p class="text-sm font-medium text-on-surface">2026-04-04</p>
 </div>
-<h3 class="font-manrope text-lg font-bold text-on-surface">Tên người dùng</h3>
 </div>
-<div class="mb-6">
-<label class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-2">Tên hiện tại</label>
-<p class="text-on-surface font-medium bg-surface-container-low px-4 py-2 rounded-lg">velocity_guardian_99</p>
-</div>
+<div class="flex items-start gap-3 border-l border-surface-container-high pl-4">
 <div>
-<label class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-2">Tên mới</label>
-<input class="w-full bg-white border border-outline-variant/30 rounded-lg px-4 py-3 text-sm focus:ring-2 focus:ring-primary focus:border-primary transition-all" placeholder="Nhập tên người dùng mới" type="text"/>
+<p class="text-[11px] font-bold uppercase tracking-wider text-outline mb-1">Total Usage</p>
+<p class="text-sm font-medium text-on-surface">0B</p>
 </div>
 </div>
-<div class="mt-8">
-<button class="w-full bg-primary text-white py-3 rounded-lg text-sm font-bold hover:shadow-lg hover:shadow-primary/20 transition-all">Cập nhật</button>
 </div>
 </div>
-<!-- Card 3: IM Link -->
-<div class="bg-surface-container-lowest p-8 rounded-lg shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
-<div class="flex items-center gap-3 mb-6">
-<div class="w-10 h-10 rounded-xl bg-tertiary/10 flex items-center justify-center">
-<span class="material-symbols-outlined text-tertiary">chat</span>
 </div>
-<h3 class="font-manrope text-lg font-bold text-on-surface">Liên kết tài khoản IM</h3>
 </div>
-<div class="space-y-4">
-<div>
-<label class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-2">Loại IM</label>
-<select class="w-full bg-white border border-outline-variant/30 rounded-lg px-4 py-3 text-sm focus:ring-2 focus:ring-primary focus:border-primary transition-all appearance-none cursor-pointer">
-<option>Telegram</option>
-<option>Discord</option>
-<option>Slack</option>
-<option>Zalo</option>
-</select>
+<!-- Active Node Connections Card -->
+<div class="lg:col-span-8 bg-white rounded-2xl modern-card p-8">
+<div class="flex items-center justify-between mb-8">
+<div class="flex items-center space-x-4">
+<div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center">
+<span class="material-symbols-outlined text-2xl" data-icon="sensors">sensors</span>
 </div>
 <div>
-<label class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-2">ID / Username</label>
-<input class="w-full bg-white border border-outline-variant/30 rounded-lg px-4 py-3 text-sm focus:ring-2 focus:ring-primary focus:border-primary transition-all" placeholder="@username_hoac_id" type="text"/>
+<h3 class="text-lg font-bold tracking-tight">Active Node Connections</h3>
+<p class="text-xs text-on-surface-variant font-medium">Real-time surveillance of current active sessions</p>
 </div>
 </div>
-<div class="mt-8">
-<button class="w-full bg-primary text-white py-3 rounded-lg text-sm font-bold hover:shadow-lg hover:shadow-primary/20 transition-all">Lưu liên kết</button>
+<div class="flex items-center px-3 py-1.5 rounded-full bg-emerald-50 text-emerald-700">
+<span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse mr-2"></span>
+<span class="text-[10px] font-bold uppercase tracking-widest">Live Status</span>
 </div>
 </div>
-<!-- Card 4: IM Unlink -->
-<div class="bg-surface-container-low p-8 rounded-lg flex flex-col justify-center border border-transparent hover:border-outline-variant/15 transition-all">
-<div class="flex items-center gap-3 mb-6">
-<div class="w-10 h-10 rounded-xl bg-error/10 flex items-center justify-center">
-<span class="material-symbols-outlined text-error">link_off</span>
+<div class="overflow-hidden">
+<table class="w-full text-left">
+<thead>
+<tr class="text-[11px] uppercase tracking-wider text-outline/80 border-b border-surface-container-high">
+<th class="pb-4 font-bold">IP Address</th>
+<th class="pb-4 font-bold">Location</th>
+<th class="pb-4 font-bold">Node Name</th>
+<th class="pb-4 font-bold text-right">Last Active</th>
+</tr>
+</thead>
+<tbody class="text-sm divide-y divide-surface-container-low/60">
+<tr class="hover:bg-slate-50/80 transition-colors group">
+<td class="py-5 font-mono font-semibold text-on-surface">192.168.97.1</td>
+<td class="py-5">
+<div class="flex items-center space-x-2.5">
+<span class="material-symbols-outlined text-outline/60 text-lg" data-icon="public">public</span>
+<span class="font-medium">GeoIP2 (Regional)</span>
 </div>
-<h3 class="font-manrope text-lg font-bold text-on-surface">Hủy liên kết tài khoản IM</h3>
+</td>
+<td class="py-5">
+<span class="px-2.5 py-1 rounded-md bg-slate-100 text-slate-600 text-[11px] font-bold tracking-tight">NODE-PRIMARY-US</span>
+</td>
+<td class="py-5 text-right font-medium text-emerald-600 tabular-nums">Just Now</td>
+</tr>
+<tr class="hover:bg-slate-50/80 transition-colors group">
+<td class="py-5 font-mono font-semibold text-on-surface">10.0.0.42</td>
+<td class="py-5">
+<div class="flex items-center space-x-2.5">
+<span class="material-symbols-outlined text-outline/60 text-lg" data-icon="lan">lan</span>
+<span class="font-medium">Internal Tunnel</span>
 </div>
-<div class="space-y-4">
-<p class="text-on-surface-variant text-sm leading-relaxed">
-                            Hiện tại bạn không có tài khoản nhắn tin tức thời (IM) nào được liên kết với hệ thống Ether Velocity.
-                        </p>
-<div class="flex items-center gap-2 text-on-surface-variant italic text-xs">
-<span class="material-symbols-outlined text-xs">info</span>
-<span>Trạng thái: Chưa liên kết</span>
+</td>
+<td class="py-5">
+<span class="px-2.5 py-1 rounded-md bg-slate-100 text-slate-600 text-[11px] font-bold tracking-tight">INTERNAL-RELAY</span>
+</td>
+<td class="py-5 text-right text-on-surface-variant tabular-nums">2m ago</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
+<!-- Security Audit Table Card -->
+<div class="bg-white rounded-2xl modern-card overflow-hidden">
+<div class="px-8 py-8 flex flex-col md:flex-row md:items-center justify-between border-b border-surface-container-high gap-4">
+<div class="flex items-center space-x-4">
+<div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center">
+<span class="material-symbols-outlined text-2xl" data-icon="verified_user">verified_user</span>
 </div>
-<!-- Bottom Note -->
-<footer class="mt-12 text-center">
-<p class="text-xs text-on-surface-variant/60 font-medium">Tất cả thay đổi đều yêu cầu xác thực phiên đăng nhập hiện tại để đảm bảo an toàn.</p>
-</footer>
+<div>
+<h3 class="text-lg font-bold tracking-tight text-on-surface">Security Audit: Successful Logins</h3>
+<p class="text-xs text-on-surface-variant font-medium">Last 10 successful authentication events recorded</p>
+</div>
+</div>
+<button class="inline-flex items-center space-x-2 px-4 py-2 bg-surface border border-outline-variant hover:border-primary/40 rounded-lg text-sm font-semibold text-on-surface-variant transition-all hover:text-primary">
+<span class="material-symbols-outlined text-lg" data-icon="ios_share">ios_share</span>
+<span>Export CSV</span>
+</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="text-[11px] uppercase tracking-widest text-outline bg-slate-50/50">
+<th class="px-8 py-4 font-bold border-r border-surface-container-high/40">Network IP</th>
+<th class="px-8 py-4 font-bold">Geolocation Information</th>
+<th class="px-8 py-4 font-bold text-right">Timestamp</th>
+</tr>
+</thead>
+<tbody class="text-sm divide-y divide-surface-container-low/60">
+<tr class="hover:bg-slate-50/40 transition-colors">
+<td class="px-8 py-4 font-mono font-semibold text-on-surface border-r border-surface-container-high/30">192.168.97.1</td>
+<td class="px-8 py-4 text-on-surface-variant flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
+                                    GeoIP2 Database Resolution
+                                </td>
+<td class="px-8 py-4 text-right font-medium tabular-nums text-on-surface/80">2026-04-04 11:33:38</td>
+</tr>
+<tr class="hover:bg-slate-50/40 transition-colors">
+<td class="px-8 py-4 font-mono font-semibold text-on-surface border-r border-surface-container-high/30">192.168.97.1</td>
+<td class="px-8 py-4 text-on-surface-variant flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
+                                    GeoIP2 Database Resolution
+                                </td>
+<td class="px-8 py-4 text-right font-medium tabular-nums text-on-surface/80">2026-04-04 10:12:05</td>
+</tr>
+<tr class="hover:bg-slate-50/40 transition-colors">
+<td class="px-8 py-4 font-mono font-semibold text-on-surface border-r border-surface-container-high/30">192.168.97.1</td>
+<td class="px-8 py-4 text-on-surface-variant flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
+                                    GeoIP2 Database Resolution
+                                </td>
+<td class="px-8 py-4 text-right font-medium tabular-nums text-on-surface/80">2026-04-03 23:55:12</td>
+</tr>
+<tr class="hover:bg-slate-50/40 transition-colors">
+<td class="px-8 py-4 font-mono font-semibold text-on-surface border-r border-surface-container-high/30">192.168.97.1</td>
+<td class="px-8 py-4 text-on-surface-variant flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
+                                    GeoIP2 Database Resolution
+                                </td>
+<td class="px-8 py-4 text-right font-medium tabular-nums text-on-surface/80">2026-04-03 21:00:00</td>
+</tr>
+<tr class="hover:bg-slate-50/40 transition-colors">
+<td class="px-8 py-4 font-mono font-semibold text-on-surface border-r border-surface-container-high/30">192.168.97.1</td>
+<td class="px-8 py-4 text-on-surface-variant flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
+                                    GeoIP2 Database Resolution
+                                </td>
+<td class="px-8 py-4 text-right font-medium tabular-nums text-on-surface/80">2026-04-03 18:42:19</td>
+</tr>
+<tr class="hover:bg-slate-50/40 transition-colors">
+<td class="px-8 py-4 font-mono font-semibold text-on-surface border-r border-surface-container-high/30">192.168.97.1</td>
+<td class="px-8 py-4 text-on-surface-variant flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
+                                    GeoIP2 Database Resolution
+                                </td>
+<td class="px-8 py-4 text-right font-medium tabular-nums text-on-surface/80">2026-04-03 14:22:10</td>
+</tr>
+<tr class="hover:bg-slate-50/40 transition-colors">
+<td class="px-8 py-4 font-mono font-semibold text-on-surface border-r border-surface-container-high/30">192.168.97.1</td>
+<td class="px-8 py-4 text-on-surface-variant flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
+                                    GeoIP2 Database Resolution
+                                </td>
+<td class="px-8 py-4 text-right font-medium tabular-nums text-on-surface/80">2026-04-03 09:11:54</td>
+</tr>
+<tr class="hover:bg-slate-50/40 transition-colors">
+<td class="px-8 py-4 font-mono font-semibold text-on-surface border-r border-surface-container-high/30">192.168.97.1</td>
+<td class="px-8 py-4 text-on-surface-variant flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
+                                    GeoIP2 Database Resolution
+                                </td>
+<td class="px-8 py-4 text-right font-medium tabular-nums text-on-surface/80">2026-04-02 22:30:11</td>
+</tr>
+<tr class="hover:bg-slate-50/40 transition-colors">
+<td class="px-8 py-4 font-mono font-semibold text-on-surface border-r border-surface-container-high/30">192.168.97.1</td>
+<td class="px-8 py-4 text-on-surface-variant flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
+                                    GeoIP2 Database Resolution
+                                </td>
+<td class="px-8 py-4 text-right font-medium tabular-nums text-on-surface/80">2026-04-02 17:15:00</td>
+</tr>
+<tr class="hover:bg-slate-50/40 transition-colors">
+<td class="px-8 py-4 font-mono font-semibold text-on-surface border-r border-surface-container-high/30">192.168.97.1</td>
+<td class="px-8 py-4 text-on-surface-variant flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
+                                    GeoIP2 Database Resolution
+                                </td>
+<td class="px-8 py-4 text-right font-medium tabular-nums text-on-surface/80">2026-04-02 08:05:32</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 </main>
+<!-- Floating Background Decoration (Atmospheric Precision) -->
+<div class="fixed top-0 right-0 -z-10 w-1/2 h-full opacity-20 pointer-events-none">
+<div class="absolute top-[10%] right-[5%] w-[400px] h-[400px] bg-primary-container/10 blur-[120px] rounded-full"></div>
+<div class="absolute bottom-[20%] right-[10%] w-[300px] h-[300px] bg-secondary-container/10 blur-[100px] rounded-full"></div>
+</div>
 </body></html>

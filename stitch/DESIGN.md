@@ -1,60 +1,95 @@
-# Design System Strategy: The Luminous Guardian
+# Design System Specification: The Precision Canvas
 
 ## 1. Overview & Creative North Star
-The **Creative North Star** for this design system is **"The Luminous Guardian."** In an industry often characterized by "dark mode" hacker aesthetics and fear-based marketing, this system takes a radical departure toward clarity, airiness, and sophisticated transparency. 
+The objective of this design system is to transcend the generic "SaaS dashboard" aesthetic by embracing a philosophy of **Atmospheric Precision**. Inspired by the high-fidelity editorial layouts of Stripe and the developer-centric minimalism of Vercel, this system rejects visual clutter in favor of intentional negative space and tonal depth.
 
-We are moving away from the "standard" VPN interface—typically a dark dashboard with a glowing green button—and toward an editorial-inspired experience that feels like a premium utility. By utilizing intentional asymmetry, expansive whitespace, and a "light-first" philosophy, we convey speed through visual lightness and trust through total legibility. The UI doesn't just protect the user; it illuminates their digital path.
+**Creative North Star: The Digital Curator**
+We treat data not as a spreadsheet, but as a gallery. We break the rigid, boxed-in "template" look through **intentional asymmetry**, where large display typography anchors the layout and content breathes through expansive margins. We do not use lines to separate ideas; we use light and volume.
 
-## 2. Colors: Tonal Depth & The "No-Line" Rule
-The color palette is anchored in high-chroma purples and blues, but their application is surgical. We use these "Vibrant Accents" to guide the eye, while the foundation remains rooted in various degrees of white and soft grey.
+---
+
+## 2. Colors & Tonal Architecture
+The color palette is rooted in a professional, cool-spectrum blue, supported by a sophisticated range of grays that define the "physical" layers of the interface.
+
+### Color Tokens (Material Design Convention)
+*   **Primary:** `#0058be` (Core Action)
+*   **Primary Container:** `#2170e4` (Interaction & Depth)
+*   **Surface (Background):** `#f8f9fa` (The Canvas)
+*   **Surface Container Lowest:** `#ffffff` (Elevated Cards/Content)
+*   **Surface Container High:** `#e7e8e9` (Subtle Recess/Active States)
+*   **Outline Variant:** `#c2c6d6` (Soft Guidance)
 
 ### The "No-Line" Rule
-**Explicit Instruction:** Designers are prohibited from using 1px solid borders to define sections or large containers. In this design system, boundaries are created through **Background Color Shifts**. 
-- A section transition is marked by moving from `surface` (#F9F9F9) to `surface-container-low` (#F3F3F4). 
-- This creates a seamless, high-end "Editorial" feel where the content defines the structure, not a rigid grid of lines.
+**Explicit Instruction:** Designers are prohibited from using 1px solid borders for sectioning or containment. 
+Structure must be achieved solely through background color shifts. For example, a card (`surface-container-lowest`) should sit on a section background (`surface-container-low`). The contrast between these two shades is the boundary.
 
-### Surface Hierarchy & Nesting
-Instead of a flat plane, treat the UI as stacked sheets of fine paper.
-- **Base Layer:** `background` (#F9F9F9)
-- **Primary Content Blocks:** `surface-container-lowest` (#FFFFFF)
-- **De-emphasized Utility Areas:** `surface-container-high` (#E8E8E8)
-- **Glassmorphism Rule:** For floating elements (like the "Active Connection" toggle), use a semi-transparent `surface` color with a `backdrop-blur` of 20px. This allows the vibrant brand colors to bleed through softly, adding a "soul" to the interface.
+### Signature Textures & Glassmorphism
+To avoid a "flat" feel, use **Glassmorphism** for floating elements such as navigation bars or modal overlays. 
+*   **Formula:** `surface` color at 80% opacity + `backdrop-blur: 20px`.
+*   **Main CTAs:** Apply a subtle linear gradient from `primary` to `primary-container` (top-to-bottom) to give buttons a "milled" premium feel rather than a flat digital fill.
 
-### Signature Textures
-Main CTAs and Hero elements must use a **linear gradient** transitioning from `primary` (#712AE2) to `primary-container` (#8A4CFC) at a 135-degree angle. This prevents the "flat-vector" look and provides a sense of kinetic energy and premium polish.
+---
 
-## 3. Typography: Editorial Authority
-The typography system uses a pairing of **Manrope** (Display/Headlines) and **Inter** (Body/Labels) to create a balance between "Character" and "Utility."
+## 3. Typography: Editorial Hierarchy
+We use **Inter** to bridge the gap between technical clarity and editorial elegance. The hierarchy is designed to guide the eye through dense data without exhaustion.
 
-*   **Display & Headlines (Manrope):** High-contrast scales (e.g., `display-lg` at 3.5rem) should be used with tight letter-spacing (-0.02em) to create an authoritative, editorial presence. Large headlines should often be left-aligned with significant asymmetrical margins to break the "centered template" feel.
-*   **Body & Titles (Inter):** Reserved for information density. Inter’s neutral tall x-height ensures maximum legibility for technical VPN data (IP addresses, server loads).
-*   **Hierarchy as Brand:** Use `on-surface-variant` (#464554) for secondary body text to ensure the primary headlines pop with absolute `on-surface` (#1A1C1C) black.
+*   **Display (lg/md):** Used for "Big Numbers" and high-level dashboard summaries. Set with `-0.02em` tracking to feel tight and authoritative.
+*   **Headline (sm/md):** Used for page titles. These should feel like magazine headers, surrounded by significant `64px+` padding.
+*   **Body (md):** Our workhorse. Ensure a line-height of `1.6` to maintain readability in long-form data logs.
+*   **Label (sm):** Used for "Metadata." Always uppercase with `0.05em` letter spacing to distinguish from interactive text.
 
-## 4. Elevation & Depth: The Layering Principle
-We reject the heavy, muddy shadows of 2010s UI. Elevation here is achieved through **Tonal Layering** and **Ambient Light.**
+---
 
-*   **Layering over Shadowing:** To lift a card, place a `surface-container-lowest` (#FFFFFF) card on a `surface-container-low` (#F3F3F4) background. The delta in brightness provides all the separation needed.
-*   **Ambient Shadows:** If a floating state is required (e.g., a dropdown or a hover effect), use a shadow with a blur of 40px and a spread of -10px, using `primary` at 5% opacity. This mimics natural light reflecting off a colored surface rather than a grey "drop shadow."
-*   **The "Ghost Border" Fallback:** If a container sits on a background of the same color, use a `outline-variant` (#C7C4D7) at **15% opacity**. It should be felt, not seen.
+## 4. Elevation & Depth
+In this design system, depth is a function of light, not structure. We use **Tonal Layering** to define the Z-axis.
 
-## 5. Components: Fluid Utility
-Components should feel like integrated parts of the "paper" layout, not bolted-on modules.
+### The Layering Principle
+Hierarchy is achieved by "stacking" surface tiers.
+1.  **Level 0 (Base):** `surface` (#f8f9fa)
+2.  **Level 1 (Sectioning):** `surface-container-low` (#f3f4f5)
+3.  **Level 2 (Interactive Content):** `surface-container-lowest` (#ffffff)
 
-*   **Buttons:**
-    *   **Primary:** Gradient (`primary` to `primary-container`), `full` roundedness, with a soft `primary` ambient shadow on hover.
-    *   **Tertiary:** No background, `primary` text, with an underline that only appears on hover to maintain the "airy" feel.
-*   **Input Fields:** Use `surface-container-lowest` with a "Ghost Border." Focus states should transition the border to `primary` and add a subtle `primary` outer glow.
-*   **Cards & Lists:** **Forbid the use of divider lines.** Use the Spacing Scale (minimum 24px) to separate list items. If separation is visually required, use a subtle background shift to `surface-container-low` for every second item (zebra striping) but with zero-contrast transitions.
-*   **Connection Toggle (Signature Component):** A large, tactile switch using Glassmorphism. When "Connected," the background behind the toggle should emit a soft, pulsing `secondary` (#0051D5) glow to symbolize "Fast & Secure" energy.
+### Ambient Shadows
+Shadows must mimic natural light.
+*   **Token:** `box-shadow: 0 4px 20px -2px rgba(25, 28, 29, 0.06);`
+*   **Note:** The shadow color is a 6% opacity version of the `on-surface` token. Never use pure black (#000) for shadows.
+
+### The "Ghost Border" Fallback
+If a border is required for extreme accessibility cases, use the **Ghost Border**: The `outline-variant` token at **15% opacity**. It should be felt, not seen.
+
+---
+
+## 5. Components
+
+### Buttons
+*   **Primary:** Subtle gradient (`primary` to `primary-container`), `12px` (DEFAULT) radius, white text.
+*   **Secondary:** `surface-container-high` background with `primary` text. No border.
+*   **Tertiary:** Transparent background. Bold `primary` text. Use for low-emphasis actions like "Cancel."
+
+### Input Fields
+*   **Styling:** Fields should use `surface-container-lowest` (pure white) with a 12px radius. 
+*   **Focus State:** Instead of a thick border, use a 2px `primary` "glow" (box-shadow) with 20% opacity.
+
+### Cards & Lists
+*   **Constraint:** Forbid the use of horizontal divider lines. 
+*   **Alternative:** Use vertical white space (32px minimum) or subtle background alternating tints (`surface` vs `surface-container-low`) to separate list items.
+*   **Cards:** Must use `surface-container-lowest` and a soft ambient shadow to appear as if floating slightly above the background.
+
+### High-End Detail: The "Metric Card"
+For SaaS dashboards, combine `display-sm` for the value and `label-md` (uppercase) for the title. Align them with asymmetric padding (e.g., 24px top, 48px bottom) to create an editorial look.
+
+---
 
 ## 6. Do's and Don'ts
 
 ### Do:
-*   **Use Asymmetrical Layouts:** Place text on the left 6 columns of a 12-column grid and leave the right 6 columns for a single, high-quality "glass" asset or whitespace.
-*   **Embrace Whitespace:** If you think there is enough whitespace, add 20% more. This system relies on "breathing room" to convey speed and lack of congestion.
-*   **Color as Signal:** Use `secondary` (#0051D5) exclusively for "active" or "secure" states. Use `primary` (#712AE2) for "actions" and "onboarding."
+*   **Do** use extreme white space. If you think it’s enough, add 16px more.
+*   **Do** use `12px` rounded corners (DEFAULT) consistently across all containers and buttons.
+*   **Do** use `primary` sparingly. It is a laser, not a paint bucket.
+*   **Do** use typography scale to show importance rather than bolding every header.
 
 ### Don't:
-*   **Don't use pure black (#000000) for text:** Use `on-surface` (#1A1C1C) to maintain the "soft minimalism" aesthetic.
-*   **Don't use hard corners:** Every interactive element must use at least the `DEFAULT` (0.5rem) roundedness to feel approachable and modern.
-*   **Don't use 100% opaque borders:** They clutter the "Luminous" aesthetic and create visual "noise" that contradicts the "fast and airy" personality.
+*   **Don't** use 1px solid borders (e.g., `#E2E8F0`). This is the quickest way to make the design look "out-of-the-box."
+*   **Don't** use pure black for text. Use `on-surface` (#191c1d) to maintain the soft, premium feel.
+*   **Don't** use standard "drop shadows" with high opacity. They should be barely perceptible.
+*   **Don't** crowd the edges. Elements should never touch the edge of their parent container.

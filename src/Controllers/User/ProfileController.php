@@ -25,6 +25,7 @@ final class ProfileController extends BaseController
      */
     public function index(ServerRequest $request, Response $response, array $args): ResponseInterface
     {
+        $locale = $this->user->locale ?? $_ENV['locale'];
         $logins = [];
         $subs = [];
         $ips = (new OnlineLog())->where('user_id', $this->user->id)
@@ -41,18 +42,19 @@ final class ProfileController extends BaseController
 
         foreach ($ips as $ip) {
             $ip->ip = str_replace('::ffff:', '', $ip->ip);
-            $ip->location = Tools::getIpLocation($ip->ip);
+            $ip->location = Tools::getIpLocation($ip->ip, $locale);
             $ip->node_name = (new Node())->where('id', $ip->node_id)->first()->name;
             $ip->last_time = Tools::toDateTime((int) $ip->last_time);
         }
 
         foreach ($logins as $login) {
             $login->datetime = Tools::toDateTime((int) $login->datetime);
-            $login->location = Tools::getIpLocation($login->ip);
+            $login->location = Tools::getIpLocation($login->ip, $locale);
         }
 
         foreach ($subs as $sub) {
             $sub->request_time = Tools::toDateTime($sub->request_time);
+            $sub->location = Tools::getIpLocation($sub->request_ip, $locale);
         }
 
         return $response->write(

@@ -48,4 +48,10 @@ return [
         'login_session_expired' => 'Login session has expired',
         'login_success' => 'Login successful',
     ],
+    'geoip' => [
+        'not_configured' => 'GeoIP2 Service Not Configured',
+        'database_resolution' => 'GeoIP2 Database Resolution',
+        'unknown_city' => 'Unknown City',
+        'unknown_country' => 'Unknown Country',
+    ],
 ];

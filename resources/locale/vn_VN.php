@@ -48,4 +48,10 @@ return [
         'login_session_expired' => 'Phiên đăng nhập đã hết hạn',
         'login_success' => 'Đăng nhập thành công',
     ],
+    'geoip' => [
+        'not_configured' => 'GeoIP2 chưa được cấu hình',
+        'database_resolution' => 'Phân giải cơ sở dữ liệu GeoIP2',
+        'unknown_city' => 'Thành phố không xác định',
+        'unknown_country' => 'Quốc gia không xác định',
+    ],
 ];

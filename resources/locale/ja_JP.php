@@ -48,4 +48,10 @@ return [
         'login_session_expired' => 'ログインセッションの有効期限が切れました',
         'login_success' => 'ログイン成功',
     ],
+    'geoip' => [
+        'not_configured' => 'GeoIP2 サービス未設定',
+        'database_resolution' => 'GeoIP2 データベース解決',
+        'unknown_city' => '不明な都市',
+        'unknown_country' => '不明な国',
+    ],
 ];

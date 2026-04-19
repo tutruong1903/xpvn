@@ -184,6 +184,11 @@
             var val = resolveKey(ticketDict, key);
             if (val) el.setAttribute("placeholder", val);
         });
+        document.querySelectorAll("[data-i18n-user-ticket-title]").forEach(function (el) {
+            var key = el.getAttribute("data-i18n-user-ticket-title");
+            var val = resolveKey(ticketDict, key);
+            if (val) el.setAttribute("title", val);
+        });
 
         // Admin panel sections
         applyAttributeFromDict(

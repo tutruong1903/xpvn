@@ -38,6 +38,8 @@ window.i18nLocales.user.ticket.zh_CN = {
     status_pending: "待处理",
     status_closed: "已关闭",
     status_awaiting: "等待中",
+    status_open_wait_admin: "等待客服回复",
+    status_open_wait_user: "等待用户回复",
 
     // Type labels
     type_howto: "使用说明",
@@ -82,4 +84,29 @@ window.i18nLocales.user.ticket.zh_CN = {
     // Buttons
     btn_cancel: "取消",
     btn_submit: "提交工单",
+
+    // Ticket View Page
+    view_page_title: "工单记录",
+    view_page_subtitle: "你可以在这里查看工单消息并添加回复",
+    view_btn_add_reply: "添加回复",
+    view_badge_active: "工单进行中",
+    view_badge_closed: "工单已关闭",
+    view_status_label: "工单状态",
+    view_type_label: "工单类型",
+    view_created_label: "工单开启时间",
+    view_conversation_title: "对话历史",
+    view_btn_refresh: "刷新记录",
+    view_customer_badge: "客户",
+    view_replied_at: "回复于",
+    view_ticket_opened: "工单由客户开启",
+    view_textarea_placeholder: "请输入你的回复内容...",
+    view_btn_attach: "添加附件",
+    view_btn_emoji: "插入表情",
+    view_system_info_title: "系统信息",
+    view_system_info_subtitle: "工单端到端加密已启用",
+    
+    // Modal - Add Reply
+    modal_add_reply_title: "添加回复",
+    modal_reply_placeholder: "请输入回复内容",
+    modal_btn_reply: "回复",
 };

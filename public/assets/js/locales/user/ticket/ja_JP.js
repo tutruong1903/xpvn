@@ -37,8 +37,8 @@ window.i18nLocales.user.ticket.ja_JP = {
     status_open: "進行中",
     status_pending: "保留中",
     status_closed: "クローズ",
-    status_awaiting: "待機中",
-
+    status_awaiting: "待機中",    status_open_wait_admin: "サポート応答待ち",
+    status_open_wait_user: "ユーザー応答待ち",
     // Type labels
     type_howto: "使用ガイド",
     type_billing: "支払い",
@@ -82,4 +82,29 @@ window.i18nLocales.user.ticket.ja_JP = {
     // Buttons
     btn_cancel: "キャンセル",
     btn_submit: "チケットを送信",
+
+    // Ticket View Page
+    view_page_title: "チケット記録",
+    view_page_subtitle: "ここでチケットメッセージの閲覧と返信の追加ができます",
+    view_btn_add_reply: "返信を追加",
+    view_badge_active: "アクティブなチケット",
+    view_badge_closed: "クローズしたチケット",
+    view_status_label: "ステータス",
+    view_type_label: "部門",
+    view_created_label: "作成時刻",
+    view_conversation_title: "会話履歴",
+    view_btn_refresh: "ログを更新",
+    view_customer_badge: "お客様",
+    view_replied_at: "返信日時",
+    view_ticket_opened: "お客様によってチケットが開かれました",
+    view_textarea_placeholder: "返信内容を入力してください...",
+    view_btn_attach: "ファイルを添付",
+    view_btn_emoji: "絵文字を挿入",
+    view_system_info_title: "システム情報",
+    view_system_info_subtitle: "エンドツーエンドの暗号化が有効です",
+    
+    // Modal - Add Reply
+    modal_add_reply_title: "返信を追加",
+    modal_reply_placeholder: "返信内容を入力してください",
+    modal_btn_reply: "返信",
 };

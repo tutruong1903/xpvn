@@ -38,6 +38,8 @@ window.i18nLocales.user.ticket.en_US = {
     status_pending: "Pending",
     status_closed: "Closed",
     status_awaiting: "Awaiting",
+    status_open_wait_admin: "Waiting for Support",
+    status_open_wait_user: "Waiting for User",
 
     // Type labels
     type_howto: "Usage Guide",
@@ -82,4 +84,29 @@ window.i18nLocales.user.ticket.en_US = {
     // Buttons
     btn_cancel: "Cancel",
     btn_submit: "Submit Ticket",
+
+    // Ticket View Page
+    view_page_title: "Ticket Record",
+    view_page_subtitle: "You can view ticket messages and add replies here",
+    view_btn_add_reply: "Add Reply",
+    view_badge_active: "Active Ticket",
+    view_badge_closed: "Closed Ticket",
+    view_status_label: "Status",
+    view_type_label: "Department",
+    view_created_label: "Created Time",
+    view_conversation_title: "Conversation History",
+    view_btn_refresh: "Refresh Log",
+    view_customer_badge: "Customer",
+    view_replied_at: "replied at",
+    view_ticket_opened: "Ticket opened by customer",
+    view_textarea_placeholder: "Type your response here...",
+    view_btn_attach: "Attach file",
+    view_btn_emoji: "Insert emoji",
+    view_system_info_title: "System Information",
+    view_system_info_subtitle: "Secure End-to-End Ticket Encryption Active",
+    
+    // Modal - Add Reply
+    modal_add_reply_title: "Add Reply",
+    modal_reply_placeholder: "Please enter reply content",
+    modal_btn_reply: "Reply",
 };

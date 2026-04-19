@@ -187,8 +187,6 @@ final class TicketController extends BaseController
             $comment->datetime = Tools::toDateTime((int) $comment->datetime);
         }
 
-        $ticket->status = $ticket->status();
-        $ticket->type = $ticket->type();
         $ticket->datetime = Tools::toDateTime((int) $ticket->datetime);
 
         return $response->write(

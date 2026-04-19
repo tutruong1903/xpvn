@@ -6,10 +6,12 @@ namespace App\Controllers;
 
 use App\Models\User;
 use App\Services\Auth;
+use App\Services\I18n;
 use App\Services\View;
 use Smarty\Smarty;
 use Twig\Environment;
 use voku\helper\AntiXSS;
+use function in_array;
 use function microtime;
 use function round;
 
@@ -42,6 +44,32 @@ abstract class BaseController
     {
         $this->user = Auth::getUser();
         $this->antiXss = new AntiXSS();
+    }
+
+    /**
+     * Get user's locale from cookie, user setting, or default
+     */
+    protected function getLocale(): string
+    {
+        $supportedLocales = I18n::getLocaleList();
+        
+        // 1. Try to get from cookie (set by frontend)
+        if (isset($_COOKIE['sspanel_locale'])) {
+            $cookieLocale = $_COOKIE['sspanel_locale'];
+            if (in_array($cookieLocale, $supportedLocales)) {
+                return $cookieLocale;
+            }
+        }
+        
+        // 2. Try to get from logged-in user's settings
+        if ($this->user !== null && isset($this->user->locale)) {
+            if (in_array($this->user->locale, $supportedLocales)) {
+                return $this->user->locale;
+            }
+        }
+        
+        // 3. Fall back to environment default
+        return $_ENV['locale'] ?? 'en_US';
     }
 
     /**

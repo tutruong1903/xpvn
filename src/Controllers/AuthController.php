@@ -12,6 +12,7 @@ use App\Services\Auth;
 use App\Services\Cache;
 use App\Services\Captcha;
 use App\Services\Filter;
+use App\Services\I18n;
 use App\Services\Mail;
 use App\Services\MFA\FIDO;
 use App\Services\MFA\TOTP;
@@ -58,10 +59,12 @@ final class AuthController extends BaseController
 
     public function loginHandle(ServerRequest $request, Response $response, array $args): ResponseInterface
     {
+        $locale = $this->getLocale();
+        
         if (Config::obtain('enable_login_captcha') && ! Captcha::verify($request->getParams())) {
             return $response->withJson([
                 'ret' => 0,
-                'msg' => '系统无法接受你的验证结果，请刷新页面后重试。',
+                'msg' => I18n::trans('auth.captcha_error', $locale),
             ]);
         }
 
@@ -77,7 +80,7 @@ final class AuthController extends BaseController
 
             return $response->withJson([
                 'ret' => 0,
-                'msg' => '邮箱或者密码错误',
+                'msg' => I18n::trans('auth.email_password_incorrect', $locale),
             ]);
         }
 
@@ -86,7 +89,7 @@ final class AuthController extends BaseController
 
             return $response->withJson([
                 'ret' => 0,
-                'msg' => '邮箱或者密码错误',
+                'msg' => I18n::trans('auth.email_password_incorrect', $locale),
             ]);
         }
 
@@ -104,7 +107,7 @@ final class AuthController extends BaseController
                 ->withHeader('HX-Redirect', '/auth/mfa')
                 ->withJson([
                     'ret' => 1,
-                    'msg' => '请完成二步认证',
+                    'msg' => I18n::trans('auth.mfa_required', $locale),
             ]);
         }
 
@@ -162,30 +165,32 @@ final class AuthController extends BaseController
      */
     public function sendVerify(ServerRequest $request, Response $response, $next): ResponseInterface
     {
+        $locale = $this->getLocale();
+        
         if (Config::obtain('reg_email_verify')) {
             $email = strtolower(trim($this->antiXss->xss_clean($request->getParam('email'))));
 
             if ($email === '') {
-                return ResponseHelper::error($response, '未填写邮箱');
+                return ResponseHelper::error($response, I18n::trans('auth.email_required', $locale));
             }
 
             // check email format
             $email_check = Filter::checkEmailFilter($email);
 
             if (! $email_check) {
-                return ResponseHelper::error($response, '无效的邮箱');
+                return ResponseHelper::error($response, I18n::trans('auth.email_invalid', $locale));
             }
 
             if (! (new RateLimit())->checkRateLimit('email_request_ip', $request->getServerParam('REMOTE_ADDR')) ||
                 ! (new RateLimit())->checkRateLimit('email_request_address', $email)
             ) {
-                return ResponseHelper::error($response, '你的请求过于频繁，请稍后再试');
+                return ResponseHelper::error($response, I18n::trans('auth.request_too_frequent', $locale));
             }
 
             $user = (new User())->where('email', $email)->first();
 
             if ($user !== null) {
-                return ResponseHelper::error($response, '此邮箱已经注册');
+                return ResponseHelper::error($response, I18n::trans('auth.email_already_registered', $locale));
             }
 
             $email_code = Tools::genRandomChar(6);
@@ -203,13 +208,13 @@ final class AuthController extends BaseController
                     ]
                 );
             } catch (Exception|ClientExceptionInterface) {
-                return ResponseHelper::error($response, '邮件发送失败，请联系网站管理员。');
+                return ResponseHelper::error($response, I18n::trans('auth.email_send_failed', $locale));
             }
 
-            return ResponseHelper::success($response, '验证码发送成功，请查收邮件。');
+            return ResponseHelper::success($response, I18n::trans('auth.verification_code_sent', $locale));
         }
 
-        return ResponseHelper::error($response, '站点未启用邮件验证');
+        return ResponseHelper::error($response, I18n::trans('auth.email_verification_disabled', $locale));
     }
 
     /**
@@ -294,7 +299,7 @@ final class AuthController extends BaseController
             return $response->withHeader('HX-Redirect', $redir);
         }
 
-        return ResponseHelper::error($response, '未知错误');
+        return ResponseHelper::error($response, I18n::trans('auth.unknown_error', $this->getLocale()));
     }
 
     /**
@@ -303,12 +308,14 @@ final class AuthController extends BaseController
      */
     public function registerHandle(ServerRequest $request, Response $response, array $args): ResponseInterface
     {
+        $locale = $this->getLocale();
+        
         if (Config::obtain('reg_mode') === 'close') {
-            return ResponseHelper::error($response, '未开放注册。');
+            return ResponseHelper::error($response, I18n::trans('auth.registration_closed', $locale));
         }
 
         if (Config::obtain('enable_reg_captcha') && ! Captcha::verify($request->getParams())) {
-            return ResponseHelper::error($response, '系统无法接受你的验证结果，请刷新页面后重试。');
+            return ResponseHelper::error($response, I18n::trans('auth.captcha_error', $locale));
         }
 
         $tos = $request->getParam('tos') === 'true' ? 1 : 0;
@@ -319,32 +326,32 @@ final class AuthController extends BaseController
         $invite_code = $this->antiXss->xss_clean(trim($request->getParam('invite_code')));
 
         if (! $tos) {
-            return ResponseHelper::error($response, '请同意服务条款');
+            return ResponseHelper::error($response, I18n::trans('auth.accept_tos', $locale));
         }
 
         if (strlen($password) < 8) {
-            return ResponseHelper::error($response, '密码请大于8位');
+            return ResponseHelper::error($response, I18n::trans('auth.password_min_length', $locale));
         }
 
         if ($password !== $confirm_password) {
-            return ResponseHelper::error($response, '两次密码输入不符');
+            return ResponseHelper::error($response, I18n::trans('auth.password_mismatch', $locale));
         }
 
         if ($invite_code === '' && Config::obtain('reg_mode') === 'invite') {
-            return ResponseHelper::error($response, '邀请码不能为空');
+            return ResponseHelper::error($response, I18n::trans('auth.invite_code_required', $locale));
         }
 
         if ($invite_code !== '') {
             $invite = (new InviteCode())->where('code', $invite_code)->first();
 
             if ($invite === null) {
-                return ResponseHelper::error($response, '邀请码无效');
+                return ResponseHelper::error($response, I18n::trans('auth.invite_code_invalid', $locale));
             }
 
             $ref_user = (new User())->where('id', $invite->user_id)->first();
 
             if ($ref_user === null) {
-                return ResponseHelper::error($response, '邀请码无效');
+                return ResponseHelper::error($response, I18n::trans('auth.invite_code_invalid', $locale));
             }
         }
 
@@ -355,13 +362,13 @@ final class AuthController extends BaseController
         $email_check = Filter::checkEmailFilter($email);
 
         if (! $email_check) {
-            return ResponseHelper::error($response, '无效的邮箱');
+            return ResponseHelper::error($response, I18n::trans('auth.email_invalid', $locale));
         }
         // check email
         $user = (new User())->where('email', $email)->first();
 
         if ($user !== null) {
-            return ResponseHelper::error($response, '无效的邮箱');
+            return ResponseHelper::error($response, I18n::trans('auth.email_invalid', $locale));
         }
 
         if (Config::obtain('reg_email_verify')) {
@@ -370,7 +377,7 @@ final class AuthController extends BaseController
             $email_verify = $redis->get('email_verify:' . $email_verify_code);
 
             if (! $email_verify) {
-                return ResponseHelper::error($response, '你的邮箱验证码不正确');
+                return ResponseHelper::error($response, I18n::trans('auth.email_verification_incorrect', $locale));
             }
 
             $redis->del('email_verify:' . $email_verify_code);
@@ -393,6 +400,7 @@ final class AuthController extends BaseController
 
     public function webauthnHandle(ServerRequest $request, Response $response, $next): ResponseInterface
     {
+        $locale = $this->getLocale();
         $data = $this->antiXss->xss_clean((array) $request->getParsedBody());
         $redir = $this->antiXss->xss_clean(Cookie::get('redir')) ?? '/user';
         $result = WebAuthn::AssertHandle($data);
@@ -401,7 +409,7 @@ final class AuthController extends BaseController
             if ($user === null) {
                 return $response->withJson([
                     'ret' => 0,
-                    'msg' => '用户不存在',
+                    'msg' => I18n::trans('auth.user_not_exist', $locale),
                 ]);
             }
             $rememberMe = $request->getParam('remember_me') === 'true';
@@ -413,7 +421,7 @@ final class AuthController extends BaseController
             $user->save();
             return $response->withJson([
                 'ret' => 1,
-                'msg' => '登录成功',
+                'msg' => I18n::trans('auth.login_success', $locale),
                 'redir' => $redir,
             ]);
         }
@@ -422,16 +430,17 @@ final class AuthController extends BaseController
 
     public function totpHandle(ServerRequest $request, Response $response, $next): ResponseInterface
     {
+        $locale = $this->getLocale();
         $redis = (new Cache())->initRedis();
         $login_session = $redis->get('mfa_login_' . session_id());
         if ($login_session === false) {
-            return $response->withJson(['ret' => 0, 'msg' => '登录会话已过期'])->withHeader('HX-Redirect', '/auth/login');
+            return $response->withJson(['ret' => 0, 'msg' => I18n::trans('auth.login_session_expired', $locale)])->withHeader('HX-Redirect', '/auth/login');
         }
         $login_session = json_decode($login_session, true);
         $code = $this->antiXss->xss_clean($request->getParam('code'));
         $user = (new User())->where('id', $login_session['userid'])->first();
         if ($user === null) {
-            return $response->withJson(['ret' => 0, 'msg' => '用户不存在'])->withHeader('HX-Redirect', '/auth/login');
+            return $response->withJson(['ret' => 0, 'msg' => I18n::trans('auth.user_not_exist', $locale)])->withHeader('HX-Redirect', '/auth/login');
         }
         $result = TOTP::AssertHandle($user, $code);
         if ($result['ret'] === 1) {
@@ -445,38 +454,40 @@ final class AuthController extends BaseController
             $user->save();
             return $response
                 ->withHeader('HX-Redirect', $login_session['redir'])
-                ->withJson(['ret' => 1, 'msg' => '登录成功']);
+                ->withJson(['ret' => 1, 'msg' => I18n::trans('auth.login_success', $locale)]);
         }
         return $response->withJson($result);
     }
 
     public function fidoRequest(ServerRequest $request, Response $response, $next): ResponseInterface
     {
+        $locale = $this->getLocale();
         $redis = (new Cache())->initRedis();
         $login_session = $redis->get('mfa_login_' . session_id());
         if ($login_session === false) {
-            return $response->withJson(['ret' => 0, 'msg' => '登录会话已过期'])->withHeader('HX-Redirect', '/auth/login');
+            return $response->withJson(['ret' => 0, 'msg' => I18n::trans('auth.login_session_expired', $locale)])->withHeader('HX-Redirect', '/auth/login');
         }
         $login_session = json_decode($login_session, true);
         $user = (new User())->where('id', $login_session['userid'])->first();
         if ($user === null) {
-            return $response->withJson(['ret' => 0, 'msg' => '用户不存在'])->withHeader('HX-Redirect', '/auth/login');
+            return $response->withJson(['ret' => 0, 'msg' => I18n::trans('auth.user_not_exist', $locale)])->withHeader('HX-Redirect', '/auth/login');
         }
         return $response->withJson(FIDO::AssertRequest($user));
     }
 
     public function fidoHandle(ServerRequest $request, Response $response, $next): ResponseInterface
     {
+        $locale = $this->getLocale();
         $redis = (new Cache())->initRedis();
         $login_session = $redis->get('mfa_login_' . session_id());
         if ($login_session === false) {
-            return $response->withJson(['ret' => 0, 'msg' => '登录会话已过期'])->withHeader('HX-Redirect', '/auth/login');
+            return $response->withJson(['ret' => 0, 'msg' => I18n::trans('auth.login_session_expired', $locale)])->withHeader('HX-Redirect', '/auth/login');
         }
         $login_session = json_decode($login_session, true);
         $data = $this->antiXss->xss_clean((array) $request->getParsedBody());
         $user = (new User())->where('id', $login_session['userid'])->first();
         if ($user === null) {
-            return $response->withJson(['ret' => 0, 'msg' => '用户不存在'])->withHeader('HX-Redirect', '/auth/login');
+            return $response->withJson(['ret' => 0, 'msg' => I18n::trans('auth.user_not_exist', $locale)])->withHeader('HX-Redirect', '/auth/login');
         }
         $result = FIDO::AssertHandle($user, $data);
         if ($result['ret'] === 1) {
@@ -488,7 +499,7 @@ final class AuthController extends BaseController
             $loginIp->collectLoginIP($_SERVER['REMOTE_ADDR'], 0, $user->id);
             $user->last_login_time = time();
             $user->save();
-            return $response->withJson(['ret' => 1, 'msg' => '登录成功', 'redir' => $login_session['redir']]);
+            return $response->withJson(['ret' => 1, 'msg' => I18n::trans('auth.login_success', $locale), 'redir' => $login_session['redir']]);
         }
         return $response->withJson($result);
     }

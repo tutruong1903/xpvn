@@ -20,6 +20,8 @@
 
     function setLocale(locale) {
         localStorage.setItem("sspanel_locale", locale);
+        // Set cookie for backend to read
+        document.cookie = "sspanel_locale=" + locale + "; path=/; max-age=31536000; SameSite=Lax";
         applyTranslations(locale);
         if (window.sspanelLocaleSwitcher) {
             window.sspanelLocaleSwitcher.updateAllLabels(locale);
@@ -220,7 +222,10 @@
 
     // Initialize
     document.addEventListener("DOMContentLoaded", function () {
-        applyTranslations(getLocale());
+        var currentLocale = getLocale();
+        // Sync locale to cookie on page load
+        document.cookie = "sspanel_locale=" + currentLocale + "; path=/; max-age=31536000; SameSite=Lax";
+        applyTranslations(currentLocale);
     });
 
     // Expose for external use

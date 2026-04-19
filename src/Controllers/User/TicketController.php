@@ -7,6 +7,7 @@ namespace App\Controllers\User;
 use App\Controllers\BaseController;
 use App\Models\Config;
 use App\Models\Ticket;
+use App\Services\I18n;
 use App\Services\Notification;
 use App\Services\RateLimit;
 use App\Utils\ResponseHelper;
@@ -39,8 +40,6 @@ final class TicketController extends BaseController
         $tickets = (new Ticket())->where('userid', $this->user->id)->orderBy('datetime', 'desc')->get();
 
         foreach ($tickets as $ticket) {
-            $ticket->status = $ticket->status();
-            $ticket->type = $ticket->type();
             $ticket->datetime = Tools::toDateTime((int) $ticket->datetime);
         }
 
@@ -58,18 +57,28 @@ final class TicketController extends BaseController
      */
     public function add(ServerRequest $request, Response $response, array $args): ResponseInterface
     {
+        $locale = $this->getLocale();
         $title = $request->getParam('title') ?? '';
         $comment = $request->getParam('comment') ?? '';
         $type = $request->getParam('type') ?? '';
 
         if (! Config::obtain('enable_ticket') ||
             $this->user->is_shadow_banned ||
-            ! (new RateLimit())->checkRateLimit('ticket', (string) $this->user->id) ||
-            $title === '' ||
-            $comment === '' ||
-            $type === ''
+            ! (new RateLimit())->checkRateLimit('ticket', (string) $this->user->id)
         ) {
-            return ResponseHelper::error($response, '工单创建失败');
+            return ResponseHelper::error($response, I18n::trans('ticket.create_failed', $locale));
+        }
+
+        if ($type === '') {
+            return ResponseHelper::error($response, I18n::trans('ticket.type_required', $locale));
+        }
+
+        if ($title === '') {
+            return ResponseHelper::error($response, I18n::trans('ticket.title_required', $locale));
+        }
+
+        if ($comment === '') {
+            return ResponseHelper::error($response, I18n::trans('ticket.comment_required', $locale));
         }
 
         $content = [
@@ -108,20 +117,24 @@ final class TicketController extends BaseController
      */
     public function reply(ServerRequest $request, Response $response, array $args): ResponseInterface
     {
+        $locale = $this->getLocale();
         $id = $args['id'];
         $comment = $request->getParam('comment') ?? '';
 
         if (! Config::obtain('enable_ticket') ||
-            $this->user->is_shadow_banned ||
-            $comment === ''
+            $this->user->is_shadow_banned
         ) {
-            ResponseHelper::error($response, '工单回复失败');
+            return ResponseHelper::error($response, I18n::trans('ticket.reply_failed', $locale));
+        }
+
+        if ($comment === '') {
+            return ResponseHelper::error($response, I18n::trans('ticket.comment_required', $locale));
         }
 
         $ticket = (new Ticket())->where('id', $id)->where('userid', $this->user->id)->first();
 
         if ($ticket === null) {
-            ResponseHelper::error($response, '工单不存在');
+            return ResponseHelper::error($response, I18n::trans('ticket.not_found', $locale));
         }
 
         $content_old = json_decode($ticket->content, true);

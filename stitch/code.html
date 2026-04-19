@@ -3,7 +3,8 @@
 <html class="light" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <script id="tailwind-config">
@@ -12,59 +13,58 @@
             theme: {
                 extend: {
                     "colors": {
-                        "outline": "#727785",
-                        "on-secondary-fixed": "#001a42",
-                        "on-primary-fixed": "#001a42",
-                        "surface-tint": "#005ac2",
-                        "on-secondary-container": "#405682",
-                        "on-error-container": "#93000a",
-                        "secondary-fixed": "#d8e2ff",
-                        "primary": "#0058be",
-                        "tertiary-fixed-dim": "#ffb786",
-                        "surface-container-high": "#e7e8e9",
-                        "surface-container-low": "#f3f4f5",
-                        "on-secondary": "#ffffff",
-                        "surface": "#f8f9fa",
-                        "outline-variant": "#c2c6d6",
-                        "surface-container-lowest": "#ffffff",
-                        "secondary": "#495e8a",
-                        "secondary-container": "#b6ccff",
-                        "background": "#f8f9fa",
-                        "on-error": "#ffffff",
-                        "on-tertiary": "#ffffff",
-                        "on-surface-variant": "#424754",
                         "error": "#ba1a1a",
-                        "on-tertiary-container": "#fffbff",
-                        "primary-fixed": "#d8e2ff",
-                        "inverse-primary": "#adc6ff",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed": "#ffdcc6",
+                        "on-secondary-fixed": "#001a42",
+                        "surface-container-high": "#e7e8e9",
+                        "surface-container": "#edeeef",
+                        "outline-variant": "#c2c6d6",
+                        "on-primary-fixed-variant": "#004395",
+                        "tertiary-fixed-dim": "#ffb786",
+                        "surface": "#f8f9fa",
+                        "on-error-container": "#93000a",
                         "tertiary": "#924700",
-                        "on-background": "#191c1d",
-                        "surface-container-highest": "#e1e3e4",
+                        "on-tertiary-container": "#fffbff",
+                        "secondary-container": "#b6ccff",
+                        "on-error": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "surface-tint": "#005ac2",
+                        "secondary-fixed-dim": "#b1c6f9",
+                        "on-tertiary-fixed-variant": "#723600",
+                        "secondary": "#495e8a",
+                        "on-primary-container": "#fefcff",
+                        "background": "#f8f9fa",
+                        "on-tertiary": "#ffffff",
+                        "primary-container": "#2170e4",
+                        "primary-fixed-dim": "#adc6ff",
+                        "on-secondary-container": "#405682",
                         "on-surface": "#191c1d",
-                        "surface-bright": "#f8f9fa",
+                        "on-primary-fixed": "#001a42",
                         "surface-variant": "#e1e3e4",
                         "surface-dim": "#d9dadb",
-                        "surface-container": "#edeeef",
+                        "inverse-primary": "#adc6ff",
+                        "surface-container-low": "#f3f4f5",
+                        "primary": "#0058be",
+                        "secondary-fixed": "#d8e2ff",
+                        "inverse-surface": "#2e3132",
                         "inverse-on-surface": "#f0f1f2",
+                        "surface-container-highest": "#e1e3e4",
+                        "surface-bright": "#f8f9fa",
                         "error-container": "#ffdad6",
-                        "tertiary-fixed": "#ffdcc6",
-                        "primary-container": "#2170e4",
-                        "on-tertiary-fixed-variant": "#723600",
-                        "on-tertiary-fixed": "#311400",
-                        "on-primary": "#ffffff",
-                        "on-primary-container": "#fefcff",
-                        "primary-fixed-dim": "#adc6ff",
-                        "secondary-fixed-dim": "#b1c6f9",
-                        "tertiary-container": "#b75b00",
-                        "on-primary-fixed-variant": "#004395",
                         "on-secondary-fixed-variant": "#304671",
-                        "inverse-surface": "#2e3132"
+                        "on-primary": "#ffffff",
+                        "on-background": "#191c1d",
+                        "outline": "#727785",
+                        "on-tertiary-fixed": "#311400",
+                        "on-surface-variant": "#424754",
+                        "tertiary-container": "#b75b00",
+                        "primary-fixed": "#d8e2ff"
                     },
                     "borderRadius": {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "2xl": "1rem",
+                        "DEFAULT": "12px",
+                        "lg": "12px",
+                        "xl": "16px",
                         "full": "9999px"
                     },
                     "fontFamily": {
@@ -77,250 +77,201 @@
         }
     </script>
 <style>
-        body { font-family: 'Inter', sans-serif; }
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
-        .glass-header {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(20px);
-        }
-        .modern-card {
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03), 0 0 0 1px rgba(0, 0, 0, 0.02);
-            transition: box-shadow 0.2s ease-in-out;
-        }
-        .modern-card:hover {
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0, 0, 0, 0.03);
-        }
+        body { font-family: 'Inter', sans-serif; }
     </style>
 </head>
 <body class="bg-surface text-on-surface antialiased">
-<!-- Main Content Canvas -->
-<main class="ml-64 pt-24 px-12 pb-12 min-h-screen bg-slate-50/50">
-<div class="max-w-7xl mx-auto space-y-10">
+<!-- Side Navigation Shell -->
+<!-- Main Content Area -->
+<main class="ml-64 min-h-screen">
+<!-- Top Navigation Shell -->
+<!-- Page Content -->
+<div class="p-12 max-w-7xl mx-auto">
 <!-- Page Header -->
-<div class="flex flex-col gap-2">
-<h2 class="text-3xl font-extrabold tracking-tight text-on-surface">Account Overview</h2>
-<p class="text-on-surface-variant max-w-2xl text-base font-normal leading-relaxed">Manage your core account details, monitor active sessions, and review recent security events from a centralized cockpit.</p>
-</div>
-<!-- Upper Grid: Identity & Active Connections -->
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-<!-- Identity Details Card -->
-<div class="lg:col-span-4 bg-white rounded-2xl modern-card flex flex-col">
-<div class="p-8 flex-1">
-<div class="flex items-center space-x-4 mb-10">
-<div class="w-10 h-10 rounded-xl bg-primary/5 flex items-center justify-center text-primary">
-<span class="material-symbols-outlined text-2xl" data-icon="account_circle">account_circle</span>
-</div>
-<h3 class="text-lg font-bold tracking-tight text-on-surface">Identity Details</h3>
-</div>
-<div class="space-y-8">
-<div class="flex items-start gap-4">
-<span class="material-symbols-outlined text-outline/50 mt-1" data-icon="alternate_email">alternate_email</span>
+<div class="flex justify-between items-end mb-16">
 <div>
-<p class="text-[11px] font-bold uppercase tracking-wider text-outline mb-1">Username</p>
-<p class="text-base font-semibold text-on-surface">djthememay123</p>
+<h2 class="text-4xl font-extrabold tracking-tight text-on-surface mb-2">Ticket Queue</h2>
+<p class="text-slate-500 font-medium">Manage and resolve incoming support requests.</p>
+</div>
+<button class="bg-gradient-to-b from-primary to-primary-container text-white px-6 py-3 rounded-xl font-semibold shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 active:scale-95 transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+                    New Ticket
+                </button>
+</div>
+<!-- Dashboard Metric Bento -->
+<div class="grid grid-cols-4 gap-6 mb-12">
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-[0_4px_20px_-2px_rgba(25,28,29,0.06)] relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-5xl text-primary" data-icon="confirmation_number">confirmation_number</span>
+</div>
+<p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">Total Tickets</p>
+<h3 class="text-5xl font-extrabold tracking-tight text-on-surface">128</h3>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-[0_4px_20px_-2px_rgba(25,28,29,0.06)]">
+<p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">Pending</p>
+<h3 class="text-5xl font-extrabold tracking-tight text-on-surface">42</h3>
+<p class="mt-4 text-sm text-slate-500 font-medium">Requiring attention</p>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-[0_4px_20px_-2px_rgba(25,28,29,0.06)]">
+<p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">Resolved</p>
+<h3 class="text-5xl font-extrabold tracking-tight text-on-surface">892</h3>
+<p class="mt-4 text-sm text-slate-500 font-medium">All time success</p>
 </div>
 </div>
-<div class="flex items-start gap-4">
-<span class="material-symbols-outlined text-outline/50 mt-1" data-icon="mail">mail</span>
-<div>
-<p class="text-[11px] font-bold uppercase tracking-wider text-outline mb-1">Email Address</p>
-<p class="text-base font-semibold text-on-surface">admin@gmail.com</p>
+<!-- Filters -->
+<div class="flex gap-4 mb-8">
+<button class="bg-primary/10 text-primary px-4 py-2 rounded-xl text-sm font-semibold flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="filter_list">filter_list</span>
+                    All Tickets
+                </button>
+<button class="bg-surface-container-high text-slate-600 px-4 py-2 rounded-xl text-sm font-semibold hover:bg-slate-200 transition-colors">财务 (Finance)</button>
+<button class="bg-surface-container-high text-slate-600 px-4 py-2 rounded-xl text-sm font-semibold hover:bg-slate-200 transition-colors">技术 (Technical)</button>
+<button class="bg-surface-container-high text-slate-600 px-4 py-2 rounded-xl text-sm font-semibold hover:bg-slate-200 transition-colors">进行中 (In-Progress)</button>
 </div>
+<!-- Ticket List Container -->
+<div class="bg-surface-container-lowest rounded-xl shadow-[0_4px_20px_-2px_rgba(25,28,29,0.06)] overflow-hidden">
+<div class="grid grid-cols-[80px_1fr_120px_120px_160px_80px] px-8 py-4 bg-surface-container-low text-[10px] font-bold uppercase tracking-widest text-slate-400">
+<span>ID</span>
+<span>Subject</span>
+<span>Type</span>
+<span>Status</span>
+<span>Last Update</span>
+<span class="text-right">Action</span>
 </div>
-<div class="grid grid-cols-2 gap-4">
-<div class="flex items-start gap-3">
-<div>
-<p class="text-[11px] font-bold uppercase tracking-wider text-outline mb-1">Registered</p>
-<p class="text-sm font-medium text-on-surface">2026-04-04</p>
-</div>
-</div>
-<div class="flex items-start gap-3 border-l border-surface-container-high pl-4">
-<div>
-<p class="text-[11px] font-bold uppercase tracking-wider text-outline mb-1">Total Usage</p>
-<p class="text-sm font-medium text-on-surface">0B</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!-- Active Node Connections Card -->
-<div class="lg:col-span-8 bg-white rounded-2xl modern-card p-8">
-<div class="flex items-center justify-between mb-8">
-<div class="flex items-center space-x-4">
-<div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center">
-<span class="material-symbols-outlined text-2xl" data-icon="sensors">sensors</span>
-</div>
-<div>
-<h3 class="text-lg font-bold tracking-tight">Active Node Connections</h3>
-<p class="text-xs text-on-surface-variant font-medium">Real-time surveillance of current active sessions</p>
-</div>
-</div>
-<div class="flex items-center px-3 py-1.5 rounded-full bg-emerald-50 text-emerald-700">
-<span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse mr-2"></span>
-<span class="text-[10px] font-bold uppercase tracking-widest">Live Status</span>
-</div>
-</div>
-<div class="overflow-hidden">
-<table class="w-full text-left">
-<thead>
-<tr class="text-[11px] uppercase tracking-wider text-outline/80 border-b border-surface-container-high">
-<th class="pb-4 font-bold">IP Address</th>
-<th class="pb-4 font-bold">Location</th>
-<th class="pb-4 font-bold">Node Name</th>
-<th class="pb-4 font-bold text-right">Last Active</th>
-</tr>
-</thead>
-<tbody class="text-sm divide-y divide-surface-container-low/60">
-<tr class="hover:bg-slate-50/80 transition-colors group">
-<td class="py-5 font-mono font-semibold text-on-surface">192.168.97.1</td>
-<td class="py-5">
-<div class="flex items-center space-x-2.5">
-<span class="material-symbols-outlined text-outline/60 text-lg" data-icon="public">public</span>
-<span class="font-medium">GeoIP2 (Regional)</span>
-</div>
-</td>
-<td class="py-5">
-<span class="px-2.5 py-1 rounded-md bg-slate-100 text-slate-600 text-[11px] font-bold tracking-tight">NODE-PRIMARY-US</span>
-</td>
-<td class="py-5 text-right font-medium text-emerald-600 tabular-nums">Just Now</td>
-</tr>
-<tr class="hover:bg-slate-50/80 transition-colors group">
-<td class="py-5 font-mono font-semibold text-on-surface">10.0.0.42</td>
-<td class="py-5">
-<div class="flex items-center space-x-2.5">
-<span class="material-symbols-outlined text-outline/60 text-lg" data-icon="lan">lan</span>
-<span class="font-medium">Internal Tunnel</span>
-</div>
-</td>
-<td class="py-5">
-<span class="px-2.5 py-1 rounded-md bg-slate-100 text-slate-600 text-[11px] font-bold tracking-tight">INTERNAL-RELAY</span>
-</td>
-<td class="py-5 text-right text-on-surface-variant tabular-nums">2m ago</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-<!-- Security Audit Table Card -->
-<div class="bg-white rounded-2xl modern-card overflow-hidden">
-<div class="px-8 py-8 flex flex-col md:flex-row md:items-center justify-between border-b border-surface-container-high gap-4">
-<div class="flex items-center space-x-4">
-<div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center">
-<span class="material-symbols-outlined text-2xl" data-icon="verified_user">verified_user</span>
+<!-- Ticket Rows -->
+<div class="divide-y divide-transparent">
+<!-- Ticket Item 1 (From User Request) -->
+<div class="grid grid-cols-[80px_1fr_120px_120px_160px_80px] px-8 py-6 items-center hover:bg-surface-container-low transition-colors group">
+<span class="text-slate-400 font-mono text-sm">#1</span>
+<div class="flex items-center gap-3">
+<span class="text-on-surface font-semibold text-lg">123</span>
+<span class="material-symbols-outlined text-slate-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity" data-icon="link">link</span>
 </div>
 <div>
-<h3 class="text-lg font-bold tracking-tight text-on-surface">Security Audit: Successful Logins</h3>
-<p class="text-xs text-on-surface-variant font-medium">Last 10 successful authentication events recorded</p>
+<span class="px-3 py-1 bg-surface-container-high text-slate-600 rounded-full text-xs font-bold uppercase tracking-tighter">财务</span>
 </div>
+<div>
+<span class="flex items-center gap-2 text-primary font-bold text-xs uppercase tracking-tighter">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                                进行中
+                            </span>
 </div>
-<button class="inline-flex items-center space-x-2 px-4 py-2 bg-surface border border-outline-variant hover:border-primary/40 rounded-lg text-sm font-semibold text-on-surface-variant transition-all hover:text-primary">
-<span class="material-symbols-outlined text-lg" data-icon="ios_share">ios_share</span>
-<span>Export CSV</span>
+<span class="text-slate-500 text-sm">2 mins ago</span>
+<div class="text-right">
+<button class="p-2 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="more_horiz">more_horiz</span>
 </button>
 </div>
-<div class="overflow-x-auto">
-<table class="w-full text-left">
-<thead>
-<tr class="text-[11px] uppercase tracking-widest text-outline bg-slate-50/50">
-<th class="px-8 py-4 font-bold border-r border-surface-container-high/40">Network IP</th>
-<th class="px-8 py-4 font-bold">Geolocation Information</th>
-<th class="px-8 py-4 font-bold text-right">Timestamp</th>
-</tr>
-</thead>
-<tbody class="text-sm divide-y divide-surface-container-low/60">
-<tr class="hover:bg-slate-50/40 transition-colors">
-<td class="px-8 py-4 font-mono font-semibold text-on-surface border-r border-surface-container-high/30">192.168.97.1</td>
-<td class="px-8 py-4 text-on-surface-variant flex items-center gap-2">
-<span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
-                                    GeoIP2 Database Resolution
-                                </td>
-<td class="px-8 py-4 text-right font-medium tabular-nums text-on-surface/80">2026-04-04 11:33:38</td>
-</tr>
-<tr class="hover:bg-slate-50/40 transition-colors">
-<td class="px-8 py-4 font-mono font-semibold text-on-surface border-r border-surface-container-high/30">192.168.97.1</td>
-<td class="px-8 py-4 text-on-surface-variant flex items-center gap-2">
-<span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
-                                    GeoIP2 Database Resolution
-                                </td>
-<td class="px-8 py-4 text-right font-medium tabular-nums text-on-surface/80">2026-04-04 10:12:05</td>
-</tr>
-<tr class="hover:bg-slate-50/40 transition-colors">
-<td class="px-8 py-4 font-mono font-semibold text-on-surface border-r border-surface-container-high/30">192.168.97.1</td>
-<td class="px-8 py-4 text-on-surface-variant flex items-center gap-2">
-<span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
-                                    GeoIP2 Database Resolution
-                                </td>
-<td class="px-8 py-4 text-right font-medium tabular-nums text-on-surface/80">2026-04-03 23:55:12</td>
-</tr>
-<tr class="hover:bg-slate-50/40 transition-colors">
-<td class="px-8 py-4 font-mono font-semibold text-on-surface border-r border-surface-container-high/30">192.168.97.1</td>
-<td class="px-8 py-4 text-on-surface-variant flex items-center gap-2">
-<span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
-                                    GeoIP2 Database Resolution
-                                </td>
-<td class="px-8 py-4 text-right font-medium tabular-nums text-on-surface/80">2026-04-03 21:00:00</td>
-</tr>
-<tr class="hover:bg-slate-50/40 transition-colors">
-<td class="px-8 py-4 font-mono font-semibold text-on-surface border-r border-surface-container-high/30">192.168.97.1</td>
-<td class="px-8 py-4 text-on-surface-variant flex items-center gap-2">
-<span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
-                                    GeoIP2 Database Resolution
-                                </td>
-<td class="px-8 py-4 text-right font-medium tabular-nums text-on-surface/80">2026-04-03 18:42:19</td>
-</tr>
-<tr class="hover:bg-slate-50/40 transition-colors">
-<td class="px-8 py-4 font-mono font-semibold text-on-surface border-r border-surface-container-high/30">192.168.97.1</td>
-<td class="px-8 py-4 text-on-surface-variant flex items-center gap-2">
-<span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
-                                    GeoIP2 Database Resolution
-                                </td>
-<td class="px-8 py-4 text-right font-medium tabular-nums text-on-surface/80">2026-04-03 14:22:10</td>
-</tr>
-<tr class="hover:bg-slate-50/40 transition-colors">
-<td class="px-8 py-4 font-mono font-semibold text-on-surface border-r border-surface-container-high/30">192.168.97.1</td>
-<td class="px-8 py-4 text-on-surface-variant flex items-center gap-2">
-<span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
-                                    GeoIP2 Database Resolution
-                                </td>
-<td class="px-8 py-4 text-right font-medium tabular-nums text-on-surface/80">2026-04-03 09:11:54</td>
-</tr>
-<tr class="hover:bg-slate-50/40 transition-colors">
-<td class="px-8 py-4 font-mono font-semibold text-on-surface border-r border-surface-container-high/30">192.168.97.1</td>
-<td class="px-8 py-4 text-on-surface-variant flex items-center gap-2">
-<span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
-                                    GeoIP2 Database Resolution
-                                </td>
-<td class="px-8 py-4 text-right font-medium tabular-nums text-on-surface/80">2026-04-02 22:30:11</td>
-</tr>
-<tr class="hover:bg-slate-50/40 transition-colors">
-<td class="px-8 py-4 font-mono font-semibold text-on-surface border-r border-surface-container-high/30">192.168.97.1</td>
-<td class="px-8 py-4 text-on-surface-variant flex items-center gap-2">
-<span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
-                                    GeoIP2 Database Resolution
-                                </td>
-<td class="px-8 py-4 text-right font-medium tabular-nums text-on-surface/80">2026-04-02 17:15:00</td>
-</tr>
-<tr class="hover:bg-slate-50/40 transition-colors">
-<td class="px-8 py-4 font-mono font-semibold text-on-surface border-r border-surface-container-high/30">192.168.97.1</td>
-<td class="px-8 py-4 text-on-surface-variant flex items-center gap-2">
-<span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
-                                    GeoIP2 Database Resolution
-                                </td>
-<td class="px-8 py-4 text-right font-medium tabular-nums text-on-surface/80">2026-04-02 08:05:32</td>
-</tr>
-</tbody>
-</table>
+</div>
+<!-- Additional Mock Tickets -->
+<div class="grid grid-cols-[80px_1fr_120px_120px_160px_80px] px-8 py-6 items-center hover:bg-surface-container-low transition-colors group">
+<span class="text-slate-400 font-mono text-sm">#142</span>
+<div class="flex items-center gap-3">
+<span class="text-on-surface font-semibold text-lg">Unable to access billing dashboard</span>
+</div>
+<div>
+<span class="px-3 py-1 bg-surface-container-high text-slate-600 rounded-full text-xs font-bold uppercase tracking-tighter">财务</span>
+</div>
+<div>
+<span class="flex items-center gap-2 text-orange-600 font-bold text-xs uppercase tracking-tighter">
+<span class="w-2 h-2 rounded-full bg-orange-600"></span>
+                                Awaiting
+                            </span>
+</div>
+<span class="text-slate-500 text-sm">45 mins ago</span>
+<div class="text-right">
+<button class="p-2 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="more_horiz">more_horiz</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-[80px_1fr_120px_120px_160px_80px] px-8 py-6 items-center hover:bg-surface-container-low transition-colors group">
+<span class="text-slate-400 font-mono text-sm">#141</span>
+<div class="flex items-center gap-3">
+<span class="text-on-surface font-semibold text-lg">API latency issues on APAC-1</span>
+</div>
+<div>
+<span class="px-3 py-1 bg-surface-container-high text-slate-600 rounded-full text-xs font-bold uppercase tracking-tighter">技术</span>
+</div>
+<div>
+<span class="flex items-center gap-2 text-primary font-bold text-xs uppercase tracking-tighter">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+                                进行中
+                            </span>
+</div>
+<span class="text-slate-500 text-sm">1 hour ago</span>
+<div class="text-right">
+<button class="p-2 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="more_horiz">more_horiz</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-[80px_1fr_120px_120px_160px_80px] px-8 py-6 items-center hover:bg-surface-container-low transition-colors group">
+<span class="text-slate-400 font-mono text-sm">#140</span>
+<div class="flex items-center gap-3">
+<span class="text-on-surface font-semibold text-lg">Password reset link not received</span>
+</div>
+<div>
+<span class="px-3 py-1 bg-surface-container-high text-slate-600 rounded-full text-xs font-bold uppercase tracking-tighter">账户</span>
+</div>
+<div>
+<span class="flex items-center gap-2 text-slate-400 font-bold text-xs uppercase tracking-tighter">
+<span class="w-2 h-2 rounded-full bg-slate-400"></span>
+                                Closed
+                            </span>
+</div>
+<span class="text-slate-500 text-sm">3 hours ago</span>
+<div class="text-right">
+<button class="p-2 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="more_horiz">more_horiz</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Footer Pagination -->
+<div class="px-8 py-6 bg-surface-container-low flex justify-between items-center border-t border-outline-variant/10">
+<p class="text-sm text-slate-500">Showing <span class="font-bold text-on-surface">1 - 4</span> of 128 tickets</p>
+<div class="flex gap-2">
+<button class="p-2 rounded-xl bg-white shadow-sm text-slate-400 hover:text-primary transition-all">
+<span class="material-symbols-outlined" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="px-4 py-2 rounded-xl bg-primary text-white font-bold text-sm">1</button>
+<button class="px-4 py-2 rounded-xl bg-white shadow-sm text-slate-600 font-bold text-sm hover:bg-slate-50">2</button>
+<button class="px-4 py-2 rounded-xl bg-white shadow-sm text-slate-600 font-bold text-sm hover:bg-slate-50">3</button>
+<button class="p-2 rounded-xl bg-white shadow-sm text-slate-400 hover:text-primary transition-all">
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Pro Tip / Action Card -->
+<div class="mt-12 grid grid-cols-2 gap-8">
+<div class="p-8 bg-primary rounded-xl text-white relative overflow-hidden flex flex-col justify-center">
+<div class="relative z-10">
+<h4 class="text-2xl font-bold mb-2">Automate your workflow</h4>
+<p class="text-white/80 mb-6 max-w-sm">Set up auto-assignment rules to route tickets to the right team instantly.</p>
+<button class="bg-white text-primary px-6 py-2 rounded-xl font-bold text-sm hover:bg-surface-container-lowest transition-all">Configure Automation</button>
+</div>
+<div class="absolute -right-8 -bottom-8 opacity-20 transform rotate-12">
+<span class="material-symbols-outlined text-[160px]" data-icon="auto_awesome">auto_awesome</span>
+</div>
+</div>
+<div class="p-8 bg-white rounded-xl shadow-[0_4px_20px_-2px_rgba(25,28,29,0.06)] flex items-center gap-6">
+<div class="w-24 h-24 rounded-xl overflow-hidden shrink-0">
+<img alt="Customer Success" class="h-full w-full object-cover" data-alt="close up of several modern computer monitors showing lines of code and data charts in a brightly lit office" src="https://lh3.googleusercontent.com/aida-public/AB6AXuALEyC7zGMN-L1kX9MyBrdWiUTSVXJWcuQJx6j-tMik-sFZRpxpYcZc0L9tKyqw5WqFO98gu6c__eFlFKAfgh84XoyVAFyQsDxaPOTeTod4bUdohjwDbpgrf3nnNcJ5bJeHrxCEGwWKEE8hh06jKlMvNNBmmLksvvVsdKJzVgGbgsfi7nsSHR8CormozuPgQicuBuLOzHtzYuKTNUAy1RmMGzeog6gz9-2_rPy6R64ls2Xg7YuNYjqluNJEhauXRTeZgmomLy6zsAI"/>
+</div>
+<div>
+<h4 class="text-lg font-bold text-on-surface mb-1">Knowledge Base Sync</h4>
+<p class="text-slate-500 text-sm mb-4">Integrate your help docs to suggest articles during ticket creation.</p>
+<a class="text-primary font-bold text-sm flex items-center gap-1 hover:underline" href="#">
+                            View Settings <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
 </div>
 </div>
 </div>
 </main>
-<!-- Floating Background Decoration (Atmospheric Precision) -->
-<div class="fixed top-0 right-0 -z-10 w-1/2 h-full opacity-20 pointer-events-none">
-<div class="absolute top-[10%] right-[5%] w-[400px] h-[400px] bg-primary-container/10 blur-[120px] rounded-full"></div>
-<div class="absolute bottom-[20%] right-[10%] w-[300px] h-[300px] bg-secondary-container/10 blur-[100px] rounded-full"></div>
-</div>
 </body></html>

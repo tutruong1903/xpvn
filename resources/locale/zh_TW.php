@@ -54,4 +54,14 @@ return [
         'unknown_city' => '未知城市',
         'unknown_country' => '未知國家',
     ],
+    'ticket' => [
+        'create_failed' => '工單建立失敗',
+        'create_success' => '工單建立成功',
+        'reply_failed' => '工單回覆失敗',
+        'reply_success' => '工單回覆成功',
+        'not_found' => '工單不存在',
+        'type_required' => '請選擇工單類型',
+        'title_required' => '標題不能為空',
+        'comment_required' => '內容不能為空',
+    ],
 ];

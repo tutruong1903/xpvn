@@ -54,4 +54,14 @@ return [
         'unknown_city' => 'Unknown City',
         'unknown_country' => 'Unknown Country',
     ],
+    'ticket' => [
+        'create_failed' => 'Failed to create ticket',
+        'create_success' => 'Ticket created successfully',
+        'reply_failed' => 'Failed to reply ticket',
+        'reply_success' => 'Ticket replied successfully',
+        'not_found' => 'Ticket not found',
+        'type_required' => 'Please select ticket type',
+        'title_required' => 'Title is required',
+        'comment_required' => 'Comment is required',
+    ],
 ];

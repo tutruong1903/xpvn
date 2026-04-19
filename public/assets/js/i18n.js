@@ -172,6 +172,19 @@
             footerDict,
         );
 
+        // User ticket section
+        var ticketDict = getUserSectionDict(locale, "ticket");
+        applyAttributeFromDict(
+            "[data-i18n-user-ticket]",
+            "data-i18n-user-ticket",
+            ticketDict,
+        );
+        document.querySelectorAll("[data-i18n-user-ticket-ph]").forEach(function (el) {
+            var key = el.getAttribute("data-i18n-user-ticket-ph");
+            var val = resolveKey(ticketDict, key);
+            if (val) el.setAttribute("placeholder", val);
+        });
+
         // Admin panel sections
         applyAttributeFromDict(
             "[data-i18n^='admin.side-bar.']",

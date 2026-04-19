@@ -54,4 +54,14 @@ return [
         'unknown_city' => 'Thành phố không xác định',
         'unknown_country' => 'Quốc gia không xác định',
     ],
+    'ticket' => [
+        'create_failed' => 'Tạo yêu cầu hỗ trợ thất bại',
+        'create_success' => 'Tạo yêu cầu hỗ trợ thành công',
+        'reply_failed' => 'Phản hồi yêu cầu hỗ trợ thất bại',
+        'reply_success' => 'Phản hồi yêu cầu hỗ trợ thành công',
+        'not_found' => 'Yêu cầu hỗ trợ không tồn tại',
+        'type_required' => 'Vui lòng chọn loại yêu cầu',
+        'title_required' => 'Tiêu đề không được để trống',
+        'comment_required' => 'Nội dung không được để trống',
+    ],
 ];

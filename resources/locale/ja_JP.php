@@ -54,4 +54,14 @@ return [
         'unknown_city' => '不明な都市',
         'unknown_country' => '不明な国',
     ],
+    'ticket' => [
+        'create_failed' => 'チケットの作成に失敗しました',
+        'create_success' => 'チケットが正常に作成されました',
+        'reply_failed' => 'チケットへの返信に失敗しました',
+        'reply_success' => 'チケットへの返信が完了しました',
+        'not_found' => 'チケットが見つかりません',
+        'type_required' => 'チケットタイプを選択してください',
+        'title_required' => 'タイトルは必須です',
+        'comment_required' => 'コメントは必須です',
+    ],
 ];

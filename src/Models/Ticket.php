@@ -28,8 +28,8 @@ final class Ticket extends Model
     public function type(): string
     {
         return match ($this->type) {
-            'howto' => '使用',
-            'billing' => '财务',
+            'howto' => '使用说明',
+            'billing' => '支付',
             'account' => '账户',
             default => '其他',
         };

@@ -258,7 +258,10 @@
     });
 
     function deleteUser(user_id) {
-        $('#notice-message').text('确定删除此用户？');
+        var locale  = window.sspanelI18n ? window.sspanelI18n.getLocale() : 'en_US';
+        var userLoc = (window.i18nLocales && window.i18nLocales.admin && window.i18nLocales.admin.user && window.i18nLocales.admin.user[locale]) || {};
+        var msg     = (userLoc.index && userLoc.index.delete_confirm) || '确定删除此用户？';
+        $('#notice-message').text(msg);
         $('#notice-dialog').modal('show');
         $('#notice-confirm').off('click').on('click', function () {
             $.ajax({

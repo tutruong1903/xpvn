@@ -54,6 +54,15 @@ return [
         'unknown_city' => 'Unknown City',
         'unknown_country' => 'Unknown Country',
     ],
+    'admin_user' => [
+        'create_success' => 'User created successfully, email: %email%, password: %password%',
+        'create_email_empty' => 'Email cannot be empty',
+        'create_email_exists' => 'This email is already registered',
+        'update_success' => 'Updated successfully',
+        'update_failed' => 'Update failed',
+        'delete_success' => 'Deleted successfully',
+        'delete_failed' => 'Delete failed',
+    ],
     'ticket' => [
         'create_failed' => 'Failed to create ticket',
         'create_success' => 'Ticket created successfully',

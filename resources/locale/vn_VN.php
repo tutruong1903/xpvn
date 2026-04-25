@@ -54,6 +54,15 @@ return [
         'unknown_city' => 'Thành phố không xác định',
         'unknown_country' => 'Quốc gia không xác định',
     ],
+    'admin_user' => [
+        'create_success' => 'Thêm thành công, email: %email%, mật khẩu: %password%',
+        'create_email_empty' => 'Email không được để trống',
+        'create_email_exists' => 'Email này đã được đăng ký',
+        'update_success' => 'Cập nhật thành công',
+        'update_failed' => 'Cập nhật thất bại',
+        'delete_success' => 'Xóa thành công',
+        'delete_failed' => 'Xóa thất bại',
+    ],
     'ticket' => [
         'create_failed' => 'Tạo yêu cầu hỗ trợ thất bại',
         'create_success' => 'Tạo yêu cầu hỗ trợ thành công',

@@ -1,270 +1,256 @@
 {include file='admin/header.tpl'}
 
+<link href="/assets/css/admin/user-edit.css{asset_ver path="/assets/css/admin/user-edit.css"}" rel="stylesheet"/>
+
+
+<div class="page-body">
     <div class="container-xl">
-        <div class="page-header d-print-none">
-            <div class="row align-items-center">
-                <div class="col">
-                    <h2 class="page-title">
-                        <span class="home-title">用户 #{$edit_user->id}</span>
-                    </h2>
-                    <div class="page-pretitle my-3">
-                        <span class="home-subtitle">用户编辑</span>
+        <form class="lmn-edit-grid" id="edit-user-form">
+
+            <!-- =====================================================
+                 Column 1: Account Info + Activity History
+                 ===================================================== -->
+            <div class="lmn-edit-col">
+
+                <!-- Account Information Card -->
+                <div class="lmn-edit-card">
+                    <div class="lmn-edit-card-header">
+                        <span class="material-symbols-outlined lmn-edit-card-icon">account_circle</span>
+                        <h2 class="lmn-edit-card-title" data-i18n="admin.user.edit.section_account">账户信息</h2>
                     </div>
-                </div>
-                <div class="col-auto">
-                    <div class="btn-list">
-                        <a id="save_changes" href="#" class="btn btn-primary">
-                            <i class="icon ti ti-device-floppy"></i>
-                            保存
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="page-body">
-        <div class="container-xl">
-            <div class="row row-deck row-cards">
-                <div class="col-md-4 col-sm-12">
-                    <div class="card">
-                        <div class="card-header card-header-light">
-                            <h3 class="card-title">账户信息</h3>
+                    <div class="lmn-edit-fields">
+                        <div class="lmn-edit-field">
+                            <label class="lmn-edit-label" data-i18n="admin.user.edit.field_email">EMAIL</label>
+                            <input id="email" type="email" class="lmn-edit-input" value="{$edit_user->email}">
                         </div>
-                        <div class="card-body">
-                            <div class="form-group mb-3 row">
-                                <label class="form-label col-3 col-form-label">邮箱</label>
-                                <div class="col">
-                                    <input id="email" type="email" class="form-control" value="{$edit_user->email}">
-                                </div>
+                        <div class="lmn-edit-field">
+                            <label class="lmn-edit-label" data-i18n="admin.user.edit.field_username">用户名</label>
+                            <input id="user_name" type="text" class="lmn-edit-input" value="{$edit_user->user_name}">
+                        </div>
+                        <div class="lmn-edit-field">
+                            <label class="lmn-edit-label" data-i18n="admin.user.edit.field_password">密码</label>
+                            <input id="pass" type="password" class="lmn-edit-input"
+                                   data-i18n-placeholder="admin.user.edit.ph_password"
+                                   placeholder="••••••••">
+                        </div>
+                        <div class="lmn-edit-row-2">
+                            <div class="lmn-edit-field">
+                                <label class="lmn-edit-label" data-i18n="admin.user.edit.field_balance">余额</label>
+                                <input id="money" type="number" step="1" class="lmn-edit-input"
+                                       value="{$edit_user->money}">
                             </div>
-                            <div class="form-group mb-3 row">
-                                <label class="form-label col-3 col-form-label">用户名</label>
-                                <div class="col">
-                                    <input id="user_name" type="text" class="form-control"
-                                           value="{$edit_user->user_name}">
-                                </div>
-                            </div>
-                            <div class="form-group mb-3 row">
-                                <label class="form-label col-3 col-form-label">账户密码</label>
-                                <div class="col">
-                                    <input id="pass" type="text" class="form-control"
-                                           placeholder="若需为此用户重置密码, 填写此栏">
-                                </div>
-                            </div>
-                            <div class="form-group mb-3 row">
-                                <label class="form-label col-3 col-form-label">账户余额</label>
-                                <div class="col">
-                                    <input id="money" type="number" step="1" class="form-control"
-                                           value="{$edit_user->money}">
-                                </div>
-                            </div>
-                            <div class="form-group mb-3 row">
-                                <label class="form-label col-3 col-form-label">邀请人</label>
-                                <div class="col">
-                                    <input id="ref_by" type="text" class="form-control" value="{$edit_user->ref_by}">
-                                </div>
-                            </div>
-                            <div class="form-group mb-3 row">
-                                <label class="form-label col-3 col-form-label">SS端口</label>
-                                <div class="col">
-                                    <input id="port" type="text" class="form-control" value="{$edit_user->port}">
-                                </div>
-                            </div>
-                            <div class="form-group mb-3 row">
-                                <label class="form-label col-3 col-form-label">SS加密方式</label>
-                                <div class="col">
-                                    <select id="method" class="col form-select" value="{$edit_user->method}">
-                                        {foreach $ss_methods as $method}
-                                            <option value="{$method}" {if $edit_user->method === $method}selected{/if}>
-                                                {$method}
-                                            </option>
-                                        {/foreach}
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group mb-3 row">
-                                <label class="form-label col-3 col-form-label">注册IP</label>
-                                <div class="col">
-                                    <input type="text" class="form-control" value="{$edit_user->reg_ip}" disabled/>
-                                </div>
-                            </div>
-                            <div class="form-group mb-3 row">
-                                <label class="form-label col-3 col-form-label">注册日期</label>
-                                <div class="col">
-                                    <input type="text" class="form-control" value="{$edit_user->reg_date}" disabled/>
-                                </div>
-                            </div>
-                            <div class="form-group mb-3 row">
-                                <label class="form-label col-3 col-form-label">最后使用时间</label>
-                                <div class="col">
-                                    <input type="text" class="form-control" value="{$edit_user->last_use_time}" disabled/>
-                                </div>
-                            </div>
-                            <div class="form-group mb-3 row">
-                                <label class="form-label col-3 col-form-label">最后签到时间</label>
-                                <div class="col">
-                                    <input type="text" class="form-control" value="{$edit_user->last_check_in_time}" disabled/>
-                                </div>
-                            </div>
-                            <div class="form-group mb-3 row">
-                                <label class="form-label col-3 col-form-label">最后登录时间</label>
-                                <div class="col">
-                                    <input type="text" class="form-control" value="{$edit_user->last_login_time}" disabled/>
-                                </div>
+                            <div class="lmn-edit-field">
+                                <label class="lmn-edit-label" data-i18n="admin.user.edit.field_ref_by">邀请人</label>
+                                <input id="ref_by" type="text" class="lmn-edit-input" value="{$edit_user->ref_by}">
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-12">
-                    <div class="card">
-                        <div class="card-header card-header-light">
-                            <h3 class="card-title">使用限制</h3>
-                        </div>
-                        <div class="card-body">
-                            <div class="form-group mb-3 row">
-                                <label class="form-label col-4 col-form-label">流量限制</label>
-                                <div class="col">
-                                    <input id="transfer_enable" type="text" class="form-control"
-                                           value="{$edit_user->enableTraffic()}">
-                                </div>
+                        <div class="lmn-edit-row-2">
+                            <div class="lmn-edit-field">
+                                <label class="lmn-edit-label" data-i18n="admin.user.edit.field_port">SS端口</label>
+                                <input id="port" type="text" class="lmn-edit-input" value="{$edit_user->port}">
                             </div>
-                            <div class="form-group mb-3 row">
-                                <label class="form-label col-4 col-form-label">当期用量</label>
-                                <div class="col">
-                                    <input type="text" class="form-control"
-                                           value="{$edit_user->usedTraffic()}" disabled/>
-                                </div>
-                            </div>
-                            <div class="form-group mb-3 row">
-                                <label class="form-label col-4 col-form-label">累计用量</label>
-                                <div class="col">
-                                    <input type="text" class="form-control"
-                                           value="{$edit_user->totalTraffic()}" disabled/>
-                                </div>
-                            </div>
-                            <div class="form-group mb-3 row">
-                                <label class="form-label col-4 col-form-label">节点群组</label>
-                                <div class="col">
-                                    <input id="node_group" type="text" class="form-control"
-                                           value="{$edit_user->node_group}">
-                                </div>
-                            </div>
-                            <div class="form-group mb-3 row">
-                                <label class="form-label col-4 col-form-label">账户等级</label>
-                                <div class="col">
-                                    <input id="class" type="text" class="form-control"
-                                           value="{$edit_user->class}">
-                                </div>
-                            </div>
-                            <div class="form-group mb-3 row">
-                                <label class="form-label col-4 col-form-label">等级过期时间</label>
-                                <div class="col">
-                                    <input id="class_expire" type="text" class="form-control"
-                                           value="{$edit_user->class_expire}">
-                                </div>
-                            </div>
-                            <div class="form-group mb-3 row">
-                                <label class="form-label col-4 col-form-label">免费用户流量重置日</label>
-                                <div class="col">
-                                    <input id="auto_reset_day" type="text" class="form-control"
-                                           value="{$edit_user->auto_reset_day}">
-                                </div>
-                            </div>
-                            <div class="form-group mb-3 row">
-                                <label class="form-label col-4 col-form-label">重置的免费流量(GB)</label>
-                                <div class="col">
-                                    <input id="auto_reset_bandwidth" type="text" class="form-control"
-                                           value="{$edit_user->auto_reset_bandwidth}">
-                                </div>
-                            </div>
-                            <div class="form-group mb-3 row">
-                                <label class="form-label col-4 col-form-label">速度限制 (Mbps)</label>
-                                <div class="col">
-                                    <input id="node_speedlimit" type="text" class="form-control"
-                                           value="{$edit_user->node_speedlimit}">
-                                </div>
-                            </div>
-                            <div class="form-group mb-3 row">
-                                <label class="form-label col-4 col-form-label">同時连接 IP 限制</label>
-                                <div class="col">
-                                    <input id="node_iplimit" type="text" class="form-control"
-                                           value="{$edit_user->node_iplimit}">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-12">
-                    <div class="card">
-                        <div class="card-header card-header-light">
-                            <h3 class="card-title">其他设置</h3>
-                        </div>
-                        <div class="card-body">
-                            <div class="form-group mb-3 row">
-                                <label class="form-label col-3 col-form-label">显示语言</label>
-                                <div class="col">
-                                    <select id="locale" class="col form-select" value="{$edit_user->locale}">
-                                        {foreach $locales as $locale}
-                                        <option value="{$locale}" {if $edit_user->locale === $locale}selected{/if}>
-                                            {$locale}
+                            <div class="lmn-edit-field">
+                                <label class="lmn-edit-label" data-i18n="admin.user.edit.field_method">加密方式</label>
+                                <select id="method" class="lmn-edit-select">
+                                    {foreach $ss_methods as $method}
+                                        <option value="{$method}" {if $edit_user->method === $method}selected{/if}>
+                                            {$method}
                                         </option>
-                                        {/foreach}
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group mb-3 row">
-                                <span class="col">管理员</span>
-                                <span class="col-auto">
-                                    <label class="form-check form-check-single form-switch">
-                                        <input id="is_admin" class="form-check-input" type="checkbox"
-                                               {if $edit_user->is_admin}checked="" {/if}>
-                                    </label>
-                                </span>
-                            </div>
-                            <div class="form-group mb-3 row">
-                                <span class="col">两步认证</span>
-                                <span class="col-auto">
-                                    <label class="form-check form-check-single form-switch">
-                                        <input id="ga_enable" class="form-check-input" type="checkbox"
-                                               {if $edit_user->ga_enable}checked="" {/if}>
-                                    </label>
-                                </span>
-                            </div>
-                            <div class="form-group mb-3 row">
-                                <span class="col">账户异常状态（Shadow Banned）</span>
-                                <span class="col-auto form-check-single form-switch">
-                                    <input id="is_shadow_banned" class="form-check-input" type="checkbox"
-                                           {if $edit_user->is_shadow_banned}checked=""{/if}>
-                                </span>
-                            </div>
-                            <div class="form-group mb-3 row">
-                                <span class="col">封禁用户</span>
-                                <span class="col-auto">
-                                    <label class="form-check form-check-single form-switch">
-                                        <input id="is_banned" class="form-check-input" type="checkbox"
-                                               {if $edit_user->is_banned}checked=""{/if}>
-                                    </label>
-                                </span>
-                            </div>
-                            <div class="form-group mb-3 col-12">
-                                <span class="form-label col-12 col-form-label">手动封禁理由</span>
-                                <span class="col-auto">
-                                    <textarea id="banned_reason" class="form-control"
-                                              value="{$edit_user->banned_reason}"></textarea>
-                                </span>
-                            </div>
-                            <div class="form-group mb-3 col-12">
-                                <label class="form-label col-12 col-form-label">账户备注</label>
-                                <div class="col">
-                                    <textarea id="remark" class="form-control" value="{$edit_user->remark}"
-                                              placeholder="仅管理员可见"></textarea>
-                                </div>
+                                    {/foreach}
+                                </select>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <!-- Activity History -->
+                <div class="lmn-edit-history">
+                    <h3 class="lmn-edit-history-title">
+                        <span class="material-symbols-outlined">history</span>
+                        <span data-i18n="admin.user.edit.section_history">活动历史</span>
+                    </h3>
+                    <div class="lmn-edit-history-rows">
+                        <div class="lmn-edit-history-row">
+                            <span class="lmn-edit-history-label" data-i18n="admin.user.edit.history_reg_ip">注册IP</span>
+                            <span class="lmn-edit-history-val lmn-mono">{$edit_user->reg_ip}</span>
+                        </div>
+                        <div class="lmn-edit-history-row">
+                            <span class="lmn-edit-history-label" data-i18n="admin.user.edit.history_reg_date">注册日期</span>
+                            <span class="lmn-edit-history-val">{$edit_user->reg_date}</span>
+                        </div>
+                        <div class="lmn-edit-history-row">
+                            <span class="lmn-edit-history-label" data-i18n="admin.user.edit.history_last_use">最后使用</span>
+                            <span class="lmn-edit-history-val">{$edit_user->lastUseTime()}</span>
+                        </div>
+                        <div class="lmn-edit-history-row">
+                            <span class="lmn-edit-history-label" data-i18n="admin.user.edit.history_last_checkin">最后签到</span>
+                            <span class="lmn-edit-history-val">{$edit_user->lastCheckInTime()}</span>
+                        </div>
+                        <div class="lmn-edit-history-row">
+                            <span class="lmn-edit-history-label" data-i18n="admin.user.edit.history_last_login">最后登录</span>
+                            <span class="lmn-edit-history-val">{$edit_user->last_login_time}</span>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-        </div>
+
+            <!-- =====================================================
+                 Column 2: Usage Limits
+                 ===================================================== -->
+            <div class="lmn-edit-col">
+
+                <div class="lmn-edit-card">
+                    <div class="lmn-edit-card-header">
+                        <span class="material-symbols-outlined lmn-edit-card-icon">speed</span>
+                        <h2 class="lmn-edit-card-title" data-i18n="admin.user.edit.section_usage">使用限制</h2>
+                    </div>
+                    <div class="lmn-edit-fields">
+                        <div class="lmn-edit-field">
+                            <label class="lmn-edit-label" data-i18n="admin.user.edit.field_transfer_enable">流量限制 (GB)</label>
+                            <input id="transfer_enable" type="text" class="lmn-edit-input"
+                                   value="{$edit_user->enableTraffic()}">
+                        </div>
+                        <div class="lmn-edit-row-2">
+                            <div class="lmn-edit-field">
+                                <label class="lmn-edit-label" data-i18n="admin.user.edit.field_transfer_used">当期用量</label>
+                                <div class="lmn-edit-readonly">{$edit_user->usedTraffic()}</div>
+                            </div>
+                            <div class="lmn-edit-field">
+                                <label class="lmn-edit-label" data-i18n="admin.user.edit.field_transfer_total">累计用量</label>
+                                <div class="lmn-edit-readonly">{$edit_user->totalTraffic()}</div>
+                            </div>
+                        </div>
+                        <div class="lmn-edit-row-2">
+                            <div class="lmn-edit-field">
+                                <label class="lmn-edit-label" data-i18n="admin.user.edit.field_class">等级</label>
+                                <select id="class" class="lmn-edit-select">
+                                    <option value="0" {if $edit_user->class === 0}selected{/if}
+                                            data-i18n="admin.user.edit.level_basic">Basic</option>
+                                    <option value="1" {if $edit_user->class === 1}selected{/if}
+                                            data-i18n="admin.user.edit.level_standard">Standard</option>
+                                    <option value="2" {if $edit_user->class === 2}selected{/if}
+                                            data-i18n="admin.user.edit.level_premium">Premium</option>
+                                    <option value="3" {if $edit_user->class >= 3}selected{/if}
+                                            data-i18n="admin.user.edit.level_vip">VIP</option>
+                                </select>
+                            </div>
+                            <div class="lmn-edit-field">
+                                <label class="lmn-edit-label" data-i18n="admin.user.edit.field_node_group">节点群组</label>
+                                <input id="node_group" type="number" class="lmn-edit-input"
+                                       value="{$edit_user->node_group}">
+                            </div>
+                        </div>
+                        <div class="lmn-edit-field">
+                            <label class="lmn-edit-label" data-i18n="admin.user.edit.field_class_expire">等级过期时间</label>
+                            <input id="class_expire" type="text" class="lmn-edit-input"
+                                   value="{$edit_user->class_expire}">
+                        </div>
+                        <div class="lmn-edit-row-2">
+                            <div class="lmn-edit-field">
+                                <label class="lmn-edit-label" data-i18n="admin.user.edit.field_auto_reset_day">流量重置日</label>
+                                <input id="auto_reset_day" type="number" class="lmn-edit-input"
+                                       value="{$edit_user->auto_reset_day}">
+                            </div>
+                            <div class="lmn-edit-field">
+                                <label class="lmn-edit-label" data-i18n="admin.user.edit.field_auto_reset_bandwidth">重置流量 (GB)</label>
+                                <input id="auto_reset_bandwidth" type="number" class="lmn-edit-input"
+                                       value="{$edit_user->auto_reset_bandwidth}">
+                            </div>
+                        </div>
+                        <div class="lmn-edit-row-2">
+                            <div class="lmn-edit-field">
+                                <label class="lmn-edit-label" data-i18n="admin.user.edit.field_speedlimit">速度限制 (Mbps)</label>
+                                <input id="node_speedlimit" type="number" class="lmn-edit-input"
+                                       value="{$edit_user->node_speedlimit}">
+                            </div>
+                            <div class="lmn-edit-field">
+                                <label class="lmn-edit-label" data-i18n="admin.user.edit.field_iplimit">同时连接限制</label>
+                                <input id="node_iplimit" type="number" class="lmn-edit-input"
+                                       value="{$edit_user->node_iplimit}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- =====================================================
+                 Column 3: Other Settings + Action Buttons
+                 ===================================================== -->
+            <div class="lmn-edit-col">
+
+                <div class="lmn-edit-card">
+                    <div class="lmn-edit-card-header">
+                        <span class="material-symbols-outlined lmn-edit-card-icon">settings_applications</span>
+                        <h2 class="lmn-edit-card-title" data-i18n="admin.user.edit.section_other">其他设置</h2>
+                    </div>
+                    <div class="lmn-edit-fields">
+                        <div class="lmn-edit-field">
+                            <label class="lmn-edit-label" data-i18n="admin.user.edit.field_locale">显示语言</label>
+                            <select id="locale" class="lmn-edit-select">
+                                {foreach $locales as $locale}
+                                    <option value="{$locale}" {if $edit_user->locale === $locale}selected{/if}>
+                                        {$locale}
+                                    </option>
+                                {/foreach}
+                            </select>
+                        </div>
+
+                        <div class="lmn-edit-toggles">
+                            <div class="lmn-edit-toggle-row">
+                                <span class="lmn-edit-toggle-label" data-i18n="admin.user.edit.field_is_admin">管理员权限</span>
+                                <label class="lmn-toggle">
+                                    <input id="is_admin" type="checkbox" class="lmn-toggle-input"
+                                           {if $edit_user->is_admin}checked{/if}>
+                                    <span class="lmn-toggle-track"></span>
+                                </label>
+                            </div>
+                            <div class="lmn-edit-toggle-row">
+                                <span class="lmn-edit-toggle-label" data-i18n="admin.user.edit.field_is_shadow_banned">Shadow Ban</span>
+                                <label class="lmn-toggle lmn-toggle--danger">
+                                    <input id="is_shadow_banned" type="checkbox" class="lmn-toggle-input"
+                                           {if $edit_user->is_shadow_banned}checked{/if}>
+                                    <span class="lmn-toggle-track"></span>
+                                </label>
+                            </div>
+                            <div class="lmn-edit-toggle-row">
+                                <span class="lmn-edit-toggle-label" data-i18n="admin.user.edit.field_is_banned">封禁用户</span>
+                                <label class="lmn-toggle lmn-toggle--danger">
+                                    <input id="is_banned" type="checkbox" class="lmn-toggle-input"
+                                           {if $edit_user->is_banned}checked{/if}>
+                                    <span class="lmn-toggle-track"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="lmn-edit-field">
+                            <label class="lmn-edit-label" data-i18n="admin.user.edit.field_banned_reason">封禁理由</label>
+                            <textarea id="banned_reason" class="lmn-edit-textarea" rows="2"
+                                      data-i18n-placeholder="admin.user.edit.ph_banned_reason"
+                                      placeholder="手动封禁理由...">{$edit_user->banned_reason}</textarea>
+                        </div>
+                        <div class="lmn-edit-field">
+                            <label class="lmn-edit-label" data-i18n="admin.user.edit.field_remark">账户备注</label>
+                            <textarea id="remark" class="lmn-edit-textarea" rows="3"
+                                      data-i18n-placeholder="admin.user.edit.ph_remark"
+                                      placeholder="仅管理员可见...">{$edit_user->remark}</textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="lmn-edit-actions">
+                    <button id="save_changes" type="button" class="lmn-btn-save">
+                        <span data-i18n="admin.user.edit.save_btn">保存更改</span>
+                    </button>
+                    <button type="button" class="lmn-btn-cancel" onclick="history.back()">
+                        <span data-i18n="admin.user.edit.cancel_btn">取消</span>
+                    </button>
+                </div>
+
+            </div>
+        </form>
     </div>
 </div>
 
@@ -276,10 +262,9 @@
             dataType: "json",
             data: {
                 {foreach $update_field as $key}
-                {$key}: $('#{$key}').val(),
+                '{$key}': $('#{$key}').val(),
                 {/foreach}
                 is_admin: $("#is_admin").is(":checked"),
-                ga_enable: $("#ga_enable").is(":checked"),
                 is_shadow_banned: $("#is_shadow_banned").is(":checked"),
                 is_banned: $("#is_banned").is(":checked"),
             },
@@ -293,8 +278,9 @@
                     $('#fail-dialog').modal('show');
                 }
             }
-        })
+        });
     });
 </script>
 
 {include file='admin/footer.tpl'}
+

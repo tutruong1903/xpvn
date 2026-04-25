@@ -1,275 +1,313 @@
-<!DOCTYPE html>
-
-<html class="light" lang="vi"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Luminous Guardian - Quản lý người dùng</title>
+<!DOCTYPE html><html class="light" lang="vi"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>User Management - Ether Velocity</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
 <script id="tailwind-config">
         tailwind.config = {
-          darkMode: "class",
-          theme: {
-            extend: {
-              "colors": {
-                      "on-tertiary-fixed-variant": "#682f76",
-                      "surface-container-highest": "#e2e2e2",
-                      "surface-container-high": "#e8e8e8",
-                      "secondary-fixed-dim": "#b4c5ff",
-                      "tertiary-container": "#9a5da8",
-                      "surface-container-low": "#f3f3f4",
-                      "outline-variant": "#c7c4d7",
-                      "surface-bright": "#f9f9f9",
-                      "inverse-primary": "#d2bbff",
-                      "surface-dim": "#dadada",
-                      "on-background": "#1a1c1c",
-                      "on-secondary-fixed-variant": "#003ea8",
-                      "on-primary-fixed-variant": "#5a00c6",
-                      "surface": "#f9f9f9",
-                      "tertiary": "#7f458d",
-                      "surface-container-lowest": "#ffffff",
-                      "surface-tint": "#732ee4",
-                      "secondary": "#0051d5",
-                      "tertiary-fixed-dim": "#f3aeff",
-                      "surface-variant": "#e2e2e2",
-                      "on-error": "#ffffff",
-                      "inverse-on-surface": "#f0f1f1",
-                      "on-primary-container": "#fffbff",
-                      "on-tertiary-container": "#fffbff",
-                      "primary-fixed": "#eaddff",
-                      "on-primary-fixed": "#25005a",
-                      "on-primary": "#ffffff",
-                      "background": "#f9f9f9",
-                      "outline": "#767586",
-                      "on-secondary-fixed": "#00174b",
-                      "on-secondary-container": "#fefcff",
-                      "on-surface-variant": "#464554",
-                      "on-surface": "#1a1c1c",
-                      "surface-container": "#eeeeee",
-                      "error-container": "#ffdad6",
-                      "primary-container": "#8a4cfc",
-                      "tertiary-fixed": "#fcd6ff",
-                      "secondary-container": "#316bf3",
-                      "on-error-container": "#93000a",
-                      "inverse-surface": "#2f3131",
-                      "primary-fixed-dim": "#d2bbff",
-                      "on-tertiary-fixed": "#340042",
-                      "primary": "#712ae2",
-                      "secondary-fixed": "#dbe1ff",
-                      "on-tertiary": "#ffffff",
-                      "error": "#ba1a1a",
-                      "on-secondary": "#ffffff"
-              },
-              "borderRadius": {
-                      "DEFAULT": "0.25rem",
-                      "lg": "0.5rem",
-                      "xl": "0.75rem",
-                      "full": "9999px"
-              },
-              "fontFamily": {
-                      "headline": ["Manrope"],
-                      "display": ["Manrope"],
-                      "body": ["Inter"],
-                      "label": ["Inter"]
-              }
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface": "#f9f9f9",
+                        "surface-container-highest": "#e2e2e2",
+                        "secondary-fixed-dim": "#b4c5ff",
+                        "on-primary-fixed-variant": "#5a00c6",
+                        "on-primary-fixed": "#25005a",
+                        "error-container": "#ffdad6",
+                        "outline": "#767586",
+                        "surface-bright": "#f9f9f9",
+                        "primary-fixed-dim": "#d2bbff",
+                        "on-secondary-fixed-variant": "#003ea8",
+                        "surface-variant": "#e2e2e2",
+                        "secondary-fixed": "#dbe1ff",
+                        "on-tertiary-fixed": "#340042",
+                        "tertiary-fixed": "#fcd6ff",
+                        "surface-container-low": "#f3f3f4",
+                        "outline-variant": "#c7c4d7",
+                        "secondary-container": "#316bf3",
+                        "on-secondary-container": "#fefcff",
+                        "inverse-primary": "#d2bbff",
+                        "on-background": "#1a1c1c",
+                        "on-tertiary-fixed-variant": "#682f76",
+                        "secondary": "#0051d5",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-container": "#8a4cfc",
+                        "inverse-on-surface": "#f0f1f1",
+                        "on-surface": "#1a1c1c",
+                        "surface-dim": "#dadada",
+                        "on-secondary-fixed": "#00174b",
+                        "primary": "#712ae2",
+                        "on-primary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "surface-container-high": "#e8e8e8",
+                        "on-primary-container": "#fffbff",
+                        "tertiary-container": "#9a5da8",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed-dim": "#f3aeff",
+                        "surface-container": "#eeeeee",
+                        "error": "#ba1a1a",
+                        "background": "#f9f9f9",
+                        "on-tertiary": "#ffffff",
+                        "tertiary": "#7f458d",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#2f3131",
+                        "on-tertiary-container": "#fffbff",
+                        "on-surface-variant": "#464554",
+                        "surface-tint": "#732ee4",
+                        "primary-fixed": "#eaddff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "display": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
             },
-          }
         }
     </script>
 <style>
-        body { font-family: 'Inter', sans-serif; }
-        .font-headline { font-family: 'Manrope', sans-serif; }
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
         }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .brand-font { font-family: 'Manrope', sans-serif; }
     </style>
 </head>
 <body class="bg-surface text-on-surface">
-
 <!-- Main Content -->
-<main class="ml-72 pt-28 px-10 pb-12">
-<div class="max-w-7xl mx-auto">
-<!-- Header Section -->
-<div class="flex justify-between items-end mb-8">
-<div>
-<h2 class="text-4xl font-headline font-black text-on-surface tracking-tight">Danh sách người dùng</h2>
-<p class="text-on-surface-variant mt-2 font-medium">Quản lý và giám sát tất cả tài khoản trong hệ thống Guardian.</p>
+<main class="ml-64 p-8 min-h-screen bg-surface">
+<!-- Header & Breadcrumb -->
+<div class="mb-10">
+<nav class="flex items-center space-x-2 text-sm text-on-surface-variant mb-2">
+<a class="hover:text-primary transition-colors" href="#" style="">Bảng điều khiển</a>
+<span class="material-symbols-outlined text-xs" style="">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#" style="">Người dùng</a>
+<span class="material-symbols-outlined text-xs" style="">chevron_right</span>
+<span class="text-primary font-semibold" style="">Chỉnh sửa</span>
+</nav>
+<h1 class="text-4xl font-extrabold tracking-tight text-on-surface" style="">Bảng điều khiển quản trị</h1>
 </div>
-<button class="px-6 py-3 bg-gradient-to-br from-primary to-primary-container text-white font-bold rounded-full shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all flex items-center gap-2">
-<span class="material-symbols-outlined text-xl">add</span>
-<span>Tạo mới</span>
-</button>
+<form class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Column 1: Account Info -->
+<div class="space-y-6">
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm border border-outline-variant/10">
+<div class="flex items-center space-x-3 mb-6">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: &quot;FILL&quot; 1;">account_circle</span>
+<h2 class="text-lg font-bold" style="">Thông tin tài khoản</h2>
 </div>
-<!-- Stats Overview - Bento Style -->
-<div class="grid grid-cols-4 gap-6 mb-10">
-<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
-<p class="text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-2">Tổng người dùng</p>
-<div class="flex items-baseline gap-2">
-<h3 class="text-2xl font-black text-on-surface">1,284</h3>
-<span class="text-xs font-bold text-secondary">+12%</span>
+<div class="space-y-5">
+<div class="space-y-1.5">
+<label class="text-xs font-bold uppercase tracking-wider text-on-surface-variant" style="">Email</label>
+<input class="w-full bg-surface-container-low border-none rounded-lg text-sm px-4 py-3 focus:ring-2 focus:ring-primary/20" type="email" value="user@ethervelocity.io">
 </div>
+<div class="space-y-1.5">
+<label class="text-xs font-bold uppercase tracking-wider text-on-surface-variant" style="">Tên người dùng</label>
+<input class="w-full bg-surface-container-low border-none rounded-lg text-sm px-4 py-3 focus:ring-2 focus:ring-primary/20" type="text" value="velocity_prime">
 </div>
-<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
-<p class="text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-2">Đang hoạt động</p>
-<div class="flex items-baseline gap-2">
-<h3 class="text-2xl font-black text-on-surface">942</h3>
-<span class="text-xs font-bold text-secondary">Secured</span>
+<div class="space-y-1.5">
+<label class="text-xs font-bold uppercase tracking-wider text-on-surface-variant" style="">Mật khẩu (Nhập để đặt lại)</label>
+<input class="w-full bg-surface-container-low border-none rounded-lg text-sm px-4 py-3 focus:ring-2 focus:ring-primary/20" placeholder="••••••••" type="password">
 </div>
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-1.5">
+<label class="text-xs font-bold uppercase tracking-wider text-on-surface-variant" style="">Số dư</label>
+<input class="w-full bg-surface-container-low border-none rounded-lg text-sm px-4 py-3 focus:ring-2 focus:ring-primary/20" type="text" value="150,000 ₫">
 </div>
-<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
-<p class="text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-2">Bị cấm</p>
-<div class="flex items-baseline gap-2">
-<h3 class="text-2xl font-black text-on-surface">18</h3>
-<span class="text-xs font-bold text-error">Action required</span>
-</div>
-</div>
-<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
-<p class="text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-2">Băng thông tháng</p>
-<div class="flex items-baseline gap-2">
-<h3 class="text-2xl font-black text-on-surface">4.2 TB</h3>
-<span class="text-xs font-bold text-primary">Luminous Speed</span>
-</div>
-</div>
-</div>
-<!-- Table Actions & Search -->
-<div class="mb-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
-<div class="relative w-full md:w-96 group">
-<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline text-xl group-focus-within:text-primary transition-colors">search</span>
-<input class="w-full pl-12 pr-4 py-3 bg-surface-container-lowest border border-outline-variant/50 rounded-xl text-sm placeholder:text-on-surface-variant/60 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/30 transition-all shadow-sm" placeholder="Tìm kiếm nhanh ID, tên hoặc email..." type="text"/>
-</div>
-<div class="flex items-center gap-3">
-<button class="px-4 py-2 text-xs font-bold text-on-surface-variant hover:bg-surface-container transition-colors rounded-lg flex items-center gap-2">
-<span class="material-symbols-outlined text-sm">filter_list</span> Filter
-</button>
+<div class="space-y-1.5">
+<label class="text-xs font-bold uppercase tracking-wider text-on-surface-variant" style="">Mã được mời</label>
+<input class="w-full bg-surface-container-low border-none rounded-lg text-sm px-4 py-3 focus:ring-2 focus:ring-primary/20" type="text" value="EV-9821" placeholder="1">
 </div>
 </div>
-<!-- User Table Container -->
-<div class="bg-surface-container-lowest rounded-2xl shadow-xl shadow-primary/5 overflow-hidden">
-<div class="overflow-x-auto">
-<table class="w-full text-left border-collapse">
-<thead>
-<tr class="bg-surface-container-low/50">
-<th class="px-6 py-5 text-xs font-bold text-on-surface-variant uppercase tracking-widest whitespace-nowrap">ID</th>
-<th class="px-6 py-5 text-xs font-bold text-on-surface-variant uppercase tracking-widest">Biệt danh</th>
-<th class="px-6 py-5 text-xs font-bold text-on-surface-variant uppercase tracking-widest">Email</th>
-<th class="px-6 py-5 text-xs font-bold text-on-surface-variant uppercase tracking-widest text-right">Số dư</th>
-<th class="px-6 py-5 text-xs font-bold text-on-surface-variant uppercase tracking-widest">Cấp bậc</th>
-<th class="px-6 py-5 text-xs font-bold text-on-surface-variant uppercase tracking-widest text-center">Admin?</th>
-<th class="px-6 py-5 text-xs font-bold text-on-surface-variant uppercase tracking-widest text-center">Trạng thái</th>
-<th class="px-6 py-5 text-xs font-bold text-on-surface-variant uppercase tracking-widest">Hết hạn</th>
-<th class="px-6 py-5 text-xs font-bold text-on-surface-variant uppercase tracking-widest text-right whitespace-nowrap">Thao tác</th>
-</tr>
-</thead>
-<tbody class="divide-y divide-surface-container-low">
-<!-- Row 1 -->
-<tr class="hover:bg-surface-container-low/30 transition-colors">
-<td class="px-6 py-4 text-sm font-medium text-on-surface-variant">#10294</td>
-<td class="px-6 py-4 font-bold text-on-surface">luminous_sky</td>
-<td class="px-6 py-4 text-sm text-on-surface-variant">sky@guardian.io</td>
-<td class="px-6 py-4 text-right">
-<span class="font-bold text-secondary">$145.00</span>
-</td>
-<td class="px-6 py-4">
-<span class="px-3 py-1 bg-primary/10 text-primary text-[10px] font-black uppercase rounded-full">Premium</span>
-</td>
-<td class="px-6 py-4 text-center">
-<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
-</td>
-<td class="px-6 py-4 text-center">
-<span class="px-3 py-1 bg-secondary/10 text-secondary text-[10px] font-black uppercase rounded-full">Active</span>
-</td>
-<td class="px-6 py-4 text-sm text-on-surface-variant">24/12/2024</td>
-<td class="px-6 py-4 whitespace-nowrap text-right">
-<div class="flex items-center justify-end gap-2">
-<button class="w-8 h-8 rounded-lg flex items-center justify-center text-primary hover:bg-primary/10 transition-colors">
-<span class="material-symbols-outlined text-lg">edit</span>
-</button>
-<button class="w-8 h-8 rounded-lg flex items-center justify-center text-error hover:bg-error/10 transition-colors">
-<span class="material-symbols-outlined text-lg">delete</span>
-</button>
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-1.5">
+<label class="text-xs font-bold uppercase tracking-wider text-on-surface-variant" style="">Cổng SS (Port)</label>
+<input class="w-full bg-surface-container-low border-none rounded-lg text-sm px-4 py-3 focus:ring-2 focus:ring-primary/20" type="text" value="443">
 </div>
-</td>
-</tr>
-<!-- Row 2 -->
-<tr class="hover:bg-surface-container-low/30 transition-colors">
-<td class="px-6 py-4 text-sm font-medium text-on-surface-variant">#10295</td>
-<td class="px-6 py-4 font-bold text-on-surface">cyber_phantom</td>
-<td class="px-6 py-4 text-sm text-on-surface-variant">phantom@proton.me</td>
-<td class="px-6 py-4 text-right">
-<span class="font-bold text-on-surface">$0.00</span>
-</td>
-<td class="px-6 py-4">
-<span class="px-3 py-1 bg-surface-container-high text-on-surface-variant text-[10px] font-black uppercase rounded-full">Basic</span>
-</td>
-<td class="px-6 py-4 text-center">
-<span class="material-symbols-outlined text-outline" style="font-variation-settings: 'FILL' 0;">cancel</span>
-</td>
-<td class="px-6 py-4 text-center">
-<span class="px-3 py-1 bg-error/10 text-error text-[10px] font-black uppercase rounded-full">Banned</span>
-</td>
-<td class="px-6 py-4 text-sm text-on-surface-variant">Expired</td>
-<td class="px-6 py-4 text-right">
-<div class="flex items-center justify-end gap-2">
-<button class="w-8 h-8 rounded-lg flex items-center justify-center text-primary hover:bg-primary/10 transition-colors">
-<span class="material-symbols-outlined text-lg">edit</span>
-</button>
-<button class="w-8 h-8 rounded-lg flex items-center justify-center text-error hover:bg-error/10 transition-colors">
-<span class="material-symbols-outlined text-lg">delete</span>
-</button>
-</div>
-</td>
-</tr>
-<!-- Row 3 -->
-<tr class="hover:bg-surface-container-low/30 transition-colors">
-<td class="px-6 py-4 text-sm font-medium text-on-surface-variant">#10296</td>
-<td class="px-6 py-4 font-bold text-on-surface">velocity_rush</td>
-<td class="px-6 py-4 text-sm text-on-surface-variant">rush@gmail.com</td>
-<td class="px-6 py-4 text-right">
-<span class="font-bold text-secondary">$52.40</span>
-</td>
-<td class="px-6 py-4">
-<span class="px-3 py-1 bg-primary/10 text-primary text-[10px] font-black uppercase rounded-full">VIP</span>
-</td>
-<td class="px-6 py-4 text-center">
-<span class="material-symbols-outlined text-outline" style="font-variation-settings: 'FILL' 0;">cancel</span>
-</td>
-<td class="px-6 py-4 text-center">
-<span class="px-3 py-1 bg-tertiary-container/20 text-tertiary text-[10px] font-black uppercase rounded-full">Pending</span>
-</td>
-<td class="px-6 py-4 text-sm text-on-surface-variant">12/05/2025</td>
-<td class="px-6 py-4 text-right">
-<div class="flex items-center justify-end gap-2">
-<button class="w-8 h-8 rounded-lg flex items-center justify-center text-primary hover:bg-primary/10 transition-colors">
-<span class="material-symbols-outlined text-lg">edit</span>
-</button>
-<button class="w-8 h-8 rounded-lg flex items-center justify-center text-error hover:bg-error/10 transition-colors">
-<span class="material-symbols-outlined text-lg">delete</span>
-</button>
-</div>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-<!-- Pagination -->
-<div class="px-8 py-5 flex items-center justify-between bg-surface-container-low/20">
-<p class="text-sm text-on-surface-variant font-medium">Hiển thị <span class="font-bold text-on-surface">1 - 10</span> trong số <span class="font-bold text-on-surface">1,284</span> người dùng</p>
-<div class="flex items-center gap-2">
-<button class="w-10 h-10 rounded-lg flex items-center justify-center border border-outline-variant/30 text-on-surface-variant hover:bg-surface-container-low transition-colors">
-<span class="material-symbols-outlined text-lg">chevron_left</span>
-</button>
-<button class="w-10 h-10 rounded-lg flex items-center justify-center bg-primary text-white font-bold shadow-md shadow-primary/20">1</button>
-<button class="w-10 h-10 rounded-lg flex items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-colors font-bold">2</button>
-<button class="w-10 h-10 rounded-lg flex items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-colors font-bold">3</button>
-<span class="px-2 text-on-surface-variant">...</span>
-<button class="w-10 h-10 rounded-lg flex items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-colors font-bold">128</button>
-<button class="w-10 h-10 rounded-lg flex items-center justify-center border border-outline-variant/30 text-on-surface-variant hover:bg-surface-container-low transition-colors">
-<span class="material-symbols-outlined text-lg">chevron_right</span>
-</button>
+<div class="space-y-1.5">
+<label class="text-xs font-bold uppercase tracking-wider text-on-surface-variant" style="">Mã hóa</label>
+<select class="w-full bg-surface-container-low border-none rounded-lg text-sm px-4 py-3 focus:ring-2 focus:ring-primary/20">
+<option>AES-256-GCM</option>
+<option>ChaCha20-Poly1305</option>
+</select>
 </div>
 </div>
 </div>
+</div>
+<div class="bg-surface-container-low rounded-xl p-6">
+<h3 class="text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-4 flex items-center" style="">
+<span class="material-symbols-outlined text-sm mr-2" style="">history</span>
+                        Lịch sử hoạt động
+                    </h3>
+<div class="space-y-3">
+<div class="flex justify-between text-sm">
+<span class="text-on-surface-variant" style="">IP Đăng ký</span>
+<span class="font-mono font-medium" style="">192.168.1.104</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-on-surface-variant" style="">Ngày đăng ký</span>
+<span class="font-medium" style="">2023-10-12 14:20</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-on-surface-variant" style="">Hoạt động cuối</span>
+<span class="font-medium" style="">Vừa xong</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-on-surface-variant" style="">IP Đăng nhập cuối</span>
+<span class="font-mono font-medium" style="">1.52.190.21</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-on-surface-variant" style="">Thời gian đăng nhập cuối</span>
+<span class="font-medium" style="">2024-05-20 09:15</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Column 2: Usage Limits -->
+<div class="space-y-6">
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm border border-outline-variant/10">
+<div class="flex items-center space-x-3 mb-6">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: &quot;FILL&quot; 1;">speed</span>
+<h2 class="text-lg font-bold" style="">Giới hạn sử dụng</h2>
+</div>
+<div class="space-y-5">
+<div class="space-y-1.5">
+<label class="text-xs font-bold uppercase tracking-wider text-on-surface-variant" style="">Giới hạn lưu lượng (GB)</label>
+<input class="w-full bg-surface-container-low border-none rounded-lg text-sm px-4 py-3 focus:ring-2 focus:ring-primary/20" type="number" value="1000">
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-1.5">
+<label class="text-xs font-bold uppercase tracking-wider text-on-surface-variant" style="">Sử dụng tháng này</label>
+<div class="w-full bg-surface-container-high rounded-lg text-sm px-4 py-3 font-medium" style="">425.8 GB</div>
+</div>
+<div class="space-y-1.5">
+<label class="text-xs font-bold uppercase tracking-wider text-on-surface-variant" style="">Tổng tích lũy</label>
+<div class="w-full bg-surface-container-high rounded-lg text-sm px-4 py-3 font-medium" style="">2.4 TB</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-1.5">
+<label class="text-xs font-bold uppercase tracking-wider text-on-surface-variant" style="">Cấp ĐỘ</label>
+<select class="w-full bg-surface-container-low border-none rounded-lg text-sm px-4 py-3 focus:ring-2 focus:ring-primary/20">
+<option>Premium VIP</option>
+<option>Basic User</option>
+</select>
+</div>
+<div class="space-y-1.5">
+<label class="text-xs font-bold uppercase tracking-wider text-on-surface-variant" style="">Nhóm NODE</label>
+<input class="w-full bg-surface-container-low border-none rounded-lg text-sm px-4 py-3 focus:ring-2 focus:ring-primary/20" type="number" value="3">
+</div>
+</div>
+<div class="space-y-1.5">
+<label class="text-xs font-bold uppercase tracking-wider text-on-surface-variant" style="">Ngày hết hạn Cấp độ</label>
+<input class="w-full bg-surface-container-low border-none rounded-lg text-sm px-4 py-3 focus:ring-2 focus:ring-primary/20" type="date" value="2025-12-31">
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-1.5">
+<label class="text-xs font-bold uppercase tracking-wider text-on-surface-variant" style="">Ngày reset lưu lượng</label>
+<input class="w-full bg-surface-container-low border-none rounded-lg text-sm px-4 py-3 focus:ring-2 focus:ring-primary/20" type="number" value="1">
+</div>
+<div class="space-y-1.5">
+<label class="text-xs font-bold uppercase tracking-wider text-on-surface-variant" style="">Số lượng Reset</label>
+<input class="w-full bg-surface-container-low border-none rounded-lg text-sm px-4 py-3 focus:ring-2 focus:ring-primary/20" type="number" value="1000">
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-1.5">
+<label class="text-xs font-bold uppercase tracking-wider text-on-surface-variant" style="">Giới hạn tốc độ (Mbps)</label>
+<input class="w-full bg-surface-container-low border-none rounded-lg text-sm px-4 py-3 focus:ring-2 focus:ring-primary/20" type="number" value="500">
+</div>
+<div class="space-y-1.5">
+<label class="text-xs font-bold uppercase tracking-wider text-on-surface-variant" style="">Kết nối tối đa</label>
+<input class="w-full bg-surface-container-low border-none rounded-lg text-sm px-4 py-3 focus:ring-2 focus:ring-primary/20" type="number" value="5">
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Column 3: Other Settings -->
+<div class="space-y-6">
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm border border-outline-variant/10">
+<div class="flex items-center space-x-3 mb-6">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: &quot;FILL&quot; 1;">settings_applications</span>
+<h2 class="text-lg font-bold" style="">Cài đặt khác</h2>
+</div>
+<div class="space-y-6">
+<div class="space-y-1.5">
+<label class="text-xs font-bold uppercase tracking-wider text-on-surface-variant" style="">Ngôn ngữ hiển thị</label>
+<select class="w-full bg-surface-container-low border-none rounded-lg text-sm px-4 py-3 focus:ring-2 focus:ring-primary/20">
+<option>Tiếng Việt</option>
+<option>English</option>
+</select>
+</div>
+<div class="space-y-4">
+<div class="flex items-center justify-between p-3 bg-surface-container-low rounded-lg">
+<span class="text-sm font-medium" style="">Quyền quản trị viên</span>
+<label class="relative inline-flex items-center cursor-pointer" style="">
+<input class="sr-only peer" type="checkbox">
+<div class="w-11 h-6 bg-slate-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="flex items-center justify-between p-3 bg-surface-container-low rounded-lg">
+<span class="text-sm font-medium" style="">Bảo mật 2FA</span>
+<span class="px-2 py-1 bg-secondary/10 text-secondary text-[10px] font-bold rounded uppercase" style="">Đã kích hoạt</span>
+</div>
+<div class="flex items-center justify-between p-3 bg-surface-container-low rounded-lg">
+<span class="text-sm font-medium" style="">Trạng thái Shadow Ban</span>
+<label class="relative inline-flex items-center cursor-pointer" style="">
+<input class="sr-only peer" type="checkbox">
+<div class="w-11 h-6 bg-slate-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:bg-error"></div>
+</label>
+</div>
+<div class="flex items-center justify-between p-3 bg-surface-container-low rounded-lg">
+<span class="text-sm font-medium" style="">Cấm người dùng</span>
+<label class="relative inline-flex items-center cursor-pointer" style="">
+<input checked="" class="sr-only peer" type="checkbox">
+<div class="w-11 h-6 bg-slate-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:bg-error"></div>
+</label>
+</div>
+</div>
+<div class="space-y-1.5">
+<label class="text-xs font-bold uppercase tracking-wider text-on-surface-variant" style="">Lý do cấm</label>
+<textarea class="w-full bg-surface-container-low border-none rounded-lg text-sm px-4 py-3 focus:ring-2 focus:ring-primary/20" placeholder="Nhập lý do cấm người dùng..." rows="2"></textarea>
+</div>
+<div class="space-y-1.5">
+<label class="text-xs font-bold uppercase tracking-wider text-on-surface-variant" style="">Ghi chú quản trị</label>
+<textarea class="w-full bg-surface-container-low border-none rounded-lg text-sm px-4 py-3 focus:ring-2 focus:ring-primary/20" placeholder="Chỉ quản trị viên mới thấy ghi chú này..." rows="3"></textarea>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex flex-col space-y-3">
+<button class="w-full py-4 bg-gradient-to-r from-primary to-primary-container text-white rounded-xl font-bold shadow-xl shadow-primary/30 transition-transform active:scale-95" type="submit" style="">
+                        Lưu thay đổi
+                    </button>
+<button class="w-full py-4 bg-white text-on-surface-variant border border-outline-variant/50 rounded-xl font-bold hover:bg-slate-50 transition-colors" type="button" style="">
+                        Hủy bỏ
+                    </button>
+</div>
+</div>
+</form>
+<!-- Footer Visual Hint -->
+<div class="mt-12 opacity-50 flex items-center justify-center space-x-6">
+<div class="h-[1px] flex-1 bg-outline-variant/30"></div>
+<div class="flex items-center space-x-2 grayscale">
+<span class="material-symbols-outlined text-sm" style="">verified_user</span>
+<span class="text-xs font-bold tracking-widest uppercase" style="">Ether Velocity Guardian Engine v4.2.0</span>
+</div>
+<div class="h-[1px] flex-1 bg-outline-variant/30"></div>
 </div>
 </main>
 </body></html>

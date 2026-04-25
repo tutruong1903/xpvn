@@ -54,6 +54,15 @@ return [
         'unknown_city' => '不明な都市',
         'unknown_country' => '不明な国',
     ],
+    'admin_user' => [
+        'create_success' => 'ユーザーを追加しました。メール: %email%、パスワード: %password%',
+        'create_email_empty' => 'メールアドレスを入力してください',
+        'create_email_exists' => 'このメールアドレスはすでに登録済みです',
+        'update_success' => '変更を保存しました',
+        'update_failed' => '変更に失敗しました',
+        'delete_success' => '削除しました',
+        'delete_failed' => '削除に失敗しました',
+    ],
     'ticket' => [
         'create_failed' => 'チケットの作成に失敗しました',
         'create_success' => 'チケットが正常に作成されました',

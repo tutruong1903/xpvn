@@ -215,16 +215,18 @@
             flattenAdminSection(getAdminSectionDict(locale, "dialog"), 'admin.dialog.'),
         );
 
-        // Admin user section (user list page, datatable strings, etc.)
+        // Admin user section — handles user list (admin.user.index.*),
+        // user edit (admin.user.edit.*), and shared keys (admin.user.fields.*, badges.*, datatable.*).
+        // Keys use data-i18n="admin.user.{section}.{key}" and data-i18n-placeholder="admin.user.{section}.{key}".
+        var _adminUserDict = flattenAdminSection(flattenNestedSection(getAdminSectionDict(locale, "user")), 'admin.user.');
         applyAttributeFromDict(
             "[data-i18n^='admin.user.']",
             "data-i18n",
-            flattenAdminSection(flattenNestedSection(getAdminSectionDict(locale, "user")), 'admin.user.'),
+            _adminUserDict,
         );
         document.querySelectorAll("[data-i18n-placeholder^='admin.user.']").forEach(function (el) {
             var key = el.getAttribute("data-i18n-placeholder");
-            var dict = flattenAdminSection(flattenNestedSection(getAdminSectionDict(locale, "user")), 'admin.user.');
-            var val = dict[key];
+            var val = _adminUserDict[key];
             if (val) el.setAttribute("placeholder", val);
         });
     }

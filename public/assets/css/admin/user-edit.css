@@ -1,0 +1,473 @@
+/* ================================================================
+   LUMINOUS GUARDIAN — Admin User Edit page styles
+   Specific to: resources/views/tabler/admin/user/edit.tpl
+   Design System: "The Luminous Guardian"
+   ================================================================ */
+
+/* ----------------------------------------------------------
+   Page Header & Breadcrumb
+   ---------------------------------------------------------- */
+.lmn-edit-header {
+    padding: 2rem 0 1.5rem;
+}
+
+.lmn-edit-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.8125rem;
+    color: #464554;
+    margin-bottom: 0.625rem;
+}
+
+.lmn-edit-breadcrumb a {
+    color: #464554;
+    text-decoration: none;
+    transition: color 0.15s;
+}
+
+.lmn-edit-breadcrumb a:hover {
+    color: #712ae2;
+}
+
+.lmn-edit-breadcrumb .material-symbols-outlined {
+    font-size: 0.875rem;
+    font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 20;
+    color: #c7c4d7;
+}
+
+.lmn-edit-breadcrumb > span:last-child {
+    color: #712ae2;
+    font-weight: 600;
+}
+
+.lmn-edit-title {
+    font-family: 'Manrope', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: #1a1c1c;
+    margin: 0;
+    line-height: 1.2;
+}
+
+/* ----------------------------------------------------------
+   3-Column Grid Layout
+   ---------------------------------------------------------- */
+.lmn-edit-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding-bottom: 3rem;
+}
+
+@media (min-width: 992px) {
+    .lmn-edit-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.lmn-edit-col {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+/* ----------------------------------------------------------
+   Card
+   ---------------------------------------------------------- */
+.lmn-edit-card {
+    background: #ffffff;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    border: 1px solid rgba(199, 196, 215, 0.15);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.lmn-edit-card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    margin-bottom: 1.5rem;
+}
+
+.lmn-edit-card-icon {
+    font-size: 1.25rem;
+    color: #712ae2;
+    font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    flex-shrink: 0;
+}
+
+.lmn-edit-card-title {
+    font-family: 'Manrope', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1a1c1c;
+    margin: 0;
+}
+
+/* ----------------------------------------------------------
+   Form Fields
+   ---------------------------------------------------------- */
+.lmn-edit-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 1.125rem;
+}
+
+.lmn-edit-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+}
+
+.lmn-edit-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #464554;
+}
+
+.lmn-edit-input,
+.lmn-edit-select {
+    width: 100%;
+    background: #f3f3f4;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    font-family: 'Inter', sans-serif;
+    color: #1a1c1c;
+    padding: 0.6875rem 1rem;
+    outline: none;
+    transition: box-shadow 0.2s, background 0.2s;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.lmn-edit-select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23464554' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    padding-right: 2.25rem;
+    cursor: pointer;
+}
+
+.lmn-edit-input:focus,
+.lmn-edit-select:focus {
+    box-shadow: 0 0 0 3px rgba(113, 42, 226, 0.1);
+    background: #eeeeee;
+}
+
+.lmn-edit-input::placeholder {
+    color: rgba(70, 69, 84, 0.4);
+}
+
+.lmn-edit-textarea {
+    width: 100%;
+    background: #f3f3f4;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    font-family: 'Inter', sans-serif;
+    color: #1a1c1c;
+    padding: 0.6875rem 1rem;
+    outline: none;
+    resize: vertical;
+    transition: box-shadow 0.2s, background 0.2s;
+    line-height: 1.5;
+}
+
+.lmn-edit-textarea:focus {
+    box-shadow: 0 0 0 3px rgba(113, 42, 226, 0.1);
+    background: #eeeeee;
+}
+
+.lmn-edit-textarea::placeholder {
+    color: rgba(70, 69, 84, 0.4);
+}
+
+/* Read-only display value */
+.lmn-edit-readonly {
+    background: #e8e8e8;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    color: #1a1c1c;
+    padding: 0.6875rem 1rem;
+}
+
+/* Monospace for IPs */
+.lmn-mono {
+    font-family: 'ui-monospace', 'SFMono-Regular', 'Menlo', monospace;
+    font-size: 0.8125rem;
+}
+
+/* 2-column row inside a card */
+.lmn-edit-row-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+}
+
+/* ----------------------------------------------------------
+   Activity History Card
+   ---------------------------------------------------------- */
+.lmn-edit-history {
+    background: #f3f3f4;
+    border-radius: 0.75rem;
+    padding: 1.25rem 1.5rem;
+}
+
+.lmn-edit-history-title {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #464554;
+    margin: 0 0 1rem;
+}
+
+.lmn-edit-history-title .material-symbols-outlined {
+    font-size: 0.9375rem;
+    font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 20;
+}
+
+.lmn-edit-history-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.lmn-edit-history-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8125rem;
+}
+
+.lmn-edit-history-label {
+    color: #464554;
+}
+
+.lmn-edit-history-val {
+    font-weight: 500;
+    color: #1a1c1c;
+    text-align: right;
+}
+
+/* ----------------------------------------------------------
+   Toggle Rows (is_admin, ga_enable, is_shadow_banned, is_banned)
+   ---------------------------------------------------------- */
+.lmn-edit-toggles {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.lmn-edit-toggle-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #f3f3f4;
+    border-radius: 0.5rem;
+    padding: 0.6875rem 0.875rem;
+}
+
+.lmn-edit-toggle-label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #1a1c1c;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Custom Toggle Switch */
+.lmn-toggle {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.lmn-toggle-input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.lmn-toggle-track {
+    width: 2.75rem;
+    height: 1.5rem;
+    background: #c7c4d7;
+    border-radius: 9999px;
+    position: relative;
+    transition: background 0.2s;
+    display: block;
+}
+
+.lmn-toggle-track::after {
+    content: '';
+    position: absolute;
+    top: 0.125rem;
+    left: 0.125rem;
+    width: 1.25rem;
+    height: 1.25rem;
+    background: #ffffff;
+    border-radius: 9999px;
+    transition: transform 0.2s;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+}
+
+.lmn-toggle-input:checked ~ .lmn-toggle-track {
+    background: #712ae2;
+}
+
+.lmn-toggle-input:checked ~ .lmn-toggle-track::after {
+    transform: translateX(1.25rem);
+}
+
+/* Danger toggle (shadow ban, ban user) */
+.lmn-toggle--danger .lmn-toggle-input:checked ~ .lmn-toggle-track {
+    background: #ba1a1a;
+}
+
+/* 2FA Badge */
+.lmn-edit-badge-active {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.1875rem 0.5rem;
+    background: rgba(0, 81, 213, 0.1);
+    color: #0051d5;
+    font-size: 0.625rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    border-radius: 0.375rem;
+    font-family: 'Inter', sans-serif;
+}
+
+/* ----------------------------------------------------------
+   Action Buttons
+   ---------------------------------------------------------- */
+.lmn-edit-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.lmn-btn-save {
+    width: 100%;
+    padding: 0.9375rem 1.5rem;
+    background: linear-gradient(135deg, #712ae2, #8a4cfc);
+    color: #ffffff;
+    border: none;
+    border-radius: 0.75rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9375rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(113, 42, 226, 0.3);
+    transition: transform 0.15s, box-shadow 0.15s;
+    letter-spacing: 0.01em;
+}
+
+.lmn-btn-save:hover {
+    box-shadow: 0 6px 28px rgba(113, 42, 226, 0.4);
+    transform: translateY(-1px);
+}
+
+.lmn-btn-save:active {
+    transform: scale(0.98);
+}
+
+.lmn-btn-cancel {
+    width: 100%;
+    padding: 0.9375rem 1.5rem;
+    background: #ffffff;
+    color: #464554;
+    border: 1px solid rgba(199, 196, 215, 0.5);
+    border-radius: 0.75rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9375rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+}
+
+.lmn-btn-cancel:hover {
+    background: #f3f3f4;
+    color: #1a1c1c;
+}
+
+/* ----------------------------------------------------------
+   Dark mode support
+   ---------------------------------------------------------- */
+[data-bs-theme="dark"] .lmn-edit-title {
+    color: #e2e2e5;
+}
+
+[data-bs-theme="dark"] .lmn-edit-card {
+    background: #252729;
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-bs-theme="dark"] .lmn-edit-card-title {
+    color: #e2e2e5;
+}
+
+[data-bs-theme="dark"] .lmn-edit-input,
+[data-bs-theme="dark"] .lmn-edit-select,
+[data-bs-theme="dark"] .lmn-edit-textarea {
+    background: #1e2022;
+    color: #e2e2e5;
+}
+
+[data-bs-theme="dark"] .lmn-edit-input:focus,
+[data-bs-theme="dark"] .lmn-edit-select:focus,
+[data-bs-theme="dark"] .lmn-edit-textarea:focus {
+    background: #2a2c2e;
+}
+
+[data-bs-theme="dark"] .lmn-edit-readonly {
+    background: #2f3131;
+    color: #e2e2e5;
+}
+
+[data-bs-theme="dark"] .lmn-edit-history {
+    background: #1e2022;
+}
+
+[data-bs-theme="dark"] .lmn-edit-history-label {
+    color: #9b99a9;
+}
+
+[data-bs-theme="dark"] .lmn-edit-history-val {
+    color: #e2e2e5;
+}
+
+[data-bs-theme="dark"] .lmn-edit-toggle-row {
+    background: #1e2022;
+}
+
+[data-bs-theme="dark"] .lmn-edit-toggle-label {
+    color: #e2e2e5;
+}
+
+[data-bs-theme="dark"] .lmn-btn-cancel {
+    background: #252729;
+    border-color: rgba(255, 255, 255, 0.1);
+    color: #9b99a9;
+}
+
+[data-bs-theme="dark"] .lmn-btn-cancel:hover {
+    background: #2f3131;
+    color: #e2e2e5;
+}

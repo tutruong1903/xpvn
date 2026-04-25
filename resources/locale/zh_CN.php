@@ -54,6 +54,15 @@ return [
         'unknown_city' => '未知城市',
         'unknown_country' => '未知国家',
     ],
+    'admin_user' => [
+        'create_success' => '添加成功，用户邮箱：%email%，密码：%password%',
+        'create_email_empty' => '邮箱不能为空',
+        'create_email_exists' => '邮箱已存在',
+        'update_success' => '修改成功',
+        'update_failed' => '修改失败',
+        'delete_success' => '删除成功',
+        'delete_failed' => '删除失败',
+    ],
     'ticket' => [
         'create_failed' => '工单创建失败',
         'create_success' => '工单创建成功',

@@ -48,8 +48,6 @@ use const PHP_EOL;
  * @property int    $class 等级
  * @property string $class_expire 等级过期时间
  * @property string $theme 网站主题
- * @property string $ga_token GA密钥
- * @property int    $ga_enable GA开关
  * @property string $remark 备注
  * @property int    $node_group 节点分组
  * @property int    $is_banned 是否封禁
@@ -123,7 +121,8 @@ final class User extends Model
      */
     public function lastUseTime(): string
     {
-        return $this->last_use_time === 0 ? '从未使用' : Tools::toDateTime($this->last_use_time);
+        $t = (int) $this->last_use_time;
+        return $t === 0 ?  $t : Tools::toDateTime($t);
     }
 
     /**
@@ -131,7 +130,8 @@ final class User extends Model
      */
     public function lastCheckInTime(): string
     {
-        return $this->last_check_in_time === 0 ? '从未签到' : Tools::toDateTime($this->last_check_in_time);
+        $t = (int) $this->last_check_in_time;
+        return $t === 0 ?  $t : Tools::toDateTime($t);
     }
 
     /*

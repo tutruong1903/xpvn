@@ -123,10 +123,12 @@ final class UserController extends BaseController
         $password = $request->getParam('password');
         $balance = $request->getParam('balance');
 
+        $locale = $this->getLocale();
+
         if ($email === '') {
             return $response->withJson([
                 'ret' => 0,
-                'msg' => '邮箱不能为空',
+                'msg' => I18n::trans('admin_user.create_email_empty', $locale),
             ]);
         }
 
@@ -135,7 +137,7 @@ final class UserController extends BaseController
         if ($exist !== null) {
             return $response->withJson([
                 'ret' => 0,
-                'msg' => '邮箱已存在',
+                'msg' => I18n::trans('admin_user.create_email_exists', $locale),
             ]);
         }
 
@@ -161,9 +163,15 @@ final class UserController extends BaseController
             $user->save();
         }
 
+        $msg = str_replace(
+            ['%email%', '%password%'],
+            [$email, $password],
+            I18n::trans('admin_user.create_success', $locale)
+        );
+
         return $response->withJson([
             'ret' => 1,
-            'msg' => '添加成功，用户邮箱：' . $email . ' 密码：'.$password,
+            'msg' => $msg,
         ]);
     }
 
@@ -202,7 +210,7 @@ final class UserController extends BaseController
 
         if ($request->getParam('money') !== '' &&
             $request->getParam('money') !== null &&
-            (float) $request->getParam('money') !== $user->money
+            (float) $request->getParam('money') !== (float) $user->money
         ) {
             $money = (float) $request->getParam('money');
             $diff = $money - $user->money;
@@ -216,7 +224,7 @@ final class UserController extends BaseController
         $user->ref_by = $request->getParam('ref_by');
         $user->port = $request->getParam('port');
         $user->method = $request->getParam('method');
-        $user->transfer_enable = Tools::autoBytesR($request->getParam('transfer_enable'));
+        $user->transfer_enable = Tools::autoBytesR($request->getParam('transfer_enable') ?? '0B');
         $user->node_group = $request->getParam('node_group');
         $user->class = $request->getParam('class');
         $user->class_expire = $request->getParam('class_expire');
@@ -226,22 +234,23 @@ final class UserController extends BaseController
         $user->node_iplimit = $request->getParam('node_iplimit');
         $user->locale = $request->getParam('locale');
         $user->is_admin = $request->getParam('is_admin') === 'true' ? 1 : 0;
-        $user->ga_enable = $request->getParam('ga_enable') === 'true' ? 1 : 0;
         $user->is_shadow_banned = $request->getParam('is_shadow_banned') === 'true' ? 1 : 0;
         $user->is_banned = $request->getParam('is_banned') === 'true' ? 1 : 0;
         $user->banned_reason = $request->getParam('banned_reason');
         $user->remark = $request->getParam('remark');
 
+        $locale = $this->getLocale();
+
         if (! $user->save()) {
             return $response->withJson([
                 'ret' => 0,
-                'msg' => '修改失败',
+                'msg' => I18n::trans('admin_user.update_failed', $locale),
             ]);
         }
 
         return $response->withJson([
             'ret' => 1,
-            'msg' => '修改成功',
+            'msg' => I18n::trans('admin_user.update_success', $locale),
         ]);
     }
 
@@ -250,16 +259,18 @@ final class UserController extends BaseController
         $id = $args['id'];
         $user = (new User())->find((int) $id);
 
+        $locale = $this->getLocale();
+
         if (! $user->kill()) {
             return $response->withJson([
                 'ret' => 0,
-                'msg' => '删除失败',
+                'msg' => I18n::trans('admin_user.delete_failed', $locale),
             ]);
         }
 
         return $response->withJson([
             'ret' => 1,
-            'msg' => '删除成功',
+            'msg' => I18n::trans('admin_user.delete_success', $locale),
         ]);
     }
 

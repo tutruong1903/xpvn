@@ -67,6 +67,33 @@
             </a>
         </div>
 
+         <!-- Section: Shop -->
+        <div class="sidebar-nav-section">
+            <div class="sidebar-nav-section__header">
+                <span data-i18n-user-sidebar="section_shop">CỬA HÀNG</span>
+            </div>
+            
+            <a class="sidebar-nav-link" href="/user/product" data-path="/user/product">
+                <span class="material-symbols-outlined sidebar-nav-link__icon">shopping_bag</span>
+                <span class="sidebar-nav-link__title" data-i18n-user-sidebar="products">Sản phẩm</span>
+            </a>
+            
+            <a class="sidebar-nav-link" href="/user/order" data-path="/user/order">
+                <span class="material-symbols-outlined sidebar-nav-link__icon">receipt_long</span>
+                <span class="sidebar-nav-link__title" data-i18n-user-sidebar="orders">Đơn hàng</span>
+            </a>
+            
+            <a class="sidebar-nav-link" href="/user/invoice" data-path="/user/invoice">
+                <span class="material-symbols-outlined sidebar-nav-link__icon">receipt</span>
+                <span class="sidebar-nav-link__title" data-i18n-user-sidebar="invoices">Hóa đơn</span>
+            </a>
+            
+            <a class="sidebar-nav-link" href="/user/money" data-path="/user/money">
+                <span class="material-symbols-outlined sidebar-nav-link__icon">account_balance_wallet</span>
+                <span class="sidebar-nav-link__title" data-i18n-user-sidebar="balance">Số dư</span>
+            </a>
+        </div>
+
         <!-- Section: Usage -->
         <div class="sidebar-nav-section">
             <div class="sidebar-nav-section__header">
@@ -115,32 +142,7 @@
             {/if}
         </div>
 
-        <!-- Section: Shop -->
-        <div class="sidebar-nav-section">
-            <div class="sidebar-nav-section__header">
-                <span data-i18n-user-sidebar="section_shop">CỬA HÀNG</span>
-            </div>
-            
-            <a class="sidebar-nav-link" href="/user/product" data-path="/user/product">
-                <span class="material-symbols-outlined sidebar-nav-link__icon">shopping_bag</span>
-                <span class="sidebar-nav-link__title" data-i18n-user-sidebar="products">Sản phẩm</span>
-            </a>
-            
-            <a class="sidebar-nav-link" href="/user/order" data-path="/user/order">
-                <span class="material-symbols-outlined sidebar-nav-link__icon">receipt_long</span>
-                <span class="sidebar-nav-link__title" data-i18n-user-sidebar="orders">Đơn hàng</span>
-            </a>
-            
-            <a class="sidebar-nav-link" href="/user/invoice" data-path="/user/invoice">
-                <span class="material-symbols-outlined sidebar-nav-link__icon">receipt</span>
-                <span class="sidebar-nav-link__title" data-i18n-user-sidebar="invoices">Hóa đơn</span>
-            </a>
-            
-            <a class="sidebar-nav-link" href="/user/money" data-path="/user/money">
-                <span class="material-symbols-outlined sidebar-nav-link__icon">account_balance_wallet</span>
-                <span class="sidebar-nav-link__title" data-i18n-user-sidebar="balance">Số dư</span>
-            </a>
-        </div>
+       
     </nav>
 </aside>
 

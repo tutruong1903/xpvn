@@ -1,6 +1,11 @@
 {include file='admin/header.tpl'}
 
 <link href="/assets/css/admin/user-edit.css{asset_ver path="/assets/css/admin/user-edit.css"}" rel="stylesheet"/>
+<link rel="stylesheet" href="//{$config['jsdelivr_url']}/npm/flatpickr/dist/flatpickr.min.css">
+{if $user->is_dark_mode}
+    <link rel="stylesheet" href="//{$config['jsdelivr_url']}/npm/flatpickr/dist/themes/dark.min.css">
+{/if}
+<script src="//{$config['jsdelivr_url']}/npm/flatpickr"></script>
 
 
 <div class="page-body">
@@ -144,7 +149,7 @@
                         <div class="lmn-edit-field">
                             <label class="lmn-edit-label" data-i18n="admin.user.edit.field_class_expire">等级过期时间</label>
                             <input id="class_expire" type="text" class="lmn-edit-input"
-                                   value="{$edit_user->class_expire}">
+                                   value="{$edit_user->class_expire}" readonly>
                         </div>
                         <div class="lmn-edit-row-2">
                             <div class="lmn-edit-field">
@@ -255,6 +260,13 @@
 </div>
 
 <script>
+    flatpickr("#class_expire", {
+        enableTime: true,
+        dateFormat: "Y-m-d H:i:S",
+        time_24hr: true,
+        minDate: "today",
+    });
+
     $("#save_changes").click(function () {
         $.ajax({
             url: '/admin/user/{$edit_user->id}',

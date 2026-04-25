@@ -37,7 +37,7 @@
 
 .ev-edit-header__title {
     font-family: 'Manrope', sans-serif;
-    font-size: 2.25rem;
+    font-size: 2rem;
     font-weight: 800;
     letter-spacing: -0.02em;
     color: var(--ev-on-surface);

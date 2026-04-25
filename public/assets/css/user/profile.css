@@ -33,7 +33,7 @@
 
 /* ---- Page Layout ---- */
 .ev-profile-page {
-    padding: 2.5rem 3rem 4rem;
+    padding: 2.5rem 2rem 4rem;
     max-width: 1400px;
     margin: 0 auto;
     font-family: 'Inter', sans-serif;
@@ -49,7 +49,7 @@
 
 .ev-profile-header__title {
     font-family: 'Manrope', sans-serif;
-    font-size: 1.875rem;
+    font-size: 2rem;
     font-weight: 800;
     letter-spacing: -0.02em;
     color: var(--ev-on-surface);
@@ -58,7 +58,7 @@
 }
 
 .ev-profile-header__subtitle {
-    font-size: 1rem;
+    font-size: 0.9375rem;
     color: var(--ev-on-surface-variant);
     font-weight: 400;
     line-height: 1.65;

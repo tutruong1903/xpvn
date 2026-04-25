@@ -23,6 +23,7 @@
     <link href="/assets/css/locale-switcher.css{asset_ver path="/assets/css/locale-switcher.css"}" rel="stylesheet"/>
     <link href="/assets/css/user/dashboard.css{asset_ver path="/assets/css/user/dashboard.css"}" rel="stylesheet"/>
     <link href="/assets/css/user/ticket.css{asset_ver path="/assets/css/user/ticket.css"}" rel="stylesheet"/>
+    <link href="/assets/css/user/invite.css{asset_ver path="/assets/css/user/invite.css"}" rel="stylesheet"/>
     
     <!-- JS files -->
     <script src="/assets/js/fuck.min.js"></script>
@@ -63,6 +64,13 @@
     <script src="/assets/js/locales/user/ticket/zh_CN.js{asset_ver path="/assets/js/locales/user/ticket/zh_CN.js"}"></script>
     <script src="/assets/js/locales/user/ticket/zh_TW.js{asset_ver path="/assets/js/locales/user/ticket/zh_TW.js"}"></script>
     <script src="/assets/js/locales/user/ticket/ja_JP.js{asset_ver path="/assets/js/locales/user/ticket/ja_JP.js"}"></script>
+    
+    <!-- i18n - Invite component locales -->
+    <script src="/assets/js/locales/user/invite/en_US.js{asset_ver path="/assets/js/locales/user/invite/en_US.js"}"></script>
+    <script src="/assets/js/locales/user/invite/vn_VN.js{asset_ver path="/assets/js/locales/user/invite/vn_VN.js"}"></script>
+    <script src="/assets/js/locales/user/invite/zh_CN.js{asset_ver path="/assets/js/locales/user/invite/zh_CN.js"}"></script>
+    <script src="/assets/js/locales/user/invite/zh_TW.js{asset_ver path="/assets/js/locales/user/invite/zh_TW.js"}"></script>
+    <script src="/assets/js/locales/user/invite/ja_JP.js{asset_ver path="/assets/js/locales/user/invite/ja_JP.js"}"></script>
     
     <!-- i18n - Footer dialog locales (shared across all user pages) -->
     <script src="/assets/js/locales/user/footer/en_US.js{asset_ver path="/assets/js/locales/user/footer/en_US.js"}"></script>

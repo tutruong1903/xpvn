@@ -1,0 +1,606 @@
+/* ================================================================
+   LUMINOUS GUARDIAN — Invite & Referral Page
+   Design System: Light-first, No-line Rule, Tonal Layering
+   Based on DESIGN.md — The Luminous Guardian creative north star
+   ================================================================ */
+
+/* ── Design Tokens ── */
+.lg-invite-page {
+    --lg-background:                #f9f9f9;
+    --lg-surface-container-lowest:  #ffffff;
+    --lg-surface-container-low:     #f3f3f4;
+    --lg-surface-container:         #eeeeee;
+    --lg-surface-container-high:    #e8e8e8;
+    --lg-on-surface:                #1a1c1c;
+    --lg-on-surface-variant:        #464554;
+    --lg-primary:                   #712ae2;
+    --lg-primary-container:         #8a4cfc;
+    --lg-primary-fixed:             #eaddff;
+    --lg-on-primary-fixed:          #25005a;
+    --lg-secondary:                 #0051d5;
+    --lg-secondary-fixed:           #dbe1ff;
+    --lg-on-secondary-fixed:        #00174b;
+    --lg-tertiary-fixed:            #fcd6ff;
+    --lg-on-tertiary-fixed:         #340042;
+    --lg-outline:                   #767586;
+    --lg-outline-variant:           #c7c4d7;
+    --lg-error:                     #ba1a1a;
+
+    --lg-font-headline: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --lg-font-body:     'Inter',   -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+    --lg-shadow-ambient: 0 40px 40px -10px rgba(113, 42, 226, 0.05);
+    --lg-shadow-hover:   0 8px 32px rgba(113, 42, 226, 0.08);
+    --lg-gradient-cta:   linear-gradient(135deg, #712ae2 0%, #8a4cfc 100%);
+
+    font-family: var(--lg-font-body);
+    background-color: var(--lg-background);
+    padding: 2.5rem 2rem 4rem;
+    min-height: 100%;
+}
+
+/* Dark mode overrides */
+[data-bs-theme="dark"] .lg-invite-page {
+    --lg-background:                #1a1c1c;
+    --lg-surface-container-lowest:  #0f1111;
+    --lg-surface-container-low:     #1f2121;
+    --lg-surface-container:         #232525;
+    --lg-surface-container-high:    #2d2f2f;
+    --lg-on-surface:                #e2e3e3;
+    --lg-on-surface-variant:        #c6c6d0;
+    --lg-outline-variant:           #45444f;
+    --lg-secondary-fixed:           #001849;
+    --lg-on-secondary-fixed:        #dbe1ff;
+    --lg-primary-fixed:             #25005a;
+    --lg-on-primary-fixed:          #eaddff;
+    --lg-tertiary-fixed:            #2d0038;
+    --lg-on-tertiary-fixed:         #fcd6ff;
+}
+
+/* ── Page Header ── */
+.lg-invite-header {
+    max-width: 56rem;
+    margin-bottom: 3rem;
+}
+
+.lg-invite-header__title {
+    font-family: var(--lg-font-headline);
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--lg-on-surface);
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+}
+
+.lg-invite-header__subtitle {
+    font-size: 0.9375rem;
+    line-height: 1.65;
+    color: var(--lg-on-surface-variant);
+    max-width: 48rem;
+}
+
+.lg-invite-header__subtitle .lg-accent {
+    color: var(--lg-primary);
+    font-weight: 700;
+}
+
+/* ── Bento Grid ── */
+.lg-invite-bento {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+    margin-bottom: 3rem;
+}
+
+@media (min-width: 1024px) {
+    .lg-invite-bento {
+        grid-template-columns: 5fr 7fr;
+    }
+}
+
+/* ── Card Base ── */
+.lg-invite-card {
+    background: var(--lg-surface-container-lowest);
+    border-radius: 1rem;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--lg-shadow-ambient);
+    border: 1px solid rgba(199, 196, 215, 0.15);
+    display: flex;
+    flex-direction: column;
+}
+
+/* ── Referral Link Card ── */
+.lg-referral-card__icon-wrap {
+    width: 2.75rem;
+    height: 2.75rem;
+    background: rgba(113, 42, 226, 0.08);
+    border-radius: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+    flex-shrink: 0;
+}
+
+.lg-referral-card__icon {
+    color: var(--lg-primary);
+    font-size: 1.375rem;
+}
+
+.lg-referral-card__title {
+    font-family: var(--lg-font-headline);
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--lg-on-surface);
+    margin-bottom: 0.375rem;
+}
+
+.lg-referral-card__subtitle {
+    font-size: 0.875rem;
+    color: var(--lg-on-surface-variant);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+/* Field groups */
+.lg-invite-field {
+    margin-bottom: 1.125rem;
+}
+
+.lg-invite-label {
+    display: block;
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(70, 69, 84, 0.55);
+    margin-bottom: 0.375rem;
+}
+
+[data-bs-theme="dark"] .lg-invite-label {
+    color: rgba(198, 198, 208, 0.55);
+}
+
+.lg-invite-input-wrap {
+    position: relative;
+}
+
+.lg-invite-input {
+    width: 100%;
+    background: var(--lg-surface-container-low);
+    border: none;
+    border-radius: 0.625rem;
+    padding: 0.75rem 6.5rem 0.75rem 1rem;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--lg-on-surface);
+    outline: none;
+    transition: box-shadow 0.2s ease;
+}
+
+.lg-invite-input:focus {
+    box-shadow: 0 0 0 3px rgba(113, 42, 226, 0.15);
+}
+
+.lg-invite-input:disabled,
+.lg-invite-input[readonly] {
+    cursor: default;
+    opacity: 1;
+}
+
+.lg-invite-input-btn {
+    position: absolute;
+    right: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0.3125rem 0.875rem;
+    background: var(--lg-surface-container-lowest);
+    color: var(--lg-primary);
+    font-family: var(--lg-font-body);
+    font-size: 0.75rem;
+    font-weight: 700;
+    border: 1px solid rgba(199, 196, 215, 0.25);
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background 0.18s ease, color 0.18s ease, transform 0.1s ease;
+    line-height: 1;
+}
+
+.lg-invite-input-btn:hover {
+    background: var(--lg-primary);
+    color: #fff;
+}
+
+.lg-invite-input-btn:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+/* Card footer actions */
+.lg-invite-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    margin-top: auto;
+    padding-top: 1.25rem;
+}
+
+.lg-btn-reset {
+    background: none;
+    border: none;
+    color: var(--lg-error);
+    font-family: var(--lg-font-body);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0.4375rem 0.75rem;
+    border-radius: 0.5rem;
+    transition: background 0.18s ease;
+    margin-right: auto;
+}
+
+.lg-btn-reset:hover {
+    background: rgba(186, 26, 26, 0.06);
+}
+
+/* Aesthetic blob */
+.lg-referral-card__blob {
+    position: absolute;
+    right: -4rem;
+    bottom: -4rem;
+    width: 10rem;
+    height: 10rem;
+    background: rgba(113, 42, 226, 0.04);
+    border-radius: 9999px;
+    filter: blur(48px);
+    pointer-events: none;
+}
+
+/* ── Rules Card ── */
+.lg-rules-card__title {
+    font-family: var(--lg-font-headline);
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--lg-on-surface);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.lg-rules-card__title-icon {
+    color: var(--lg-primary);
+    font-size: 1.25rem;
+}
+
+.lg-rules-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.lg-rule-item {
+    display: flex;
+    gap: 0.875rem;
+    align-items: flex-start;
+}
+
+.lg-rule-number {
+    flex-shrink: 0;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 9999px;
+    background: rgba(0, 81, 213, 0.08);
+    color: var(--lg-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.75rem;
+}
+
+.lg-rule-text {
+    font-size: 0.875rem;
+    line-height: 1.65;
+    color: var(--lg-on-surface-variant);
+    margin: 0;
+}
+
+.lg-rule-text strong {
+    color: var(--lg-on-surface);
+    font-weight: 700;
+}
+
+/* Earnings summary */
+.lg-earnings-summary {
+    margin-top: auto;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(199, 196, 215, 0.12);
+    display: flex;
+    align-items: center;
+}
+
+.lg-earnings-label {
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--lg-on-surface-variant);
+    margin-bottom: 0.125rem;
+}
+
+.lg-earnings-value {
+    font-family: var(--lg-font-headline);
+    font-size: 1.625rem;
+    font-weight: 900;
+    color: var(--lg-secondary);
+    line-height: 1.2;
+}
+
+/* ── History Section ── */
+.lg-history-section {
+    margin-bottom: 3rem;
+}
+
+.lg-history-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.25rem;
+}
+
+.lg-history-title {
+    font-family: var(--lg-font-headline);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--lg-on-surface);
+    margin: 0;
+}
+
+.lg-btn-filter {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 1rem;
+    background: none;
+    border: none;
+    font-family: var(--lg-font-body);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--lg-on-surface-variant);
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background 0.18s ease;
+}
+
+.lg-btn-filter:hover {
+    background: var(--lg-surface-container);
+}
+
+.lg-btn-filter .material-symbols-outlined {
+    font-size: 1rem;
+}
+
+/* Table container */
+.lg-history-table-wrap {
+    background: var(--lg-surface-container-lowest);
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: var(--lg-shadow-ambient);
+    border: 1px solid rgba(199, 196, 215, 0.10);
+}
+
+.lg-history-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.lg-history-table thead tr {
+    background: rgba(243, 243, 244, 0.5);
+}
+
+[data-bs-theme="dark"] .lg-history-table thead tr {
+    background: rgba(31, 33, 33, 0.5);
+}
+
+.lg-history-table th {
+    padding: 1rem 1.5rem;
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--lg-on-surface-variant);
+}
+
+.lg-history-table th.lg-col-amount {
+    text-align: right;
+}
+
+.lg-history-table tbody tr {
+    border-top: 1px solid rgba(199, 196, 215, 0.10);
+    transition: background 0.15s ease;
+}
+
+.lg-history-table tbody tr:hover {
+    background: rgba(243, 243, 244, 0.3);
+}
+
+[data-bs-theme="dark"] .lg-history-table tbody tr:hover {
+    background: rgba(31, 33, 33, 0.3);
+}
+
+.lg-history-table td {
+    padding: 1.25rem 1.5rem;
+}
+
+/* Record ID */
+.lg-td-record-id {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--lg-primary);
+}
+
+/* Nickname with avatar */
+.lg-nickname-wrap {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.lg-avatar {
+    flex-shrink: 0;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.625rem;
+    text-transform: uppercase;
+}
+
+.lg-avatar--a {
+    background: var(--lg-secondary-fixed);
+    color: var(--lg-on-secondary-fixed);
+}
+
+.lg-avatar--b {
+    background: var(--lg-tertiary-fixed);
+    color: var(--lg-on-tertiary-fixed);
+}
+
+.lg-avatar--c {
+    background: var(--lg-primary-fixed);
+    color: var(--lg-on-primary-fixed);
+}
+
+.lg-nickname-text {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--lg-on-surface);
+}
+
+/* Amount */
+.lg-td-amount {
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-align: right;
+    color: var(--lg-on-surface);
+}
+
+/* Time */
+.lg-td-time {
+    font-size: 0.875rem;
+    color: var(--lg-on-surface-variant);
+    white-space: nowrap;
+}
+
+/* Empty state */
+.lg-history-empty {
+    text-align: center;
+}
+
+.lg-history-empty td {
+    padding: 3.5rem 1.5rem;
+}
+
+.lg-empty-icon {
+    color: var(--lg-outline-variant);
+    font-size: 2.5rem;
+    display: block;
+    margin: 0 auto 0.875rem;
+}
+
+.lg-empty-title {
+    font-family: var(--lg-font-headline);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--lg-on-surface);
+    margin-bottom: 0.25rem;
+}
+
+.lg-empty-desc {
+    font-size: 0.875rem;
+    color: var(--lg-on-surface-variant);
+    margin: 0;
+}
+
+/* ── Promo Banner ── */
+.lg-promo-banner {
+    background: linear-gradient(135deg, rgba(113, 42, 226, 0.06) 0%, rgba(138, 76, 252, 0.06) 100%);
+    border: 1px solid rgba(113, 42, 226, 0.15);
+    border-radius: 1rem;
+    padding: 2rem 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.lg-promo-banner__body {
+    flex: 1;
+    min-width: 0;
+}
+
+.lg-promo-banner__title {
+    font-family: var(--lg-font-headline);
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--lg-on-surface);
+    margin-bottom: 0.5rem;
+}
+
+.lg-promo-banner__desc {
+    font-size: 0.9rem;
+    color: var(--lg-on-surface-variant);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.lg-btn-ambassador {
+    flex-shrink: 0;
+    padding: 0.75rem 1.75rem;
+    background: var(--lg-gradient-cta);
+    color: #fff;
+    font-family: var(--lg-font-body);
+    font-size: 0.875rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 9999px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 0 4px 16px rgba(113, 42, 226, 0.25);
+    transition: box-shadow 0.2s ease, transform 0.15s ease;
+}
+
+.lg-btn-ambassador:hover {
+    box-shadow: 0 8px 24px rgba(113, 42, 226, 0.35);
+    transform: translateY(-1px);
+    color: #fff;
+    text-decoration: none;
+}
+
+/* ── Responsive ── */
+@media (max-width: 767px) {
+    .lg-invite-page {
+        padding: 1.25rem 1rem 3rem;
+    }
+
+    .lg-invite-header__title {
+        font-size: 1.5rem;
+    }
+
+    .lg-history-table th,
+    .lg-history-table td {
+        padding: 0.875rem 1rem;
+    }
+}

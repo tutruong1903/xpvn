@@ -1,266 +1,237 @@
 <!DOCTYPE html>
 
-<html class="light" lang="en"><head>
+<html class="light" lang="vi"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<title>Luminous Guardian | Referral &amp; Rewards</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
             theme: {
                 extend: {
                     "colors": {
-                        "error": "#ba1a1a",
-                        "surface-container-lowest": "#ffffff",
-                        "tertiary-fixed": "#ffdcc6",
-                        "on-secondary-fixed": "#001a42",
-                        "surface-container-high": "#e7e8e9",
-                        "surface-container": "#edeeef",
-                        "outline-variant": "#c2c6d6",
-                        "on-primary-fixed-variant": "#004395",
-                        "tertiary-fixed-dim": "#ffb786",
-                        "surface": "#f8f9fa",
-                        "on-error-container": "#93000a",
-                        "tertiary": "#924700",
-                        "on-tertiary-container": "#fffbff",
-                        "secondary-container": "#b6ccff",
+                        "tertiary-container": "#9a5da8",
+                        "surface-container-low": "#f3f3f4",
+                        "secondary-fixed-dim": "#b4c5ff",
                         "on-error": "#ffffff",
-                        "on-secondary": "#ffffff",
-                        "surface-tint": "#005ac2",
-                        "secondary-fixed-dim": "#b1c6f9",
-                        "on-tertiary-fixed-variant": "#723600",
-                        "secondary": "#495e8a",
-                        "on-primary-container": "#fefcff",
-                        "background": "#f8f9fa",
+                        "tertiary-fixed": "#fcd6ff",
+                        "surface-container": "#eeeeee",
+                        "tertiary": "#7f458d",
+                        "primary-container": "#8a4cfc",
+                        "on-primary-container": "#fffbff",
+                        "primary-fixed": "#eaddff",
+                        "on-surface": "#1a1c1c",
+                        "surface-container-highest": "#e2e2e2",
+                        "on-tertiary-fixed-variant": "#682f76",
+                        "surface-dim": "#dadada",
+                        "on-tertiary-fixed": "#340042",
                         "on-tertiary": "#ffffff",
-                        "primary-container": "#2170e4",
-                        "primary-fixed-dim": "#adc6ff",
-                        "on-secondary-container": "#405682",
-                        "on-surface": "#191c1d",
-                        "on-primary-fixed": "#001a42",
-                        "surface-variant": "#e1e3e4",
-                        "surface-dim": "#d9dadb",
-                        "inverse-primary": "#adc6ff",
-                        "surface-container-low": "#f3f4f5",
-                        "primary": "#0058be",
-                        "secondary-fixed": "#d8e2ff",
-                        "inverse-surface": "#2e3132",
-                        "inverse-on-surface": "#f0f1f2",
-                        "surface-container-highest": "#e1e3e4",
-                        "surface-bright": "#f8f9fa",
+                        "inverse-on-surface": "#f0f1f1",
+                        "outline": "#767586",
+                        "background": "#f9f9f9",
+                        "secondary-container": "#316bf3",
+                        "on-tertiary-container": "#fffbff",
+                        "on-surface-variant": "#464554",
+                        "on-secondary-container": "#fefcff",
+                        "on-primary-fixed": "#25005a",
                         "error-container": "#ffdad6",
-                        "on-secondary-fixed-variant": "#304671",
+                        "tertiary-fixed-dim": "#f3aeff",
+                        "outline-variant": "#c7c4d7",
+                        "surface-container-high": "#e8e8e8",
                         "on-primary": "#ffffff",
-                        "on-background": "#191c1d",
-                        "outline": "#727785",
-                        "on-tertiary-fixed": "#311400",
-                        "on-surface-variant": "#424754",
-                        "tertiary-container": "#b75b00",
-                        "primary-fixed": "#d8e2ff"
+                        "primary": "#712ae2",
+                        "inverse-primary": "#d2bbff",
+                        "on-error-container": "#93000a",
+                        "error": "#ba1a1a",
+                        "inverse-surface": "#2f3131",
+                        "surface-bright": "#f9f9f9",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed-variant": "#5a00c6",
+                        "secondary": "#0051d5",
+                        "on-secondary": "#ffffff",
+                        "surface-variant": "#e2e2e2",
+                        "on-secondary-fixed": "#00174b",
+                        "primary-fixed-dim": "#d2bbff",
+                        "on-background": "#1a1c1c",
+                        "surface-tint": "#732ee4",
+                        "secondary-fixed": "#dbe1ff",
+                        "on-secondary-fixed-variant": "#003ea8",
+                        "surface": "#f9f9f9"
                     },
                     "borderRadius": {
-                        "DEFAULT": "12px",
-                        "lg": "12px",
-                        "xl": "16px",
+                        "DEFAULT": "0.5rem",
+                        "lg": "0.75rem",
+                        "xl": "1rem",
                         "full": "9999px"
                     },
                     "fontFamily": {
-                        "headline": ["Inter", "sans-serif"],
-                        "body": ["Inter", "sans-serif"],
-                        "label": ["Inter", "sans-serif"]
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
                     }
-                }
-            }
+                },
+            },
         }
     </script>
 <style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f8f9fa;
-            color: #191c1d;
-        }
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: transparent;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #e7e8e9;
-            border-radius: 10px;
-        }
+        body { font-family: 'Inter', sans-serif; background-color: #f9f9f9; }
+        h1, h2, h3, .headline { font-family: 'Manrope', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-effect { backdrop-filter: blur(20px); }
     </style>
 </head>
-<body class="antialiased">
+<body class="flex min-h-screen text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed">
 <!-- SideNavBar Shell -->
-<aside class="h-screen w-64 fixed left-0 top-0 bg-[#f8f9fa] flex flex-col gap-y-4 p-6 overflow-y-auto z-50">
-<div class="mb-8">
-<h1 class="text-2xl font-black tracking-tighter text-slate-900">Precision</h1>
-<p class="text-xs text-slate-500 font-medium tracking-tight">Ticket Management</p>
+<!-- Main Content Shell -->
+<main class="flex-1 md:ml-72 flex flex-col">
+<!-- TopAppBar -->
+<!-- Canvas Area -->
+<div class="mt-24 p-12 space-y-12">
+<!-- Hero Title -->
+<div class="max-w-4xl">
+<h2 class="text-5xl font-extrabold tracking-tight text-on-surface mb-4" style="">Mời bạn bè &amp; Nhận quà</h2>
+<p class="text-on-surface-variant text-lg max-w-2xl leading-relaxed" style="">
+                    Chia sẻ trải nghiệm Luminous Guardian với mạng lưới của bạn và bắt đầu nhận hoa hồng trọn đời lên đến <span class="text-primary font-bold" style="">20%</span> cho mỗi giao dịch thành công.
+                </p>
 </div>
-<nav class="flex-1 space-y-1">
-<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-slate-200/50 hover:text-slate-900 transition-all rounded-xl scale-100 hover:translate-x-1 duration-200" href="#">
-<span class="material-symbols-outlined">dashboard</span>
-<span class="font-medium text-sm tracking-tight">Dashboard</span>
-</a>
-<a class="flex items-center gap-3 px-4 py-3 bg-white text-[#0058be] shadow-sm rounded-xl font-medium scale-100 hover:translate-x-1 duration-200" href="#">
-<span class="material-symbols-outlined">confirmation_number</span>
-<span class="font-medium text-sm tracking-tight">Tickets</span>
-</a>
-<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-slate-200/50 hover:text-slate-900 transition-all rounded-xl scale-100 hover:translate-x-1 duration-200" href="#">
-<span class="material-symbols-outlined">group</span>
-<span class="font-medium text-sm tracking-tight">Customers</span>
-</a>
-<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-slate-200/50 hover:text-slate-900 transition-all rounded-xl scale-100 hover:translate-x-1 duration-200" href="#">
-<span class="material-symbols-outlined">auto_stories</span>
-<span class="font-medium text-sm tracking-tight">Knowledge Base</span>
-</a>
-<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-slate-200/50 hover:text-slate-900 transition-all rounded-xl scale-100 hover:translate-x-1 duration-200" href="#">
-<span class="material-symbols-outlined">analytics</span>
-<span class="font-medium text-sm tracking-tight">Reports</span>
-</a>
-</nav>
-<div class="mt-auto pt-6 space-y-1">
-<button class="w-full bg-gradient-to-b from-primary to-primary-container text-white py-3 rounded-xl font-semibold text-sm mb-6 shadow-sm active:scale-95 transition-transform">
-                New Ticket
-            </button>
-<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-slate-200/50 hover:text-slate-900 transition-all rounded-xl" href="#">
-<span class="material-symbols-outlined">settings</span>
-<span class="font-medium text-sm tracking-tight">Settings</span>
-</a>
-<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-slate-200/50 hover:text-slate-900 transition-all rounded-xl" href="#">
-<span class="material-symbols-outlined">logout</span>
-<span class="font-medium text-sm tracking-tight">Sign Out</span>
-</a>
+<!-- Top Cards Bento Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+<!-- Referral Code Card -->
+<div class="lg:col-span-5 bg-surface-container-lowest rounded-xl p-8 flex flex-col justify-between relative overflow-hidden">
+<div class="relative z-10">
+<div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary" style="">link</span>
 </div>
-</aside>
-<!-- Main Content Canvas -->
-<main class="ml-64 min-h-screen">
-<!-- TopNavBar Shell -->
-<header class="w-full sticky top-0 z-40 bg-white/80 backdrop-blur-md flex justify-between items-center px-8 h-16 shadow-[0_4px_20px_-2px_rgba(25,28,29,0.06)]">
-<div class="flex items-center gap-2">
-<span class="text-slate-400 font-medium text-sm tracking-tight">Tickets /</span>
-<span class="text-slate-900 font-bold text-sm tracking-tight">#1 123</span>
-</div>
-<div class="flex items-center gap-6">
-<div class="flex items-center gap-4">
-<button class="p-2 text-slate-500 hover:bg-slate-100 rounded-full transition-colors active:scale-95">
-<span class="material-symbols-outlined">notifications</span>
-</button>
-<button class="p-2 text-slate-500 hover:bg-slate-100 rounded-full transition-colors active:scale-95">
-<span class="material-symbols-outlined">settings</span>
-</button>
-</div>
-<div class="h-8 w-8 rounded-full bg-slate-200 overflow-hidden">
-<img alt="User Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuATKleHeMQqOmw3AlWjUJ40RVjPOe1_ayanfjnEUtpcDViIUBp2SzXkXSq-4tByzGvVTh81qEl8wRJRgQHp66gCQ-Dzq8Y2J5iDIEZoLysFcU82SzKSd0MHM6xnkoymfcWH7Rk6EmOcWD_SjSZaN5UbxaB4D7oq8CdtATs0Xp2Eg8Wp7ihXGH8vjNOmXyNiaLFZsbhPd-fINhJmX-MBtri4c7sKRxxkhYaXbvIgPInSi8SyKVJmvSjX2IPrJxoms6OsgQyKTG7TMqk"/>
+<h3 class="text-xl font-bold mb-2" style="">Liên kết mời</h3>
+<p class="text-on-surface-variant text-sm mb-6" style="">Gửi mã này cho bạn bè của bạn để bắt đầu tích lũy phần thưởng.</p>
+<div class="space-y-4">
+<div>
+<label class="text-[10px] font-bold text-on-surface-variant/60 uppercase tracking-widest mb-1 block" style="">Your Personal Code</label>
+<div class="relative group">
+<input class="w-full bg-surface-container-low border-0 rounded-lg px-4 py-3 text-on-surface font-mono font-bold focus:ring-2 focus:ring-primary/20" readonly="" type="text" value="LUMINOUS-8892"/>
+<button class="absolute right-2 top-2 bottom-2 px-4 bg-white text-primary text-xs font-bold rounded-md shadow-sm border border-outline-variant/20 hover:bg-primary hover:text-white transition-all active:scale-95" style="">
+                                        Copy
+                                    </button>
 </div>
 </div>
-</header>
-<div class="p-12 max-w-7xl mx-auto space-y-12">
-<!-- Hero Header Section -->
-<section class="space-y-4">
-<div class="inline-block px-3 py-1 bg-primary/10 text-primary rounded-full text-[10px] font-bold tracking-widest uppercase mb-2">
-                    Active Ticket
-                </div>
-<h2 class="text-4xl font-extrabold tracking-tight text-on-surface -ml-1">#1 123</h2>
-<p class="text-slate-500 max-w-2xl leading-relaxed">Financial department ticket regarding system reconciliation and account balance validation for the current fiscal period.</p>
-</section>
-<!-- Bento Metadata Grid -->
-<section class="grid grid-cols-1 md:grid-cols-3 gap-6">
-<!-- Status Card -->
-<div class="bg-surface-container-lowest p-6 rounded-xl shadow-[0_4px_20px_-2px_rgba(25,28,29,0.06)] flex flex-col justify-between min-h-[140px]">
-<span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Status</span>
-<div class="mt-4 flex items-center gap-3">
-<div class="h-3 w-3 rounded-full bg-amber-400 animate-pulse"></div>
-<span class="text-2xl font-bold text-on-surface tracking-tight">进行中</span>
+<div>
+<label class="text-[10px] font-bold text-on-surface-variant/60 uppercase tracking-widest mb-1 block" style="">Referral URL</label>
+<div class="relative group">
+<input class="w-full bg-surface-container-low border-0 rounded-lg px-4 py-3 text-on-surface font-mono font-bold focus:ring-2 focus:ring-primary/20" readonly="" type="text" value="https://guardian.io/r/8892"/>
+<button class="absolute right-2 top-2 bottom-2 px-4 bg-white text-primary text-xs font-bold rounded-md shadow-sm border border-outline-variant/20 hover:bg-primary hover:text-white transition-all active:scale-95" style="">
+                                        Copy Link
+                                    </button>
 </div>
 </div>
-<!-- Type Card -->
-<div class="bg-surface-container-lowest p-6 rounded-xl shadow-[0_4px_20px_-2px_rgba(25,28,29,0.06)] flex flex-col justify-between min-h-[140px]">
-<span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Department</span>
-<div class="mt-4 flex items-center gap-3 text-primary">
-<span class="material-symbols-outlined text-3xl">account_balance_wallet</span>
-<span class="text-2xl font-bold text-on-surface tracking-tight">财务</span>
 </div>
 </div>
-<!-- Time Card -->
-<div class="bg-surface-container-lowest p-6 rounded-xl shadow-[0_4px_20px_-2px_rgba(25,28,29,0.06)] flex flex-col justify-between min-h-[140px]">
-<span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Created Time</span>
-<div class="mt-4">
-<span class="text-xl font-bold text-on-surface tracking-tight block">2026-04-19</span>
-<span class="text-sm font-medium text-slate-400">15:28:57</span>
+<!-- Aesthetic Gradient Blobs -->
+<div class="absolute -right-20 -bottom-20 w-48 h-48 bg-primary/5 rounded-full blur-3xl"></div>
+</div>
+<!-- Rules Card -->
+<div class="lg:col-span-7 bg-surface-container-lowest rounded-xl p-8 border border-outline-variant/15">
+<h3 class="text-xl font-bold mb-6 flex items-center gap-2" style="">
+<span class="material-symbols-outlined text-primary" style="">info</span>
+                        Quy tắc mời
+                    </h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-4">
+<div class="flex gap-4">
+<div class="flex-shrink-0 w-8 h-8 rounded-full bg-secondary/10 flex items-center justify-center text-secondary font-bold text-xs" style="">1</div>
+<p class="text-sm leading-relaxed text-on-surface-variant" style="">Người dùng được mời đăng ký tài khoản thành công thông qua liên kết.</p>
+</div>
+<div class="flex gap-4">
+<div class="flex-shrink-0 w-8 h-8 rounded-full bg-secondary/10 flex items-center justify-center text-secondary font-bold text-xs" style="">2</div>
+<p class="text-sm leading-relaxed text-on-surface-variant" style="">Phần thưởng hoa hồng <span class="text-on-surface font-bold" style="">20%</span> được tính trên giá trị thanh toán thực tế.</p>
 </div>
 </div>
-</section>
-<!-- Conversation Section -->
-<section class="space-y-8 pt-6">
+<div class="space-y-4">
+<div class="flex gap-4">
+<div class="flex-shrink-0 w-8 h-8 rounded-full bg-secondary/10 flex items-center justify-center text-secondary font-bold text-xs" style="">3</div>
+<p class="text-sm leading-relaxed text-on-surface-variant" style="">Hoa hồng sẽ được cộng vào số dư ví của bạn ngay sau khi giao dịch hoàn tất.</p>
+</div>
+<div class="flex gap-4">
+<div class="flex-shrink-0 w-8 h-8 rounded-full bg-secondary/10 flex items-center justify-center text-secondary font-bold text-xs" style="">4</div>
+<p class="text-sm leading-relaxed text-on-surface-variant" style="">Luminous Guardian có quyền thu hồi nếu phát hiện hành vi gian lận.</p>
+</div>
+</div>
+</div>
+<div class="mt-8 pt-6 border-t border-outline-variant/10 flex items-center">
+<div>
+<p class="text-xs text-on-surface-variant uppercase font-bold tracking-widest" style="">Total Earnings</p>
+<p class="text-2xl font-black text-secondary" style="">$1,240.50</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Rewards History Section -->
+<div class="space-y-6">
 <div class="flex items-center justify-between">
-<h3 class="text-lg font-bold tracking-tight text-on-surface">Conversation History</h3>
-<button class="bg-surface-container-high text-primary px-6 py-2.5 rounded-xl text-sm font-bold active:scale-95 transition-all">
-                        Refresh Log
-                    </button>
+<h3 class="text-2xl font-bold" style="">Lịch sử nhận thưởng</h3>
+<div class="flex items-center gap-2">
+<button class="px-4 py-2 text-xs font-bold text-on-surface-variant hover:bg-surface-container transition-colors rounded-lg flex items-center gap-2" style="">
+<span class="material-symbols-outlined text-sm" style="">filter_list</span> Filter
+                        </button>
 </div>
-<!-- Timeline / Message Area -->
-<div class="space-y-12">
-<!-- Message Item -->
-<div class="flex gap-6 items-start">
-<div class="flex-shrink-0 w-12 h-12 rounded-xl bg-slate-200 overflow-hidden shadow-sm">
-<img alt="djtmemay123 profile picture" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrx8YOzsxe_oytj1cDjpWxmEa5x9UfXhf42ANOJz5i8HHNeAZtF3-6-40U-m9qfskcq9pdU5vXB60IIuF1hXWtCKwRl7WfIffBouCIkjgPXxODMwkj_SjgND1q3ip8CE1XRlWEy-ZuW3_ezM4rAF4X374aJp4t-cFUklv62lSnL4DfAYfpb3K1kJ1CdKQY2SXIr4pvBDHkqUrVQDnKxL9-T0BB6QgtpgFPnw6FlNVua_2so3lE9uo60OlgmSsLUlksx96gTcDMG28"/>
 </div>
-<div class="flex-1 space-y-3">
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-[0_40px_40px_-10px_rgba(113,42,226,0.05)] border border-outline-variant/10">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low/50">
+<th class="px-6 py-4 text-[10px] uppercase tracking-widest font-bold text-on-surface-variant" style="">Record ID</th>
+<th class="px-6 py-4 text-[10px] uppercase tracking-widest font-bold text-on-surface-variant" style="">Invited User ID</th>
+<th class="px-6 py-4 text-[10px] uppercase tracking-widest font-bold text-on-surface-variant" style="">Nickname</th>
+<th class="px-6 py-4 text-[10px] uppercase tracking-widest font-bold text-on-surface-variant text-right" style="">Amount</th>
+<th class="px-6 py-4 text-[10px] uppercase tracking-widest font-bold text-on-surface-variant" style="">Time</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10">
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="px-6 py-5 font-mono text-xs font-medium text-primary" style="">#RE-44921</td>
+<td class="px-6 py-5 text-sm" style="">90211</td>
+<td class="px-6 py-5" style="">
 <div class="flex items-center gap-3">
-<span class="font-bold text-on-surface tracking-tight">djtmemay123</span>
-<span class="text-[10px] text-slate-400 font-bold uppercase tracking-widest bg-slate-100 px-2 py-0.5 rounded">Customer</span>
-<span class="text-xs text-slate-400 ml-auto font-medium">2026-04-19 15:28:57</span>
+<div class="w-8 h-8 rounded-full bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center font-bold text-[10px]" style="">TH</div>
+<span class="text-sm font-semibold" style="">Tung Hoang</span>
 </div>
-<div class="bg-surface-container-lowest p-6 rounded-xl rounded-tl-none shadow-[0_4px_20px_-2px_rgba(25,28,29,0.06)] text-on-surface leading-relaxed text-md max-w-2xl">
-                                123
-                            </div>
+</td>
+<td class="px-6 py-5 text-sm font-bold text-right text-on-surface" style="">$12.50</td>
+<td class="px-6 py-5 text-sm text-on-surface-variant" style="">2023-11-20 14:22</td>
+</tr>
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="px-6 py-5 font-mono text-xs font-medium text-primary" style="">#RE-44910</td>
+<td class="px-6 py-5 text-sm" style="">88122</td>
+<td class="px-6 py-5" style="">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-tertiary-fixed text-on-tertiary-fixed flex items-center justify-center font-bold text-[10px]" style="">MM</div>
+<span class="text-sm font-semibold" style="">Minh Mike</span>
 </div>
+</td>
+<td class="px-6 py-5 text-sm font-bold text-right text-on-surface" style="">$45.00</td>
+<td class="px-6 py-5 text-sm text-on-surface-variant" style="">2023-11-19 09:15</td>
+</tr>
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="px-6 py-5 font-mono text-xs font-medium text-primary" style="">#RE-44899</td>
+<td class="px-6 py-5 text-sm" style="">77521</td>
+<td class="px-6 py-5" style="">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary-fixed text-on-primary-fixed flex items-center justify-center font-bold text-[10px]" style="">AN</div>
+<span class="text-sm font-semibold" style="">An Nguyen</span>
 </div>
-<!-- Internal System Log (Example of Asymmetry) -->
-<div class="flex justify-center">
-<div class="px-6 py-2 bg-surface-container-low rounded-full flex items-center gap-3">
-<span class="material-symbols-outlined text-slate-400 text-sm">history</span>
-<span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Ticket opened by customer</span>
-</div>
-</div>
-</div>
-<!-- Add Reply Interaction Area -->
-<div class="pt-8 border-t border-transparent">
-<div class="bg-white rounded-xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.08)] p-1 overflow-hidden">
-<textarea class="w-full border-none focus:ring-0 p-6 text-sm text-slate-600 placeholder:text-slate-400 min-h-[120px] resize-none" placeholder="Type your response here..."></textarea>
-<div class="bg-slate-50/50 px-6 py-4 flex items-center justify-between">
-<div class="flex gap-2">
-<button class="p-2 text-slate-400 hover:text-primary transition-colors">
-<span class="material-symbols-outlined">attach_file</span>
-</button>
-<button class="p-2 text-slate-400 hover:text-primary transition-colors">
-<span class="material-symbols-outlined">sentiment_satisfied</span>
-</button>
-</div>
-<button class="bg-gradient-to-b from-primary to-primary-container text-white px-8 py-2.5 rounded-xl font-bold text-sm shadow-md shadow-primary/20 active:scale-95 transition-all">
-                                Add Reply
-                            </button>
-</div>
-</div>
-</div>
-</section>
-<!-- Decorative Visual Element -->
-<div class="mt-24 h-48 rounded-xl overflow-hidden relative group">
-<div class="absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent z-10"></div>
-<img class="w-full h-full object-cover grayscale opacity-30 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-1000" data-alt="abstract architectural glass building facade with clean lines and soft blue reflections in daylight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfzqRPcVVUzkKXcTU92GnbOODYHzbtkAIUckKAaG4TtlImgEWCw8jr7OmPpBNNiM1jZb_vFSUwanOPq-GugIuRxRjU10dv9KGeyyuBVUxva3X9dOPvMdE9IL5QRoAFe5Iiok_9Tm3IIR7WGe0uzZccUQmAXJ6vLyP8xrzYkPQNiZf27ZoxacFczBVjyNK1aUVDB5NrQ3zC1mSmzN8NLzt4jPwK7OLM-keb9TykTiGStF9ywPQx4Vfio9qpUuGA5913nwf3E3F2Oaw"/>
-<div class="absolute bottom-8 left-8 z-20">
-<p class="text-xs font-bold uppercase tracking-[0.2em] text-on-surface/60">System Information</p>
-<p class="text-sm font-medium text-on-surface/40">Secure End-to-End Ticket Encryption Active</p>
+</td>
+<td class="px-6 py-5 text-sm font-bold text-right text-on-surface" style="">$5.20</td>
+<td class="px-6 py-5 text-sm text-on-surface-variant" style="">2023-11-18 22:40</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
+<!-- Promo Banner -->
 </div>
 </main>
+<!-- Floating Action Button (FAB) - Suppression Rule Check: Supressed for Detail/Dashboard flow as per instructions -->
 </body></html>

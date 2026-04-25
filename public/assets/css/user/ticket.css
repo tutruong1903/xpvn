@@ -254,7 +254,7 @@
 .ev-ticket-container {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 3rem 2rem;
+    padding: 2.5rem 2rem 4rem;
 }
 
 /* ---- Page Header ---- */
@@ -267,8 +267,8 @@
 
 .ev-ticket-header-content h2 {
     font-family: 'Manrope', sans-serif;
-    font-size: 1.75rem;
-    font-weight: 700;
+    font-size: 2rem;
+    font-weight: 800;
     letter-spacing: -0.02em;
     color: var(--ev-on-surface);
     margin: 0 0 0.375rem 0;
@@ -276,9 +276,9 @@
 }
 
 .ev-ticket-header-content p {
-    font-size: 0.875rem;
+    font-size: 0.9375rem;
     color: var(--ev-on-surface-variant);
-    font-weight: 500;
+    font-weight: 400;
     margin: 0;
 }
 

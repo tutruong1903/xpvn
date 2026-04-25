@@ -164,6 +164,14 @@
             profileDict,
         );
 
+        // User invite section
+        var inviteDict = getUserSectionDict(locale, "invite");
+        applyAttributeFromDict(
+            "[data-i18n-user-invite]",
+            "data-i18n-user-invite",
+            inviteDict,
+        );
+
         // User footer section (success/fail dialogs shared across all pages)
         var footerDict = getUserSectionDict(locale, "footer");
         applyAttributeFromDict(

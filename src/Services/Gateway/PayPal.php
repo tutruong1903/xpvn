@@ -102,7 +102,7 @@ final class PayPal extends Base
         try {
             $exchange_amount = (new Exchange())->exchange(
                 (float) $price,
-                'CNY',
+                'USD',
                 Config::obtain('paypal_currency')
             );
         } catch (GuzzleException|RedisException) {

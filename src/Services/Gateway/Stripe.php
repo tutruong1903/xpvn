@@ -86,7 +86,7 @@ final class Stripe extends Base
         $stripe_currency = Config::obtain('stripe_currency');
 
         try {
-            $exchange_amount = (new Exchange())->exchange((float) $price, 'CNY', $stripe_currency);
+            $exchange_amount = (new Exchange())->exchange((float) $price, 'USD', $stripe_currency);
         } catch (GuzzleException|RedisException) {
             return $response->withJson([
                 'ret' => 0,

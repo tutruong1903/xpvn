@@ -82,7 +82,7 @@
                 <div class="col-sm-12 col-md-6 col-lg-3">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">价格明细（元）</h3>
+                            <h3 class="card-title">价格明细（USD）</h3>
                         </div>
                         <div class="card-body">
                             <table class="table table-transparent table-responsive">

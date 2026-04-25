@@ -1630,7 +1630,7 @@
     },
     {
         "item": "cryptomus_currency",
-        "value": "CNY",
+        "value": "USD",
         "class": "billing",
         "is_public": 1,
         "type": "string",

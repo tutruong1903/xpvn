@@ -42,7 +42,7 @@
                                 <div class="tab-pane active show" id="invite">
                                     <div class="card-body">
                                         <div class="form-group mb-3 row">
-                                            <label class="form-label col-3 col-form-label">被邀请者初始账户余额（元）</label>
+                                            <label class="form-label col-3 col-form-label">被邀请者初始账户余额（USD）</label>
                                             <div class="col">
                                                 <input id="invite_reg_money_reward" type="text"
                                                        class="form-control"

@@ -89,7 +89,7 @@ final class Cryptomus extends Base
 
         $paymentData = [
             'amount' => $price,
-            'currency' => $this->cryptomus['cryptomus_currency'] ?? 'CNY',
+            'currency' => $this->cryptomus['cryptomus_currency'] ?? 'USD',
             'order_id' => 'sspanel_' . $invoiceId,
             'url_return' => $redir,
             'url_callback' => self::getCallbackUrl(),

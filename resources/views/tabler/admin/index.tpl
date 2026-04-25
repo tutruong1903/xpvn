@@ -30,7 +30,7 @@
                                         </div>
                                         <div class="col">
                                             <div class="font-weight-medium">
-                                                ￥{$today_income}
+                                                ${$today_income}
                                             </div>
                                             <div class="text-secondary">
                                                 本日流水
@@ -51,7 +51,7 @@
                                         </div>
                                         <div class="col">
                                             <div class="font-weight-medium">
-                                                ￥{$yesterday_income}
+                                                ${$yesterday_income}
                                             </div>
                                             <div class="text-secondary">
                                                 昨日流水
@@ -72,7 +72,7 @@
                                         </div>
                                         <div class="col">
                                             <div class="font-weight-medium">
-                                                ￥{$this_month_income}
+                                                ${$this_month_income}
                                             </div>
                                             <div class="text-secondary">
                                                 本月流水
@@ -93,7 +93,7 @@
                                         </div>
                                         <div class="col">
                                             <div class="font-weight-medium">
-                                                ￥{$total_income}
+                                                ${$total_income}
                                             </div>
                                             <div class="text-secondary">
                                                 累计流水

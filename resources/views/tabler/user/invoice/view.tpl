@@ -118,7 +118,7 @@
                                 {if $invoice->type !== 'topup'}
                                 <div class="tab-pane active show" id="balance">
                                     <div class="mb-3">
-                                        当前账户可用余额：<code>{$user->money}</code> 元
+                                        当前账户可用余额：<code>{$user->money}</code> USD
                                     </div>
                                     <div class="d-flex">
                                         <button class="btn btn-primary" type="button"

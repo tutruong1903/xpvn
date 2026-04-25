@@ -30,7 +30,7 @@
                                         </li>
                                         <li>部分商品的返利比例可能不遵循上面的比例</li>
                                     </ul>
-                                    <p>你目前通过邀请好友获得的总返利为 <code>{$paybacks_sum}</code> 元</p>
+                                    <p>你目前通过邀请好友获得的总返利为 <code>{$paybacks_sum}</code> USD</p>
                                 </div>
                             </div>
                         </div>
@@ -76,7 +76,7 @@
                                         <td>{$payback->id}</td>
                                         <td>{$payback->userid}</td>
                                         <td>{$payback->user_name}</td>
-                                        <td>{$payback->ref_get} 元</td>
+                                        <td>{$payback->ref_get} USD</td>
                                         <td>{$payback->datetime}</td>
                                     </tr>
                                 {/foreach}

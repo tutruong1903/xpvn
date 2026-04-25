@@ -21,20 +21,36 @@ final class UserController extends BaseController
 {
     private static array $details = [
         'field' => [
-            'op' => '操作',
-            'id' => '用户ID',
-            'user_name' => '昵称',
-            'email' => '邮箱',
-            'money' => '余额',
-            'ref_by' => '邀请人',
-            'transfer_enable' => '流量限制',
-            'transfer_used' => '当期用量',
-            'class' => '等级',
-            'is_admin' => '是否管理员',
-            'is_banned' => '是否封禁',
-            'is_inactive' => '是否闲置',
-            'reg_date' => '注册时间',
-            'class_expire' => '等级过期',
+            'op'        => 'Thao tác',
+            'id'        => 'ID',
+            'user_name' => 'Biệt danh',
+            'email'     => 'Email',
+            'money'     => 'Số dư',
+            'class'     => 'Cấp bậc',
+            'is_admin'  => 'Admin?',
+            'is_banned' => 'Trạng thái',
+            'reg_date'  => 'Ngày tạo',
+        ],
+        'filter' => [
+            [
+                'field'  => 'is_admin',
+                'label'  => 'Loại tài khoản',
+                'values' => [
+                    ''             => 'Tất cả',
+                    'check_circle' => 'Admin',
+                    'cancel'       => 'User',
+                ],
+            ],
+            [
+                'field'  => 'is_banned',
+                'label'  => 'Trạng thái',
+                'values' => [
+                    ''         => 'Tất cả',
+                    'Active'   => 'Active',
+                    'Banned'   => 'Banned',
+                    'Inactive' => 'Inactive',
+                ],
+            ],
         ],
         'create_dialog' => [
             [
@@ -249,21 +265,61 @@ final class UserController extends BaseController
 
     public function ajax(ServerRequest $request, Response $response, array $args): ResponseInterface
     {
-        $users = (new User())->orderBy('id', 'desc')->get();
+        $users     = (new User())->orderBy('id', 'desc')->get();
+        $total     = $users->count();
+        $active    = $users->where('is_banned', 0)->count();
+        $banned    = $users->where('is_banned', 1)->count();
+        $admins    = $users->where('is_admin', 1)->count();
 
         foreach ($users as $user) {
-            $user->op = '<button class="btn btn-red" id="delete-user-' . $user->id . '" 
-            onclick="deleteUser(' . $user->id . ')">删除</button>
-            <a class="btn btn-primary" href="/admin/user/' . $user->id . '/edit">编辑</a>';
+            $user->op =
+                '<div class="lmn-act-wrap">' .
+                    '<a class="lmn-act-btn lmn-act-btn--edit" href="/admin/user/' . $user->id . '/edit" title="编辑">' .
+                        '<span class="material-symbols-outlined">edit</span>' .
+                    '</a>' .
+                    '<button class="lmn-act-btn lmn-act-btn--del" onclick="deleteUser(' . $user->id . ')" title="删除">' .
+                        '<span class="material-symbols-outlined">delete</span>' .
+                    '</button>' .
+                '</div>';
+
             $user->transfer_enable = $user->enableTraffic();
-            $user->transfer_used = $user->usedTraffic();
-            $user->is_admin = $user->is_admin === 1 ? '是' : '否';
-            $user->is_banned = $user->is_banned === 1 ? '是' : '否';
-            $user->is_inactive = $user->is_inactive === 1 ? '是' : '否';
+            $user->transfer_used   = $user->usedTraffic();
+
+            $classLevel = (int) $user->class;
+            $classMap   = [0 => ['Basic', 'lmn-badge--class-basic'], 1 => ['Standard', 'lmn-badge--class-std'], 2 => ['Premium', 'lmn-badge--class-premium']];
+            [$classLabel, $classStyle] = $classMap[$classLevel] ?? ['VIP ' . $classLevel, 'lmn-badge--class-vip'];
+            $user->class = '<span class="lmn-badge ' . $classStyle . '">' . $classLabel . '</span>';
+
+            $user->money = '<span class="lmn-money' . ($user->money > 0 ? ' lmn-money--positive' : '') . '">$' . number_format((float) $user->money, 2) . '</span>';
+
+            $user->is_admin = (int) $user->is_admin === 1
+                ? '<span class="material-symbols-outlined lmn-icon--yes" style="font-variation-settings:\'FILL\' 1">check_circle</span>'
+                : '<span class="material-symbols-outlined lmn-icon--no">cancel</span>';
+
+            if ((int) $user->is_banned === 1) {
+                $user->is_banned = '<span class="lmn-badge lmn-badge--banned">Banned</span>';
+            } elseif ((int) $user->is_inactive === 1) {
+                $user->is_banned = '<span class="lmn-badge lmn-badge--inactive">Inactive</span>';
+            } else {
+                $user->is_banned = '<span class="lmn-badge lmn-badge--active">Active</span>';
+            }
+
+            $user->is_inactive = (int) $user->is_inactive === 1
+                ? '<span class="lmn-badge lmn-badge--inactive">Yes</span>'
+                : '<span class="lmn-badge lmn-badge--active">No</span>';
+
+            /* Format reg_date to human-readable */
+            if ($user->reg_date) {
+                $user->reg_date = date('d/m/Y', strtotime((string) $user->reg_date));
+            }
         }
 
         return $response->withJson([
-            'users' => $users,
+            'users'  => $users,
+            'total'  => $total,
+            'active' => $active,
+            'banned' => $banned,
+            'admins' => $admins,
         ]);
     }
 }

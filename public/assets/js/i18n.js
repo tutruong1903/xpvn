@@ -214,6 +214,19 @@
             "data-i18n",
             flattenAdminSection(getAdminSectionDict(locale, "dialog"), 'admin.dialog.'),
         );
+
+        // Admin user section (user list page, datatable strings, etc.)
+        applyAttributeFromDict(
+            "[data-i18n^='admin.user.']",
+            "data-i18n",
+            flattenAdminSection(flattenNestedSection(getAdminSectionDict(locale, "user")), 'admin.user.'),
+        );
+        document.querySelectorAll("[data-i18n-placeholder^='admin.user.']").forEach(function (el) {
+            var key = el.getAttribute("data-i18n-placeholder");
+            var dict = flattenAdminSection(flattenNestedSection(getAdminSectionDict(locale, "user")), 'admin.user.');
+            var val = dict[key];
+            if (val) el.setAttribute("placeholder", val);
+        });
     }
 
     /**
@@ -249,6 +262,29 @@
         for (var key in dict) {
             if (typeof dict[key] === 'string') {
                 result[prefix + key] = dict[key];
+            }
+        }
+        return result;
+    }
+
+    /**
+     * Recursively flatten a nested object to dot-notation keys.
+     * Input:  { index: { title: "Users", subtitle: "..." }, datatable: { search_placeholder: "Search" } }
+     * Output: { "index.title": "Users", "index.subtitle": "...", "datatable.search_placeholder": "Search" }
+     */
+    function flattenNestedSection(dict, prefix) {
+        prefix = prefix || '';
+        var result = {};
+        for (var key in dict) {
+            if (!Object.prototype.hasOwnProperty.call(dict, key)) continue;
+            var fullKey = prefix ? prefix + '.' + key : key;
+            if (typeof dict[key] === 'string') {
+                result[fullKey] = dict[key];
+            } else if (dict[key] && typeof dict[key] === 'object') {
+                var nested = flattenNestedSection(dict[key], fullKey);
+                for (var nk in nested) {
+                    result[nk] = nested[nk];
+                }
             }
         }
         return result;

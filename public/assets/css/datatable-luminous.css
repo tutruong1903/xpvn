@@ -1,0 +1,434 @@
+/* ================================================================
+   LUMINOUS GUARDIAN — DataTable shared styles (DataTables 2.x / Bootstrap 5)
+   ================================================================ */
+
+/* ----------------------------------------------------------
+   CSS Variables
+   ---------------------------------------------------------- */
+:root {
+    --lmn-dt-surface:            #ffffff;
+    --lmn-dt-surface-low:        #f3f3f4;
+    --lmn-dt-surface-high:       #e8e8e8;
+    --lmn-dt-on-surface:         #1a1c1c;
+    --lmn-dt-on-surface-variant: #464554;
+    --lmn-dt-outline-variant:    rgba(199, 196, 215, 0.4);
+    --lmn-dt-primary:            #712ae2;
+    --lmn-dt-primary-soft:       rgba(113, 42, 226, 0.08);
+    --lmn-dt-primary-shadow:     rgba(113, 42, 226, 0.05);
+    --lmn-dt-error:              #ba1a1a;
+    --lmn-dt-radius:             1rem;
+    --lmn-dt-radius-sm:          0.5rem;
+}
+
+[data-bs-theme="dark"] {
+    --lmn-dt-surface:            #1e2022;
+    --lmn-dt-surface-low:        #252729;
+    --lmn-dt-surface-high:       #2e3133;
+    --lmn-dt-on-surface:         #e2e2e5;
+    --lmn-dt-on-surface-variant: #b0afbd;
+    --lmn-dt-outline-variant:    rgba(255, 255, 255, 0.08);
+    --lmn-dt-primary-soft:       rgba(210, 187, 255, 0.08);
+}
+
+/* ----------------------------------------------------------
+   Table Card — rounded card with ambient shadow (matches stitch rounded-2xl shadow-xl)
+   ---------------------------------------------------------- */
+.lmn-table-card {
+    background: var(--lmn-dt-surface);
+    border-radius: var(--lmn-dt-radius);
+    box-shadow: 0 20px 40px var(--lmn-dt-primary-shadow),
+                0 4px 8px rgba(0, 0, 0, 0.04),
+                0 1px 2px rgba(0, 0, 0, 0.03);
+    overflow: hidden;
+}
+
+/* ----------------------------------------------------------
+   DataTables wrapper reset
+   ---------------------------------------------------------- */
+.lmn-table-card .dt-container,
+div.dt-container {
+    padding: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: var(--lmn-dt-on-surface);
+}
+
+/* ----------------------------------------------------------
+   DataTables 2.x layout rows
+   ---------------------------------------------------------- */
+
+/* Table row — zero out Bootstrap row padding */
+.lmn-table-card .dt-layout-row.dt-layout-table {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.lmn-table-card .dt-layout-row.dt-layout-table > * {
+    padding: 0 !important;
+}
+
+/* Footer row: info + pagination
+   DT2+BS5 injects .row and .col-md-auto — we override all of that
+   ---------------------------------------------------------- */
+.lmn-table-card .dt-layout-row:last-child,
+.lmn-table-card .dt-layout-row.dt-layout-footer {
+    background: rgba(243, 243, 244, 0.5) !important;
+    border-top: 1px solid var(--lmn-dt-outline-variant);
+    /* undo Bootstrap .row negative margins */
+    margin-left:  0 !important;
+    margin-right: 0 !important;
+    margin-top:   0 !important;
+    /* own spacing */
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+[data-bs-theme="dark"] .lmn-table-card .dt-layout-row:last-child,
+[data-bs-theme="dark"] .lmn-table-card .dt-layout-row.dt-layout-footer {
+    background: rgba(37, 39, 41, 0.5) !important;
+}
+
+/* Reset every direct child cell (Bootstrap adds .col-md-auto, etc.)
+   NOTE: me-auto / ms-auto margin helpers must be neutralised so flex
+   justify-content:space-between drives the alignment instead */
+.lmn-table-card .dt-layout-row:last-child > *,
+.lmn-table-card .dt-layout-row.dt-layout-footer > *,
+.lmn-table-card .dt-layout-row:last-child [class*="col-"],
+.lmn-table-card .dt-layout-row.dt-layout-footer [class*="col-"] {
+    padding: 0 !important;
+    width: auto !important;
+    max-width: none !important;
+    flex: none !important;
+    margin-right: 0 !important;
+    margin-left:  0 !important;
+}
+
+/* Info text: restore left padding so it doesn't hug the card edge */
+.lmn-table-card .dt-layout-row:last-child .dt-info,
+.lmn-table-card .dt-layout-row.dt-layout-footer .dt-info {
+    padding: 1rem 0.5rem 1rem 1.5rem !important;
+    font-size: 0.8125rem;
+    color: var(--lmn-dt-on-surface-variant);
+    flex: 1 1 auto;
+    white-space: nowrap;
+}
+
+/* Paging: restore right padding */
+.lmn-table-card .dt-layout-row:last-child .dt-paging,
+.lmn-table-card .dt-layout-row.dt-layout-footer .dt-paging {
+    padding: 0.75rem 1.5rem 0.75rem 0.5rem !important;
+    flex: none;
+}
+
+/* DT2 named cells — ensure start stretches so paging stays right */
+.lmn-table-card .dt-layout-row.dt-layout-footer .dt-layout-start { flex: 1 1 auto !important; }
+.lmn-table-card .dt-layout-row.dt-layout-footer .dt-layout-end   { flex: none !important; }
+
+/* ----------------------------------------------------------
+   Horizontal scroll — let the DT wrapper handle it
+   (scrollX:true removed to prevent double-header clone)
+   ---------------------------------------------------------- */
+.lmn-table-card .dt-container,
+.lmn-table-card #data-table_wrapper {
+    overflow-x: auto;
+}
+
+/* ----------------------------------------------------------
+   Table — strip all default borders
+   ---------------------------------------------------------- */
+table.dataTable {
+    border-collapse: collapse !important;
+    width: 100% !important;
+    min-width: 700px; /* triggers horizontal scroll on narrow screens */
+    margin: 0 !important;
+}
+
+table.dataTable thead th,
+table.dataTable thead td,
+table.dataTable tbody th,
+table.dataTable tbody td,
+table.dataTable tfoot th,
+table.dataTable tfoot td {
+    border: none !important;
+    box-shadow: none !important;
+}
+
+div.dt-scroll-body {
+    border-bottom: none !important;
+}
+
+/* First column (actions) — center header text */
+table.dataTable thead th:first-child {
+    text-align: center;
+}
+
+/* ----------------------------------------------------------
+   Column headers
+   ---------------------------------------------------------- */
+table.dataTable thead tr {
+    background: rgba(243, 243, 244, 0.6);
+}
+
+table.dataTable thead th {
+    font-size: 0.6875rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    color: var(--lmn-dt-on-surface-variant) !important;
+    padding: 1.125rem 1.5rem !important;
+    white-space: nowrap;
+    cursor: pointer;
+    user-select: none;
+    border-bottom: 1px solid var(--lmn-dt-outline-variant) !important;
+}
+
+/* Sort icons */
+table.dataTable thead th.dt-orderable-asc,
+table.dataTable thead th.dt-orderable-desc {
+    padding-right: 2rem !important;
+}
+
+table.dataTable thead th span.dt-column-order {
+    opacity: 0.25;
+}
+
+table.dataTable thead th.dt-ordering-asc span.dt-column-order::before,
+table.dataTable thead th.dt-ordering-desc span.dt-column-order::after {
+    opacity: 1;
+    color: var(--lmn-dt-primary);
+}
+
+/* ----------------------------------------------------------
+   Table rows & cells
+   ---------------------------------------------------------- */
+table.dataTable tbody tr {
+    transition: background-color 0.12s;
+}
+
+table.dataTable tbody tr:hover > * {
+    background-color: var(--lmn-dt-primary-soft) !important;
+}
+
+table.dataTable tbody td {
+    padding: 0.9375rem 1.5rem !important;
+    font-size: 0.875rem;
+    color: var(--lmn-dt-on-surface);
+    vertical-align: middle;
+    border-bottom: 1px solid var(--lmn-dt-outline-variant) !important;
+}
+
+table.dataTable tbody tr:last-child td {
+    border-bottom: none !important;
+}
+
+/* ----------------------------------------------------------
+   Info text
+   ---------------------------------------------------------- */
+div.dt-info {
+    font-size: 0.8125rem;
+    color: var(--lmn-dt-on-surface-variant);
+    padding: 0 !important;
+    white-space: nowrap;
+    font-weight: 500;
+}
+
+/* ----------------------------------------------------------
+   Pagination (DataTables 2.x simple_numbers)
+   ---------------------------------------------------------- */
+div.dt-paging {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0 !important;
+}
+
+div.dt-paging nav {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+div.dt-paging .dt-paging-button {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.25rem;
+    height: 2.25rem;
+    padding: 0 0.4rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--lmn-dt-outline-variant) !important;
+    background: transparent !important;
+    color: var(--lmn-dt-on-surface-variant) !important;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+    line-height: 1;
+    box-shadow: none !important;
+    text-decoration: none !important;
+}
+
+div.dt-paging .dt-paging-button:hover:not(.disabled):not(.current) {
+    background: var(--lmn-dt-surface-low) !important;
+    color: var(--lmn-dt-on-surface) !important;
+    border-color: var(--lmn-dt-outline-variant) !important;
+}
+
+div.dt-paging .dt-paging-button.current,
+div.dt-paging .dt-paging-button.current:hover {
+    background: linear-gradient(135deg, #712ae2, #8a4cfc) !important;
+    border-color: transparent !important;
+    color: #ffffff !important;
+    box-shadow: 0 2px 8px rgba(113, 42, 226, 0.25) !important;
+}
+
+div.dt-paging .dt-paging-button.disabled,
+div.dt-paging .dt-paging-button.disabled:hover {
+    opacity: 0.35;
+    cursor: not-allowed;
+    background: transparent !important;
+}
+
+/* Chevron icons inside prev/next */
+.lmn-page-icon {
+    font-size: 1.125rem !important;
+    vertical-align: middle;
+    line-height: 1;
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Filter bar styles are scoped per-page in the page's own CSS file */
+
+
+/* ----------------------------------------------------------
+   Action buttons (edit / delete icon pairs)
+   ---------------------------------------------------------- */
+.lmn-act-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.25rem;
+}
+
+.lmn-act-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 0.5rem;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    transition: background 0.15s;
+    text-decoration: none;
+    padding: 0;
+}
+
+.lmn-act-btn .material-symbols-outlined {
+    font-size: 1.125rem;
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+.lmn-act-btn--edit {
+    color: var(--lmn-dt-primary);
+}
+
+.lmn-act-btn--edit:hover {
+    background: var(--lmn-dt-primary-soft);
+    color: var(--lmn-dt-primary);
+}
+
+.lmn-act-btn--del {
+    color: var(--lmn-dt-error);
+}
+
+.lmn-act-btn--del:hover {
+    background: rgba(186, 26, 26, 0.08);
+}
+
+/* ----------------------------------------------------------
+   Status / boolean badges
+   ---------------------------------------------------------- */
+.lmn-badge {
+    display: inline-block;
+    padding: 0.2rem 0.625rem;
+    border-radius: 9999px;
+    font-size: 0.625rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    white-space: nowrap;
+}
+
+.lmn-badge--active {
+    background: rgba(0, 81, 213, 0.1);
+    color: #0051d5;
+}
+
+.lmn-badge--banned {
+    background: rgba(186, 26, 26, 0.1);
+    color: var(--lmn-dt-error);
+}
+
+.lmn-badge--inactive {
+    background: rgba(127, 69, 141, 0.12);
+    color: #7f458d;
+}
+
+.lmn-badge--class-basic {
+    background: var(--lmn-dt-surface-high);
+    color: var(--lmn-dt-on-surface-variant);
+}
+
+.lmn-badge--class-std {
+    background: rgba(0, 81, 213, 0.08);
+    color: #0051d5;
+}
+
+.lmn-badge--class-premium {
+    background: rgba(113, 42, 226, 0.1);
+    color: var(--lmn-dt-primary);
+}
+
+.lmn-badge--class-vip {
+    background: rgba(113, 42, 226, 0.15);
+    color: var(--lmn-dt-primary);
+    font-style: italic;
+}
+
+[data-bs-theme="dark"] .lmn-badge--active   { background: rgba(210, 187, 255, 0.08); color: #b4c5ff; }
+[data-bs-theme="dark"] .lmn-badge--banned   { background: rgba(255, 180, 171, 0.08); color: #ffb4ab; }
+[data-bs-theme="dark"] .lmn-badge--inactive { background: rgba(243, 174, 255, 0.08); color: #f3aeff; }
+
+/* ----------------------------------------------------------
+   Admin yes/no icons
+   ---------------------------------------------------------- */
+.lmn-icon--yes {
+    font-size: 1.25rem !important;
+    color: #0051d5;
+    vertical-align: middle;
+}
+
+.lmn-icon--no {
+    font-size: 1.25rem !important;
+    color: var(--lmn-dt-on-surface-variant);
+    opacity: 0.45;
+    vertical-align: middle;
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* ----------------------------------------------------------
+   Money cell
+   ---------------------------------------------------------- */
+.lmn-money {
+    font-weight: 600;
+    color: var(--lmn-dt-on-surface);
+}
+
+.lmn-money--positive {
+    color: #0051d5;
+}

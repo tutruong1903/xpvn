@@ -48,6 +48,12 @@
     <script src="/assets/js/locales/admin/dialog/zh_TW.js{asset_ver path="/assets/js/locales/admin/dialog/zh_TW.js"}"></script>
     <script src="/assets/js/locales/admin/dialog/ja_JP.js{asset_ver path="/assets/js/locales/admin/dialog/ja_JP.js"}"></script>
     
+    <script src="/assets/js/locales/admin/user/en_US.js{asset_ver path="/assets/js/locales/admin/user/en_US.js"}"></script>
+    <script src="/assets/js/locales/admin/user/vn_VN.js{asset_ver path="/assets/js/locales/admin/user/vn_VN.js"}"></script>
+    <script src="/assets/js/locales/admin/user/zh_CN.js{asset_ver path="/assets/js/locales/admin/user/zh_CN.js"}"></script>
+    <script src="/assets/js/locales/admin/user/zh_TW.js{asset_ver path="/assets/js/locales/admin/user/zh_TW.js"}"></script>
+    <script src="/assets/js/locales/admin/user/ja_JP.js{asset_ver path="/assets/js/locales/admin/user/ja_JP.js"}"></script>
+    
     <script src="/assets/js/i18n.js{asset_ver path="/assets/js/i18n.js"}"></script>
     
     <style>

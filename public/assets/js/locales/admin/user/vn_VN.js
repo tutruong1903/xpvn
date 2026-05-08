@@ -17,7 +17,8 @@ window.i18nLocales.admin.user.vn_VN = {
         stat_total: "Tổng người dùng",
         stat_active: "Đang hoạt động",
         stat_banned: "Bị cấm",
-        stat_admins: "Quản trị viên"
+        stat_admins: "Quản trị viên",
+        search_placeholder: "Tìm kiếm nhanh ID, tên hoặc email..."
     },
 
     // Nhãn cột bảng
@@ -115,23 +116,5 @@ window.i18nLocales.admin.user.vn_VN = {
         ph_password: "Để trống nếu không đổi mật khẩu",
         ph_banned_reason: "Nhập lý do cấm người dùng...",
         ph_remark: "Chỉ quản trị viên mới thấy ghi chú này..."
-    },
-
-    // DataTable
-    datatable: {
-        search_placeholder: "Tìm kiếm nhanh ID, tên hoặc email...",
-        processing: "Đang xử lý...",
-        length_menu: "Hiển thị _MENU_ mục",
-        zero_records: "Không tìm thấy kết quả phù hợp",
-        info: "Hiển thị _START_ đến _END_ trong tổng số _TOTAL_ mục",
-        info_empty: "Hiển thị 0 đến 0 trong tổng số 0 mục",
-        info_filtered: "(lọc từ tổng số _MAX_ mục)",
-        empty_table: "Bảng không có dữ liệu",
-        loading: "Đang tải...",
-        page_first: "Đầu",
-        page_last: "Cuối",
-        sort_asc: ": kích hoạt để sắp xếp tăng dần",
-        sort_desc: ": kích hoạt để sắp xếp giảm dần",
-        filter_all: "Tất cả"
     }
 };

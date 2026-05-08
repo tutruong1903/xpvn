@@ -41,6 +41,32 @@ final class NodeController extends BaseController
             'node_bandwidth' => '已用流量/GB',
             'bandwidthlimit_resetday' => '重置日',
         ],
+        'filter' => [
+            [
+                'field'      => 'type',
+                'label'      => '状态',
+                'label_key'  => 'filter.type_label',
+                'i18n_ns'    => 'node',
+                'values'     => ['' => '全部', '显示' => '显示', '隐藏' => '隐藏'],
+                'value_keys' => ['' => 'filter.all', '显示' => 'filter.visible', '隐藏' => 'filter.hidden'],
+            ],
+            [
+                'field'      => 'sort',
+                'label'      => '协议',
+                'label_key'  => 'filter.sort_label',
+                'i18n_ns'    => 'node',
+                'values'     => [
+                    ''              => '全部',
+                    'Shadowsocks'   => 'Shadowsocks',
+                    'Shadowsocks2022' => 'Shadowsocks2022',
+                    'TUIC'          => 'TUIC',
+                    'WireGuard'     => 'WireGuard',
+                    'Vmess'         => 'Vmess',
+                    'Trojan'        => 'Trojan',
+                ],
+                'value_keys' => ['' => 'filter.all'],
+            ],
+        ],
     ];
 
     private static array $update_field = [
@@ -125,10 +151,12 @@ final class NodeController extends BaseController
         $node->bandwidthlimit_resetday = $request->getParam('bandwidthlimit_resetday');
         $node->password = Tools::genRandomChar(32);
 
+        $locale = $this->getLocale();
+
         if (! $node->save()) {
             return $response->withJson([
                 'ret' => 0,
-                'msg' => '添加失败',
+                'msg' => I18n::trans('admin_node.add_failed', $locale),
             ]);
         }
 
@@ -144,7 +172,7 @@ final class NodeController extends BaseController
             } catch (TelegramSDKException | GuzzleException) {
                 return $response->withJson([
                     'ret' => 1,
-                    'msg' => '添加成功，但 IM Bot 通知失败',
+                    'msg' => I18n::trans('admin_node.add_success_bot_failed', $locale),
                     'node_id' => $node->id,
                 ]);
             }
@@ -152,7 +180,7 @@ final class NodeController extends BaseController
 
         return $response->withJson([
             'ret' => 1,
-            'msg' => '添加成功',
+            'msg' => I18n::trans('admin_node.add_success', $locale),
             'node_id' => $node->id,
         ]);
     }
@@ -218,10 +246,12 @@ final class NodeController extends BaseController
         $node->node_bandwidth_limit = Tools::gbToB($request->getParam('node_bandwidth_limit'));
         $node->bandwidthlimit_resetday = $request->getParam('bandwidthlimit_resetday');
 
+        $locale = $this->getLocale();
+
         if (! $node->save()) {
             return $response->withJson([
                 'ret' => 0,
-                'msg' => '修改失败',
+                'msg' => I18n::trans('admin_node.update_failed', $locale),
             ]);
         }
 
@@ -237,14 +267,14 @@ final class NodeController extends BaseController
             } catch (TelegramSDKException | GuzzleException) {
                 return $response->withJson([
                     'ret' => 1,
-                    'msg' => '修改成功，但 IM Bot 通知失败',
+                    'msg' => I18n::trans('admin_node.update_success_bot_failed', $locale),
                 ]);
             }
         }
 
         return $response->withJson([
             'ret' => 1,
-            'msg' => '修改成功',
+            'msg' => I18n::trans('admin_node.update_success', $locale),
         ]);
     }
 
@@ -256,7 +286,7 @@ final class NodeController extends BaseController
 
         return $response->withJson([
             'ret' => 1,
-            'msg' => '重置节点通讯密钥成功',
+            'msg' => I18n::trans('admin_node.reset_password_success', $this->getLocale()),
         ]);
     }
 
@@ -268,7 +298,7 @@ final class NodeController extends BaseController
 
         return $response->withJson([
             'ret' => 1,
-            'msg' => '重置节点流量成功',
+            'msg' => I18n::trans('admin_node.reset_bandwidth_success', $this->getLocale()),
         ]);
     }
 
@@ -279,10 +309,12 @@ final class NodeController extends BaseController
     {
         $node = (new Node())->find($args['id']);
 
+        $locale = $this->getLocale();
+
         if (! $node->delete()) {
             return $response->withJson([
                 'ret' => 0,
-                'msg' => '删除失败',
+                'msg' => I18n::trans('admin_node.delete_failed', $locale),
             ]);
         }
 
@@ -298,14 +330,14 @@ final class NodeController extends BaseController
             } catch (TelegramSDKException | GuzzleException) {
                 return $response->withJson([
                     'ret' => 1,
-                    'msg' => '删除成功，但 IM Bot 通知失败',
+                    'msg' => I18n::trans('admin_node.delete_success_bot_failed', $locale),
                 ]);
             }
         }
 
         return $response->withJson([
             'ret' => 1,
-            'msg' => '删除成功',
+            'msg' => I18n::trans('admin_node.delete_success', $locale),
         ]);
     }
 
@@ -319,16 +351,18 @@ final class NodeController extends BaseController
         $new_node->node_bandwidth = 0;
         $new_node->password = Tools::genRandomChar(32);
 
+        $locale = $this->getLocale();
+
         if (! $new_node->save()) {
             return $response->withJson([
                 'ret' => 0,
-                'msg' => '复制失败',
+                'msg' => I18n::trans('admin_node.copy_failed', $locale),
             ]);
         }
 
         return $response->withJson([
             'ret' => 1,
-            'msg' => '复制成功',
+            'msg' => I18n::trans('admin_node.copy_success', $locale),
         ]);
     }
 
@@ -339,22 +373,55 @@ final class NodeController extends BaseController
     {
         $nodes = (new Node())->orderBy('id', 'desc')->get();
 
+        $total  = 0;
+        $online = 0;
+        $hidden = 0;
+        $totalBandwidthBytes = 0;
+
         foreach ($nodes as $node) {
-            $node->op = '<button class="btn btn-red" id="delete-node-' . $node->id . '" 
-            onclick="deleteNode(' . $node->id . ')">删除</button>
-            <button class="btn btn-orange" id="copy-node-' . $node->id . '" 
-            onclick="copyNode(' . $node->id . ')">复制</button>
-            <a class="btn btn-primary" href="/admin/node/' . $node->id . '/edit">编辑</a>';
-            $node->type = $node->type();
+            $total++;
+            if ($node->getNodeOnlineStatus() === 1) {
+                $online++;
+            }
+            if ($node->type === 0) {
+                $hidden++;
+            }
+            $totalBandwidthBytes += $node->node_bandwidth;
+
+            $node->op =
+                '<div class="lmn-act-wrap">' .
+                    '<a class="lmn-act-btn lmn-act-btn--edit" href="/admin/node/' . $node->id . '/edit" title="Edit">' .
+                        '<span class="material-symbols-outlined">edit</span>' .
+                    '</a>' .
+                    '<button class="lmn-act-btn lmn-act-btn--warn" onclick="copyNode(' . $node->id . ')" title="Copy">' .
+                        '<span class="material-symbols-outlined">content_copy</span>' .
+                    '</button>' .
+                    '<button class="lmn-act-btn lmn-act-btn--del" onclick="deleteNode(' . $node->id . ')" title="Delete">' .
+                        '<span class="material-symbols-outlined">delete</span>' .
+                    '</button>' .
+                '</div>';
+
+            $node->type = $node->type
+                ? '<span class="lmn-badge lmn-badge--active">Visible</span>'
+                : '<span class="lmn-badge lmn-badge--inactive">Hidden</span>';
+
             $node->sort = $node->sort();
-            $node->is_dynamic_rate = $node->isDynamicRate();
+
+            $node->is_dynamic_rate = $node->is_dynamic_rate
+                ? '<span class="lmn-badge lmn-badge--class-premium">On</span>'
+                : '<span class="lmn-badge lmn-badge--inactive">Off</span>';
+
             $node->dynamic_rate_type = $node->dynamicRateType();
             $node->node_bandwidth = round(Tools::bToGB($node->node_bandwidth), 2);
             $node->node_bandwidth_limit = Tools::bToGB($node->node_bandwidth_limit);
         }
 
         return $response->withJson([
-            'nodes' => $nodes,
+            'nodes'            => $nodes,
+            'total'            => $total,
+            'online'           => $online,
+            'hidden'           => $hidden,
+            'total_bandwidth'  => round(Tools::bToGB($totalBandwidthBytes), 2),
         ]);
     }
 }

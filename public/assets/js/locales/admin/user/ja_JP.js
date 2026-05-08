@@ -17,7 +17,8 @@ window.i18nLocales.admin.user.ja_JP = {
         stat_total: "総ユーザー数",
         stat_active: "アクティブ",
         stat_banned: "BAN済み",
-        stat_admins: "管理者"
+        stat_admins: "管理者",
+        search_placeholder: "ID・名前・メールで検索..."
     },
 
     // 列ヘッダー
@@ -115,23 +116,5 @@ window.i18nLocales.admin.user.ja_JP = {
         ph_password: "空欄の場合パスワードを変更しません",
         ph_banned_reason: "BAN理由を入力...",
         ph_remark: "管理者のみ閲覧可能..."
-    },
-
-    // DataTable
-    datatable: {
-        search_placeholder: "ID・名前・メールで検索...",
-        processing: "処理中...",
-        length_menu: "_MENU_ 件表示",
-        zero_records: "一致する結果が見つかりません",
-        info: "_TOTAL_ 件中 _START_ ～ _END_ 件を表示",
-        info_empty: "0 件中 0 ～ 0 件を表示",
-        info_filtered: "（_MAX_ 件からフィルタリング）",
-        empty_table: "データがありません",
-        loading: "読み込み中...",
-        page_first: "先頭",
-        page_last: "最後",
-        sort_asc: ": 昇順で並べ替え",
-        sort_desc: ": 降順で並べ替え",
-        filter_all: "すべて"
     }
 };

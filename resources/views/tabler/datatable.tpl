@@ -8,9 +8,8 @@
     function _dt(key, fallback) {
         var locale  = (window.sspanelI18n && window.sspanelI18n.getLocale) ? window.sspanelI18n.getLocale() : 'en_US';
         var admin   = (window.i18nLocales && window.i18nLocales.admin) || {};
-        var userSec = (admin.user && admin.user[locale]) || (admin.user && admin.user['en_US']) || {};
-        var dt      = userSec.datatable || {};
-        return dt[key] || fallback;
+        var dtSec   = (admin.datatable && (admin.datatable[locale] || admin.datatable['en_US'])) || {};
+        return dtSec[key] || fallback;
     }
 
     let tableConfig = {
@@ -74,17 +73,39 @@
     };
 
     /* Inject column filter dropdowns into #lmn-filter-panel (provided by the page) */
+    function _resolveFilterI18n(key, fallback, ns) {
+        if (!key) return fallback;
+        var locale = (window.sspanelI18n && window.sspanelI18n.getLocale) ? window.sspanelI18n.getLocale() : 'en_US';
+        var admin  = (window.i18nLocales && window.i18nLocales.admin) || {};
+        var section = ns
+            ? (admin[ns] && (admin[ns][locale] || admin[ns]['en_US'])) || {}
+            : (admin.user && (admin.user[locale] || admin.user['en_US'])) || {};
+        var parts  = key.split('.');
+        var val    = section;
+        for (var i = 0; i < parts.length; i++) {
+            if (val && typeof val === 'object') { val = val[parts[i]]; }
+            else { return fallback; }
+        }
+        return (typeof val === 'string' ? val : null) || fallback;
+    }
+
     function _buildFilterPanel(api) {
         var filters = window._dtFilterConfig;
         var $wrap = $('<div class="lmn-dt-filter-inner"></div>');
 
         filters.forEach(function (f) {
             var $group = $('<div class="lmn-dt-filter-group"></div>');
-            $group.append('<label class="lmn-dt-filter-label">' + (f.label || f.field) + '</label>');
+            var label = f.label_key
+                ? _resolveFilterI18n(f.label_key, f.label || f.field, f.i18n_ns)
+                : (f.label || f.field);
+            $group.append('<label class="lmn-dt-filter-label">' + label + '</label>');
 
             var $sel = $('<select class="lmn-dt-filter-select"></select>');
             Object.keys(f.values).forEach(function (k) {
-                $sel.append($('<option>', { value: k, text: f.values[k] }));
+                var text = (f.value_keys && f.value_keys[k])
+                    ? _resolveFilterI18n(f.value_keys[k], f.values[k], f.i18n_ns)
+                    : f.values[k];
+                $sel.append($('<option>', { value: k, text: text }));
             });
 
             var colIdx = -1;

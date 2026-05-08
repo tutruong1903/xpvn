@@ -63,7 +63,7 @@
                 <input type="text"
                        id="lmn-table-search"
                        class="lmn-table-search-input"
-                       data-i18n-placeholder="admin.user.datatable.search_placeholder"
+                       data-i18n-placeholder="admin.user.index.search_placeholder"
                        placeholder="Tìm kiếm nhanh ID, tên hoặc email...">
             </div>
             {if isset($details['filter']) && $details['filter']}
@@ -186,11 +186,10 @@
             try {
                 var pageInfo = table.page.info();
                 var admin   = (window.i18nLocales && window.i18nLocales.admin) || {};
-                var userSec = (admin.user && admin.user[locale]) || (admin.user && admin.user['en_US']) || {};
-                var dtStr   = userSec.datatable || {};
+                var dtSec   = (admin.datatable && (admin.datatable[locale] || admin.datatable['en_US'])) || {};
                 var tmpl    = pageInfo.recordsDisplay > 0
-                    ? (dtStr.info       || 'Showing _START_ \u2013 _END_ of _TOTAL_')
-                    : (dtStr.info_empty || 'Showing 0 \u2013 0 of 0');
+                    ? (dtSec.info       || 'Showing _START_ \u2013 _END_ of _TOTAL_')
+                    : (dtSec.info_empty || 'Showing 0 \u2013 0 of 0');
                 var text = tmpl
                     .replace(/_START_/g, String(pageInfo.start + 1))
                     .replace(/_END_/g,   String(pageInfo.end))

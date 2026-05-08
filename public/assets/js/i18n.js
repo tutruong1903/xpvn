@@ -216,7 +216,7 @@
         );
 
         // Admin user section — handles user list (admin.user.index.*),
-        // user edit (admin.user.edit.*), and shared keys (admin.user.fields.*, badges.*, datatable.*).
+        // user edit (admin.user.edit.*), and shared keys (admin.user.fields.*, badges.*).
         // Keys use data-i18n="admin.user.{section}.{key}" and data-i18n-placeholder="admin.user.{section}.{key}".
         var _adminUserDict = flattenAdminSection(flattenNestedSection(getAdminSectionDict(locale, "user")), 'admin.user.');
         applyAttributeFromDict(
@@ -227,6 +227,20 @@
         document.querySelectorAll("[data-i18n-placeholder^='admin.user.']").forEach(function (el) {
             var key = el.getAttribute("data-i18n-placeholder");
             var val = _adminUserDict[key];
+            if (val) el.setAttribute("placeholder", val);
+        });
+
+        // Admin node section — handles node list (admin.node.index.*), fields, filter.
+        // Keys use data-i18n="admin.node.{section}.{key}" and data-i18n-placeholder="admin.node.{section}.{key}".
+        var _adminNodeDict = flattenAdminSection(flattenNestedSection(getAdminSectionDict(locale, "node")), 'admin.node.');
+        applyAttributeFromDict(
+            "[data-i18n^='admin.node.']",
+            "data-i18n",
+            _adminNodeDict,
+        );
+        document.querySelectorAll("[data-i18n-placeholder^='admin.node.']").forEach(function (el) {
+            var key = el.getAttribute("data-i18n-placeholder");
+            var val = _adminNodeDict[key];
             if (val) el.setAttribute("placeholder", val);
         });
     }

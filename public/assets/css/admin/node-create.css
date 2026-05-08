@@ -1,0 +1,172 @@
+/* ================================================================
+   LUMINOUS GUARDIAN — Admin Node Create page styles
+   Specific to: resources/views/tabler/admin/node/create.tpl
+   Design System: "The Luminous Guardian"
+   ================================================================ */
+
+/* Re-use all shared lmn-edit-* base classes */
+@import url('user-edit.css');
+
+/* ----------------------------------------------------------
+   Level Picker (button grid)
+   ---------------------------------------------------------- */
+.lmn-level-picker {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+}
+
+.lmn-level-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.125rem;
+    padding: 0.625rem 0.25rem;
+    background: #f3f3f4;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background 0.15s, box-shadow 0.15s, transform 0.1s;
+    font-family: 'Inter', sans-serif;
+}
+
+.lmn-level-btn__number {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #464554;
+    line-height: 1;
+    font-family: 'Manrope', sans-serif;
+}
+
+.lmn-level-btn__name {
+    font-size: 0.5625rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #464554;
+    opacity: 0.7;
+}
+
+.lmn-level-btn:hover {
+    background: rgba(113, 42, 226, 0.08);
+}
+
+.lmn-level-btn:hover .lmn-level-btn__number,
+.lmn-level-btn:hover .lmn-level-btn__name {
+    color: #712ae2;
+    opacity: 1;
+}
+
+.lmn-level-btn.is-active {
+    background: linear-gradient(135deg, #712ae2, #8a4cfc);
+    box-shadow: 0 4px 14px rgba(113, 42, 226, 0.3);
+    transform: translateY(-1px);
+}
+
+.lmn-level-btn.is-active .lmn-level-btn__number,
+.lmn-level-btn.is-active .lmn-level-btn__name {
+    color: #ffffff;
+    opacity: 1;
+}
+
+/* Hidden input holding the level value */
+#node_class {
+    display: none;
+}
+
+/* ----------------------------------------------------------
+   JSON Editor override — keep the original jsoneditor look
+   ---------------------------------------------------------- */
+.lmn-jsoneditor-wrap {
+    border-radius: 0.5rem;
+    overflow: hidden;
+    border: none;
+}
+
+.lmn-jsoneditor-wrap .jsoneditor {
+    border: none;
+    border-radius: 0.5rem;
+}
+
+/* ----------------------------------------------------------
+   Info hint block
+   ---------------------------------------------------------- */
+.lmn-hint {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    background: rgba(113, 42, 226, 0.05);
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+}
+
+.lmn-hint .material-symbols-outlined {
+    font-size: 0.9375rem;
+    color: #712ae2;
+    flex-shrink: 0;
+    margin-top: 0.0625rem;
+    font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+}
+
+.lmn-hint p {
+    font-size: 0.75rem;
+    color: #464554;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.lmn-hint a {
+    color: #712ae2;
+    text-decoration: none;
+}
+
+.lmn-hint a:hover {
+    text-decoration: underline;
+}
+
+/* ----------------------------------------------------------
+   Section divider label
+   ---------------------------------------------------------- */
+.lmn-section-divider {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    margin: 0.25rem 0 0.25rem;
+    color: #464554;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.lmn-section-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(199, 196, 215, 0.3);
+}
+
+/* ----------------------------------------------------------
+   Input with unit suffix
+   ---------------------------------------------------------- */
+.lmn-input-unit-wrap {
+    position: relative;
+}
+
+.lmn-input-unit-wrap .lmn-edit-input {
+    padding-right: 3.25rem;
+}
+
+.lmn-input-unit {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #464554;
+    opacity: 0.6;
+    pointer-events: none;
+}

@@ -142,7 +142,7 @@
                             </div>
                             <div class="lmn-edit-field">
                                 <label class="lmn-edit-label" data-i18n="admin.user.edit.field_node_group">节点群组</label>
-                                <input id="node_group" type="number" class="lmn-edit-input"
+                                <input id="node_group" type="number" class="lmn-edit-input" min="0"
                                        value="{$edit_user->node_group}">
                             </div>
                         </div>

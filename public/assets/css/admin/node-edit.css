@@ -1,0 +1,69 @@
+/* ================================================================
+   LUMINOUS GUARDIAN — Admin Node Edit page styles
+   Specific to: resources/views/tabler/admin/node/edit.tpl
+   ================================================================ */
+
+/* Bring in page-header utilities (lmn-page-header, lmn-stats-grid, etc.) */
+@import url('user-index.css');
+
+/* Bring in all card/field/toggle/button components */
+@import url('node-create.css');
+
+/* ----------------------------------------------------------
+   Field row: input + inline action button(s)
+   ---------------------------------------------------------- */
+.lmn-field-with-btn {
+    display: flex;
+    gap: 0.5rem;
+    align-items: stretch;
+}
+
+.lmn-field-with-btn .lmn-edit-input,
+.lmn-field-with-btn .lmn-edit-readonly {
+    flex: 1;
+    min-width: 0;
+}
+
+.lmn-btn-action {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0 0.875rem;
+    background: #f3f3f4;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: #464554;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+    font-family: 'Inter', sans-serif;
+    white-space: nowrap;
+    height: 2.75rem;
+}
+
+.lmn-btn-action .material-symbols-outlined {
+    font-size: 1rem;
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+}
+
+.lmn-btn-action:hover {
+    background: rgba(113, 42, 226, 0.08);
+    color: #712ae2;
+}
+
+.lmn-btn-action--danger:hover {
+    background: rgba(186, 26, 26, 0.08);
+    color: #ba1a1a;
+}
+
+/* ----------------------------------------------------------
+   Password key display (monospace, full-width)
+   ---------------------------------------------------------- */
+.lmn-password-input {
+    font-family: 'ui-monospace', 'SFMono-Regular', 'Menlo', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.02em;
+    color: #464554;
+}

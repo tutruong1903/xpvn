@@ -350,6 +350,14 @@ div.dt-paging .dt-paging-button.disabled:hover {
     background: rgba(186, 26, 26, 0.08);
 }
 
+.lmn-act-btn--warn {
+    color: #c47900;
+}
+
+.lmn-act-btn--warn:hover {
+    background: rgba(196, 121, 0, 0.08);
+}
+
 /* ----------------------------------------------------------
    Status / boolean badges
    ---------------------------------------------------------- */

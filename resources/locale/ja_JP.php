@@ -119,4 +119,28 @@ return [
         'save_success' => '招待設定を保存しました',
         'save_failed'  => '招待設定の保存に失敗しました',
     ],
+
+    'admin_im' => [
+        'save_success' => 'IM 設定を保存しました。',
+        'save_failed'  => 'IM 設定の保存に失敗しました。',
+        'test_success' => 'テストメッセージを送信しました。',
+        'test_failed'  => 'テストメッセージの送信に失敗しました。',
+    ],
+
+    'admin_sub' => [
+        'save_success' => 'サブスクリプション設定を保存しました。',
+        'save_failed'  => 'サブスクリプション設定の保存に失敗しました。',
+    ],
+
+    'admin_cron' => [
+        'save_success'   => '定期タスク設定を保存しました。',
+        'save_failed'    => '定期タスク設定の保存に失敗しました。',
+        'hour_invalid'   => '時は 0～23 の範囲で入力してください。',
+        'minute_invalid' => '分は 0～59 の範囲で入力してください。',
+    ],
+
+    'admin_feature' => [
+        'save_success' => '保存しました。',
+        'save_failed'  => '保存に失敗しました。',
+    ],
 ];

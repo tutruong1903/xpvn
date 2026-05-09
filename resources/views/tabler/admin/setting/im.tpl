@@ -1,591 +1,487 @@
 {include file='admin/header.tpl'}
 
-    <div class="container-xl">
-        <div class="page-header d-print-none">
-            <div class="row align-items-center">
-                <div class="col">
-                    <h2 class="page-title">
-                        <span class="home-title">IM 设置</span>
-                    </h2>
-                    <div class="page-pretitle my-3">
-                        <span class="home-subtitle">管理站点的 IM 集成设置</span>
-                    </div>
-                </div>
-                <div class="col-auto ms-auto d-print-none">
-                    <div class="btn-list">
-                        <a id="save-setting" href="#" class="btn btn-primary">
-                            <i class="icon ti ti-device-floppy"></i>
-                            保存
-                        </a>
-                    </div>
-                </div>
-            </div>
+<link href="/assets/css/admin/im.css{asset_ver path="/assets/css/admin/im.css"}" rel="stylesheet"/>
+
+<div class="container-xl">
+    <div class="lmn-page-header">
+        <div class="lmn-page-header__content">
+            <h2 class="lmn-page-title" data-i18n="admin.im.index.title">IM 设置</h2>
+            <p class="lmn-page-subtitle" data-i18n="admin.im.index.subtitle">管理站点的 IM 集成设置</p>
+        </div>
+        <div class="lmn-page-header__actions">
+            <button id="save-setting" class="lmn-btn-primary">
+                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;">save</span>
+                <span data-i18n="admin.im.index.save_btn">保存</span>
+            </button>
         </div>
     </div>
-    <div class="page-body">
-        <div class="container-xl">
-            <div class="row row-deck row-cards">
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <ul class="nav nav-tabs card-header-tabs" data-bs-toggle="tabs">
-                                <li class="nav-item">
-                                    <a href="#notification" class="nav-link active" data-bs-toggle="tab">Notification</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#telegram" class="nav-link" data-bs-toggle="tab">Telegram Bot</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#discord" class="nav-link" data-bs-toggle="tab">Discord Bot</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#slack" class="nav-link" data-bs-toggle="tab">Slack Bot</a>
-                                </li>
-                            </ul>
+</div>
+
+<div class="page-body">
+    <div class="container-xl">
+        <div class="lmn-billing-grid">
+
+            <!-- Tab Navigation -->
+            <div class="lmn-billing-tabs">
+                <button class="lmn-billing-tab-btn is-active" data-tab="notification">
+                    <span data-i18n="admin.im.index.tab_notification">通知</span>
+                </button>
+                <button class="lmn-billing-tab-btn" data-tab="telegram">
+                    <span data-i18n="admin.im.index.tab_telegram">Telegram Bot</span>
+                </button>
+                <button class="lmn-billing-tab-btn" data-tab="discord">
+                    <span data-i18n="admin.im.index.tab_discord">Discord Bot</span>
+                </button>
+                <button class="lmn-billing-tab-btn" data-tab="slack">
+                    <span data-i18n="admin.im.index.tab_slack">Slack Bot</span>
+                </button>
+            </div>
+
+            <!-- Content Area -->
+            <div class="lmn-billing-content">
+
+                <!-- Notification Panel -->
+                <div class="lmn-billing-panel is-active" data-panel="notification">
+                    <div class="lmn-edit-card">
+                        <div class="lmn-edit-card-header">
+                            <span class="material-symbols-outlined">notifications</span>
+                            <span data-i18n="admin.im.index.tab_notification">通知</span>
                         </div>
-                        <div class="card-body">
-                            <div class="tab-content">
-                                <div class="tab-pane active show" id="notification">
-                                    <div class="card-body">
-                                        <div class="form-group mb-3 row">
-                                            <label class="form-label col-3 col-form-label">
-                                                Node Addition
-                                            </label>
-                                            <div class="col">
-                                                <select id="im_bot_group_notify_add_node" class="col form-select"
-                                                        value="{$settings['im_bot_group_notify_add_node']}">
-                                                    <option value="0"
-                                                            {if ! $settings['im_bot_group_notify_add_node']}selected{/if}>
-                                                        False
-                                                    </option>
-                                                    <option value="1"
-                                                            {if $settings['im_bot_group_notify_add_node']}selected{/if}>
-                                                        True
-                                                    </option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group mb-3 row">
-                                            <label class="form-label col-3 col-form-label">
-                                                Node Update
-                                            </label>
-                                            <div class="col">
-                                                <select id="im_bot_group_notify_update_node" class="col form-select"
-                                                        value="{$settings['im_bot_group_notify_update_node']}">
-                                                    <option value="0"
-                                                            {if ! $settings['im_bot_group_notify_update_node']}selected{/if}>
-                                                        False
-                                                    </option>
-                                                    <option value="1"
-                                                            {if $settings['im_bot_group_notify_update_node']}selected{/if}>
-                                                        True
-                                                    </option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group mb-3 row">
-                                            <label class="form-label col-3 col-form-label">
-                                                Node Deletion
-                                            </label>
-                                            <div class="col">
-                                                <select id="im_bot_group_notify_delete_node" class="col form-select"
-                                                        value="{$settings['im_bot_group_notify_delete_node']}">
-                                                    <option value="0"
-                                                            {if ! $settings['im_bot_group_notify_delete_node']}selected{/if}>
-                                                        False
-                                                    </option>
-                                                    <option value="1"
-                                                            {if $settings['im_bot_group_notify_delete_node']}selected{/if}>
-                                                        True
-                                                    </option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group mb-3 row">
-                                            <label class="form-label col-3 col-form-label">
-                                                Node GFWed
-                                            </label>
-                                            <div class="col">
-                                                <select id="im_bot_group_notify_node_gfwed" class="col form-select"
-                                                        value="{$settings['im_bot_group_notify_node_gfwed']}">
-                                                    <option value="0"
-                                                            {if ! $settings['im_bot_group_notify_node_gfwed']}selected{/if}>
-                                                        False
-                                                    </option>
-                                                    <option value="1"
-                                                            {if $settings['im_bot_group_notify_node_gfwed']}selected{/if}>
-                                                        True
-                                                    </option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group mb-3 row">
-                                            <label class="form-label col-3 col-form-label">
-                                                Node UnGFWed
-                                            </label>
-                                            <div class="col">
-                                                <select id="im_bot_group_notify_node_ungfwed" class="col form-select"
-                                                        value="{$settings['im_bot_group_notify_node_ungfwed']}">
-                                                    <option value="0"
-                                                            {if ! $settings['im_bot_group_notify_node_ungfwed']}selected{/if}>
-                                                        False
-                                                    </option>
-                                                    <option value="1"
-                                                            {if $settings['im_bot_group_notify_node_ungfwed']}selected{/if}>
-                                                        True
-                                                    </option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group mb-3 row">
-                                            <label class="form-label col-3 col-form-label">
-                                                Node Online
-                                            </label>
-                                            <div class="col">
-                                                <select id="im_bot_group_notify_node_online" class="col form-select"
-                                                        value="{$settings['im_bot_group_notify_node_online']}">
-                                                    <option value="0"
-                                                            {if ! $settings['im_bot_group_notify_node_online']}selected{/if}>
-                                                        False
-                                                    </option>
-                                                    <option value="1"
-                                                            {if $settings['im_bot_group_notify_node_online']}selected{/if}>
-                                                        True
-                                                    </option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group mb-3 row">
-                                            <label class="form-label col-3 col-form-label">
-                                                Node Offline
-                                            </label>
-                                            <div class="col">
-                                                <select id="im_bot_group_notify_node_offline" class="col form-select"
-                                                        value="{$settings['im_bot_group_notify_node_offline']}">
-                                                    <option value="0"
-                                                            {if ! $settings['im_bot_group_notify_node_offline']}selected{/if}>
-                                                        False
-                                                    </option>
-                                                    <option value="1"
-                                                            {if $settings['im_bot_group_notify_node_offline']}selected{/if}>
-                                                        True
-                                                    </option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group mb-3 row">
-                                            <label class="form-label col-3 col-form-label">
-                                                Daily Job
-                                            </label>
-                                            <div class="col">
-                                                <select id="im_bot_group_notify_daily_job" class="col form-select"
-                                                        value="{$settings['im_bot_group_notify_daily_job']}">
-                                                    <option value="0"
-                                                            {if ! $settings['im_bot_group_notify_daily_job']}selected{/if}>
-                                                        False
-                                                    </option>
-                                                    <option value="1"
-                                                            {if $settings['im_bot_group_notify_daily_job']}selected{/if}>
-                                                        True
-                                                    </option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group mb-3 row">
-                                            <label class="form-label col-3 col-form-label">
-                                                System Dairy
-                                            </label>
-                                            <div class="col">
-                                                <select id="im_bot_group_notify_diary" class="col form-select"
-                                                        value="{$settings['im_bot_group_notify_diary']}">
-                                                    <option value="0" {if ! $settings['im_bot_group_notify_diary']}selected{/if}>
-                                                        False
-                                                    </option>
-                                                    <option value="1" {if $settings['im_bot_group_notify_diary']}selected{/if}>
-                                                        True
-                                                    </option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group mb-3 row">
-                                            <label class="form-label col-3 col-form-label">
-                                                Announcement Creation
-                                            </label>
-                                            <div class="col">
-                                                <select id="im_bot_group_notify_ann_create" class="col form-select"
-                                                        value="{$settings['im_bot_group_notify_ann_create']}">
-                                                    <option value="0"
-                                                            {if ! $settings['im_bot_group_notify_ann_create']}selected{/if}>
-                                                        False
-                                                    </option>
-                                                    <option value="1"
-                                                            {if $settings['im_bot_group_notify_ann_create']}selected{/if}>
-                                                        True
-                                                    </option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group mb-3 row">
-                                            <label class="form-label col-3 col-form-label">
-                                                Announcement Update
-                                            </label>
-                                            <div class="col">
-                                                <select id="im_bot_group_notify_ann_update" class="col form-select"
-                                                        value="{$settings['im_bot_group_notify_ann_update']}">
-                                                    <option value="0"
-                                                            {if ! $settings['im_bot_group_notify_ann_update']}selected{/if}>
-                                                        False
-                                                    </option>
-                                                    <option value="1"
-                                                            {if $settings['im_bot_group_notify_ann_update']}selected{/if}>
-                                                        True
-                                                    </option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane" id="telegram">
-                                    <div class="card-body">
-                                        <div class="form-group mb-3 row">
-                                            <label class="form-label col-3 col-form-label">Bot Token</label>
-                                            <div class="col">
-                                                <input id="telegram_token" type="text" class="form-control"
-                                                       value="{$settings['telegram_token']}">
-                                            </div>
-                                            <div class="col-auto">
-                                                <button class="btn btn-primary"
-                                                        hx-post="/admin/setting/im/set_webhook/telegram" hx-swap="none"
-                                                        hx-vals='js:{
-                                                            bot_token: document.getElementById("telegram_token").value
-                                                        }'>
-                                                    Set Webhook
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div class="form-group mb-3 row">
-                                            <label class="form-label col-3 col-form-label">Webhook Token</label>
-                                            <div class="col">
-                                                <input id="telegram_webhook_token" type="text" class="form-control"
-                                                       value="{$settings['telegram_webhook_token']}" disabled>
-                                            </div>
-                                            <div class="col-auto">
-                                                <button class="btn btn-primary"
-                                                        hx-post="/admin/setting/im/reset_webhook_token/telegram" hx-swap="none">
-                                                    Reset Webhook Token
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div class="form-group mb-3 row">
-                                            <label class="form-label col-3 col-form-label">Bot Account Username</label>
-                                            <div class="col">
-                                                <input id="telegram_bot" type="text" class="form-control"
-                                                       value="{$settings['telegram_bot']}">
-                                            </div>
-                                        </div>
-                                        <div class="form-group mb-3 row">
-                                            <label class="form-label col-3 col-form-label">Group ID</label>
-                                            <div class="col">
-                                                <input id="telegram_chatid" type="text" class="form-control"
-                                                       value="{$settings['telegram_chatid']}">
-                                            </div>
-                                        </div>
-                                        <div class="form-group mb-3 row">
-                                            <label class="form-label col-3 col-form-label">
-                                                Enable Telegram group notify
-                                            </label>
-                                            <div class="col">
-                                                <select id="enable_telegram_group_notify" class="col form-select"
-                                                        value="{$settings['enable_telegram_group_notify']}">
-                                                    <option value="0" {if ! $settings['enable_telegram_group_notify']}selected{/if}>
-                                                        False
-                                                    </option>
-                                                    <option value="1" {if $settings['enable_telegram_group_notify']}selected{/if}>
-                                                        True
-                                                    </option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group mb-3 row">
-                                            <label class="form-label col-3 col-form-label">解绑 Telegram
-                                                账户后自动踢出群组</label>
-                                            <div class="col">
-                                                <select id="telegram_unbind_kick_member" class="col form-select"
-                                                        value="{$settings['telegram_unbind_kick_member']}">
-                                                    <option value="0"
-                                                            {if ! $settings['telegram_unbind_kick_member']}selected{/if}>
-                                                        关闭
-                                                    </option>
-                                                    <option value="1"
-                                                            {if $settings['telegram_unbind_kick_member']}selected{/if}>
-                                                        开启
-                                                    </option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group mb-3 row">
-                                            <label class="form-label col-3 col-form-label">仅允许已绑定 Telegram
-                                                账户的用户加入群组</label>
-                                            <div class="col">
-                                                <select id="telegram_group_bound_user" class="col form-select"
-                                                        value="{$settings['telegram_group_bound_user']}">
-                                                    <option value="0"
-                                                            {if ! $settings['telegram_group_bound_user']}selected{/if}>
-                                                        关闭
-                                                    </option>
-                                                    <option value="1"
-                                                            {if $settings['telegram_group_bound_user']}selected{/if}>开启
-                                                    </option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group mb-3 row">
-                                            <label class="form-label col-3 col-form-label">Telegram
-                                                机器人发送欢迎消息</label>
-                                            <div class="col">
-                                                <select id="enable_welcome_message" class="col form-select"
-                                                        value="{$settings['enable_welcome_message']}">
-                                                    <option value="0"
-                                                            {if ! $settings['enable_welcome_message']}selected{/if}>关闭
-                                                    </option>
-                                                    <option value="1"
-                                                            {if $settings['enable_welcome_message']}selected{/if}>开启
-                                                    </option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group mb-3 row">
-                                            <label class="form-label col-3 col-form-label">Telegram
-                                                机器人在群组中不回应</label>
-                                            <div class="col">
-                                                <select id="telegram_group_quiet" class="col form-select"
-                                                        value="{$settings['telegram_group_quiet']}">
-                                                    <option value="0"
-                                                            {if ! $settings['telegram_group_quiet']}selected{/if}>关闭
-                                                    </option>
-                                                    <option value="1"
-                                                            {if $settings['telegram_group_quiet']}selected{/if}>开启
-                                                    </option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group mb-3 row">
-                                            <label class="form-label col-3 col-form-label">允许 Bot
-                                                加入下方配置之外的群组</label>
-                                            <div class="col">
-                                                <select id="allow_to_join_new_groups" class="col form-select"
-                                                        value="{$settings['allow_to_join_new_groups']}">
-                                                    <option value="0"
-                                                            {if ! $settings['allow_to_join_new_groups']}selected{/if}>关闭
-                                                    </option>
-                                                    <option value="1"
-                                                            {if $settings['allow_to_join_new_groups']}selected{/if}>开启
-                                                    </option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group mb-3 row">
-                                            <label class="form-label col-3 col-form-label">允许加入的群组 ID</label>
-                                            <div class="col">
-                                                <input id="group_id_allowed_to_join" type="text" class="form-control"
-                                                       value="{$settings['group_id_allowed_to_join']}">
-                                            </div>
-                                        </div>
-                                        <div class="form-group mb-3 row">
-                                            <label class="form-label col-3 col-form-label">允许任意未知的命令触发 /help
-                                                的回复</label>
-                                            <div class="col">
-                                                <select id="help_any_command" class="col form-select"
-                                                        value="{$settings['help_any_command']}">
-                                                    <option value="0" {if ! $settings['help_any_command']}selected{/if}>
-                                                        关闭
-                                                    </option>
-                                                    <option value="1" {if $settings['help_any_command']}selected{/if}>
-                                                        开启
-                                                    </option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group mb-3 row">
-                                            <label class="form-label col-3 col-form-label">Telegram Chat ID(Group/DM)</label>
-                                            <input type="text" class="form-control" id="telegram_chat_id" value="">
-                                            <div class="row my-3">
-                                                <div class="col">
-                                                    <button class="btn btn-primary"
-                                                        hx-post="/admin/setting/test/telegram" hx-swap="none"
-                                                        hx-vals='js:{ telegram_chat_id: document.getElementById("telegram_chat_id").value }'>
-                                                        Send Test Message
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane" id="discord">
-                                    <div class="card-body">
-                                        <div class="form-group mb-3 row">
-                                            <label class="form-label col-3 col-form-label">Bot Token</label>
-                                            <div class="col">
-                                                <input id="discord_bot_token" type="text" class="form-control"
-                                                       value="{$settings['discord_bot_token']}">
-                                            </div>
-                                        </div>
-                                        <div class="form-group mb-3 row">
-                                            <label class="form-label col-3 col-form-label">Client ID</label>
-                                            <div class="col">
-                                                <input id="discord_client_id" type="text" class="form-control"
-                                                       value="{$settings['discord_client_id']}">
-                                            </div>
-                                        </div>
-                                        <div class="form-group mb-3 row">
-                                            <label class="form-label col-3 col-form-label">Client Secret</label>
-                                            <div class="col">
-                                                <input id="discord_client_secret" type="text" class="form-control"
-                                                       value="{$settings['discord_client_secret']}">
-                                            </div>
-                                        </div>
-                                        <div class="form-group mb-3 row">
-                                            <label class="form-label col-3 col-form-label">Guild ID</label>
-                                            <div class="col">
-                                                <input id="discord_guild_id" type="text" class="form-control"
-                                                       value="{$settings['discord_guild_id']}">
-                                            </div>
-                                        </div>
-                                        <div class="form-group mb-3 row">
-                                            <label class="form-label col-3 col-form-label">Discord Channel ID</label>
-                                            <div class="col">
-                                                <input id="discord_channel_id" type="text" class="form-control"
-                                                       value="{$settings['discord_channel_id']}">
-                                            </div>
-                                        </div>
-                                        <div class="form-group mb-3 row">
-                                            <label class="form-label col-3 col-form-label">
-                                                Enable Discord channel notify
-                                            </label>
-                                            <div class="col">
-                                                <select id="enable_discord_channel_notify" class="col form-select"
-                                                        value="{$settings['enable_discord_channel_notify']}">
-                                                    <option value="0" {if ! $settings['enable_discord_channel_notify']}selected{/if}>
-                                                        False
-                                                    </option>
-                                                    <option value="1" {if $settings['enable_discord_channel_notify']}selected{/if}>
-                                                        True
-                                                    </option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group mb-3 row">
-                                            <label class="form-label col-3 col-form-label">Discord User ID/Channel ID</label>
-                                            <input type="text" class="form-control" id="discord_channel_id" value="">
-                                            <div class="row my-3">
-                                                <div class="col">
-                                                    <button class="btn btn-primary"
-                                                        hx-post="/admin/setting/test/discord" hx-swap="none"
-                                                        hx-vals='js:{ discord_channel_id: document.getElementById("discord_channel_id").value }'>
-                                                        Send Test Message
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane" id="slack">
-                                    <div class="card-body">
-                                        <div class="form-group mb-3 row">
-                                            <label class="form-label col-3 col-form-label">App Token</label>
-                                            <div class="col">
-                                                <input id="slack_token" type="text" class="form-control"
-                                                       value="{$settings['slack_token']}">
-                                            </div>
-                                        </div>
-                                        <div class="form-group mb-3 row">
-                                            <label class="form-label col-3 col-form-label">Client ID</label>
-                                            <div class="col">
-                                                <input id="slack_client_id" type="text" class="form-control"
-                                                       value="{$settings['slack_client_id']}">
-                                            </div>
-                                        </div>
-                                        <div class="form-group mb-3 row">
-                                            <label class="form-label col-3 col-form-label">Client Secret</label>
-                                            <div class="col">
-                                                <input id="slack_client_secret" type="text" class="form-control"
-                                                       value="{$settings['slack_client_secret']}">
-                                            </div>
-                                        </div>
-                                        <div class="form-group mb-3 row">
-                                            <label class="form-label col-3 col-form-label">Team ID</label>
-                                            <div class="col">
-                                                <input id="slack_team_id" type="text" class="form-control"
-                                                       value="{$settings['slack_team_id']}">
-                                            </div>
-                                        </div>
-                                        <div class="form-group mb-3 row">
-                                            <label class="form-label col-3 col-form-label">Slack Channel ID</label>
-                                            <div class="col">
-                                                <input id="slack_channel_id" type="text" class="form-control"
-                                                       value="{$settings['slack_channel_id']}">
-                                            </div>
-                                        </div>
-                                        <div class="form-group mb-3 row">
-                                            <label class="form-label col-3 col-form-label">
-                                                Enable Slack channel notify
-                                            </label>
-                                            <div class="col">
-                                                <select id="enable_slack_channel_notify" class="col form-select"
-                                                        value="{$settings['enable_slack_channel_notify']}">
-                                                    <option value="0" {if ! $settings['enable_slack_channel_notify']}selected{/if}>
-                                                        False
-                                                    </option>
-                                                    <option value="1" {if $settings['enable_slack_channel_notify']}selected{/if}>
-                                                        True
-                                                    </option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group mb-3 row">
-                                            <label class="form-label col-3 col-form-label">Slack User ID/Channel ID</label>
-                                            <input type="text" class="form-control" id="slack_channel_id" value="">
-                                            <div class="row my-3">
-                                                <div class="col">
-                                                    <button class="btn btn-primary"
-                                                        hx-post="/admin/setting/test/slack" hx-swap="none"
-                                                        hx-vals='js:{ slack_channel_id: document.getElementById("slack_channel_id").value }'>
-                                                        Send Test Message
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                        <div class="lmn-edit-fields">
+
+                            <div class="lmn-edit-field">
+                                <label class="lmn-edit-label" data-i18n="admin.im.index.notify_add_node">节点新增</label>
+                                <div class="lmn-edit-input">
+                                    <select id="im_bot_group_notify_add_node" class="lmn-edit-select">
+                                        <option value="0" {if !$settings['im_bot_group_notify_add_node']}selected{/if} data-i18n="admin.im.index.disable">关闭</option>
+                                        <option value="1" {if $settings['im_bot_group_notify_add_node']}selected{/if} data-i18n="admin.im.index.enable">开启</option>
+                                    </select>
                                 </div>
                             </div>
+
+                            <div class="lmn-edit-field">
+                                <label class="lmn-edit-label" data-i18n="admin.im.index.notify_update_node">节点更新</label>
+                                <div class="lmn-edit-input">
+                                    <select id="im_bot_group_notify_update_node" class="lmn-edit-select">
+                                        <option value="0" {if !$settings['im_bot_group_notify_update_node']}selected{/if} data-i18n="admin.im.index.disable">关闭</option>
+                                        <option value="1" {if $settings['im_bot_group_notify_update_node']}selected{/if} data-i18n="admin.im.index.enable">开启</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="lmn-edit-field">
+                                <label class="lmn-edit-label" data-i18n="admin.im.index.notify_delete_node">节点删除</label>
+                                <div class="lmn-edit-input">
+                                    <select id="im_bot_group_notify_delete_node" class="lmn-edit-select">
+                                        <option value="0" {if !$settings['im_bot_group_notify_delete_node']}selected{/if} data-i18n="admin.im.index.disable">关闭</option>
+                                        <option value="1" {if $settings['im_bot_group_notify_delete_node']}selected{/if} data-i18n="admin.im.index.enable">开启</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="lmn-edit-field">
+                                <label class="lmn-edit-label" data-i18n="admin.im.index.notify_node_gfwed">节点被墙</label>
+                                <div class="lmn-edit-input">
+                                    <select id="im_bot_group_notify_node_gfwed" class="lmn-edit-select">
+                                        <option value="0" {if !$settings['im_bot_group_notify_node_gfwed']}selected{/if} data-i18n="admin.im.index.disable">关闭</option>
+                                        <option value="1" {if $settings['im_bot_group_notify_node_gfwed']}selected{/if} data-i18n="admin.im.index.enable">开启</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="lmn-edit-field">
+                                <label class="lmn-edit-label" data-i18n="admin.im.index.notify_node_ungfwed">节点解封</label>
+                                <div class="lmn-edit-input">
+                                    <select id="im_bot_group_notify_node_ungfwed" class="lmn-edit-select">
+                                        <option value="0" {if !$settings['im_bot_group_notify_node_ungfwed']}selected{/if} data-i18n="admin.im.index.disable">关闭</option>
+                                        <option value="1" {if $settings['im_bot_group_notify_node_ungfwed']}selected{/if} data-i18n="admin.im.index.enable">开启</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="lmn-edit-field">
+                                <label class="lmn-edit-label" data-i18n="admin.im.index.notify_node_online">节点上线</label>
+                                <div class="lmn-edit-input">
+                                    <select id="im_bot_group_notify_node_online" class="lmn-edit-select">
+                                        <option value="0" {if !$settings['im_bot_group_notify_node_online']}selected{/if} data-i18n="admin.im.index.disable">关闭</option>
+                                        <option value="1" {if $settings['im_bot_group_notify_node_online']}selected{/if} data-i18n="admin.im.index.enable">开启</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="lmn-edit-field">
+                                <label class="lmn-edit-label" data-i18n="admin.im.index.notify_node_offline">节点下线</label>
+                                <div class="lmn-edit-input">
+                                    <select id="im_bot_group_notify_node_offline" class="lmn-edit-select">
+                                        <option value="0" {if !$settings['im_bot_group_notify_node_offline']}selected{/if} data-i18n="admin.im.index.disable">关闭</option>
+                                        <option value="1" {if $settings['im_bot_group_notify_node_offline']}selected{/if} data-i18n="admin.im.index.enable">开启</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="lmn-edit-field">
+                                <label class="lmn-edit-label" data-i18n="admin.im.index.notify_daily_job">每日任务</label>
+                                <div class="lmn-edit-input">
+                                    <select id="im_bot_group_notify_daily_job" class="lmn-edit-select">
+                                        <option value="0" {if !$settings['im_bot_group_notify_daily_job']}selected{/if} data-i18n="admin.im.index.disable">关闭</option>
+                                        <option value="1" {if $settings['im_bot_group_notify_daily_job']}selected{/if} data-i18n="admin.im.index.enable">开启</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="lmn-edit-field">
+                                <label class="lmn-edit-label" data-i18n="admin.im.index.notify_diary">系统日志</label>
+                                <div class="lmn-edit-input">
+                                    <select id="im_bot_group_notify_diary" class="lmn-edit-select">
+                                        <option value="0" {if !$settings['im_bot_group_notify_diary']}selected{/if} data-i18n="admin.im.index.disable">关闭</option>
+                                        <option value="1" {if $settings['im_bot_group_notify_diary']}selected{/if} data-i18n="admin.im.index.enable">开启</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="lmn-edit-field">
+                                <label class="lmn-edit-label" data-i18n="admin.im.index.notify_ann_create">公告创建</label>
+                                <div class="lmn-edit-input">
+                                    <select id="im_bot_group_notify_ann_create" class="lmn-edit-select">
+                                        <option value="0" {if !$settings['im_bot_group_notify_ann_create']}selected{/if} data-i18n="admin.im.index.disable">关闭</option>
+                                        <option value="1" {if $settings['im_bot_group_notify_ann_create']}selected{/if} data-i18n="admin.im.index.enable">开启</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="lmn-edit-field">
+                                <label class="lmn-edit-label" data-i18n="admin.im.index.notify_ann_update">公告更新</label>
+                                <div class="lmn-edit-input">
+                                    <select id="im_bot_group_notify_ann_update" class="lmn-edit-select">
+                                        <option value="0" {if !$settings['im_bot_group_notify_ann_update']}selected{/if} data-i18n="admin.im.index.disable">关闭</option>
+                                        <option value="1" {if $settings['im_bot_group_notify_ann_update']}selected{/if} data-i18n="admin.im.index.enable">开启</option>
+                                    </select>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <script>
-            $("#save-setting").click(function () {
-                $.ajax({
-                    url: '/admin/setting/im',
-                    type: 'POST',
-                    dataType: "json",
-                    data: {
-                        {foreach $update_field as $key}
-                        {$key}: $('#{$key}').val(),
-                        {/foreach}
-                    },
-                    success: function (data) {
-                        if (data.ret === 1) {
-                            $('#success-message').text(data.msg);
-                            $('#success-dialog').modal('show');
-                        } else {
-                            $('#fail-message').text(data.msg);
-                            $('#fail-dialog').modal('show');
-                        }
-                    }
-                })
-            });
-        </script>
+                <!-- Telegram Panel -->
+                <div class="lmn-billing-panel" data-panel="telegram">
+                    <div class="lmn-edit-card">
+                        <div class="lmn-edit-card-header">
+                            <span class="material-symbols-outlined">send</span>
+                            <span data-i18n="admin.im.index.tab_telegram">Telegram Bot</span>
+                        </div>
+                        <div class="lmn-edit-fields">
 
-        {include file='admin/footer.tpl'}
+                            <div class="lmn-edit-field">
+                                <label class="lmn-edit-label">Bot Token</label>
+                                <div class="lmn-edit-input" style="display:flex;gap:8px;align-items:center;">
+                                    <input id="telegram_token" type="text" class="lmn-edit-text" value="{$settings['telegram_token']}">
+                                    <button class="lmn-btn-secondary lmn-btn-sm"
+                                            hx-post="/admin/setting/im/set_webhook/telegram" hx-swap="none"
+                                            hx-vals='js:{ldelim}"bot_token": document.getElementById("telegram_token").value{rdelim}'>
+                                        <span data-i18n="admin.im.index.tg_set_webhook">Set Webhook</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="lmn-edit-field">
+                                <label class="lmn-edit-label">Webhook Token</label>
+                                <div class="lmn-edit-input" style="display:flex;gap:8px;align-items:center;">
+                                    <input id="telegram_webhook_token" type="text" class="lmn-edit-text" value="{$settings['telegram_webhook_token']}" disabled>
+                                    <button class="lmn-btn-secondary lmn-btn-sm"
+                                            hx-post="/admin/setting/im/reset_webhook_token/telegram" hx-swap="none">
+                                        <span data-i18n="admin.im.index.tg_reset_token">Reset Webhook Token</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="lmn-edit-field">
+                                <label class="lmn-edit-label">Bot Username</label>
+                                <div class="lmn-edit-input">
+                                    <input id="telegram_bot" type="text" class="lmn-edit-text" value="{$settings['telegram_bot']}">
+                                </div>
+                            </div>
+
+                            <div class="lmn-edit-field">
+                                <label class="lmn-edit-label">Group Chat ID</label>
+                                <div class="lmn-edit-input">
+                                    <input id="telegram_chatid" type="text" class="lmn-edit-text" value="{$settings['telegram_chatid']}">
+                                </div>
+                            </div>
+
+                            <div class="lmn-edit-field">
+                                <label class="lmn-edit-label">Enable Group Notify</label>
+                                <div class="lmn-edit-input">
+                                    <select id="enable_telegram_group_notify" class="lmn-edit-select">
+                                        <option value="0" {if !$settings['enable_telegram_group_notify']}selected{/if} data-i18n="admin.im.index.disable">关闭</option>
+                                        <option value="1" {if $settings['enable_telegram_group_notify']}selected{/if} data-i18n="admin.im.index.enable">开启</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="lmn-edit-field">
+                                <label class="lmn-edit-label" data-i18n="admin.im.index.tg_unbind_kick">Telegram 解绑时自动踢出群组</label>
+                                <div class="lmn-edit-input">
+                                    <select id="telegram_unbind_kick_member" class="lmn-edit-select">
+                                        <option value="0" {if !$settings['telegram_unbind_kick_member']}selected{/if} data-i18n="admin.im.index.disable">关闭</option>
+                                        <option value="1" {if $settings['telegram_unbind_kick_member']}selected{/if} data-i18n="admin.im.index.enable">开启</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="lmn-edit-field">
+                                <label class="lmn-edit-label" data-i18n="admin.im.index.tg_group_bound">仅允许已绑定用户加入群组</label>
+                                <div class="lmn-edit-input">
+                                    <select id="telegram_group_bound_user" class="lmn-edit-select">
+                                        <option value="0" {if !$settings['telegram_group_bound_user']}selected{/if} data-i18n="admin.im.index.disable">关闭</option>
+                                        <option value="1" {if $settings['telegram_group_bound_user']}selected{/if} data-i18n="admin.im.index.enable">开启</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="lmn-edit-field">
+                                <label class="lmn-edit-label" data-i18n="admin.im.index.tg_welcome_msg">Bot 发送欢迎消息</label>
+                                <div class="lmn-edit-input">
+                                    <select id="enable_welcome_message" class="lmn-edit-select">
+                                        <option value="0" {if !$settings['enable_welcome_message']}selected{/if} data-i18n="admin.im.index.disable">关闭</option>
+                                        <option value="1" {if $settings['enable_welcome_message']}selected{/if} data-i18n="admin.im.index.enable">开启</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="lmn-edit-field">
+                                <label class="lmn-edit-label" data-i18n="admin.im.index.tg_group_quiet">Bot 在群组中保持静默</label>
+                                <div class="lmn-edit-input">
+                                    <select id="telegram_group_quiet" class="lmn-edit-select">
+                                        <option value="0" {if !$settings['telegram_group_quiet']}selected{/if} data-i18n="admin.im.index.disable">关闭</option>
+                                        <option value="1" {if $settings['telegram_group_quiet']}selected{/if} data-i18n="admin.im.index.enable">开启</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="lmn-edit-field">
+                                <label class="lmn-edit-label" data-i18n="admin.im.index.tg_allow_new_group">允许 Bot 加入其他群组</label>
+                                <div class="lmn-edit-input">
+                                    <select id="allow_to_join_new_groups" class="lmn-edit-select">
+                                        <option value="0" {if !$settings['allow_to_join_new_groups']}selected{/if} data-i18n="admin.im.index.disable">关闭</option>
+                                        <option value="1" {if $settings['allow_to_join_new_groups']}selected{/if} data-i18n="admin.im.index.enable">开启</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="lmn-edit-field">
+                                <label class="lmn-edit-label" data-i18n="admin.im.index.tg_group_id_allow">允许加入的群组 ID</label>
+                                <div class="lmn-edit-input">
+                                    <input id="group_id_allowed_to_join" type="text" class="lmn-edit-text" value="{$settings['group_id_allowed_to_join']}">
+                                </div>
+                            </div>
+
+                            <div class="lmn-edit-field">
+                                <label class="lmn-edit-label" data-i18n="admin.im.index.tg_help_any_cmd">未知命令触发 /help</label>
+                                <div class="lmn-edit-input">
+                                    <select id="help_any_command" class="lmn-edit-select">
+                                        <option value="0" {if !$settings['help_any_command']}selected{/if} data-i18n="admin.im.index.disable">关闭</option>
+                                        <option value="1" {if $settings['help_any_command']}selected{/if} data-i18n="admin.im.index.enable">开启</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="lmn-edit-field">
+                                <label class="lmn-edit-label" data-i18n="admin.im.index.tg_test_chat_id">Telegram Chat ID</label>
+                                <div class="lmn-edit-input" style="display:flex;gap:8px;align-items:center;">
+                                    <input id="telegram_chat_id" type="text" class="lmn-edit-text" value="">
+                                    <button class="lmn-btn-secondary lmn-btn-sm"
+                                            hx-post="/admin/setting/test/telegram" hx-swap="none"
+                                            hx-vals='js:{ldelim}"telegram_chat_id": document.getElementById("telegram_chat_id").value{rdelim}'>
+                                        <span data-i18n="admin.im.index.tg_send_test">发送测试消息</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Discord Panel -->
+                <div class="lmn-billing-panel" data-panel="discord">
+                    <div class="lmn-edit-card">
+                        <div class="lmn-edit-card-header">
+                            <span class="material-symbols-outlined">forum</span>
+                            <span data-i18n="admin.im.index.tab_discord">Discord Bot</span>
+                        </div>
+                        <div class="lmn-edit-fields">
+
+                            <div class="lmn-edit-field">
+                                <label class="lmn-edit-label">Bot Token</label>
+                                <div class="lmn-edit-input">
+                                    <input id="discord_bot_token" type="text" class="lmn-edit-text" value="{$settings['discord_bot_token']}">
+                                </div>
+                            </div>
+
+                            <div class="lmn-edit-field">
+                                <label class="lmn-edit-label">Client ID</label>
+                                <div class="lmn-edit-input">
+                                    <input id="discord_client_id" type="text" class="lmn-edit-text" value="{$settings['discord_client_id']}">
+                                </div>
+                            </div>
+
+                            <div class="lmn-edit-field">
+                                <label class="lmn-edit-label">Client Secret</label>
+                                <div class="lmn-edit-input">
+                                    <input id="discord_client_secret" type="text" class="lmn-edit-text" value="{$settings['discord_client_secret']}">
+                                </div>
+                            </div>
+
+                            <div class="lmn-edit-field">
+                                <label class="lmn-edit-label">Guild ID</label>
+                                <div class="lmn-edit-input">
+                                    <input id="discord_guild_id" type="text" class="lmn-edit-text" value="{$settings['discord_guild_id']}">
+                                </div>
+                            </div>
+
+                            <div class="lmn-edit-field">
+                                <label class="lmn-edit-label">Channel ID</label>
+                                <div class="lmn-edit-input">
+                                    <input id="discord_channel_id" type="text" class="lmn-edit-text" value="{$settings['discord_channel_id']}">
+                                </div>
+                            </div>
+
+                            <div class="lmn-edit-field">
+                                <label class="lmn-edit-label">Enable Channel Notify</label>
+                                <div class="lmn-edit-input">
+                                    <select id="enable_discord_channel_notify" class="lmn-edit-select">
+                                        <option value="0" {if !$settings['enable_discord_channel_notify']}selected{/if} data-i18n="admin.im.index.disable">关闭</option>
+                                        <option value="1" {if $settings['enable_discord_channel_notify']}selected{/if} data-i18n="admin.im.index.enable">开启</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="lmn-edit-field">
+                                <label class="lmn-edit-label" data-i18n="admin.im.index.discord_test_label">Discord User ID / Channel ID</label>
+                                <div class="lmn-edit-input" style="display:flex;gap:8px;align-items:center;">
+                                    <input id="discord_test_channel_id" type="text" class="lmn-edit-text" value="">
+                                    <button class="lmn-btn-secondary lmn-btn-sm"
+                                            hx-post="/admin/setting/test/discord" hx-swap="none"
+                                            hx-vals='js:{ldelim}"discord_channel_id": document.getElementById("discord_test_channel_id").value{rdelim}'>
+                                        <span data-i18n="admin.im.index.discord_send_test">发送测试消息</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slack Panel -->
+                <div class="lmn-billing-panel" data-panel="slack">
+                    <div class="lmn-edit-card">
+                        <div class="lmn-edit-card-header">
+                            <span class="material-symbols-outlined">chat</span>
+                            <span data-i18n="admin.im.index.tab_slack">Slack Bot</span>
+                        </div>
+                        <div class="lmn-edit-fields">
+
+                            <div class="lmn-edit-field">
+                                <label class="lmn-edit-label">App Token</label>
+                                <div class="lmn-edit-input">
+                                    <input id="slack_token" type="text" class="lmn-edit-text" value="{$settings['slack_token']}">
+                                </div>
+                            </div>
+
+                            <div class="lmn-edit-field">
+                                <label class="lmn-edit-label">Client ID</label>
+                                <div class="lmn-edit-input">
+                                    <input id="slack_client_id" type="text" class="lmn-edit-text" value="{$settings['slack_client_id']}">
+                                </div>
+                            </div>
+
+                            <div class="lmn-edit-field">
+                                <label class="lmn-edit-label">Client Secret</label>
+                                <div class="lmn-edit-input">
+                                    <input id="slack_client_secret" type="text" class="lmn-edit-text" value="{$settings['slack_client_secret']}">
+                                </div>
+                            </div>
+
+                            <div class="lmn-edit-field">
+                                <label class="lmn-edit-label">Team ID</label>
+                                <div class="lmn-edit-input">
+                                    <input id="slack_team_id" type="text" class="lmn-edit-text" value="{$settings['slack_team_id']}">
+                                </div>
+                            </div>
+
+                            <div class="lmn-edit-field">
+                                <label class="lmn-edit-label">Channel ID</label>
+                                <div class="lmn-edit-input">
+                                    <input id="slack_channel_id" type="text" class="lmn-edit-text" value="{$settings['slack_channel_id']}">
+                                </div>
+                            </div>
+
+                            <div class="lmn-edit-field">
+                                <label class="lmn-edit-label">Enable Channel Notify</label>
+                                <div class="lmn-edit-input">
+                                    <select id="enable_slack_channel_notify" class="lmn-edit-select">
+                                        <option value="0" {if !$settings['enable_slack_channel_notify']}selected{/if} data-i18n="admin.im.index.disable">关闭</option>
+                                        <option value="1" {if $settings['enable_slack_channel_notify']}selected{/if} data-i18n="admin.im.index.enable">开启</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="lmn-edit-field">
+                                <label class="lmn-edit-label" data-i18n="admin.im.index.slack_test_label">Slack User ID / Channel ID</label>
+                                <div class="lmn-edit-input" style="display:flex;gap:8px;align-items:center;">
+                                    <input id="slack_test_channel_id" type="text" class="lmn-edit-text" value="">
+                                    <button class="lmn-btn-secondary lmn-btn-sm"
+                                            hx-post="/admin/setting/test/slack" hx-swap="none"
+                                            hx-vals='js:{ldelim}"slack_channel_id": document.getElementById("slack_test_channel_id").value{rdelim}'>
+                                        <span data-i18n="admin.im.index.slack_send_test">发送测试消息</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- /.lmn-billing-content -->
+        </div><!-- /.lmn-billing-grid -->
+    </div>
+</div>
+
+<script>
+(function () {
+    var tabs   = document.querySelectorAll('.lmn-billing-tab-btn');
+    var panels = document.querySelectorAll('.lmn-billing-panel');
+    tabs.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            var target = btn.getAttribute('data-tab');
+            tabs.forEach(function (b) { b.classList.remove('is-active'); });
+            panels.forEach(function (p) { p.classList.remove('is-active'); });
+            btn.classList.add('is-active');
+            document.querySelector('.lmn-billing-panel[data-panel="' + target + '"]').classList.add('is-active');
+        });
+    });
+
+    document.getElementById('save-setting').addEventListener('click', function () {
+        var data = {};
+        {foreach $update_field as $key}
+        var _el_{$key} = document.getElementById('{$key}');
+        if (_el_{$key}) { data['{$key}'] = _el_{$key}.value; }
+        {/foreach}
+        fetch('/admin/setting/im', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json', 'X-Requested-With': 'XMLHttpRequest'},
+            body: JSON.stringify(data),
+        }).then(function (r) { return r.json(); }).then(function (res) {
+            if (res.ret === 1) {
+                document.getElementById('success-message').textContent = res.msg;
+                (new bootstrap.Modal(document.getElementById('success-dialog'))).show();
+            } else {
+                document.getElementById('fail-message').textContent = res.msg;
+                (new bootstrap.Modal(document.getElementById('fail-dialog'))).show();
+            }
+        });
+    });
+}());
+</script>
+
+{include file='admin/footer.tpl'}

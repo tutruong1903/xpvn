@@ -119,4 +119,29 @@ return [
         'save_success' => 'Referral settings saved successfully',
         'save_failed'  => 'Failed to save referral settings',
     ],
+
+    'admin_im' => [
+        'save_success' => 'IM settings saved successfully.',
+        'save_failed'  => 'Failed to save IM settings.',
+        'test_success' => 'Test message sent successfully.',
+        'test_failed'  => 'Failed to send test message.',
+    ],
+
+    'admin_sub' => [
+        'save_success' => 'Subscription settings saved successfully.',
+        'save_failed'  => 'Failed to save subscription settings.',
+    ],
+
+    'admin_cron' => [
+        'save_success'   => 'Scheduled task settings saved successfully.',
+        'save_failed'    => 'Failed to save scheduled task settings.',
+        'hour_invalid'   => 'Hour must be between 0 and 23.',
+        'minute_invalid' => 'Minute must be between 0 and 59.',
+    ],
+
+    'admin_feature' => [
+        'save_success' => 'Settings saved successfully.',
+        'save_failed'  => 'Failed to save settings.',
+    ],
 ];
+

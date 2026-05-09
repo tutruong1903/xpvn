@@ -6,6 +6,7 @@ namespace App\Controllers\Admin\Setting;
 
 use App\Controllers\BaseController;
 use App\Models\Config;
+use App\Services\I18n;
 use Psr\Http\Message\ResponseInterface;
 use Slim\Http\Response;
 use Slim\Http\ServerRequest;
@@ -38,20 +39,21 @@ final class CronController extends BaseController
 
     public function save(ServerRequest $request, Response $response, array $args): ResponseInterface
     {
+        $locale = $this->getLocale();
         $daily_job_hour = (int) $request->getParam('daily_job_hour');
         $daily_job_minute = (int) $request->getParam('daily_job_minute');
 
         if ($daily_job_hour < 0 || $daily_job_hour > 23) {
             return $response->withJson([
                 'ret' => 0,
-                'msg' => '每日任务执行时间的小时数必须在 0-23 之间',
+                'msg' => I18n::trans('admin_cron.hour_invalid', $locale),
             ]);
         }
 
         if ($daily_job_minute < 0 || $daily_job_minute > 59) {
             return $response->withJson([
                 'ret' => 0,
-                'msg' => '每日任务执行时间的分钟数必须在 0-59 之间',
+                'msg' => I18n::trans('admin_cron.minute_invalid', $locale),
             ]);
         }
 
@@ -64,14 +66,14 @@ final class CronController extends BaseController
             if (! Config::set($item, $request->getParam($item))) {
                 return $response->withJson([
                     'ret' => 0,
-                    'msg' => '保存 ' . $item . ' 时出错',
+                    'msg' => I18n::trans('admin_cron.save_failed', $locale),
                 ]);
             }
         }
 
         return $response->withJson([
             'ret' => 1,
-            'msg' => '保存成功',
+            'msg' => I18n::trans('admin_cron.save_success', $locale),
         ]);
     }
 }

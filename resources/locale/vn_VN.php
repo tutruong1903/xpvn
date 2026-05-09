@@ -119,4 +119,28 @@ return [
         'save_success' => 'Lưu cài đặt giới thiệu thành công',
         'save_failed'  => 'Lưu cài đặt giới thiệu thất bại',
     ],
+
+    'admin_im' => [
+        'save_success' => 'Lưu cài đặt IM thành công.',
+        'save_failed'  => 'Lưu cài đặt IM thất bại.',
+        'test_success' => 'Gửi tin nhắn thử thành công.',
+        'test_failed'  => 'Gửi tin nhắn thử thất bại.',
+    ],
+
+    'admin_sub' => [
+        'save_success' => 'Lưu cài đặt đăng ký thành công.',
+        'save_failed'  => 'Lưu cài đặt đăng ký thất bại.',
+    ],
+
+    'admin_cron' => [
+        'save_success'   => 'Lưu cài đặt tác vụ định kỳ thành công.',
+        'save_failed'    => 'Lưu cài đặt tác vụ định kỳ thất bại.',
+        'hour_invalid'   => 'Giờ phải nằm trong khoảng 0–23.',
+        'minute_invalid' => 'Phút phải nằm trong khoảng 0–59.',
+    ],
+
+    'admin_feature' => [
+        'save_success' => 'Lưu cài đặt thành công.',
+        'save_failed'  => 'Lưu cài đặt thất bại.',
+    ],
 ];

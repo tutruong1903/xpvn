@@ -21,8 +21,6 @@ use Telegram\Bot\Exceptions\TelegramSDKException;
 
 final class ImController extends BaseController
 {
-    private static string $success_msg = '测试信息发送成功';
-    private static string $err_msg = '测试信息发送失败';
     private array $update_field;
     private array $settings;
 
@@ -48,18 +46,19 @@ final class ImController extends BaseController
 
     public function save(ServerRequest $request, Response $response, array $args): ResponseInterface
     {
+        $locale = $this->getLocale();
         foreach ($this->update_field as $item) {
             if (! Config::set($item, $request->getParam($item))) {
                 return $response->withJson([
                     'ret' => 0,
-                    'msg' => '保存 ' . $item . ' 时出错',
+                    'msg' => I18n::trans('admin_im.save_failed', $locale),
                 ]);
             }
         }
 
         return $response->withJson([
             'ret' => 1,
-            'msg' => '保存成功',
+            'msg' => I18n::trans('admin_im.save_success', $locale),
         ]);
     }
 
@@ -125,13 +124,13 @@ final class ImController extends BaseController
         } catch (TelegramSDKException|\Exception $e) {
             return $response->withJson([
                 'ret' => 0,
-                'msg' => $this::$err_msg . ' ' . $e->getMessage(),
+                'msg' => I18n::trans('admin_im.test_failed', $this->getLocale()) . ' ' . $e->getMessage(),
             ]);
         }
 
         return $response->withJson([
             'ret' => 1,
-            'msg' => $this::$success_msg,
+            'msg' => I18n::trans('admin_im.test_success', $this->getLocale()),
         ]);
     }
 
@@ -145,13 +144,13 @@ final class ImController extends BaseController
         } catch (GuzzleException|\Exception $e) {
             return $response->withJson([
                 'ret' => 0,
-                'msg' => $this::$err_msg . ' ' . $e->getMessage(),
+                'msg' => I18n::trans('admin_im.test_failed', $this->getLocale()) . ' ' . $e->getMessage(),
             ]);
         }
 
         return $response->withJson([
             'ret' => 1,
-            'msg' => $this::$success_msg,
+            'msg' => I18n::trans('admin_im.test_success', $this->getLocale()),
         ]);
     }
 
@@ -165,13 +164,13 @@ final class ImController extends BaseController
         } catch (GuzzleException|\Exception $e) {
             return $response->withJson([
                 'ret' => 0,
-                'msg' => $this::$err_msg . ' ' . $e->getMessage(),
+                'msg' => I18n::trans('admin_im.test_failed', $this->getLocale()) . ' ' . $e->getMessage(),
             ]);
         }
 
         return $response->withJson([
             'ret' => 1,
-            'msg' => $this::$success_msg,
+            'msg' => I18n::trans('admin_im.test_success', $this->getLocale()),
         ]);
     }
 }

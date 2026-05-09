@@ -119,4 +119,28 @@ return [
         'save_success' => '邀請設定儲存成功',
         'save_failed'  => '邀請設定儲存失敗',
     ],
+
+    'admin_im' => [
+        'save_success' => 'IM 設定儲存成功。',
+        'save_failed'  => 'IM 設定儲存失敗。',
+        'test_success' => '測試訊息發送成功。',
+        'test_failed'  => '測試訊息發送失敗。',
+    ],
+
+    'admin_sub' => [
+        'save_success' => '訂閱設定儲存成功。',
+        'save_failed'  => '訂閱設定儲存失敗。',
+    ],
+
+    'admin_cron' => [
+        'save_success'   => '定時任務設定儲存成功。',
+        'save_failed'    => '定時任務設定儲存失敗。',
+        'hour_invalid'   => '每日任務執行時間的小時數必須在 0-23 之間。',
+        'minute_invalid' => '每日任務執行時間的分鐘數必須在 0-59 之間。',
+    ],
+
+    'admin_feature' => [
+        'save_success' => '儲存成功。',
+        'save_failed'  => '儲存失敗。',
+    ],
 ];

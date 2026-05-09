@@ -119,4 +119,28 @@ return [
         'save_success' => '邀请设置保存成功',
         'save_failed'  => '邀请设置保存失败',
     ],
+
+    'admin_im' => [
+        'save_success' => 'IM 设置保存成功。',
+        'save_failed'  => 'IM 设置保存失败。',
+        'test_success' => '测试消息发送成功。',
+        'test_failed'  => '测试消息发送失败。',
+    ],
+
+    'admin_sub' => [
+        'save_success' => '订阅设置保存成功。',
+        'save_failed'  => '订阅设置保存失败。',
+    ],
+
+    'admin_cron' => [
+        'save_success'   => '定时任务设置保存成功。',
+        'save_failed'    => '定时任务设置保存失败。',
+        'hour_invalid'   => '每日任务执行时间的小时数必须在 0-23 之间。',
+        'minute_invalid' => '每日任务执行时间的分钟数必须在 0-59 之间。',
+    ],
+
+    'admin_feature' => [
+        'save_success' => '保存成功。',
+        'save_failed'  => '保存失败。',
+    ],
 ];

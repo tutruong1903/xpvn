@@ -299,6 +299,38 @@
             "data-i18n",
             _adminRefDict,
         );
+
+        // Admin im section — handles IM settings page (admin.im.index.*).
+        var _adminImDict = flattenAdminSection(flattenNestedSection(getAdminSectionDict(locale, "im")), 'admin.im.');
+        applyAttributeFromDict(
+            "[data-i18n^='admin.im.']",
+            "data-i18n",
+            _adminImDict,
+        );
+
+        // Admin sub section — handles subscription settings page (admin.sub.index.*).
+        var _adminSubDict = flattenAdminSection(flattenNestedSection(getAdminSectionDict(locale, "sub")), 'admin.sub.');
+        applyAttributeFromDict(
+            "[data-i18n^='admin.sub.']",
+            "data-i18n",
+            _adminSubDict,
+        );
+
+        // Admin cron section — handles scheduled tasks settings page (admin.cron.index.*).
+        var _adminCronDict = flattenAdminSection(flattenNestedSection(getAdminSectionDict(locale, "cron")), 'admin.cron.');
+        applyAttributeFromDict(
+            "[data-i18n^='admin.cron.']",
+            "data-i18n",
+            _adminCronDict,
+        );
+
+        // Admin feature section — handles other settings page (admin.feature.index.*).
+        var _adminFeatureDict = flattenAdminSection(flattenNestedSection(getAdminSectionDict(locale, "feature")), 'admin.feature.');
+        applyAttributeFromDict(
+            "[data-i18n^='admin.feature.']",
+            "data-i18n",
+            _adminFeatureDict,
+        );
     }
 
     /**

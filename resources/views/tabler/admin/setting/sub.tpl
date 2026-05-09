@@ -1,140 +1,113 @@
 {include file='admin/header.tpl'}
 
-    <div class="container-xl">
-        <div class="page-header d-print-none">
-            <div class="row align-items-center">
-                <div class="col">
-                    <h2 class="page-title">
-                        <span class="home-title">订阅设置</span>
-                    </h2>
-                    <div class="page-pretitle my-3">
-                        <span class="home-subtitle">设置站点的订阅系统</span>
-                    </div>
-                </div>
-                <div class="col-auto ms-auto d-print-none">
-                    <div class="btn-list">
-                        <a id="save-setting" href="#" class="btn btn-primary">
-                            <i class="icon ti ti-device-floppy"></i>
-                            保存
-                        </a>
-                    </div>
-                </div>
-            </div>
+<link href="/assets/css/admin/sub.css{asset_ver path="/assets/css/admin/sub.css"}" rel="stylesheet"/>
+
+<div class="container-xl">
+    <div class="lmn-page-header">
+        <div class="lmn-page-header__content">
+            <h2 class="lmn-page-title" data-i18n="admin.sub.index.title">订阅设置</h2>
+            <p class="lmn-page-subtitle" data-i18n="admin.sub.index.subtitle">管理站点的订阅协议</p>
+        </div>
+        <div class="lmn-page-header__actions">
+            <button id="save-setting" class="lmn-btn-primary">
+                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;">save</span>
+                <span data-i18n="admin.sub.index.save_btn">保存</span>
+            </button>
         </div>
     </div>
-    <div class="page-body">
-        <div class="container-xl">
-            <div class="row row-deck row-cards">
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <ul class="nav nav-tabs card-header-tabs" data-bs-toggle="tabs">
-                                <li class="nav-item">
-                                    <a href="#sub" class="nav-link active" data-bs-toggle="tab">订阅设置</a>
-                                </li>
-                            </ul>
+</div>
+
+<div class="page-body">
+    <div class="container-xl">
+        <div class="lmn-billing-grid">
+
+            <div class="lmn-billing-tabs">
+                <button class="lmn-billing-tab-btn is-active" data-tab="sub">
+                    <span data-i18n="admin.sub.index.tab_sub">订阅</span>
+                </button>
+            </div>
+
+            <div class="lmn-billing-content">
+                <div class="lmn-billing-panel is-active" data-panel="sub">
+                    <div class="lmn-edit-card">
+                        <div class="lmn-edit-card-header">
+                            <span class="material-symbols-outlined">rss_feed</span>
+                            <span data-i18n="admin.sub.index.tab_sub">订阅</span>
                         </div>
-                        <div class="card-body">
-                            <div class="tab-content">
-                                <div class="tab-pane active show" id="sub">
-                                    <div class="card-body">
-                                        <div class="form-group mb-3 row">
-                                            <label class="form-label col-3 col-form-label">
-                                                Enable Shadowsocks Subscription
-                                            </label>
-                                            <div class="col">
-                                                <select id="enable_ss_sub" class="col form-select"
-                                                        value="{$settings['enable_ss_sub']}">
-                                                    <option value="0" {if ! $settings['enable_ss_sub']}selected{/if}>
-                                                        False
-                                                    </option>
-                                                    <option value="1" {if $settings['enable_ss_sub']}selected{/if}>
-                                                        True
-                                                    </option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group mb-3 row">
-                                            <label class="form-label col-3 col-form-label">
-                                                Enable Vmess Subscription
-                                            </label>
-                                            <div class="col">
-                                                <select id="enable_v2_sub" class="col form-select"
-                                                        value="{$settings['enable_v2_sub']}">
-                                                    <option value="0" {if ! $settings['enable_v2_sub']}selected{/if}>
-                                                        False
-                                                    </option>
-                                                    <option value="1" {if $settings['enable_v2_sub']}selected{/if}>
-                                                        True
-                                                    </option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group mb-3 row">
-                                            <label class="form-label col-3 col-form-label">
-                                                Enable Trojan Subscription
-                                            </label>
-                                            <div class="col">
-                                                <select id="enable_trojan_sub" class="col form-select"
-                                                        value="{$settings['enable_trojan_sub']}">
-                                                    <option value="0" {if ! $settings['enable_trojan_sub']}selected{/if}>
-                                                        False
-                                                    </option>
-                                                    <option value="1" {if $settings['enable_trojan_sub']}selected{/if}>
-                                                        True
-                                                    </option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group mb-3 row">
-                                            <label class="form-label col-3 col-form-label">
-                                                修改账户登录密码时重置订阅地址
-                                            </label>
-                                            <div class="col">
-                                                <select id="enable_forced_replacement" class="col form-select"
-                                                        value="{$settings['enable_forced_replacement']}">
-                                                    <option value="0"
-                                                            {if ! $settings['enable_forced_replacement']}selected{/if}>
-                                                        False
-                                                    </option>
-                                                    <option value="1"
-                                                            {if $settings['enable_forced_replacement']}selected{/if}>
-                                                        True
-                                                    </option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
+                        <div class="lmn-edit-fields">
+
+                            <div class="lmn-edit-field">
+                                <label class="lmn-edit-label" data-i18n="admin.sub.index.enable_ss">启用 Shadowsocks 订阅</label>
+                                <div class="lmn-edit-input">
+                                    <select id="enable_ss_sub" class="lmn-edit-select">
+                                        <option value="0" {if !$settings['enable_ss_sub']}selected{/if} data-i18n="admin.sub.index.false">关闭</option>
+                                        <option value="1" {if $settings['enable_ss_sub']}selected{/if} data-i18n="admin.sub.index.true">开启</option>
+                                    </select>
                                 </div>
                             </div>
+
+                            <div class="lmn-edit-field">
+                                <label class="lmn-edit-label" data-i18n="admin.sub.index.enable_v2">启用 V2Ray 订阅</label>
+                                <div class="lmn-edit-input">
+                                    <select id="enable_v2_sub" class="lmn-edit-select">
+                                        <option value="0" {if !$settings['enable_v2_sub']}selected{/if} data-i18n="admin.sub.index.false">关闭</option>
+                                        <option value="1" {if $settings['enable_v2_sub']}selected{/if} data-i18n="admin.sub.index.true">开启</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="lmn-edit-field">
+                                <label class="lmn-edit-label" data-i18n="admin.sub.index.enable_trojan">启用 Trojan 订阅</label>
+                                <div class="lmn-edit-input">
+                                    <select id="enable_trojan_sub" class="lmn-edit-select">
+                                        <option value="0" {if !$settings['enable_trojan_sub']}selected{/if} data-i18n="admin.sub.index.false">关闭</option>
+                                        <option value="1" {if $settings['enable_trojan_sub']}selected{/if} data-i18n="admin.sub.index.true">开启</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="lmn-edit-field">
+                                <label class="lmn-edit-label" data-i18n="admin.sub.index.forced_replacement">修改账户登录密码时重置订阅地址</label>
+                                <div class="lmn-edit-input">
+                                    <select id="enable_forced_replacement" class="lmn-edit-select">
+                                        <option value="0" {if !$settings['enable_forced_replacement']}selected{/if} data-i18n="admin.sub.index.false">关闭</option>
+                                        <option value="1" {if $settings['enable_forced_replacement']}selected{/if} data-i18n="admin.sub.index.true">开启</option>
+                                    </select>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
+    </div>
+</div>
 
-        <script>
-            $("#save-setting").click(function () {
-                $.ajax({
-                    url: '/admin/setting/sub',
-                    type: 'POST',
-                    dataType: "json",
-                    data: {
-                        {foreach $update_field as $key}
-                        {$key}: $('#{$key}').val(),
-                        {/foreach}
-                    },
-                    success: function (data) {
-                        if (data.ret === 1) {
-                            $('#success-message').text(data.msg);
-                            $('#success-dialog').modal('show');
-                        } else {
-                            $('#fail-message').text(data.msg);
-                            $('#fail-dialog').modal('show');
-                        }
-                    }
-                })
-            });
-        </script>
+<script>
+(function () {
+    document.getElementById('save-setting').addEventListener('click', function () {
+        var data = {};
+        {foreach $update_field as $key}
+        var _el_{$key} = document.getElementById('{$key}');
+        if (_el_{$key}) { data['{$key}'] = _el_{$key}.value; }
+        {/foreach}
+        fetch('/admin/setting/sub', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json', 'X-Requested-With': 'XMLHttpRequest'},
+            body: JSON.stringify(data),
+        }).then(function (r) { return r.json(); }).then(function (res) {
+            if (res.ret === 1) {
+                document.getElementById('success-message').textContent = res.msg;
+                (new bootstrap.Modal(document.getElementById('success-dialog'))).show();
+            } else {
+                document.getElementById('fail-message').textContent = res.msg;
+                (new bootstrap.Modal(document.getElementById('fail-dialog'))).show();
+            }
+        });
+    });
+}());
+</script>
 
-        {include file='admin/footer.tpl'}
+{include file='admin/footer.tpl'}

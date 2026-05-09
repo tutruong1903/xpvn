@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Services\I18n;
 use Illuminate\Database\Query\Builder;
 
 /**
@@ -26,18 +27,24 @@ final class Order extends Model
     protected $connection = 'default';
     protected $table = 'order';
 
+    private function locale(): string
+    {
+        return $_COOKIE['sspanel_locale'] ?? $_ENV['locale'] ?? 'en_US';
+    }
+
     /**
      * 订单状态
      */
     public function status(): string
     {
+        $locale = $this->locale();
         return match ($this->status) {
-            'pending_payment' => '等待中',
-            'pending_activation' => '待激活',
-            'activated' => '已激活',
-            'expired' => '已过期',
-            'cancelled' => '已取消',
-            default => '未知',
+            'pending_payment'    => I18n::trans('admin_order.status_pending_payment', $locale),
+            'pending_activation' => I18n::trans('admin_order.status_pending_activation', $locale),
+            'activated'          => I18n::trans('admin_order.status_activated', $locale),
+            'expired'            => I18n::trans('admin_order.status_expired', $locale),
+            'cancelled'          => I18n::trans('admin_order.status_cancelled', $locale),
+            default              => I18n::trans('admin_order.status_unknown', $locale),
         };
     }
 
@@ -46,12 +53,13 @@ final class Order extends Model
      */
     public function productType(): string
     {
+        $locale = $this->locale();
         return match ($this->product_type) {
-            'tabp' => '时间流量包',
-            'time' => '时间包',
-            'bandwidth' => '流量包',
-            'topup' => '充值',
-            default => '其他',
+            'tabp'      => I18n::trans('admin_order.type_tabp', $locale),
+            'time'      => I18n::trans('admin_order.type_time', $locale),
+            'bandwidth' => I18n::trans('admin_order.type_bandwidth', $locale),
+            'topup'     => I18n::trans('admin_order.type_topup', $locale),
+            default     => I18n::trans('admin_order.type_other', $locale),
         };
     }
 }

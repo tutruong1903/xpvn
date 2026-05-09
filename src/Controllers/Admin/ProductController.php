@@ -361,10 +361,12 @@ final class ProductController extends BaseController
             'create_time',
             'update_time',
         ]);
-        $new_product->name .= ' (副本)';
+        $base_name   = preg_replace('/\s*\(\d+\)\s*$/', '', $old_product->name);
+        $copy_count  = (new Product())->where('name', 'LIKE', $base_name . ' (%)')->count();
+        $new_product->name        = $base_name . ' (' . ($copy_count + 1) . ')';
         $new_product->create_time = time();
         $new_product->update_time = time();
-        $new_product->sale_count = 0;
+        $new_product->sale_count  = 0;
         $new_product->save();
 
         return $response->withJson([
@@ -409,9 +411,9 @@ final class ProductController extends BaseController
                 : '<span class="lmn-badge lmn-badge--inactive">Inactive</span>';
 
             $product->type = match ($product->type) {
-                'tabp'      => '<span class="lmn-badge lmn-badge--class-premium">Time+Traffic</span>',
-                'time'      => '<span class="lmn-badge lmn-badge--class-std">Time</span>',
-                'bandwidth' => '<span class="lmn-badge lmn-badge--class-basic">Bandwidth</span>',
+                'tabp'      => '<span class="lmn-badge lmn-badge--type-tabp">Time+Traffic</span>',
+                'time'      => '<span class="lmn-badge lmn-badge--type-time">Time</span>',
+                'bandwidth' => '<span class="lmn-badge lmn-badge--type-bandwidth">Bandwidth</span>',
                 default     => '<span class="lmn-badge lmn-badge--inactive">Other</span>',
             };
 

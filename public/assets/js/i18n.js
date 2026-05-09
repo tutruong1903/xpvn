@@ -352,6 +352,58 @@
             var val = _adminProductDict[key];
             if (val) el.setAttribute("placeholder", val);
         });
+
+        // Admin order section — handles order list page (admin.order.*).
+        var _adminOrderDict = flattenAdminSection(flattenNestedSection(getAdminSectionDict(locale, "order")), 'admin.order.');
+        applyAttributeFromDict(
+            "[data-i18n^='admin.order.']",
+            "data-i18n",
+            _adminOrderDict,
+        );
+        document.querySelectorAll("[data-i18n-placeholder^='admin.order.']").forEach(function (el) {
+            var key = el.getAttribute("data-i18n-placeholder");
+            var val = _adminOrderDict[key];
+            if (val) el.setAttribute("placeholder", val);
+        });
+
+        // Admin invoice section — handles invoice list page (admin.invoice.*).
+        var _adminInvoiceDict = flattenAdminSection(flattenNestedSection(getAdminSectionDict(locale, "invoice")), 'admin.invoice.');
+        applyAttributeFromDict(
+            "[data-i18n^='admin.invoice.']",
+            "data-i18n",
+            _adminInvoiceDict,
+        );
+        document.querySelectorAll("[data-i18n-placeholder^='admin.invoice.']").forEach(function (el) {
+            var key = el.getAttribute("data-i18n-placeholder");
+            var val = _adminInvoiceDict[key];
+            if (val) el.setAttribute("placeholder", val);
+        });
+
+        // Admin coupon section — handles coupon page (admin.coupon.*).
+        var _adminCouponDict = flattenAdminSection(flattenNestedSection(getAdminSectionDict(locale, "coupon")), 'admin.coupon.');
+        applyAttributeFromDict(
+            "[data-i18n^='admin.coupon.']",
+            "data-i18n",
+            _adminCouponDict,
+        );
+        document.querySelectorAll("[data-i18n-placeholder^='admin.coupon.']").forEach(function (el) {
+            var key = el.getAttribute("data-i18n-placeholder");
+            var val = _adminCouponDict[key];
+            if (val) el.setAttribute("placeholder", val);
+        });
+
+        // Admin giftcard section — handles gift card page (admin.giftcard.*).
+        var _adminGiftcardDict = flattenAdminSection(flattenNestedSection(getAdminSectionDict(locale, "giftcard")), 'admin.giftcard.');
+        applyAttributeFromDict(
+            "[data-i18n^='admin.giftcard.']",
+            "data-i18n",
+            _adminGiftcardDict,
+        );
+        document.querySelectorAll("[data-i18n-placeholder^='admin.giftcard.']").forEach(function (el) {
+            var key = el.getAttribute("data-i18n-placeholder");
+            var val = _adminGiftcardDict[key];
+            if (val) el.setAttribute("placeholder", val);
+        });
     }
 
     /**

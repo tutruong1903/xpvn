@@ -8,6 +8,7 @@ use App\Controllers\BaseController;
 use App\Models\Invoice;
 use App\Models\Order;
 use App\Models\Paylist;
+use App\Services\I18n;
 use App\Utils\Tools;
 use Exception;
 use Psr\Http\Message\ResponseInterface;
@@ -81,7 +82,7 @@ final class InvoiceController extends BaseController
         if (in_array($invoice->status, ['paid_gateway', 'paid_balance', 'paid_admin'])) {
             return $response->withJson([
                 'ret' => 0,
-                'msg' => '不能标记已经支付的账单',
+                'msg' => I18n::trans('admin_invoice.cannot_mark_paid', $this->getLocale()),
             ]);
         }
 
@@ -90,7 +91,7 @@ final class InvoiceController extends BaseController
         if ($order->status === 'cancelled') {
             return $response->withJson([
                 'ret' => 0,
-                'msg' => '关联订单已被取消，标记失败',
+                'msg' => I18n::trans('admin_invoice.order_cancelled', $this->getLocale()),
             ]);
         }
 
@@ -105,17 +106,45 @@ final class InvoiceController extends BaseController
 
         return $response->withJson([
             'ret' => 1,
-            'msg' => '成功标记账单为已支付（管理员）',
+            'msg' => I18n::trans('admin_invoice.mark_paid_success', $this->getLocale()),
         ]);
     }
 
     public function ajax(ServerRequest $request, Response $response, array $args): ResponseInterface
     {
         $invoices = (new Invoice())->orderBy('id', 'desc')->get();
+        $total = count($invoices);
+        $paid = 0;
+        $unpaid = 0;
+        $cancelled = 0;
 
         foreach ($invoices as $invoice) {
-            $invoice->op = '<a class="btn btn-primary" href="/admin/invoice/' . $invoice->id . '/view">查看</a>';
-            $invoice->status = $invoice->status();
+            if (in_array($invoice->status, ['paid_gateway', 'paid_balance', 'paid_admin'])) {
+                $paid++;
+            } elseif (in_array($invoice->status, ['cancelled', 'refunded_balance'])) {
+                $cancelled++;
+            } else {
+                $unpaid++;
+            }
+
+            $op = '<a class="lmn-act-btn lmn-act-btn--edit" href="/admin/invoice/' . $invoice->id . '/view">
+                <span class="material-symbols-outlined">visibility</span></a>';
+            if (in_array($invoice->status, ['unpaid', 'partially_paid'])) {
+                $op .= ' <button class="lmn-act-btn lmn-act-btn--warn" onclick="markPaid(' . $invoice->id . ')">
+                    <span class="material-symbols-outlined">check_circle</span></button>';
+            }
+            $invoice->op = $op;
+
+            $statusClass = match ($invoice->status) {
+                'paid_gateway', 'paid_balance', 'paid_admin' => 'lmn-badge--active',
+                'cancelled' => 'lmn-badge--inactive',
+                'refunded_balance' => 'lmn-badge--class-basic',
+                'partially_paid' => 'lmn-badge--class-std',
+                default => 'lmn-badge--inactive',
+            };
+            $rawStatus = $invoice->status;
+            $invoice->status = '<span class="lmn-badge ' . $statusClass . '">' . $rawStatus . '</span>';
+
             $invoice->create_time = Tools::toDateTime($invoice->create_time);
             $invoice->update_time = Tools::toDateTime($invoice->update_time);
             $invoice->pay_time = Tools::toDateTime($invoice->pay_time);
@@ -123,6 +152,10 @@ final class InvoiceController extends BaseController
 
         return $response->withJson([
             'invoices' => $invoices,
+            'total'    => $total,
+            'paid'     => $paid,
+            'unpaid'   => $unpaid,
+            'cancelled'=> $cancelled,
         ]);
     }
 }

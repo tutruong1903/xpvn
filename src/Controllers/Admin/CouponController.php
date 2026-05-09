@@ -6,6 +6,7 @@ namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
 use App\Models\UserCoupon;
+use App\Services\I18n;
 use App\Utils\Tools;
 use Exception;
 use Psr\Http\Message\ResponseInterface;
@@ -39,12 +40,14 @@ final class CouponController extends BaseController
             [
                 'id' => 'code',
                 'info' => '优惠码',
+                'i18n_key' => 'field_code',
                 'type' => 'input',
                 'placeholder' => '',
             ],
             [
                 'id' => 'type',
                 'info' => '优惠码类型',
+                'i18n_key' => 'field_type',
                 'type' => 'select',
                 'select' => [
                     'percentage' => '百分比',
@@ -54,30 +57,35 @@ final class CouponController extends BaseController
             [
                 'id' => 'value',
                 'info' => '优惠码额度',
+                'i18n_key' => 'field_value',
                 'type' => 'input',
                 'placeholder' => '',
             ],
             [
                 'id' => 'product_id',
                 'info' => '可用商品ID（多个ID以英文半角逗号分隔）',
+                'i18n_key' => 'field_product_id',
                 'type' => 'input',
                 'placeholder' => '',
             ],
             [
                 'id' => 'use_time',
                 'info' => '每个用户可使用次数限制（小于0为不限）',
+                'i18n_key' => 'field_use_time',
                 'type' => 'input',
                 'placeholder' => '-1',
             ],
             [
                 'id' => 'total_use_time',
                 'info' => '累计可使用次数限制（小于0为不限）',
+                'i18n_key' => 'field_total_use_time',
                 'type' => 'input',
                 'placeholder' => '-1',
             ],
             [
                 'id' => 'new_user',
                 'info' => '仅限新用户使用',
+                'i18n_key' => 'field_new_user',
                 'type' => 'select',
                 'select' => [
                     '1' => '启用',
@@ -87,6 +95,7 @@ final class CouponController extends BaseController
             [
                 'id' => 'generate_method',
                 'info' => '生成方式',
+                'i18n_key' => 'field_generate_method',
                 'type' => 'select',
                 'select' => [
                     'char' => '指定字符',
@@ -129,21 +138,21 @@ final class CouponController extends BaseController
         if ($code === '' && in_array($generate_method, ['char', 'char_ramdom'])) {
             return $response->withJson([
                 'ret' => 0,
-                'msg' => '优惠码不能为空',
+                'msg' => I18n::trans('admin_coupon.code_empty', $this->getLocale()),
             ]);
         }
 
         if ($type === '' || $value === '' || ($expire_time !== '' && $expire_time < time())) {
             return $response->withJson([
                 'ret' => 0,
-                'msg' => '无效的优惠码参数',
+                'msg' => I18n::trans('admin_coupon.invalid_params', $this->getLocale()),
             ]);
         }
 
         if ($generate_method === 'char' && (new UserCoupon())->where('code', $code)->count() !== 0) {
             return $response->withJson([
                 'ret' => 0,
-                'msg' => '优惠码已存在',
+                'msg' => I18n::trans('admin_coupon.code_exists', $this->getLocale()),
             ]);
         }
 
@@ -153,7 +162,7 @@ final class CouponController extends BaseController
             if ((new UserCoupon())->where('code', $code)->count() !== 0) {
                 return $response->withJson([
                     'ret' => 0,
-                    'msg' => '出现了一些问题，请稍后重试',
+                    'msg' => I18n::trans('admin_coupon.retry_later', $this->getLocale()),
                 ]);
             }
         }
@@ -164,7 +173,7 @@ final class CouponController extends BaseController
             if ((new UserCoupon())->where('code', $code)->count() !== 0) {
                 return $response->withJson([
                     'ret' => 0,
-                    'msg' => '出现了一些问题，请稍后重试',
+                    'msg' => I18n::trans('admin_coupon.retry_later', $this->getLocale()),
                 ]);
             }
         }
@@ -198,7 +207,7 @@ final class CouponController extends BaseController
 
         return $response->withJson([
             'ret' => 1,
-            'msg' => '优惠码 ' . $code . ' 添加成功',
+            'msg' => I18n::trans('admin_coupon.add_success', $this->getLocale()) . ': ' . $code,
         ]);
     }
 
@@ -209,7 +218,7 @@ final class CouponController extends BaseController
 
         return $response->withJson([
             'ret' => 1,
-            'msg' => '删除成功',
+            'msg' => I18n::trans('admin_coupon.delete_success', $this->getLocale()),
         ]);
     }
 
@@ -224,7 +233,7 @@ final class CouponController extends BaseController
 
         return $response->withJson([
             'ret' => 1,
-            'msg' => '禁用成功',
+            'msg' => I18n::trans('admin_coupon.disable_success', $this->getLocale()),
         ]);
     }
 
@@ -234,31 +243,60 @@ final class CouponController extends BaseController
     public function ajax(ServerRequest $request, Response $response, array $args): ResponseInterface
     {
         $coupons = (new UserCoupon())->orderBy('id', 'desc')->get();
+        $total    = count($coupons);
+        $active   = 0;
+        $disabled = 0;
 
         foreach ($coupons as $coupon) {
-            $content = json_decode($coupon->content);
-            $limit = json_decode($coupon->limit);
+            $content    = json_decode($coupon->content);
+            $limit      = json_decode($coupon->limit);
+            $isDisabled = $limit->disabled === 1;
 
-            $coupon->op = '<button class="btn btn-red" id="delete-coupon-' . $coupon->id . '"
-                onclick="deleteCoupon(' . $coupon->id . ')">删除</button>' .
-                ($limit->disabled !== 1 ? '
-                <button class="btn btn-orange" id="disable-coupon-' .
-                    $coupon->id . '" onclick="disableCoupon(' . $coupon->id . ')">禁用</button>' : '');
+            if ($isDisabled) {
+                $disabled++;
+            } else {
+                $active++;
+            }
 
-            $coupon->type = $coupon->type();
+            $op = '<button class="lmn-act-btn lmn-act-btn--del" onclick="deleteCoupon(' . $coupon->id . ')">
+                <span class="material-symbols-outlined">delete</span></button>';
+            if (! $isDisabled) {
+                $op .= ' <button class="lmn-act-btn lmn-act-btn--warn" onclick="disableCoupon(' . $coupon->id . ')">
+                    <span class="material-symbols-outlined">block</span></button>';
+            }
+            $coupon->op = $op;
+
+            $typeKey     = $content->type ?? 'unknown';
+            $coupon->type = '<span class="lmn-badge lmn-badge--class-basic">' . $typeKey . '</span>';
+
             $coupon->value = $content->value;
             $coupon->product_id = $limit->product_id;
-            $coupon->use_time = (int) $limit->use_time < 0 ? '不限次数' : $limit->use_time;
+
+            $unlimited = I18n::trans('admin_coupon.unlimited', $this->getLocale());
+            $coupon->use_time = (int) $limit->use_time < 0 ? $unlimited : $limit->use_time;
             $coupon->total_use_time = ! property_exists($limit, 'total_use_time') ||
-            (int) $limit->total_use_time < 0 ? '不限次数' : $limit->total_use_time;
-            $coupon->new_user = $limit->new_user === 1 ? '是' : '否';
-            $coupon->disabled = $limit->disabled === 1 ? '是' : '否';
-            $coupon->create_time = Tools::toDateTime((int) $coupon->create_time);
-            $coupon->expire_time = $coupon->expire_time === 0 ? '永久有效' : Tools::toDateTime((int) $coupon->expire_time);
+                (int) $limit->total_use_time < 0 ? $unlimited : $limit->total_use_time;
+
+            $coupon->new_user = '<span class="lmn-badge ' .
+                ($limit->new_user === 1 ? 'lmn-badge--active' : '') . '">' .
+                ($limit->new_user === 1 ? 'yes' : 'no') . '</span>';
+
+            $coupon->disabled = '<span class="lmn-badge ' .
+                ($isDisabled ? 'lmn-badge--inactive' : 'lmn-badge--active') . '">' .
+                ($isDisabled ? 'yes' : 'no') . '</span>';
+
+            $coupon->create_time  = Tools::toDateTime((int) $coupon->create_time);
+            $neverExpire          = I18n::trans('admin_coupon.never_expire', $this->getLocale());
+            $coupon->expire_time  = $coupon->expire_time === 0
+                ? $neverExpire
+                : Tools::toDateTime((int) $coupon->expire_time);
         }
 
         return $response->withJson([
-            'coupons' => $coupons,
+            'coupons'  => $coupons,
+            'total'    => $total,
+            'active'   => $active,
+            'disabled' => $disabled,
         ]);
     }
 }

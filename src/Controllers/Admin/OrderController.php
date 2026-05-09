@@ -8,6 +8,7 @@ use App\Controllers\BaseController;
 use App\Models\Invoice;
 use App\Models\Order;
 use App\Models\Paylist;
+use App\Services\I18n;
 use App\Utils\Tools;
 use Exception;
 use Psr\Http\Message\ResponseInterface;
@@ -57,13 +58,13 @@ final class OrderController extends BaseController
         if ($order === null) {
             return $response->withJson([
                 'ret' => 0,
-                'msg' => '未找到订单',
+                'msg' => I18n::trans('admin_order.search_not_found', $this->getLocale()),
             ]);
         }
 
         return $response->withHeader('HX-Redirect', '/admin/order/' . $order->id . '/view')->withJson([
             'ret' => 1,
-            'msg' => '找到了订单',
+            'msg' => I18n::trans('admin_order.search_found', $this->getLocale()),
         ]);
     }
 
@@ -108,14 +109,14 @@ final class OrderController extends BaseController
         if ($order === null) {
             return $response->withJson([
                 'ret' => 0,
-                'msg' => '订单不存在',
+                'msg' => I18n::trans('admin_order.not_found', $this->getLocale()),
             ]);
         }
 
         if (in_array($order->status, ['activated', 'expired', 'cancelled'])) {
             return $response->withJson([
                 'ret' => 0,
-                'msg' => '无法取消 ' . $order->status() . ' 状态的产品',
+                'msg' => I18n::trans('admin_order.cannot_cancel', $this->getLocale()) . $order->status(),
             ]);
         }
 
@@ -124,14 +125,14 @@ final class OrderController extends BaseController
         if ($invoice === null) {
             return $response->withJson([
                 'ret' => 0,
-                'msg' => '关联账单不存在',
+                'msg' => I18n::trans('admin_order.invoice_not_found', $this->getLocale()),
             ]);
         }
 
         if ($invoice->status === 'partially_paid') {
             return $response->withJson([
                 'ret' => 0,
-                'msg' => '无法取消账单已部分支付的订单',
+                'msg' => I18n::trans('admin_order.invoice_partially_paid', $this->getLocale()),
             ]);
         }
 
@@ -144,7 +145,7 @@ final class OrderController extends BaseController
 
             return $response->withJson([
                 'ret' => 1,
-                'msg' => '订单取消成功，关联账单已退款至余额',
+                'msg' => I18n::trans('admin_order.cancel_success_refunded', $this->getLocale()),
             ]);
         }
 
@@ -154,7 +155,7 @@ final class OrderController extends BaseController
 
         return $response->withJson([
             'ret' => 1,
-            'msg' => '订单取消成功',
+            'msg' => I18n::trans('admin_order.cancel_success', $this->getLocale()),
         ]);
     }
 
@@ -166,7 +167,7 @@ final class OrderController extends BaseController
         if ($order === null) {
             return $response->withJson([
                 'ret' => 0,
-                'msg' => '订单不存在',
+                'msg' => I18n::trans('admin_order.not_found', $this->getLocale()),
             ]);
         }
 
@@ -175,13 +176,13 @@ final class OrderController extends BaseController
         if ($order->delete() && $invoice->delete()) {
             return $response->withJson([
                 'ret' => 1,
-                'msg' => '删除成功',
+                'msg' => I18n::trans('admin_order.delete_success', $this->getLocale()),
             ]);
         }
 
         return $response->withJson([
-            'ret' => 1,
-            'msg' => '删除失败',
+            'ret' => 0,
+            'msg' => I18n::trans('admin_order.delete_failed', $this->getLocale()),
         ]);
     }
 
@@ -189,26 +190,67 @@ final class OrderController extends BaseController
     {
         $orders = (new Order())->orderBy('id', 'desc')->get();
 
-        foreach ($orders as $order) {
-            $order->op = '<button class="btn btn-red" id="delete-order-' . $order->id . '"
-             onclick="deleteOrder(' . $order->id . ')">删除</button>';
+        $total     = 0;
+        $pending   = 0;
+        $active    = 0;
+        $cancelled = 0;
 
+        foreach ($orders as $order) {
+            $total++;
             if (in_array($order->status, ['pending_payment', 'pending_activation'])) {
-                $order->op .= '
-                <button class="btn btn-orange" id="cancel-order-' . $order->id . '"
-                 onclick="cancelOrder(' . $order->id . ')">取消</button>';
+                $pending++;
+            } elseif ($order->status === 'activated') {
+                $active++;
+            } elseif ($order->status === 'cancelled') {
+                $cancelled++;
             }
 
-            $order->op .= '
-            <a class="btn btn-primary" href="/admin/order/' . $order->id . '/view">查看</a>';
-            $order->product_type = $order->productType();
-            $order->status = $order->status();
+            $order->op =
+                '<div class="lmn-act-wrap">' .
+                    '<button class="lmn-act-btn lmn-act-btn--del" onclick="deleteOrder(' . $order->id . ')" title="Delete">' .
+                        '<span class="material-symbols-outlined">delete</span>' .
+                    '</button>';
+
+            if (in_array($order->status, ['pending_payment', 'pending_activation'])) {
+                $order->op .=
+                    '<button class="lmn-act-btn lmn-act-btn--warn" onclick="cancelOrder(' . $order->id . ')" title="Cancel">' .
+                        '<span class="material-symbols-outlined">cancel</span>' .
+                    '</button>';
+            }
+
+            $order->op .=
+                    '<a class="lmn-act-btn lmn-act-btn--edit" href="/admin/order/' . $order->id . '/view" title="View">' .
+                        '<span class="material-symbols-outlined">visibility</span>' .
+                    '</a>' .
+                '</div>';
+
+            $order->status = match ($order->status) {
+                'pending_payment'    => '<span class="lmn-badge lmn-badge--class-std">pending_payment</span>',
+                'pending_activation' => '<span class="lmn-badge lmn-badge--class-basic">pending_activation</span>',
+                'activated'          => '<span class="lmn-badge lmn-badge--active">activated</span>',
+                'expired'            => '<span class="lmn-badge lmn-badge--inactive">expired</span>',
+                'cancelled'          => '<span class="lmn-badge lmn-badge--inactive">cancelled</span>',
+                default              => '<span class="lmn-badge lmn-badge--inactive">' . $order->status . '</span>',
+            };
+
+            $order->product_type = match ($order->product_type) {
+                'tabp'      => '<span class="lmn-badge lmn-badge--class-premium">type_tabp</span>',
+                'time'      => '<span class="lmn-badge lmn-badge--class-std">type_time</span>',
+                'bandwidth' => '<span class="lmn-badge lmn-badge--class-basic">type_bandwidth</span>',
+                'topup'     => '<span class="lmn-badge lmn-badge--class-vip">type_topup</span>',
+                default     => '<span class="lmn-badge lmn-badge--inactive">' . $order->product_type . '</span>',
+            };
+
             $order->create_time = Tools::toDateTime($order->create_time);
             $order->update_time = Tools::toDateTime($order->update_time);
         }
 
         return $response->withJson([
-            'orders' => $orders,
+            'orders'    => $orders,
+            'total'     => $total,
+            'pending'   => $pending,
+            'active'    => $active,
+            'cancelled' => $cancelled,
         ]);
     }
 }

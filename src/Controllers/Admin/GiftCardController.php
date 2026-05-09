@@ -6,6 +6,7 @@ namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
 use App\Models\GiftCard;
+use App\Services\I18n;
 use App\Utils\Tools;
 use Exception;
 use Psr\Http\Message\ResponseInterface;
@@ -31,18 +32,21 @@ final class GiftCardController extends BaseController
             [
                 'id' => 'card_number',
                 'info' => '创建数量',
+                'i18n_key' => 'field_card_number',
                 'type' => 'input',
                 'placeholder' => '',
             ],
             [
                 'id' => 'card_value',
                 'info' => '礼品卡面值',
+                'i18n_key' => 'field_card_value',
                 'type' => 'input',
                 'placeholder' => '',
             ],
             [
                 'id' => 'card_length',
                 'info' => '礼品卡长度',
+                'i18n_key' => 'field_card_length',
                 'type' => 'select',
                 'select' => [
                     '12' => '12位',
@@ -77,21 +81,21 @@ final class GiftCardController extends BaseController
         if ($card_number === '' || $card_number <= 0) {
             return $response->withJson([
                 'ret' => 0,
-                'msg' => '生成数量不能为空或小于0',
+                'msg' => I18n::trans('admin_giftcard.invalid_number', $this->getLocale()),
             ]);
         }
 
         if ($card_value === '' || $card_value <= 0) {
             return $response->withJson([
                 'ret' => 0,
-                'msg' => '礼品卡面值不能为空或小于0',
+                'msg' => I18n::trans('admin_giftcard.invalid_value', $this->getLocale()),
             ]);
         }
 
         if ($card_length === '' || $card_length <= 0) {
             return $response->withJson([
                 'ret' => 0,
-                'msg' => '礼品卡长度不能为空或小于0',
+                'msg' => I18n::trans('admin_giftcard.invalid_length', $this->getLocale()),
             ]);
         }
 
@@ -111,7 +115,7 @@ final class GiftCardController extends BaseController
 
         return $response->withJson([
             'ret' => 1,
-            'msg' => '添加成功' . PHP_EOL . $card_added,
+            'msg' => I18n::trans('admin_giftcard.add_success', $this->getLocale()) . PHP_EOL . $card_added,
         ]);
     }
 
@@ -122,24 +126,40 @@ final class GiftCardController extends BaseController
 
         return $response->withJson([
             'ret' => 1,
-            'msg' => '删除成功',
+            'msg' => I18n::trans('admin_giftcard.delete_success', $this->getLocale()),
         ]);
     }
 
     public function ajax(ServerRequest $request, Response $response, array $args): ResponseInterface
     {
         $giftcards = (new GiftCard())->orderBy('id', 'desc')->get();
+        $total  = count($giftcards);
+        $unused = 0;
+        $used   = 0;
 
         foreach ($giftcards as $giftcard) {
-            $giftcard->op = '<button class="btn btn-red" id="delete-gift-card-' . $giftcard->id . '" 
-        onclick="deleteGiftCard(' . $giftcard->id . ')">删除</button>';
-            $giftcard->status = $giftcard->status();
+            if ($giftcard->status) {
+                $used++;
+            } else {
+                $unused++;
+            }
+
+            $giftcard->op = '<button class="lmn-act-btn lmn-act-btn--del" onclick="deleteGiftCard(' . $giftcard->id . ')">
+                <span class="material-symbols-outlined">delete</span></button>';
+
+            $rawStatus   = $giftcard->status ? 'used' : 'unused';
+            $statusClass = $giftcard->status ? 'lmn-badge--inactive' : 'lmn-badge--active';
+            $giftcard->status = '<span class="lmn-badge ' . $statusClass . '">' . $rawStatus . '</span>';
+
             $giftcard->create_time = Tools::toDateTime((int) $giftcard->create_time);
-            $giftcard->use_time = Tools::toDateTime((int) $giftcard->use_time);
+            $giftcard->use_time    = $giftcard->use_time ? Tools::toDateTime((int) $giftcard->use_time) : '—';
         }
 
         return $response->withJson([
             'giftcards' => $giftcards,
+            'total'  => $total,
+            'unused' => $unused,
+            'used'   => $used,
         ]);
     }
 }

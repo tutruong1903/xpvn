@@ -143,6 +143,30 @@
     <script src="/assets/js/locales/admin/product/zh_CN.js{asset_ver path="/assets/js/locales/admin/product/zh_CN.js"}"></script>
     <script src="/assets/js/locales/admin/product/zh_TW.js{asset_ver path="/assets/js/locales/admin/product/zh_TW.js"}"></script>
     <script src="/assets/js/locales/admin/product/ja_JP.js{asset_ver path="/assets/js/locales/admin/product/ja_JP.js"}"></script>
+
+    <script src="/assets/js/locales/admin/order/en_US.js{asset_ver path="/assets/js/locales/admin/order/en_US.js"}"></script>
+    <script src="/assets/js/locales/admin/order/vn_VN.js{asset_ver path="/assets/js/locales/admin/order/vn_VN.js"}"></script>
+    <script src="/assets/js/locales/admin/order/zh_CN.js{asset_ver path="/assets/js/locales/admin/order/zh_CN.js"}"></script>
+    <script src="/assets/js/locales/admin/order/zh_TW.js{asset_ver path="/assets/js/locales/admin/order/zh_TW.js"}"></script>
+    <script src="/assets/js/locales/admin/order/ja_JP.js{asset_ver path="/assets/js/locales/admin/order/ja_JP.js"}"></script>
+
+    <script src="/assets/js/locales/admin/invoice/en_US.js{asset_ver path="/assets/js/locales/admin/invoice/en_US.js"}"></script>
+    <script src="/assets/js/locales/admin/invoice/vn_VN.js{asset_ver path="/assets/js/locales/admin/invoice/vn_VN.js"}"></script>
+    <script src="/assets/js/locales/admin/invoice/zh_CN.js{asset_ver path="/assets/js/locales/admin/invoice/zh_CN.js"}"></script>
+    <script src="/assets/js/locales/admin/invoice/zh_TW.js{asset_ver path="/assets/js/locales/admin/invoice/zh_TW.js"}"></script>
+    <script src="/assets/js/locales/admin/invoice/ja_JP.js{asset_ver path="/assets/js/locales/admin/invoice/ja_JP.js"}"></script>
+
+    <script src="/assets/js/locales/admin/coupon/en_US.js{asset_ver path="/assets/js/locales/admin/coupon/en_US.js"}"></script>
+    <script src="/assets/js/locales/admin/coupon/vn_VN.js{asset_ver path="/assets/js/locales/admin/coupon/vn_VN.js"}"></script>
+    <script src="/assets/js/locales/admin/coupon/zh_CN.js{asset_ver path="/assets/js/locales/admin/coupon/zh_CN.js"}"></script>
+    <script src="/assets/js/locales/admin/coupon/zh_TW.js{asset_ver path="/assets/js/locales/admin/coupon/zh_TW.js"}"></script>
+    <script src="/assets/js/locales/admin/coupon/ja_JP.js{asset_ver path="/assets/js/locales/admin/coupon/ja_JP.js"}"></script>
+
+    <script src="/assets/js/locales/admin/giftcard/en_US.js{asset_ver path="/assets/js/locales/admin/giftcard/en_US.js"}"></script>
+    <script src="/assets/js/locales/admin/giftcard/vn_VN.js{asset_ver path="/assets/js/locales/admin/giftcard/vn_VN.js"}"></script>
+    <script src="/assets/js/locales/admin/giftcard/zh_CN.js{asset_ver path="/assets/js/locales/admin/giftcard/zh_CN.js"}"></script>
+    <script src="/assets/js/locales/admin/giftcard/zh_TW.js{asset_ver path="/assets/js/locales/admin/giftcard/zh_TW.js"}"></script>
+    <script src="/assets/js/locales/admin/giftcard/ja_JP.js{asset_ver path="/assets/js/locales/admin/giftcard/ja_JP.js"}"></script>
     
     <script src="/assets/js/i18n.js{asset_ver path="/assets/js/i18n.js"}"></script>
     

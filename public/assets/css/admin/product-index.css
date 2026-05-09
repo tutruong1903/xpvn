@@ -6,3 +6,37 @@
 
 /* Re-use all shared lmn-* component styles */
 @import url('user-index.css');
+
+/* ----------------------------------------------------------
+   Product-type badges (separate from user class-level badges
+   to avoid being overwritten by _translateBadges())
+   ---------------------------------------------------------- */
+.lmn-badge--type-tabp {
+    background: rgba(113, 42, 226, 0.1);
+    color: #712ae2;
+}
+
+.lmn-badge--type-time {
+    background: rgba(0, 81, 213, 0.08);
+    color: #0051d5;
+}
+
+.lmn-badge--type-bandwidth {
+    background: rgba(0, 120, 80, 0.08);
+    color: #007850;
+}
+
+[data-bs-theme="dark"] .lmn-badge--type-tabp {
+    background: rgba(210, 187, 255, 0.1);
+    color: #c0a0ff;
+}
+
+[data-bs-theme="dark"] .lmn-badge--type-time {
+    background: rgba(180, 197, 255, 0.1);
+    color: #b4c5ff;
+}
+
+[data-bs-theme="dark"] .lmn-badge--type-bandwidth {
+    background: rgba(100, 220, 160, 0.1);
+    color: #64dca0;
+}

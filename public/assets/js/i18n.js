@@ -259,6 +259,14 @@
             "data-i18n",
             _adminBillingDict,
         );
+
+        // Admin email section — handles email settings page (admin.email.index.*).
+        var _adminEmailDict = flattenAdminSection(flattenNestedSection(getAdminSectionDict(locale, "email")), 'admin.email.');
+        applyAttributeFromDict(
+            "[data-i18n^='admin.email.']",
+            "data-i18n",
+            _adminEmailDict,
+        );
     }
 
     /**

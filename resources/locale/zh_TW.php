@@ -97,4 +97,10 @@ return [
         'paypal_webhook_success' => '設定 PayPal Webhook 成功',
         'paypal_webhook_failed'  => '設定 PayPal Webhook 失敗',
     ],
+    'admin_email' => [
+        'save_success' => '郵件設定儲存成功',
+        'save_failed'  => '郵件設定儲存失敗',
+        'test_success' => '測試郵件發送成功',
+        'test_failed'  => '測試郵件發送失敗：',
+    ],
 ];

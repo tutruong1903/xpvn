@@ -1,0 +1,65 @@
+/* ================================================================
+   LUMINOUS GUARDIAN — Admin Email Settings page styles
+   Specific to: resources/views/tabler/admin/setting/email.tpl
+   Design System: "The Luminous Guardian"
+   ================================================================ */
+
+@import url('user-index.css');
+@import url('user-edit.css');
+
+/* Re-use all billing panel overrides */
+@import url('billing.css');
+
+/* ----------------------------------------------------------
+   Test email row
+   ---------------------------------------------------------- */
+.lmn-email-test-row {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-end;
+}
+
+.lmn-email-test-row .lmn-edit-field {
+    flex: 1;
+}
+
+.lmn-email-test-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.5rem 1rem;
+    background: #f3f3f4;
+    color: #464554;
+    border: none;
+    border-radius: 0.5rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.lmn-email-test-btn:hover {
+    background: rgba(113, 42, 226, 0.08);
+    color: #712ae2;
+}
+
+.lmn-email-test-btn .material-symbols-outlined {
+    font-size: 0.875rem;
+    font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+}
+
+/* ----------------------------------------------------------
+   Dark mode
+   ---------------------------------------------------------- */
+[data-bs-theme="dark"] .lmn-email-test-btn {
+    background: rgba(255, 255, 255, 0.06);
+    color: #b0afbd;
+}
+
+[data-bs-theme="dark"] .lmn-email-test-btn:hover {
+    background: rgba(210, 187, 255, 0.12);
+    color: #d2bbff;
+}

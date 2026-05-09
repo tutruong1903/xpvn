@@ -97,4 +97,10 @@ return [
         'paypal_webhook_success' => 'Thiết lập PayPal Webhook thành công',
         'paypal_webhook_failed'  => 'Thiết lập PayPal Webhook thất bại',
     ],
+    'admin_email' => [
+        'save_success' => 'Lưu cài đặt email thành công',
+        'save_failed'  => 'Lưu cài đặt email thất bại',
+        'test_success' => 'Gửi email thử thành công',
+        'test_failed'  => 'Gửi email thử thất bại:',
+    ],
 ];

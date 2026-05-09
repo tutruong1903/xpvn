@@ -6,6 +6,7 @@ namespace App\Controllers\Admin\Setting;
 
 use App\Controllers\BaseController;
 use App\Models\Config;
+use App\Services\I18n;
 use App\Services\Mail;
 use Psr\Http\Message\ResponseInterface;
 use Slim\Http\Response;
@@ -40,23 +41,26 @@ final class EmailController extends BaseController
 
     public function save(ServerRequest $request, Response $response, array $args): ResponseInterface
     {
+        $locale = $this->getLocale();
+
         foreach ($this->update_field as $item) {
             if (! Config::set($item, $request->getParam($item))) {
                 return $response->withJson([
                     'ret' => 0,
-                    'msg' => '保存 ' . $item . ' 时出错',
+                    'msg' => I18n::trans('admin_email.save_failed', $locale),
                 ]);
             }
         }
 
         return $response->withJson([
             'ret' => 1,
-            'msg' => '保存成功',
+            'msg' => I18n::trans('admin_email.save_success', $locale),
         ]);
     }
 
     public function testEmail(ServerRequest $request, Response $response, array $args): ResponseInterface
     {
+        $locale = $this->getLocale();
         $to = $request->getParam('recipient');
 
         try {
@@ -68,13 +72,13 @@ final class EmailController extends BaseController
         } catch (Throwable $e) {
             return $response->withJson([
                 'ret' => 0,
-                'msg' => '测试邮件发送失败 ' . $e->getMessage(),
+                'msg' => I18n::trans('admin_email.test_failed', $locale) . ' ' . $e->getMessage(),
             ]);
         }
 
         return $response->withJson([
             'ret' => 1,
-            'msg' => '测试邮件发送成功',
+            'msg' => I18n::trans('admin_email.test_success', $locale),
         ]);
     }
 }

@@ -97,4 +97,10 @@ return [
         'paypal_webhook_success' => 'PayPal Webhook の設定に成功しました',
         'paypal_webhook_failed'  => 'PayPal Webhook の設定に失敗しました',
     ],
+    'admin_email' => [
+        'save_success' => 'メール設定を保存しました',
+        'save_failed'  => 'メール設定の保存に失敗しました',
+        'test_success' => 'テストメールを送信しました',
+        'test_failed'  => 'テストメールの送信に失敗しました：',
+    ],
 ];

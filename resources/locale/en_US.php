@@ -97,4 +97,10 @@ return [
         'paypal_webhook_success' => 'PayPal Webhook set successfully',
         'paypal_webhook_failed'  => 'Failed to set PayPal Webhook',
     ],
+    'admin_email' => [
+        'save_success' => 'Email settings saved successfully',
+        'save_failed'  => 'Failed to save email settings',
+        'test_success' => 'Test email sent successfully',
+        'test_failed'  => 'Failed to send test email:',
+    ],
 ];

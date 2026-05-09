@@ -287,6 +287,7 @@ final class NodeController extends BaseController
         return $response->withJson([
             'ret' => 1,
             'msg' => I18n::trans('admin_node.reset_password_success', $this->getLocale()),
+            'password' => $node->password,
         ]);
     }
 

@@ -243,6 +243,22 @@
             var val = _adminNodeDict[key];
             if (val) el.setAttribute("placeholder", val);
         });
+
+        // Admin system section — handles system status page (admin.system.index.*).
+        var _adminSystemDict = flattenAdminSection(flattenNestedSection(getAdminSectionDict(locale, "system")), 'admin.system.');
+        applyAttributeFromDict(
+            "[data-i18n^='admin.system.']",
+            "data-i18n",
+            _adminSystemDict,
+        );
+
+        // Admin billing section — handles financial settings page (admin.billing.index.*).
+        var _adminBillingDict = flattenAdminSection(flattenNestedSection(getAdminSectionDict(locale, "billing")), 'admin.billing.');
+        applyAttributeFromDict(
+            "[data-i18n^='admin.billing.']",
+            "data-i18n",
+            _adminBillingDict,
+        );
     }
 
     /**

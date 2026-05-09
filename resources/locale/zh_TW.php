@@ -88,4 +88,13 @@ return [
         'title_required' => '標題不能為空',
         'comment_required' => '內容不能為空',
     ],
+    'admin_billing' => [
+        'save_success'           => '儲存成功',
+        'save_failed'            => '儲存失敗',
+        'save_gateway_failed'    => '儲存支付閘道時出錯',
+        'stripe_webhook_success' => '設定 Stripe Webhook 成功',
+        'stripe_webhook_failed'  => '設定 Stripe Webhook 失敗',
+        'paypal_webhook_success' => '設定 PayPal Webhook 成功',
+        'paypal_webhook_failed'  => '設定 PayPal Webhook 失敗',
+    ],
 ];

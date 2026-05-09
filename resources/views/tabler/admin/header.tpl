@@ -60,11 +60,23 @@
     <script src="/assets/js/locales/admin/node/zh_TW.js{asset_ver path="/assets/js/locales/admin/node/zh_TW.js"}"></script>
     <script src="/assets/js/locales/admin/node/ja_JP.js{asset_ver path="/assets/js/locales/admin/node/ja_JP.js"}"></script>
     
+    <script src="/assets/js/locales/admin/billing/en_US.js{asset_ver path="/assets/js/locales/admin/billing/en_US.js"}"></script>
+    <script src="/assets/js/locales/admin/billing/vn_VN.js{asset_ver path="/assets/js/locales/admin/billing/vn_VN.js"}"></script>
+    <script src="/assets/js/locales/admin/billing/zh_CN.js{asset_ver path="/assets/js/locales/admin/billing/zh_CN.js"}"></script>
+    <script src="/assets/js/locales/admin/billing/zh_TW.js{asset_ver path="/assets/js/locales/admin/billing/zh_TW.js"}"></script>
+    <script src="/assets/js/locales/admin/billing/ja_JP.js{asset_ver path="/assets/js/locales/admin/billing/ja_JP.js"}"></script>
+    
     <script src="/assets/js/locales/admin/datatable/en_US.js{asset_ver path="/assets/js/locales/admin/datatable/en_US.js"}"></script>
     <script src="/assets/js/locales/admin/datatable/vn_VN.js{asset_ver path="/assets/js/locales/admin/datatable/vn_VN.js"}"></script>
     <script src="/assets/js/locales/admin/datatable/zh_CN.js{asset_ver path="/assets/js/locales/admin/datatable/zh_CN.js"}"></script>
     <script src="/assets/js/locales/admin/datatable/zh_TW.js{asset_ver path="/assets/js/locales/admin/datatable/zh_TW.js"}"></script>
     <script src="/assets/js/locales/admin/datatable/ja_JP.js{asset_ver path="/assets/js/locales/admin/datatable/ja_JP.js"}"></script>
+    
+    <script src="/assets/js/locales/admin/system/en_US.js{asset_ver path="/assets/js/locales/admin/system/en_US.js"}"></script>
+    <script src="/assets/js/locales/admin/system/vn_VN.js{asset_ver path="/assets/js/locales/admin/system/vn_VN.js"}"></script>
+    <script src="/assets/js/locales/admin/system/zh_CN.js{asset_ver path="/assets/js/locales/admin/system/zh_CN.js"}"></script>
+    <script src="/assets/js/locales/admin/system/zh_TW.js{asset_ver path="/assets/js/locales/admin/system/zh_TW.js"}"></script>
+    <script src="/assets/js/locales/admin/system/ja_JP.js{asset_ver path="/assets/js/locales/admin/system/ja_JP.js"}"></script>
     
     <script src="/assets/js/i18n.js{asset_ver path="/assets/js/i18n.js"}"></script>
     

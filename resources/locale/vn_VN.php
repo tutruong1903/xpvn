@@ -88,4 +88,13 @@ return [
         'title_required' => 'Tiêu đề không được để trống',
         'comment_required' => 'Nội dung không được để trống',
     ],
+    'admin_billing' => [
+        'save_success'           => 'Lưu thành công',
+        'save_failed'            => 'Lưu thất bại',
+        'save_gateway_failed'    => 'Lỗi khi lưu cổng thanh toán',
+        'stripe_webhook_success' => 'Thiết lập Stripe Webhook thành công',
+        'stripe_webhook_failed'  => 'Thiết lập Stripe Webhook thất bại',
+        'paypal_webhook_success' => 'Thiết lập PayPal Webhook thành công',
+        'paypal_webhook_failed'  => 'Thiết lập PayPal Webhook thất bại',
+    ],
 ];

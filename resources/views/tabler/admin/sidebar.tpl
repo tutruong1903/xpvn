@@ -229,3 +229,61 @@
         </div>
     </nav>
 </aside>
+
+<script>
+(function() {
+    'use strict';
+
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('sidebar-overlay');
+    const toggleBtn = document.getElementById('sidebar-toggle');
+
+    // Mobile sidebar toggle
+    if (toggleBtn) {
+        toggleBtn.addEventListener('click', function() {
+            const isMobile = window.innerWidth < 992;
+            if (isMobile) {
+                sidebar.classList.toggle('sidebar-luminous--mobile-open');
+                overlay.classList.toggle('sidebar-luminous-overlay--active');
+            }
+        });
+    }
+
+    // Close sidebar on overlay click (mobile)
+    if (overlay) {
+        overlay.addEventListener('click', function() {
+            sidebar.classList.remove('sidebar-luminous--mobile-open');
+            overlay.classList.remove('sidebar-luminous-overlay--active');
+        });
+    }
+
+    // Admin/User switch
+    const switchUser = document.getElementById('switch-user');
+    const switchAdmin = document.getElementById('switch-admin');
+
+    if (switchUser && switchAdmin) {
+        switchUser.addEventListener('click', function() {
+            window.location.href = '/user';
+        });
+    }
+
+    // Active link highlighting
+    const currentPath = window.location.pathname.replace(/\/$/, '') || '/admin';
+    const navLinks = document.querySelectorAll('.sidebar-nav-link[data-path]');
+
+    let bestMatch = null;
+    let bestLen = 0;
+
+    navLinks.forEach(function(link) {
+        const linkPath = link.getAttribute('data-path');
+        if (currentPath === linkPath || (currentPath.indexOf(linkPath) === 0 && linkPath.length > bestLen)) {
+            bestMatch = link;
+            bestLen = linkPath.length;
+        }
+    });
+
+    if (bestMatch) {
+        bestMatch.classList.add('sidebar-nav-link--active');
+    }
+})();
+</script>

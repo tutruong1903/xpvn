@@ -42,15 +42,25 @@ final class SystemController extends BaseController
      */
     public function checkUpdate(ServerRequest $request, Response $response, array $args): ResponseInterface
     {
-        $latest_version = file_get_contents('https://ota.sspanel.io/get-latest-version', false, stream_context_create([
+        $latest_version = @file_get_contents('https://ota.sspanel.io/get-latest-version', false, stream_context_create([
             'http' => [
                 'timeout' => 3,
             ],
         ]));
+
+        if ($latest_version === false || $latest_version === '') {
+            return $response->withJson([
+                'ret' => 0,
+                'msg' => 'Failed to reach update server',
+            ]);
+        }
+
+        $latest_version = trim($latest_version);
         $is_upto_date = version_compare($latest_version, VERSION, '<=');
 
         return $response->withJson([
-            'is_upto_date' => $is_upto_date,
+            'ret'           => 1,
+            'is_upto_date'  => $is_upto_date,
             'latest_version' => $latest_version,
         ]);
     }

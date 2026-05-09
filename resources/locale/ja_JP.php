@@ -88,4 +88,13 @@ return [
         'title_required' => 'タイトルは必須です',
         'comment_required' => 'コメントは必須です',
     ],
+    'admin_billing' => [
+        'save_success'           => '保存しました',
+        'save_failed'            => '保存に失敗しました',
+        'save_gateway_failed'    => '決済ゲートウェイの保存中にエラーが発生しました',
+        'stripe_webhook_success' => 'Stripe Webhook の設定に成功しました',
+        'stripe_webhook_failed'  => 'Stripe Webhook の設定に失敗しました',
+        'paypal_webhook_success' => 'PayPal Webhook の設定に成功しました',
+        'paypal_webhook_failed'  => 'PayPal Webhook の設定に失敗しました',
+    ],
 ];

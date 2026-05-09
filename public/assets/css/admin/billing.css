@@ -1,0 +1,335 @@
+/* ================================================================
+   LUMINOUS GUARDIAN — Admin Billing Settings page styles
+   Specific to: resources/views/tabler/admin/setting/billing.tpl
+   Design System: "The Luminous Guardian"
+   ================================================================ */
+
+@import url('user-index.css');
+@import url('user-edit.css');
+
+/* ----------------------------------------------------------
+   Page-level layout: tabs on top + content below
+   ---------------------------------------------------------- */
+.lmn-billing-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    padding-bottom: 3rem;
+}
+
+/* ----------------------------------------------------------
+   Tab Navigation (Horizontal)
+   ---------------------------------------------------------- */
+.lmn-billing-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    background: #ffffff;
+    border-radius: 0.75rem;
+    padding: 0.375rem;
+    border: 1px solid rgba(199, 196, 215, 0.15);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.lmn-billing-tab-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1.125rem;
+    border-radius: 0.5rem;
+    border: none;
+    background: transparent;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: #464554;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s, box-shadow 0.15s;
+    white-space: nowrap;
+}
+
+.lmn-billing-tab-btn:hover {
+    background: #f3f3f4;
+    color: #712ae2;
+}
+
+.lmn-billing-tab-btn.is-active {
+    background: linear-gradient(135deg, #712ae2, #8a4cfc);
+    color: #ffffff;
+    font-weight: 700;
+    box-shadow: 0 4px 14px rgba(113, 42, 226, 0.3);
+}
+
+/* ----------------------------------------------------------
+   Content Area & Panel visibility
+   ---------------------------------------------------------- */
+.lmn-billing-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.lmn-billing-panel {
+    display: none;
+}
+
+.lmn-billing-panel.is-active {
+    display: block;
+}
+
+/* ----------------------------------------------------------
+   Gateway List
+   ---------------------------------------------------------- */
+.lmn-gateway-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 1px solid rgba(199, 196, 215, 0.35);
+    border-radius: 0.625rem;
+    overflow: hidden;
+}
+
+.lmn-gateway-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1.25rem;
+    background: #ffffff;
+    border-bottom: 1px solid rgba(199, 196, 215, 0.3);
+    transition: background 0.15s;
+}
+
+.lmn-gateway-item:last-child {
+    border-bottom: none;
+}
+
+.lmn-gateway-item:hover {
+    background: #f9f9fb;
+}
+
+.lmn-gateway-item__info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.lmn-gateway-item__icon {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 0.5rem;
+    background: #f3f3f4;
+    box-shadow: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: transform 0.15s;
+}
+
+.lmn-gateway-item:hover .lmn-gateway-item__icon {
+    transform: scale(1.08);
+}
+
+.lmn-gateway-item__icon .material-symbols-outlined {
+    font-size: 1rem;
+    color: #712ae2;
+    font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+}
+
+.lmn-gateway-item__name {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #1a1c1c;
+    margin: 0;
+}
+
+/* ----------------------------------------------------------
+   Toggle Switch (Luminous Guardian style)
+   ---------------------------------------------------------- */
+.lmn-toggle {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.lmn-toggle input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.lmn-toggle__track {
+    width: 3rem;
+    height: 1.625rem;
+    background: #e2e2e2;
+    border-radius: 9999px;
+    transition: background 0.2s;
+    position: relative;
+}
+
+.lmn-toggle__thumb {
+    position: absolute;
+    top: 0.1875rem;
+    left: 0.1875rem;
+    width: 1.25rem;
+    height: 1.25rem;
+    background: #ffffff;
+    border-radius: 9999px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s;
+    pointer-events: none;
+}
+
+.lmn-toggle input:checked + .lmn-toggle__track {
+    background: #0051d5;
+}
+
+.lmn-toggle input:checked + .lmn-toggle__track .lmn-toggle__thumb {
+    transform: translateX(1.375rem);
+}
+
+/* ----------------------------------------------------------
+   Input row with action button (for webhook fields)
+   ---------------------------------------------------------- */
+.lmn-billing-input-row {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-end;
+}
+
+.lmn-billing-input-row .lmn-edit-field {
+    flex: 1;
+}
+
+.lmn-billing-webhook-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.6875rem 1.25rem;
+    background: linear-gradient(135deg, #712ae2, #8a4cfc);
+    color: #ffffff;
+    border: none;
+    border-radius: 0.5rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.15s, transform 0.1s;
+    white-space: nowrap;
+    flex-shrink: 0;
+    box-shadow: 0 4px 14px rgba(113, 42, 226, 0.25);
+}
+
+.lmn-billing-webhook-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.lmn-billing-webhook-btn:active {
+    transform: translateY(0);
+}
+
+.lmn-billing-webhook-btn .material-symbols-outlined {
+    font-size: 0.875rem;
+    font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+}
+
+/* ----------------------------------------------------------
+   Hint / helper text below inputs
+   ---------------------------------------------------------- */
+.lmn-billing-hint {
+    font-size: 0.75rem;
+    color: #464554;
+    margin-top: 0.375rem;
+    line-height: 1.5;
+}
+
+/* ----------------------------------------------------------
+   Form panel overrides — tighter than user-edit defaults
+   ---------------------------------------------------------- */
+
+/* Card: tighter padding, visible border */
+.lmn-billing-panel .lmn-edit-card {
+    padding: 1.25rem 1.5rem;
+    border: 1px solid rgba(199, 196, 215, 0.35);
+    box-shadow: none;
+}
+
+/* Field list: tighter row gap */
+.lmn-billing-panel .lmn-edit-fields {
+    gap: 0.875rem;
+}
+
+/* Label: slightly smaller */
+.lmn-billing-panel .lmn-edit-label {
+    font-size: 0.6875rem;
+    margin-bottom: 0.125rem;
+}
+
+/* Input & select: compact height */
+.lmn-billing-panel .lmn-edit-input,
+.lmn-billing-panel .lmn-edit-select {
+    padding: 0.5rem 0.875rem;
+    font-size: 0.8125rem;
+}
+
+/* Select arrow position fix after padding change */
+.lmn-billing-panel .lmn-edit-select {
+    padding-right: 2rem;
+}
+
+/* Card header: tighter bottom margin */
+.lmn-billing-panel .lmn-edit-card-header {
+    margin-bottom: 1.125rem;
+}
+
+/* Divider rows (2-col) */
+.lmn-billing-panel .lmn-edit-row-2 {
+    gap: 0.625rem;
+}
+
+/* Webhook button: align height with compact input */
+.lmn-billing-webhook-btn {
+    padding: 0.5rem 1rem;
+}
+
+/* ----------------------------------------------------------
+   Dark mode overrides
+   ---------------------------------------------------------- */
+[data-bs-theme="dark"] .lmn-billing-tabs {
+    background: #1e2022;
+    border-color: rgba(255, 255, 255, 0.06);
+}
+
+[data-bs-theme="dark"] .lmn-billing-tab-btn {
+    color: #b0afbd;
+}
+
+[data-bs-theme="dark"] .lmn-billing-tab-btn:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: #d2bbff;
+}
+
+[data-bs-theme="dark"] .lmn-gateway-item {
+    background: #1e2022;
+    border-bottom-color: rgba(255, 255, 255, 0.06);
+}
+
+[data-bs-theme="dark"] .lmn-gateway-item:hover {
+    background: #26292b;
+}
+
+[data-bs-theme="dark"] .lmn-gateway-list {
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-bs-theme="dark"] .lmn-toggle__track {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+[data-bs-theme="dark"] .lmn-billing-hint {
+    color: #b0afbd;
+}

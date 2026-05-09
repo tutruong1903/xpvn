@@ -6,6 +6,7 @@ namespace App\Controllers\Admin\Setting;
 
 use App\Controllers\BaseController;
 use App\Models\Config;
+use App\Services\I18n;
 use App\Services\Payment;
 use Psr\Http\Message\ResponseInterface;
 use Slim\Http\Response;
@@ -46,6 +47,7 @@ final class BillingController extends BaseController
 
     public function save(ServerRequest $request, Response $response, array $args): ResponseInterface
     {
+        $locale = $this->getLocale();
         $active_gateway = [];
 
         foreach ($this->returnGatewaysList() as $key => $value) {
@@ -57,7 +59,7 @@ final class BillingController extends BaseController
         if (! Config::set('payment_gateway', $active_gateway)) {
             return $response->withJson([
                 'ret' => 0,
-                'msg' => '保存支付网关时出错',
+                'msg' => I18n::trans('admin_billing.save_gateway_failed', $locale),
             ]);
         }
 
@@ -69,19 +71,20 @@ final class BillingController extends BaseController
             if (! Config::set($item, $request->getParam($item))) {
                 return $response->withJson([
                     'ret' => 0,
-                    'msg' => '保存 ' . $item . ' 时出错',
+                    'msg' => I18n::trans('admin_billing.save_failed', $locale) . ': ' . $item,
                 ]);
             }
         }
 
         return $response->withJson([
             'ret' => 1,
-            'msg' => '保存成功',
+            'msg' => I18n::trans('admin_billing.save_success', $locale),
         ]);
     }
 
     public function setStripeWebhook(ServerRequest $request, Response $response, array $args): ResponseInterface
     {
+        $locale = $this->getLocale();
         $stripe_api_key = $request->getParam('stripe_api_key');
 
         Stripe::setApiKey($stripe_api_key);
@@ -96,18 +99,19 @@ final class BillingController extends BaseController
         } catch (ApiErrorException) {
             return $response->withJson([
                 'ret' => 0,
-                'msg' => '设置 Stripe Webhook 失败',
+                'msg' => I18n::trans('admin_billing.stripe_webhook_failed', $locale),
             ]);
         }
 
         return $response->withJson([
             'ret' => 1,
-            'msg' => '设置 Stripe Webhook 成功',
+            'msg' => I18n::trans('admin_billing.stripe_webhook_success', $locale),
         ]);
     }
 
     public function setPaypalWebhook(ServerRequest $request, Response $response, array $args): ResponseInterface
     {
+        $locale = $this->getLocale();
         $paypal_client_id = $request->getParam('paypal_client_id');
         $paypal_client_secret = $request->getParam('paypal_client_secret');
 
@@ -131,13 +135,13 @@ final class BillingController extends BaseController
         } catch (Throwable $e) {
             return $response->withJson([
                 'ret' => 0,
-                'msg' => '设置 PayPal Webhook 失败',
+                'msg' => I18n::trans('admin_billing.paypal_webhook_failed', $locale),
             ]);
         }
 
         return $response->withJson([
             'ret' => 1,
-            'msg' => '设置 PayPal Webhook 成功',
+            'msg' => I18n::trans('admin_billing.paypal_webhook_success', $locale),
         ]);
     }
 

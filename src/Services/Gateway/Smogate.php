@@ -27,7 +27,7 @@ final class Smogate extends Base
 
     public static function _readableName(): string
     {
-        return '支付宝在线充值';
+        return 'Smogate';
     }
 
     public function post($data)

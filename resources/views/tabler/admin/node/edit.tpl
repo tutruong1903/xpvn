@@ -317,6 +317,8 @@
             dataType: 'json',
             success: function (data) {
                 if (data.ret === 1) {
+                    $('#password').val(data.password);
+                    $('#copy-password').attr('data-clipboard-text', data.password);
                     $('#success-message').text(data.msg);
                     $('#success-dialog').modal('show');
                 } else {

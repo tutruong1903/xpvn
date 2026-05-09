@@ -88,4 +88,13 @@ return [
         'title_required' => 'Title is required',
         'comment_required' => 'Comment is required',
     ],
+    'admin_billing' => [
+        'save_success'           => 'Saved successfully',
+        'save_failed'            => 'Save failed',
+        'save_gateway_failed'    => 'Error saving payment gateway',
+        'stripe_webhook_success' => 'Stripe Webhook set successfully',
+        'stripe_webhook_failed'  => 'Failed to set Stripe Webhook',
+        'paypal_webhook_success' => 'PayPal Webhook set successfully',
+        'paypal_webhook_failed'  => 'Failed to set PayPal Webhook',
+    ],
 ];

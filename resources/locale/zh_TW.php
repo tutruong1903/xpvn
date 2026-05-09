@@ -103,4 +103,12 @@ return [
         'test_success' => '測試郵件發送成功',
         'test_failed'  => '測試郵件發送失敗：',
     ],
+    'admin_support' => [
+        'save_success' => '客服設定儲存成功',
+        'save_failed'  => '客服設定儲存失敗',
+    ],
+    'admin_captcha' => [
+        'save_success' => '人機驗證設定儲存成功',
+        'save_failed'  => '人機驗證設定儲存失敗',
+    ],
 ];

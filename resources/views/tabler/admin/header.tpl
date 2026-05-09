@@ -72,6 +72,18 @@
     <script src="/assets/js/locales/admin/email/zh_TW.js{asset_ver path="/assets/js/locales/admin/email/zh_TW.js"}"></script>
     <script src="/assets/js/locales/admin/email/ja_JP.js{asset_ver path="/assets/js/locales/admin/email/ja_JP.js"}"></script>
     
+    <script src="/assets/js/locales/admin/support/en_US.js{asset_ver path="/assets/js/locales/admin/support/en_US.js"}"></script>
+    <script src="/assets/js/locales/admin/support/vn_VN.js{asset_ver path="/assets/js/locales/admin/support/vn_VN.js"}"></script>
+    <script src="/assets/js/locales/admin/support/zh_CN.js{asset_ver path="/assets/js/locales/admin/support/zh_CN.js"}"></script>
+    <script src="/assets/js/locales/admin/support/zh_TW.js{asset_ver path="/assets/js/locales/admin/support/zh_TW.js"}"></script>
+    <script src="/assets/js/locales/admin/support/ja_JP.js{asset_ver path="/assets/js/locales/admin/support/ja_JP.js"}"></script>
+    
+    <script src="/assets/js/locales/admin/captcha/en_US.js{asset_ver path="/assets/js/locales/admin/captcha/en_US.js"}"></script>
+    <script src="/assets/js/locales/admin/captcha/vn_VN.js{asset_ver path="/assets/js/locales/admin/captcha/vn_VN.js"}"></script>
+    <script src="/assets/js/locales/admin/captcha/zh_CN.js{asset_ver path="/assets/js/locales/admin/captcha/zh_CN.js"}"></script>
+    <script src="/assets/js/locales/admin/captcha/zh_TW.js{asset_ver path="/assets/js/locales/admin/captcha/zh_TW.js"}"></script>
+    <script src="/assets/js/locales/admin/captcha/ja_JP.js{asset_ver path="/assets/js/locales/admin/captcha/ja_JP.js"}"></script>
+    
     <script src="/assets/js/locales/admin/datatable/en_US.js{asset_ver path="/assets/js/locales/admin/datatable/en_US.js"}"></script>
     <script src="/assets/js/locales/admin/datatable/vn_VN.js{asset_ver path="/assets/js/locales/admin/datatable/vn_VN.js"}"></script>
     <script src="/assets/js/locales/admin/datatable/zh_CN.js{asset_ver path="/assets/js/locales/admin/datatable/zh_CN.js"}"></script>

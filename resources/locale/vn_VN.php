@@ -103,4 +103,12 @@ return [
         'test_success' => 'Gửi email thử thành công',
         'test_failed'  => 'Gửi email thử thất bại:',
     ],
+    'admin_support' => [
+        'save_success' => 'Lưu cài đặt hỗ trợ thành công',
+        'save_failed'  => 'Lưu cài đặt hỗ trợ thất bại',
+    ],
+    'admin_captcha' => [
+        'save_success' => 'Lưu cài đặt CAPTCHA thành công',
+        'save_failed'  => 'Lưu cài đặt CAPTCHA thất bại',
+    ],
 ];

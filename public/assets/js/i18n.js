@@ -267,6 +267,22 @@
             "data-i18n",
             _adminEmailDict,
         );
+
+        // Admin support section — handles support settings page (admin.support.index.*).
+        var _adminSupportDict = flattenAdminSection(flattenNestedSection(getAdminSectionDict(locale, "support")), 'admin.support.');
+        applyAttributeFromDict(
+            "[data-i18n^='admin.support.']",
+            "data-i18n",
+            _adminSupportDict,
+        );
+
+        // Admin captcha section — handles captcha settings page (admin.captcha.index.*).
+        var _adminCaptchaDict = flattenAdminSection(flattenNestedSection(getAdminSectionDict(locale, "captcha")), 'admin.captcha.');
+        applyAttributeFromDict(
+            "[data-i18n^='admin.captcha.']",
+            "data-i18n",
+            _adminCaptchaDict,
+        );
     }
 
     /**

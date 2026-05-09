@@ -103,4 +103,12 @@ return [
         'test_success' => 'Test email sent successfully',
         'test_failed'  => 'Failed to send test email:',
     ],
+    'admin_support' => [
+        'save_success' => 'Support settings saved successfully',
+        'save_failed'  => 'Failed to save support settings',
+    ],
+    'admin_captcha' => [
+        'save_success' => 'CAPTCHA settings saved successfully',
+        'save_failed'  => 'Failed to save CAPTCHA settings',
+    ],
 ];

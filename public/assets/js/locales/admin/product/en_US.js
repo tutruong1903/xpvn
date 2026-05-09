@@ -8,7 +8,7 @@ window.i18nLocales.admin.product.en_US = {
         title:              "Product List",
         subtitle:           "Manage all products and subscription plans.",
         create_btn:         "Create",
-        search_placeholder: "Search ID, name or type...",
+        search_placeholder: "Search by ID or name...",
         delete_confirm:     "Are you sure you want to delete this product?",
         copy_confirm:       "Are you sure you want to copy this product?",
 

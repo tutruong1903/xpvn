@@ -1,259 +1,293 @@
 {include file='admin/header.tpl'}
 
-    <div class="container-xl">
-        <div class="page-header d-print-none">
-            <div class="row align-items-center">
-                <div class="col">
-                    <h2 class="page-title">
-                        <span class="home-title">商品 #{$product->id}</span>
-                    </h2>
-                    <div class="page-pretitle my-3">
-                        <span class="home-subtitle">编辑商品信息</span>
-                    </div>
-                </div>
-                <div class="col-auto ms-auto d-print-none">
-                    <div class="btn-list">
-                        <a id="save-product" href="#" class="btn btn-primary">
-                            <i class="icon ti ti-device-floppy"></i>
-                            保存
-                        </a>
-                    </div>
-                </div>
-            </div>
+<link href="/assets/css/admin/product-edit.css{asset_ver path="/assets/css/admin/product-edit.css"}" rel="stylesheet"/>
+
+<div class="container-xl">
+    <!-- Page Header -->
+    <div class="lmn-page-header">
+        <div class="lmn-page-header__content">
+            <h2 class="lmn-page-title">
+                <span data-i18n="admin.product.edit.title">编辑商品</span>
+                <span style="color:#712ae2;margin-left:0.375rem;">#</span>{$product->id}
+            </h2>
+            <p class="lmn-page-subtitle" data-i18n="admin.product.edit.subtitle">修改此商品的配置。</p>
         </div>
     </div>
-    <div class="page-body">
-        <div class="container-xl">
-            <div class="row row-deck row-cards">
-                <div class="col-md-6 col-sm-12">
-                    <div class="card">
-                        <div class="card-header card-header-light">
-                            <h3 class="card-title">基础信息</h3>
-                        </div>
-                        <div class="card-body">
-                            <div class="form-group mb-3 row">
-                                <label class="form-label col-3 col-form-label required">名称</label>
-                                <div class="col">
-                                    <input id="name" type="text" class="form-control"
-                                           value="{$product->name}">
-                                </div>
-                            </div>
-                            <div class="form-group mb-3 row">
-                                <label class="form-label col-3 col-form-label required">价格</label>
-                                <div class="col">
-                                    <input id="price" type="text" class="form-control"
-                                           value="{$product->price}">
-                                </div>
-                            </div>
-                            <div class="form-group mb-3 row">
-                                <label class="form-label col-3 col-form-label required">库存（小于0时不限制）</label>
-                                <div class="col">
-                                    <input id="stock" type="text" class="form-control"
-                                           value="{$product->stock}">
-                                </div>
-                            </div>
-                            <div class="form-group mb-3 row">
-                                <label class="form-label col-3 col-form-label">销售状态</label>
-                                <div class="col">
-                                    <select id="status" class="col form-select">
-                                        <option value="1" {if $product->status === 1}selected{/if}>正常</option>
-                                        <option value="0" {if $product->status === 0}selected{/if}>下架</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group mb-3 row">
-                                <label class="form-label col-3 col-form-label">类型</label>
-                                <div class="col">
-                                    <select id="type" class="col form-select">
-                                        <option value="tabp" {if $product->type === "tabp"}selected{/if}>时间流量包
-                                        </option>
-                                        <option value="time" {if $product->type === "time"}selected{/if}>时间包</option>
-                                        <option value="bandwidth" {if $product->type === "bandwidth"}selected{/if}>
-                                            流量包
-                                        </option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
+</div>
+
+<div class="page-body">
+    <div class="container-xl">
+        <div class="lmn-edit-grid">
+
+            <!-- =====================================================
+                 Column 1: Basic Information
+                 ===================================================== -->
+            <div class="lmn-edit-col">
+                <div class="lmn-edit-card">
+                    <div class="lmn-edit-card-header">
+                        <span class="material-symbols-outlined lmn-edit-card-icon">info</span>
+                        <h2 class="lmn-edit-card-title" data-i18n="admin.product.create.section_basic">基础信息</h2>
                     </div>
-                </div>
-                <div class="col-md-6 col-sm-12">
-                    <div class="card">
-                        <div class="card-header card-header-light">
-                            <h3 class="card-title">商品内容</h3>
+                    <div class="lmn-edit-fields">
+                        <div class="lmn-edit-field">
+                            <label class="lmn-edit-label" data-i18n="admin.product.create.field_name">名称</label>
+                            <input id="name" type="text" class="lmn-edit-input" value="{$product->name}">
                         </div>
-                        <div class="card-body">
-                            <div id="time_option" class="form-group mb-3 row">
-                                <label class="form-label col-3 col-form-label required">商品时长 (天)</label>
-                                <div class="col">
-                                    <input id="time" type="text" class="form-control"
-                                           value="{$content->time}">
-                                </div>
-                            </div>
-                            <div id="class_option" class="form-group mb-3 row">
-                                <label class="form-label col-3 col-form-label required">等级</label>
-                                <div class="col">
-                                    <input id="class" type="text" class="form-control"
-                                           value="{$content->class}">
-                                </div>
-                            </div>
-                            <div id="class_time_option" class="form-group mb-3 row">
-                                <label class="form-label col-3 col-form-label required">等级时长 (天)</label>
-                                <div class="col">
-                                    <input id="class_time" type="text" class="form-control"
-                                           value="{$content->class_time}">
-                                </div>
-                            </div>
-                            <div id="bandwidth_option" class="form-group mb-3 row">
-                                <label class="form-label col-3 col-form-label required">可用流量 (GB)</label>
-                                <div class="col">
-                                    <input id="bandwidth" type="text" class="form-control"
-                                           value="{$content->bandwidth}">
-                                </div>
-                            </div>
-                            <div id="node_group_option" class="form-group mb-3 row">
-                                <label class="form-label col-3 col-form-label required">用户分组</label>
-                                <div class="col">
-                                    <input id="node_group" type="text" class="form-control"
-                                           value="{$content->node_group}">
-                                </div>
-                            </div>
-                            <div id="speed_limit_option" class="form-group mb-3 row">
-                                <label class="form-label col-3 col-form-label required">速率限制 (Mbps)</label>
-                                <div class="col">
-                                    <input id="speed_limit" type="text" class="form-control"
-                                           value="{$content->speed_limit}">
-                                </div>
-                            </div>
-                            <div id="ip_limit_option" class="form-group mb-3 row">
-                                <label class="form-label col-3 col-form-label required">同时连接IP限制</label>
-                                <div class="col">
-                                    <input id="ip_limit" type="text" class="form-control"
-                                           value="{$content->ip_limit}">
-                                </div>
-                            </div>
-                            <div class="hr-text">
-                                <span>购买限制</span>
-                            </div>
-                            <div class="form-group mb-3 row">
-                                <label class="form-label col-3 col-form-label">用户等级要求</label>
-                                <div class="col">
-                                    <input id="class_required" type="text" class="form-control"
-                                           value="{$limit->class_required}">
-                                </div>
-                            </div>
-                            <div class="form-group mb-3 row">
-                                <label class="form-label col-3 col-form-label">用户所在的节点组</label>
-                                <div class="col">
-                                    <input id="node_group_required" type="text" class="form-control"
-                                           value="{$limit->node_group_required}">
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <label class="row">
-                                    <span class="col">仅限新用户购买</span>
-                                    <span class="col-auto">
-                                        <label class="form-check form-check-single form-switch">
-                                            <input id="new_user_required" class="form-check-input" type="checkbox"
-                                                   {if $limit->new_user_required === 1}checked="" {/if}>
-                                        </label>
-                                    </span>
-                                </label>
+                        <div class="lmn-edit-field">
+                            <label class="lmn-edit-label" data-i18n="admin.product.create.field_price">价格</label>
+                            <input id="price" type="number" step="0.01" min="0" class="lmn-edit-input" value="{$product->price}">
+                        </div>
+                        <div class="lmn-edit-field">
+                            <label class="lmn-edit-label" data-i18n="admin.product.create.field_stock">库存（-1为不限制）</label>
+                            <input id="stock" type="number" min="-1" class="lmn-edit-input" value="{$product->stock}">
+                        </div>
+                        <div class="lmn-edit-field">
+                            <label class="lmn-edit-label" data-i18n="admin.product.create.field_status">销售状态</label>
+                            <select id="status" class="lmn-edit-select">
+                                <option value="1" {if $product->status === 1}selected{/if} data-i18n="admin.product.create.status_active">正常</option>
+                                <option value="0" {if $product->status === 0}selected{/if} data-i18n="admin.product.create.status_inactive">下架</option>
+                            </select>
+                        </div>
+                        <div class="lmn-edit-field">
+                            <label class="lmn-edit-label" data-i18n="admin.product.create.field_type">类型</label>
+                            <input id="type" type="hidden" value="{$product->type}">
+                            <div class="lmn-type-switcher">
+                                <button type="button" class="lmn-type-btn{if $product->type === 'tabp'} is-active{/if}" data-type="tabp">
+                                    <span class="material-symbols-outlined lmn-type-btn__icon">package_2</span>
+                                    <span class="lmn-type-btn__name" data-i18n="admin.product.create.type_tabp">时间流量包</span>
+                                </button>
+                                <button type="button" class="lmn-type-btn{if $product->type === 'bandwidth'} is-active{/if}" data-type="bandwidth">
+                                    <span class="material-symbols-outlined lmn-type-btn__icon">cloud_download</span>
+                                    <span class="lmn-type-btn__name" data-i18n="admin.product.create.type_bandwidth">流量包</span>
+                                </button>
+                                <button type="button" class="lmn-type-btn{if $product->type === 'time'} is-active{/if}" data-type="time">
+                                    <span class="material-symbols-outlined lmn-type-btn__icon">schedule</span>
+                                    <span class="lmn-type-btn__name" data-i18n="admin.product.create.type_time">时间包</span>
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <!-- =====================================================
+                 Column 2: Product Content (dynamic fields)
+                 ===================================================== -->
+            <div class="lmn-edit-col">
+                <div class="lmn-edit-card">
+                    <div class="lmn-edit-card-header">
+                        <span class="material-symbols-outlined lmn-edit-card-icon">inventory_2</span>
+                        <h2 class="lmn-edit-card-title" data-i18n="admin.product.create.section_content">商品内容</h2>
+                    </div>
+                    <div class="lmn-edit-fields">
+                        <div id="time_option" class="lmn-edit-field lmn-dynamic-field">
+                            <label class="lmn-edit-label" data-i18n="admin.product.create.field_time">商品时长 (天)</label>
+                            <input id="time" type="number" min="1" class="lmn-edit-input" value="{$content->time}">
+                        </div>
+                        <div id="class_option" class="lmn-dynamic-field">
+                            <div class="lmn-edit-field">
+                                <label class="lmn-edit-label" data-i18n="admin.product.create.field_class">授予等级</label>
+                                <input id="class" type="hidden" value="{$content->class}">
+                                <div class="lmn-level-picker" data-for="class">
+                                    <button type="button" class="lmn-level-btn{if $content->class == 0} is-active{/if}" data-level="0">
+                                        <span class="lmn-level-btn__name" data-i18n="admin.product.create.level_basic">Basic</span>
+                                    </button>
+                                    <button type="button" class="lmn-level-btn{if $content->class == 1} is-active{/if}" data-level="1">
+                                        <span class="lmn-level-btn__name" data-i18n="admin.product.create.level_standard">Standard</span>
+                                    </button>
+                                    <button type="button" class="lmn-level-btn{if $content->class == 2} is-active{/if}" data-level="2">
+                                        <span class="lmn-level-btn__name" data-i18n="admin.product.create.level_premium">Premium</span>
+                                    </button>
+                                    <button type="button" class="lmn-level-btn{if $content->class >= 3} is-active{/if}" data-level="3">
+                                        <span class="lmn-level-btn__name" data-i18n="admin.product.create.level_vip">VIP</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="class_time_option" class="lmn-edit-field lmn-dynamic-field">
+                            <label class="lmn-edit-label" data-i18n="admin.product.create.field_class_time">等级时长 (天)</label>
+                            <input id="class_time" type="number" min="1" class="lmn-edit-input" value="{$content->class_time}">
+                        </div>
+                        <div id="bandwidth_option" class="lmn-edit-field lmn-dynamic-field">
+                            <label class="lmn-edit-label" data-i18n="admin.product.create.field_bandwidth">可用流量 (GB)</label>
+                            <div class="lmn-input-unit-wrap">
+                                <input id="bandwidth" type="number" min="1" class="lmn-edit-input" value="{$content->bandwidth}">
+                                <span class="lmn-input-unit">GB</span>
+                            </div>
+                        </div>
+                        <div id="node_group_option" class="lmn-edit-field lmn-dynamic-field">
+                            <label class="lmn-edit-label" data-i18n="admin.product.create.field_node_group">授予节点分组</label>
+                            <input id="node_group" type="number" min="0" class="lmn-edit-input" value="{$content->node_group}">
+                        </div>
+                        <div id="speed_limit_option" class="lmn-edit-field lmn-dynamic-field">
+                            <label class="lmn-edit-label" data-i18n="admin.product.create.field_speed_limit">速率限制 (Mbps)</label>
+                            <div class="lmn-input-unit-wrap">
+                                <input id="speed_limit" type="number" min="0" class="lmn-edit-input" value="{$content->speed_limit}">
+                                <span class="lmn-input-unit">Mbps</span>
+                            </div>
+                        </div>
+                        <div id="ip_limit_option" class="lmn-edit-field lmn-dynamic-field">
+                            <label class="lmn-edit-label" data-i18n="admin.product.create.field_ip_limit">同时连接IP限制</label>
+                            <input id="ip_limit" type="number" min="0" class="lmn-edit-input" value="{$content->ip_limit}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- =====================================================
+                 Column 3: Purchase Restrictions + Save
+                 ===================================================== -->
+            <div class="lmn-edit-col">
+                <div class="lmn-edit-card">
+                    <div class="lmn-edit-card-header">
+                        <span class="material-symbols-outlined lmn-edit-card-icon">lock</span>
+                        <h2 class="lmn-edit-card-title" data-i18n="admin.product.create.section_restriction">购买限制</h2>
+                    </div>
+                    <div class="lmn-edit-fields">
+                        <div class="lmn-edit-field">
+                            <label class="lmn-edit-label" data-i18n="admin.product.create.field_class_required">最低等级要求</label>
+                            <input id="class_required" type="hidden" value="{$limit->class_required}">
+                            <div class="lmn-level-picker lmn-level-picker--5col" data-for="class_required">
+                                <button type="button" class="lmn-level-btn{if $limit->class_required === '' || $limit->class_required === null} is-active{/if}" data-level="">
+                                    <span class="lmn-level-btn__name" data-i18n="admin.product.create.level_any">任意</span>
+                                </button>
+                                <button type="button" class="lmn-level-btn{if $limit->class_required == '0' && $limit->class_required !== ''} is-active{/if}" data-level="0">
+                                    <span class="lmn-level-btn__name" data-i18n="admin.product.create.level_basic">Basic</span>
+                                </button>
+                                <button type="button" class="lmn-level-btn{if $limit->class_required == '1'} is-active{/if}" data-level="1">
+                                    <span class="lmn-level-btn__name" data-i18n="admin.product.create.level_standard">Standard</span>
+                                </button>
+                                <button type="button" class="lmn-level-btn{if $limit->class_required == '2'} is-active{/if}" data-level="2">
+                                    <span class="lmn-level-btn__name" data-i18n="admin.product.create.level_premium">Premium</span>
+                                </button>
+                                <button type="button" class="lmn-level-btn{if $limit->class_required >= '3'} is-active{/if}" data-level="3">
+                                    <span class="lmn-level-btn__name" data-i18n="admin.product.create.level_vip">VIP</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="lmn-edit-field">
+                            <label class="lmn-edit-label" data-i18n="admin.product.create.field_node_group_required">所需节点分组</label>
+                            <input id="node_group_required" type="text" class="lmn-edit-input" value="{$limit->node_group_required}">
+                        </div>
+                        <div class="lmn-edit-toggle-row">
+                            <span class="lmn-edit-toggle-label" data-i18n="admin.product.create.field_new_user_required">仅限新用户购买</span>
+                            <label class="lmn-toggle">
+                                <input id="new_user_required" type="checkbox" class="lmn-toggle-input" {if $limit->new_user_required === 1}checked{/if}>
+                                <span class="lmn-toggle-track"></span>
+                            </label>
+                        </div>
+                        <p style="font-size:0.75rem;color:#464554;margin:0;" data-i18n="admin.product.create.new_user_required_desc">仅允许新用户购买此商品。</p>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="lmn-edit-actions">
+                    <button id="save-product" type="button" class="lmn-btn-save">
+                        <span data-i18n="admin.product.edit.save_btn">保存更改</span>
+                    </button>
+                    <button type="button" class="lmn-btn-cancel" onclick="history.back()">
+                        <span data-i18n="admin.product.edit.cancel_btn">取消</span>
+                    </button>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>
 
 <script>
-    $(function () {
-        $("#type").change();
-    });
-
-    $("#type").on("change", function () {
-        if (this.value === "bandwidth") {
-            $("#time_option").hide();
-            $("#class_option").hide();
-            $("#class_time_option").hide();
-            $("#bandwidth_option").show();
-            $("#node_group_option").hide();
-            $("#speed_limit_option").hide();
-            $("#ip_limit_option").hide();
-            $("#time").prop("required", false);
-            $("#class").prop("required", false);
-            $("#class_time").prop("required", false);
-            $("#bandwidth").prop("required", true);
-            $("#node_group").prop("required", false);
-            $("#speed_limit").prop("required", false);
-            $("#ip_limit").prop("required", false);
-        } else if (this.value === "time") {
-            $("#time_option").show();
-            $("#class_option").show();
-            $("#class_time_option").show();
-            $("#bandwidth_option").hide();
-            $("#node_group_option").show();
-            $("#speed_limit_option").show();
-            $("#ip_limit_option").show();
-            $("#time").prop("required", true);
-            $("#class").prop("required", true);
-            $("#class_time").prop("required", true);
-            $("#bandwidth").prop("required", false);
-            $("#node_group").prop("required", true);
-            $("#speed_limit").prop("required", true);
-            $("#ip_limit").prop("required", true);
-        } else {
-            $("#time_option").show();
-            $("#class_option").show();
-            $("#class_time_option").show();
-            $("#bandwidth_option").show();
-            $("#node_group_option").show();
-            $("#speed_limit_option").show();
-            $("#ip_limit_option").show();
-            $("#time").prop("required", true);
-            $("#class").prop("required", true);
-            $("#class_time").prop("required", true);
-            $("#bandwidth").prop("required", true);
-            $("#node_group").prop("required", true);
-            $("#speed_limit").prop("required", true);
-            $("#ip_limit").prop("required", true);
-        }
-    });
-
-    $("#save-product").click(function () {
-        let emptyFields = $('input[required]').filter(function () {
-            return $(this).val() === '';
+    // Type switcher
+    document.querySelectorAll('.lmn-type-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            document.querySelectorAll('.lmn-type-btn').forEach(function (b) {
+                b.classList.remove('is-active');
+            });
+            btn.classList.add('is-active');
+            var type = btn.getAttribute('data-type');
+            document.getElementById('type').value = type;
+            updateDynamicFields(type);
         });
+    });
 
-        if (emptyFields.length > 0) {
-            $("#fail-message").text("请填写所有必要栏位");
-            $("#fail-dialog").modal("show");
+    // Level picker (scoped — each picker only deactivates its own buttons)
+    document.querySelectorAll('.lmn-level-picker').forEach(function (picker) {
+        var forId = picker.getAttribute('data-for');
+        picker.querySelectorAll('.lmn-level-btn').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                picker.querySelectorAll('.lmn-level-btn').forEach(function (b) {
+                    b.classList.remove('is-active');
+                });
+                btn.classList.add('is-active');
+                document.getElementById(forId).value = btn.getAttribute('data-level');
+            });
+        });
+    });
+
+    function updateDynamicFields(type) {
+        var timeOpt      = document.getElementById('time_option');
+        var classOpt     = document.getElementById('class_option');
+        var classTimeOpt = document.getElementById('class_time_option');
+        var bwOpt        = document.getElementById('bandwidth_option');
+        var ngOpt        = document.getElementById('node_group_option');
+        var slOpt        = document.getElementById('speed_limit_option');
+        var ilOpt        = document.getElementById('ip_limit_option');
+
+        if (type === 'bandwidth') {
+            timeOpt.classList.add('is-hidden');
+            classOpt.classList.add('is-hidden');
+            classTimeOpt.classList.add('is-hidden');
+            bwOpt.classList.remove('is-hidden');
+            ngOpt.classList.add('is-hidden');
+            slOpt.classList.add('is-hidden');
+            ilOpt.classList.add('is-hidden');
+        } else if (type === 'time') {
+            timeOpt.classList.remove('is-hidden');
+            classOpt.classList.remove('is-hidden');
+            classTimeOpt.classList.remove('is-hidden');
+            bwOpt.classList.add('is-hidden');
+            ngOpt.classList.remove('is-hidden');
+            slOpt.classList.remove('is-hidden');
+            ilOpt.classList.remove('is-hidden');
         } else {
-            $.ajax({
-                url: '/admin/product/{$product->id}',
-                type: 'PUT',
-                dataType: "json",
-                data: {
-                    {foreach $update_field as $key}
-                    {$key}: $('#{$key}').val(),
-                    {/foreach}
-                    new_user_required: $("#new_user_required").is(":checked"),
-                },
-                success: function (data) {
-                    if (data.ret === 1) {
-                        $('#success-message').text(data.msg);
-                        $('#success-dialog').modal('show');
-                        window.setTimeout("location.href=top.document.referrer", {$config['jump_delay']});
-                    } else {
-                        $('#fail-message').text(data.msg);
-                        $('#fail-dialog').modal('show');
-                    }
-                }
-            })
+            // tabp — all fields visible
+            timeOpt.classList.remove('is-hidden');
+            classOpt.classList.remove('is-hidden');
+            classTimeOpt.classList.remove('is-hidden');
+            bwOpt.classList.remove('is-hidden');
+            ngOpt.classList.remove('is-hidden');
+            slOpt.classList.remove('is-hidden');
+            ilOpt.classList.remove('is-hidden');
         }
+    }
+
+    // Initialize fields based on current product type
+    updateDynamicFields('{$product->type}');
+
+    // Save
+    document.getElementById('save-product').addEventListener('click', function () {
+        $.ajax({
+            url: '/admin/product/{$product->id}',
+            type: 'PUT',
+            dataType: 'json',
+            data: {
+                {foreach $update_field as $key}
+                {$key}: $('#{$key}').val(),
+                {/foreach}
+                new_user_required: $('#new_user_required').is(':checked'),
+            },
+            success: function (data) {
+                if (data.ret === 1) {
+                    $('#success-message').text(data.msg);
+                    $('#success-dialog').modal('show');
+                    window.setTimeout("location.href=top.document.referrer", {$config['jump_delay']});
+                } else {
+                    $('#fail-message').text(data.msg);
+                    $('#fail-dialog').modal('show');
+                }
+            }
+        });
     });
 </script>
 
 {include file='admin/footer.tpl'}
+

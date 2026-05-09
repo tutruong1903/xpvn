@@ -101,7 +101,10 @@
         dataSrc: 'products'
     };
     tableConfig.order = [[1, 'desc']];
-    tableConfig.columnDefs = [{ targets: [0], orderable: false }];
+    tableConfig.columnDefs = [
+        { targets: [0],                   orderable: false },
+        { targets: [2, 4, 5, 6, 7, 8, 9], searchable: false },
+    ];
 
     let table = new DataTable('#data-table', tableConfig);
 

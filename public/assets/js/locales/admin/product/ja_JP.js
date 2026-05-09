@@ -8,7 +8,7 @@ window.i18nLocales.admin.product.ja_JP = {
         title:          "商品リスト",
         subtitle:       "すべての商品とサブスクリプションプランを管理します。",
         create_btn:     "作成",
-        search_placeholder: "ID、名前またはタイプで検索...",
+        search_placeholder: "ID または名前で検索...",
         delete_confirm: "この商品を削除してもよろしいですか？",
         copy_confirm:   "この商品をコピーしてもよろしいですか？",
 

@@ -8,7 +8,7 @@ window.i18nLocales.admin.product.zh_CN = {
         title:          "商品列表",
         subtitle:       "管理所有商品和订阅套餐。",
         create_btn:     "创建",
-        search_placeholder: "搜索 ID、名称或类型...",
+        search_placeholder: "按 ID 或名称搜索...",
         delete_confirm: "确定删除此商品？",
         copy_confirm:   "确定复制此商品？",
 

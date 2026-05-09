@@ -1,0 +1,7 @@
+/* ================================================================
+   LUMINOUS GUARDIAN — Admin Product Edit page styles
+   Specific to: resources/views/tabler/admin/product/edit.tpl
+   ================================================================ */
+
+/* Bring in all create-page components (type switcher, level picker, etc.) */
+@import url('product-create.css');

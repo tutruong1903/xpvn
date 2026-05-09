@@ -8,7 +8,7 @@ window.i18nLocales.admin.product.vn_VN = {
         title:          "Danh sách sản phẩm",
         subtitle:       "Quản lý tất cả sản phẩm và gói đăng ký.",
         create_btn:     "Tạo mới",
-        search_placeholder: "Tìm ID, tên hoặc loại sản phẩm...",
+        search_placeholder: "Tìm theo ID hoặc tên...",
         delete_confirm: "Bạn có chắc muốn xóa sản phẩm này?",
         copy_confirm:   "Bạn có chắc muốn sao chép sản phẩm này?",
 

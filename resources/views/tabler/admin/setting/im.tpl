@@ -469,7 +469,7 @@
         {/foreach}
         fetch('/admin/setting/im', {
             method: 'POST',
-            headers: {'Content-Type': 'application/json', 'X-Requested-With': 'XMLHttpRequest'},
+            headers: {ldelim}'Content-Type': 'application/json', 'X-Requested-With': 'XMLHttpRequest'{rdelim},
             body: JSON.stringify(data),
         }).then(function (r) { return r.json(); }).then(function (res) {
             if (res.ret === 1) {

@@ -111,4 +111,12 @@ return [
         'save_success' => 'CAPTCHA設定を保存しました',
         'save_failed'  => 'CAPTCHA設定の保存に失敗しました',
     ],
+    'admin_reg' => [
+        'save_success' => '登録設定を保存しました',
+        'save_failed'  => '登録設定の保存に失敗しました',
+    ],
+    'admin_ref' => [
+        'save_success' => '招待設定を保存しました',
+        'save_failed'  => '招待設定の保存に失敗しました',
+    ],
 ];

@@ -111,4 +111,12 @@ return [
         'save_success' => '人机验证设置保存成功',
         'save_failed'  => '人机验证设置保存失败',
     ],
+    'admin_reg' => [
+        'save_success' => '注册设置保存成功',
+        'save_failed'  => '注册设置保存失败',
+    ],
+    'admin_ref' => [
+        'save_success' => '邀请设置保存成功',
+        'save_failed'  => '邀请设置保存失败',
+    ],
 ];

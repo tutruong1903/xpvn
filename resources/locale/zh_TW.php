@@ -111,4 +111,12 @@ return [
         'save_success' => '人機驗證設定儲存成功',
         'save_failed'  => '人機驗證設定儲存失敗',
     ],
+    'admin_reg' => [
+        'save_success' => '註冊設定儲存成功',
+        'save_failed'  => '註冊設定儲存失敗',
+    ],
+    'admin_ref' => [
+        'save_success' => '邀請設定儲存成功',
+        'save_failed'  => '邀請設定儲存失敗',
+    ],
 ];

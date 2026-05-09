@@ -111,4 +111,12 @@ return [
         'save_success' => 'Lưu cài đặt CAPTCHA thành công',
         'save_failed'  => 'Lưu cài đặt CAPTCHA thất bại',
     ],
+    'admin_reg' => [
+        'save_success' => 'Lưu cài đặt đăng ký thành công',
+        'save_failed'  => 'Lưu cài đặt đăng ký thất bại',
+    ],
+    'admin_ref' => [
+        'save_success' => 'Lưu cài đặt giới thiệu thành công',
+        'save_failed'  => 'Lưu cài đặt giới thiệu thất bại',
+    ],
 ];

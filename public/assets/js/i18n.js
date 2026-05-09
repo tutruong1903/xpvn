@@ -283,6 +283,22 @@
             "data-i18n",
             _adminCaptchaDict,
         );
+
+        // Admin reg section — handles registration settings page (admin.reg.index.*).
+        var _adminRegDict = flattenAdminSection(flattenNestedSection(getAdminSectionDict(locale, "reg")), 'admin.reg.');
+        applyAttributeFromDict(
+            "[data-i18n^='admin.reg.']",
+            "data-i18n",
+            _adminRegDict,
+        );
+
+        // Admin ref section — handles referral settings page (admin.ref.index.*).
+        var _adminRefDict = flattenAdminSection(flattenNestedSection(getAdminSectionDict(locale, "ref")), 'admin.ref.');
+        applyAttributeFromDict(
+            "[data-i18n^='admin.ref.']",
+            "data-i18n",
+            _adminRefDict,
+        );
     }
 
     /**

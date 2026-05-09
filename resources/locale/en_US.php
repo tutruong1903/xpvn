@@ -111,4 +111,12 @@ return [
         'save_success' => 'CAPTCHA settings saved successfully',
         'save_failed'  => 'Failed to save CAPTCHA settings',
     ],
+    'admin_reg' => [
+        'save_success' => 'Registration settings saved successfully',
+        'save_failed'  => 'Failed to save registration settings',
+    ],
+    'admin_ref' => [
+        'save_success' => 'Referral settings saved successfully',
+        'save_failed'  => 'Failed to save referral settings',
+    ],
 ];

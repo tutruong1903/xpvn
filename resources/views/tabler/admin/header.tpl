@@ -84,6 +84,18 @@
     <script src="/assets/js/locales/admin/captcha/zh_TW.js{asset_ver path="/assets/js/locales/admin/captcha/zh_TW.js"}"></script>
     <script src="/assets/js/locales/admin/captcha/ja_JP.js{asset_ver path="/assets/js/locales/admin/captcha/ja_JP.js"}"></script>
     
+    <script src="/assets/js/locales/admin/reg/en_US.js{asset_ver path="/assets/js/locales/admin/reg/en_US.js"}"></script>
+    <script src="/assets/js/locales/admin/reg/vn_VN.js{asset_ver path="/assets/js/locales/admin/reg/vn_VN.js"}"></script>
+    <script src="/assets/js/locales/admin/reg/zh_CN.js{asset_ver path="/assets/js/locales/admin/reg/zh_CN.js"}"></script>
+    <script src="/assets/js/locales/admin/reg/zh_TW.js{asset_ver path="/assets/js/locales/admin/reg/zh_TW.js"}"></script>
+    <script src="/assets/js/locales/admin/reg/ja_JP.js{asset_ver path="/assets/js/locales/admin/reg/ja_JP.js"}"></script>
+    
+    <script src="/assets/js/locales/admin/ref/en_US.js{asset_ver path="/assets/js/locales/admin/ref/en_US.js"}"></script>
+    <script src="/assets/js/locales/admin/ref/vn_VN.js{asset_ver path="/assets/js/locales/admin/ref/vn_VN.js"}"></script>
+    <script src="/assets/js/locales/admin/ref/zh_CN.js{asset_ver path="/assets/js/locales/admin/ref/zh_CN.js"}"></script>
+    <script src="/assets/js/locales/admin/ref/zh_TW.js{asset_ver path="/assets/js/locales/admin/ref/zh_TW.js"}"></script>
+    <script src="/assets/js/locales/admin/ref/ja_JP.js{asset_ver path="/assets/js/locales/admin/ref/ja_JP.js"}"></script>
+    
     <script src="/assets/js/locales/admin/datatable/en_US.js{asset_ver path="/assets/js/locales/admin/datatable/en_US.js"}"></script>
     <script src="/assets/js/locales/admin/datatable/vn_VN.js{asset_ver path="/assets/js/locales/admin/datatable/vn_VN.js"}"></script>
     <script src="/assets/js/locales/admin/datatable/zh_CN.js{asset_ver path="/assets/js/locales/admin/datatable/zh_CN.js"}"></script>

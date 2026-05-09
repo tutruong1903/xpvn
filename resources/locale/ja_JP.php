@@ -143,4 +143,17 @@ return [
         'save_success' => '保存しました。',
         'save_failed'  => '保存に失敗しました。',
     ],
+
+    'admin_product' => [
+        'add_success'    => '商品を追加しました',
+        'add_failed'     => '商品の追加に失敗しました',
+        'update_success' => '商品を更新しました',
+        'update_failed'  => '商品の更新に失敗しました',
+        'delete_success' => '商品を削除しました',
+        'delete_failed'  => '商品の削除に失敗しました',
+        'copy_success'   => '商品をコピーしました',
+        'copy_failed'    => '商品のコピーに失敗しました',
+        'invalid_data'   => '無効な商品データ',
+        'stock_unlimited' => '無制限',
+    ],
 ];

@@ -143,4 +143,17 @@ return [
         'save_success' => 'Lưu cài đặt thành công.',
         'save_failed'  => 'Lưu cài đặt thất bại.',
     ],
+
+    'admin_product' => [
+        'add_success'    => 'Thêm sản phẩm thành công',
+        'add_failed'     => 'Thêm sản phẩm thất bại',
+        'update_success' => 'Cập nhật thành công',
+        'update_failed'  => 'Cập nhật thất bại',
+        'delete_success' => 'Xóa thành công',
+        'delete_failed'  => 'Xóa thất bại',
+        'copy_success'   => 'Sao chép thành công',
+        'copy_failed'    => 'Sao chép thất bại',
+        'invalid_data'   => 'Dữ liệu sản phẩm không hợp lệ',
+        'stock_unlimited' => 'Không giới hạn',
+    ],
 ];

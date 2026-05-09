@@ -6,6 +6,7 @@ namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
 use App\Models\Product;
+use App\Services\I18n;
 use App\Utils\Tools;
 use Exception;
 use Psr\Http\Message\ResponseInterface;
@@ -30,6 +31,34 @@ final class ProductController extends BaseController
             'sale_count' => '累计销售',
             'stock' => '库存',
         ],
+        'filter' => [
+            [
+                'field'      => 'status',
+                'label'      => 'Status',
+                'label_key'  => 'filter.status_label',
+                'i18n_ns'    => 'product',
+                'values'     => ['' => 'All', 'Active' => 'Active', 'Inactive' => 'Inactive'],
+                'value_keys' => ['' => 'filter.all', 'Active' => 'filter.active', 'Inactive' => 'filter.inactive'],
+            ],
+            [
+                'field'      => 'type',
+                'label'      => 'Type',
+                'label_key'  => 'filter.type_label',
+                'i18n_ns'    => 'product',
+                'values'     => [
+                    ''             => 'All',
+                    'Time+Traffic' => 'Time+Traffic',
+                    'Time'         => 'Time',
+                    'Bandwidth'    => 'Bandwidth',
+                ],
+                'value_keys' => [
+                    ''             => 'filter.all',
+                    'Time+Traffic' => 'filter.type_tabp',
+                    'Time'         => 'filter.type_time',
+                    'Bandwidth'    => 'filter.type_bandwidth',
+                ],
+            ],
+        ],
     ];
 
     private static array $update_field = [
@@ -49,7 +78,7 @@ final class ProductController extends BaseController
         'node_group_required',
     ];
 
-    private static string $invalid_data_msg = '无效商品数据';
+    private static string $invalid_data_msg = 'admin_product.invalid_data';
 
     /**
      * @throws Exception
@@ -129,7 +158,7 @@ final class ProductController extends BaseController
         if ($price < 0) {
             return $response->withJson([
                 'ret' => 0,
-                'msg' => self::$invalid_data_msg,
+                'msg' => I18n::trans(self::$invalid_data_msg, $this->getLocale()),
             ]);
         }
 
@@ -137,7 +166,7 @@ final class ProductController extends BaseController
             if ($time <= 0 || $class_time <= 0 || $bandwidth <= 0) {
                 return $response->withJson([
                     'ret' => 0,
-                    'msg' => self::$invalid_data_msg,
+                    'msg' => I18n::trans(self::$invalid_data_msg, $this->getLocale()),
                 ]);
             }
 
@@ -154,7 +183,7 @@ final class ProductController extends BaseController
             if ($time <= 0 || $class_time === '' || $class_time <= 0) {
                 return $response->withJson([
                     'ret' => 0,
-                    'msg' => self::$invalid_data_msg,
+                    'msg' => I18n::trans(self::$invalid_data_msg, $this->getLocale()),
                 ]);
             }
 
@@ -170,7 +199,7 @@ final class ProductController extends BaseController
             if ($bandwidth <= 0) {
                 return $response->withJson([
                     'ret' => 0,
-                    'msg' => self::$invalid_data_msg,
+                    'msg' => I18n::trans(self::$invalid_data_msg, $this->getLocale()),
                 ]);
             }
 
@@ -180,7 +209,7 @@ final class ProductController extends BaseController
         } else {
             return $response->withJson([
                 'ret' => 0,
-                'msg' => self::$invalid_data_msg,
+                'msg' => I18n::trans(self::$invalid_data_msg, $this->getLocale()),
             ]);
         }
 
@@ -204,7 +233,7 @@ final class ProductController extends BaseController
 
         return $response->withJson([
             'ret' => 1,
-            'msg' => '添加成功',
+            'msg' => I18n::trans('admin_product.add_success', $this->getLocale()),
         ]);
     }
 
@@ -235,7 +264,7 @@ final class ProductController extends BaseController
         if ($price < 0) {
             return $response->withJson([
                 'ret' => 0,
-                'msg' => self::$invalid_data_msg,
+                'msg' => I18n::trans(self::$invalid_data_msg, $this->getLocale()),
             ]);
         }
 
@@ -243,7 +272,7 @@ final class ProductController extends BaseController
             if ($time <= 0 || $class_time <= 0 || $bandwidth <= 0) {
                 return $response->withJson([
                     'ret' => 0,
-                    'msg' => self::$invalid_data_msg,
+                    'msg' => I18n::trans(self::$invalid_data_msg, $this->getLocale()),
                 ]);
             }
 
@@ -260,7 +289,7 @@ final class ProductController extends BaseController
             if ($time <= 0 || $class_time <= 0) {
                 return $response->withJson([
                     'ret' => 0,
-                    'msg' => self::$invalid_data_msg,
+                    'msg' => I18n::trans(self::$invalid_data_msg, $this->getLocale()),
                 ]);
             }
 
@@ -276,7 +305,7 @@ final class ProductController extends BaseController
             if ($bandwidth <= 0) {
                 return $response->withJson([
                     'ret' => 0,
-                    'msg' => self::$invalid_data_msg,
+                    'msg' => I18n::trans(self::$invalid_data_msg, $this->getLocale()),
                 ]);
             }
 
@@ -286,7 +315,7 @@ final class ProductController extends BaseController
         } else {
             return $response->withJson([
                 'ret' => 0,
-                'msg' => self::$invalid_data_msg,
+                'msg' => I18n::trans(self::$invalid_data_msg, $this->getLocale()),
             ]);
         }
 
@@ -308,7 +337,7 @@ final class ProductController extends BaseController
 
         return $response->withJson([
             'ret' => 1,
-            'msg' => '更新成功',
+            'msg' => I18n::trans('admin_product.update_success', $this->getLocale()),
         ]);
     }
 
@@ -319,7 +348,7 @@ final class ProductController extends BaseController
 
         return $response->withJson([
             'ret' => 1,
-            'msg' => '删除成功',
+            'msg' => I18n::trans('admin_product.delete_success', $this->getLocale()),
         ]);
     }
 
@@ -340,7 +369,7 @@ final class ProductController extends BaseController
 
         return $response->withJson([
             'ret' => 1,
-            'msg' => '复制成功',
+            'msg' => I18n::trans('admin_product.copy_success', $this->getLocale()),
         ]);
     }
 
@@ -348,21 +377,57 @@ final class ProductController extends BaseController
     {
         $products = (new Product())->orderBy('id', 'desc')->get();
 
+        $total    = 0;
+        $active   = 0;
+        $inactive = 0;
+        $sales    = 0;
+
         foreach ($products as $product) {
-            $product->op = '<button class="btn btn-red" id="delete-product-' . $product->id . '"
-             onclick="deleteProduct(' . $product->id . ')">删除</button>
-            <button class="btn btn-orange" id="copy-product-' . $product->id . '"
-             onclick="copyProduct(' . $product->id . ')">复制</button>
-            <a class="btn btn-primary" href="/admin/product/' . $product->id . '/edit">编辑</a>';
-            $product->type = $product->type();
-            $product->status = $product->status();
+            $total++;
+            if ($product->status === 1) {
+                $active++;
+            } else {
+                $inactive++;
+            }
+            $sales += (int) $product->sale_count;
+
+            $product->op =
+                '<div class="lmn-act-wrap">' .
+                    '<a class="lmn-act-btn lmn-act-btn--edit" href="/admin/product/' . $product->id . '/edit" title="Edit">' .
+                        '<span class="material-symbols-outlined">edit</span>' .
+                    '</a>' .
+                    '<button class="lmn-act-btn lmn-act-btn--warn" onclick="copyProduct(' . $product->id . ')" title="Copy">' .
+                        '<span class="material-symbols-outlined">content_copy</span>' .
+                    '</button>' .
+                    '<button class="lmn-act-btn lmn-act-btn--del" onclick="deleteProduct(' . $product->id . ')" title="Delete">' .
+                        '<span class="material-symbols-outlined">delete</span>' .
+                    '</button>' .
+                '</div>';
+
+            $product->status = $product->status === 1
+                ? '<span class="lmn-badge lmn-badge--active">Active</span>'
+                : '<span class="lmn-badge lmn-badge--inactive">Inactive</span>';
+
+            $product->type = match ($product->type) {
+                'tabp'      => '<span class="lmn-badge lmn-badge--class-premium">Time+Traffic</span>',
+                'time'      => '<span class="lmn-badge lmn-badge--class-std">Time</span>',
+                'bandwidth' => '<span class="lmn-badge lmn-badge--class-basic">Bandwidth</span>',
+                default     => '<span class="lmn-badge lmn-badge--inactive">Other</span>',
+            };
+
+            $product->stock = $product->stock < 0
+                ? '<span class="lmn-badge lmn-badge--unlimited">' . I18n::trans('admin_product.stock_unlimited', $this->getLocale()) . '</span>'
+                : $product->stock;
             $product->create_time = Tools::toDateTime($product->create_time);
             $product->update_time = Tools::toDateTime($product->update_time);
-            $product->stock = $product->stock();
         }
 
         return $response->withJson([
             'products' => $products,
+            'total'    => $total,
+            'active'   => $active,
+            'inactive' => $inactive,
+            'sales'    => $sales,
         ]);
     }
 }

@@ -339,6 +339,19 @@
             "data-i18n",
             _adminLlmDict,
         );
+
+        // Admin product section — handles product list/create/edit pages (admin.product.*).
+        var _adminProductDict = flattenAdminSection(flattenNestedSection(getAdminSectionDict(locale, "product")), 'admin.product.');
+        applyAttributeFromDict(
+            "[data-i18n^='admin.product.']",
+            "data-i18n",
+            _adminProductDict,
+        );
+        document.querySelectorAll("[data-i18n-placeholder^='admin.product.']").forEach(function (el) {
+            var key = el.getAttribute("data-i18n-placeholder");
+            var val = _adminProductDict[key];
+            if (val) el.setAttribute("placeholder", val);
+        });
     }
 
     /**

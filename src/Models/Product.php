@@ -31,7 +31,7 @@ final class Product extends Model
      */
     public function status(): string
     {
-        return $this->status ? '正常' : '下架';
+        return $this->status ? 'active' : 'inactive';
     }
 
     /**
@@ -40,10 +40,10 @@ final class Product extends Model
     public function type(): string
     {
         return match ($this->type) {
-            'tabp' => '时间流量包',
-            'time' => '时间包',
-            'bandwidth' => '流量包',
-            default => '其他',
+            'tabp' => 'tabp',
+            'time' => 'time',
+            'bandwidth' => 'bandwidth',
+            default => 'other',
         };
     }
 
@@ -52,6 +52,6 @@ final class Product extends Model
      */
     public function stock(): string|int
     {
-        return $this->stock < 0 ? '无限制' : $this->stock;
+        return $this->stock;
     }
 }

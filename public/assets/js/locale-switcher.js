@@ -63,11 +63,9 @@
             });
             this.classList.add('active');
             dropdown.classList.remove('active');
-            
-            // Update sidebar tooltips
-            if (typeof window.updateCollapsedSidebarTooltips === 'function') {
-                window.updateCollapsedSidebarTooltips();
-            }
+
+            // Reload to re-fetch server-rendered data (badges, table cells) in new locale
+            location.reload();
         });
     });
 

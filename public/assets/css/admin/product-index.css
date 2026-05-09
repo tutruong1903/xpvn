@@ -1,0 +1,8 @@
+/* ================================================================
+   LUMINOUS GUARDIAN — Admin Product Index page styles
+   Specific to: resources/views/tabler/admin/product/index.tpl
+   All lmn-* base classes are shared with user-index.css.
+   ================================================================ */
+
+/* Re-use all shared lmn-* component styles */
+@import url('user-index.css');

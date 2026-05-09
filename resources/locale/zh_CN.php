@@ -143,4 +143,17 @@ return [
         'save_success' => '保存成功。',
         'save_failed'  => '保存失败。',
     ],
+
+    'admin_product' => [
+        'add_success'    => '添加成功',
+        'add_failed'     => '添加失败',
+        'update_success' => '更新成功',
+        'update_failed'  => '更新失败',
+        'delete_success' => '删除成功',
+        'delete_failed'  => '删除失败',
+        'copy_success'   => '复制成功',
+        'copy_failed'    => '复制失败',
+        'invalid_data'   => '无效商品数据',
+        'stock_unlimited' => '无限制',
+    ],
 ];

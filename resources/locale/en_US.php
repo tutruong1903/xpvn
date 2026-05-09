@@ -143,5 +143,18 @@ return [
         'save_success' => 'Settings saved successfully.',
         'save_failed'  => 'Failed to save settings.',
     ],
+
+    'admin_product' => [
+        'add_success'    => 'Product added successfully',
+        'add_failed'     => 'Failed to add product',
+        'update_success' => 'Product updated successfully',
+        'update_failed'  => 'Failed to update product',
+        'delete_success' => 'Product deleted successfully',
+        'delete_failed'  => 'Failed to delete product',
+        'copy_success'   => 'Product copied successfully',
+        'copy_failed'    => 'Failed to copy product',
+        'invalid_data'   => 'Invalid product data',
+        'stock_unlimited' => 'Unlimited',
+    ],
 ];
 

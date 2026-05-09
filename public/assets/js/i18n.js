@@ -180,6 +180,14 @@
             footerDict,
         );
 
+        // User product section
+        var productDict = getUserSectionDict(locale, "product");
+        applyAttributeFromDict(
+            "[data-i18n-user-product]",
+            "data-i18n-user-product",
+            productDict,
+        );
+
         // User ticket section
         var ticketDict = getUserSectionDict(locale, "ticket");
         applyAttributeFromDict(

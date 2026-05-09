@@ -331,6 +331,14 @@
             "data-i18n",
             _adminFeatureDict,
         );
+
+        // Admin llm section — handles LLM settings page (admin.llm.index.*).
+        var _adminLlmDict = flattenAdminSection(flattenNestedSection(getAdminSectionDict(locale, "llm")), 'admin.llm.');
+        applyAttributeFromDict(
+            "[data-i18n^='admin.llm.']",
+            "data-i18n",
+            _adminLlmDict,
+        );
     }
 
     /**

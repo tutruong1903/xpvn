@@ -113,6 +113,11 @@
                 <span class="material-symbols-outlined sidebar-nav-link__icon">tune</span>
                 <span class="sidebar-nav-link__title" data-i18n="admin.side-bar.settings.feature">Cài đặt khác</span>
             </a>
+            
+            <a class="sidebar-nav-link" href="/admin/setting/llm" data-path="/admin/setting/llm">
+                <span class="material-symbols-outlined sidebar-nav-link__icon">smart_toy</span>
+                <span class="sidebar-nav-link__title" data-i18n="admin.side-bar.settings.llm">AI / LLM</span>
+            </a>
         </div>
 
         <!-- Section: Operations -->

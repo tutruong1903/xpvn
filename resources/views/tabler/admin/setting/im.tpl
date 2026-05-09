@@ -44,8 +44,8 @@
                 <div class="lmn-billing-panel is-active" data-panel="notification">
                     <div class="lmn-edit-card">
                         <div class="lmn-edit-card-header">
-                            <span class="material-symbols-outlined">notifications</span>
-                            <span data-i18n="admin.im.index.tab_notification">通知</span>
+                            <span class="material-symbols-outlined lmn-edit-card-icon">notifications</span>
+                            <h2 class="lmn-edit-card-title" data-i18n="admin.im.index.tab_notification">通知</h2>
                         </div>
                         <div class="lmn-edit-fields">
 
@@ -167,8 +167,8 @@
                 <div class="lmn-billing-panel" data-panel="telegram">
                     <div class="lmn-edit-card">
                         <div class="lmn-edit-card-header">
-                            <span class="material-symbols-outlined">send</span>
-                            <span data-i18n="admin.im.index.tab_telegram">Telegram Bot</span>
+                            <span class="material-symbols-outlined lmn-edit-card-icon">send</span>
+                            <h2 class="lmn-edit-card-title" data-i18n="admin.im.index.tab_telegram">Telegram Bot</h2>
                         </div>
                         <div class="lmn-edit-fields">
 
@@ -306,8 +306,8 @@
                 <div class="lmn-billing-panel" data-panel="discord">
                     <div class="lmn-edit-card">
                         <div class="lmn-edit-card-header">
-                            <span class="material-symbols-outlined">forum</span>
-                            <span data-i18n="admin.im.index.tab_discord">Discord Bot</span>
+                            <span class="material-symbols-outlined lmn-edit-card-icon">forum</span>
+                            <h2 class="lmn-edit-card-title" data-i18n="admin.im.index.tab_discord">Discord Bot</h2>
                         </div>
                         <div class="lmn-edit-fields">
 
@@ -376,8 +376,8 @@
                 <div class="lmn-billing-panel" data-panel="slack">
                     <div class="lmn-edit-card">
                         <div class="lmn-edit-card-header">
-                            <span class="material-symbols-outlined">chat</span>
-                            <span data-i18n="admin.im.index.tab_slack">Slack Bot</span>
+                            <span class="material-symbols-outlined lmn-edit-card-icon">chat</span>
+                            <h2 class="lmn-edit-card-title" data-i18n="admin.im.index.tab_slack">Slack Bot</h2>
                         </div>
                         <div class="lmn-edit-fields">
 

@@ -39,8 +39,8 @@
                 <div class="lmn-billing-panel is-active" data-panel="display">
                     <div class="lmn-edit-card">
                         <div class="lmn-edit-card-header">
-                            <span class="material-symbols-outlined">visibility</span>
-                            <span data-i18n="admin.feature.index.tab_display">功能显示</span>
+                            <span class="material-symbols-outlined lmn-edit-card-icon">visibility</span>
+                            <h2 class="lmn-edit-card-title" data-i18n="admin.feature.index.tab_display">功能显示</h2>
                         </div>
                         <div class="lmn-edit-fields">
 
@@ -82,8 +82,8 @@
                 <div class="lmn-billing-panel" data-panel="log">
                     <div class="lmn-edit-card">
                         <div class="lmn-edit-card-header">
-                            <span class="material-symbols-outlined">history</span>
-                            <span data-i18n="admin.feature.index.tab_log">用户日志</span>
+                            <span class="material-symbols-outlined lmn-edit-card-icon">history</span>
+                            <h2 class="lmn-edit-card-title" data-i18n="admin.feature.index.tab_log">用户日志</h2>
                         </div>
                         <div class="lmn-edit-fields">
 
@@ -100,7 +100,7 @@
                             <div class="lmn-edit-field">
                                 <label class="lmn-edit-label" data-i18n="admin.feature.index.traffic_log_days">流量日志保留天数</label>
                                 <div class="lmn-edit-input">
-                                    <input id="traffic_log_retention_days" type="text" class="lmn-edit-text" value="{$settings['traffic_log_retention_days']}">
+                                    <input id="traffic_log_retention_days" type="text" class="lmn-edit-input" value="{$settings['traffic_log_retention_days']}">
                                 </div>
                             </div>
 
@@ -117,7 +117,7 @@
                             <div class="lmn-edit-field">
                                 <label class="lmn-edit-label" data-i18n="admin.feature.index.subscribe_log_days">订阅日志保留天数</label>
                                 <div class="lmn-edit-input">
-                                    <input id="subscribe_log_retention_days" type="text" class="lmn-edit-text" value="{$settings['subscribe_log_retention_days']}">
+                                    <input id="subscribe_log_retention_days" type="text" class="lmn-edit-input" value="{$settings['subscribe_log_retention_days']}">
                                 </div>
                             </div>
 
@@ -159,8 +159,8 @@
                 <div class="lmn-billing-panel" data-panel="checkin">
                     <div class="lmn-edit-card">
                         <div class="lmn-edit-card-header">
-                            <span class="material-symbols-outlined">how_to_vote</span>
-                            <span data-i18n="admin.feature.index.tab_checkin">签到</span>
+                            <span class="material-symbols-outlined lmn-edit-card-icon">how_to_vote</span>
+                            <h2 class="lmn-edit-card-title" data-i18n="admin.feature.index.tab_checkin">签到</h2>
                         </div>
                         <div class="lmn-edit-fields">
 
@@ -177,14 +177,14 @@
                             <div class="lmn-edit-field">
                                 <label class="lmn-edit-label" data-i18n="admin.feature.index.checkin_min">签到最少流量（MB）</label>
                                 <div class="lmn-edit-input">
-                                    <input id="checkin_min" type="text" class="lmn-edit-text" value="{$settings['checkin_min']}">
+                                    <input id="checkin_min" type="text" class="lmn-edit-input" value="{$settings['checkin_min']}">
                                 </div>
                             </div>
 
                             <div class="lmn-edit-field">
                                 <label class="lmn-edit-label" data-i18n="admin.feature.index.checkin_max">签到最多流量（MB）</label>
                                 <div class="lmn-edit-input">
-                                    <input id="checkin_max" type="text" class="lmn-edit-text" value="{$settings['checkin_max']}">
+                                    <input id="checkin_max" type="text" class="lmn-edit-input" value="{$settings['checkin_max']}">
                                 </div>
                             </div>
 

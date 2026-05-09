@@ -42,22 +42,22 @@
                 <div class="lmn-billing-panel is-active" data-panel="daily_job">
                     <div class="lmn-edit-card">
                         <div class="lmn-edit-card-header">
-                            <span class="material-symbols-outlined">schedule</span>
-                            <span data-i18n="admin.cron.index.tab_daily">每日任务</span>
+                            <span class="material-symbols-outlined lmn-edit-card-icon">schedule</span>
+                            <h2 class="lmn-edit-card-title" data-i18n="admin.cron.index.tab_daily">每日任务</h2>
                         </div>
                         <div class="lmn-edit-fields">
 
                             <div class="lmn-edit-field">
                                 <label class="lmn-edit-label" data-i18n="admin.cron.index.daily_hour">每日任务执行时间（小时）</label>
                                 <div class="lmn-edit-input">
-                                    <input id="daily_job_hour" type="text" class="lmn-edit-text" value="{$settings['daily_job_hour']}">
+                                    <input id="daily_job_hour" type="text" class="lmn-edit-input" value="{$settings['daily_job_hour']}">
                                 </div>
                             </div>
 
                             <div class="lmn-edit-field">
                                 <label class="lmn-edit-label" data-i18n="admin.cron.index.daily_minute">每日任务执行时间（分钟）</label>
                                 <div class="lmn-edit-input">
-                                    <input id="daily_job_minute" type="text" class="lmn-edit-text" value="{$settings['daily_job_minute']}">
+                                    <input id="daily_job_minute" type="text" class="lmn-edit-input" value="{$settings['daily_job_minute']}">
                                 </div>
                             </div>
 
@@ -69,8 +69,8 @@
                 <div class="lmn-billing-panel" data-panel="finance_mail">
                     <div class="lmn-edit-card">
                         <div class="lmn-edit-card-header">
-                            <span class="material-symbols-outlined">bar_chart</span>
-                            <span data-i18n="admin.cron.index.tab_finance">财务报告</span>
+                            <span class="material-symbols-outlined lmn-edit-card-icon">bar_chart</span>
+                            <h2 class="lmn-edit-card-title" data-i18n="admin.cron.index.tab_finance">财务报告</h2>
                         </div>
                         <div class="lmn-edit-fields">
 
@@ -112,8 +112,8 @@
                 <div class="lmn-billing-panel" data-panel="detect">
                     <div class="lmn-edit-card">
                         <div class="lmn-edit-card-header">
-                            <span class="material-symbols-outlined">security</span>
-                            <span data-i18n="admin.cron.index.tab_detect">审计任务</span>
+                            <span class="material-symbols-outlined lmn-edit-card-icon">security</span>
+                            <h2 class="lmn-edit-card-title" data-i18n="admin.cron.index.tab_detect">审计任务</h2>
                         </div>
                         <div class="lmn-edit-fields">
 
@@ -145,8 +145,8 @@
                 <div class="lmn-billing-panel" data-panel="inactive">
                     <div class="lmn-edit-card">
                         <div class="lmn-edit-card-header">
-                            <span class="material-symbols-outlined">person_off</span>
-                            <span data-i18n="admin.cron.index.tab_inactive">闲置账号检测</span>
+                            <span class="material-symbols-outlined lmn-edit-card-icon">person_off</span>
+                            <h2 class="lmn-edit-card-title" data-i18n="admin.cron.index.tab_inactive">闲置账号检测</h2>
                         </div>
                         <div class="lmn-edit-fields">
 
@@ -163,21 +163,21 @@
                             <div class="lmn-edit-field">
                                 <label class="lmn-edit-label" data-i18n="admin.cron.index.inactive_checkin_days">未签到时长（天）</label>
                                 <div class="lmn-edit-input">
-                                    <input id="detect_inactive_user_checkin_days" type="text" class="lmn-edit-text" value="{$settings['detect_inactive_user_checkin_days']}">
+                                    <input id="detect_inactive_user_checkin_days" type="text" class="lmn-edit-input" value="{$settings['detect_inactive_user_checkin_days']}">
                                 </div>
                             </div>
 
                             <div class="lmn-edit-field">
                                 <label class="lmn-edit-label" data-i18n="admin.cron.index.inactive_login_days">未登录时长（天）</label>
                                 <div class="lmn-edit-input">
-                                    <input id="detect_inactive_user_login_days" type="text" class="lmn-edit-text" value="{$settings['detect_inactive_user_login_days']}">
+                                    <input id="detect_inactive_user_login_days" type="text" class="lmn-edit-input" value="{$settings['detect_inactive_user_login_days']}">
                                 </div>
                             </div>
 
                             <div class="lmn-edit-field">
                                 <label class="lmn-edit-label" data-i18n="admin.cron.index.inactive_use_days">未使用时长（天）</label>
                                 <div class="lmn-edit-input">
-                                    <input id="detect_inactive_user_use_days" type="text" class="lmn-edit-text" value="{$settings['detect_inactive_user_use_days']}">
+                                    <input id="detect_inactive_user_use_days" type="text" class="lmn-edit-input" value="{$settings['detect_inactive_user_use_days']}">
                                 </div>
                             </div>
 

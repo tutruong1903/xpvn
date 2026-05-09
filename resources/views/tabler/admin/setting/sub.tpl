@@ -31,8 +31,8 @@
                 <div class="lmn-billing-panel is-active" data-panel="sub">
                     <div class="lmn-edit-card">
                         <div class="lmn-edit-card-header">
-                            <span class="material-symbols-outlined">rss_feed</span>
-                            <span data-i18n="admin.sub.index.tab_sub">订阅</span>
+                            <span class="material-symbols-outlined lmn-edit-card-icon">rss_feed</span>
+                            <h2 class="lmn-edit-card-title" data-i18n="admin.sub.index.tab_sub">订阅</h2>
                         </div>
                         <div class="lmn-edit-fields">
 

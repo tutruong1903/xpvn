@@ -215,4 +215,20 @@ return [
         'status_unused'  => '未使用',
         'status_used'    => '已使用',
     ],
+    'user_order' => [
+        'product_not_found'    => '商品不存在或庫存不足',
+        'coupon_not_found'     => '優惠碼不存在或已過期',
+        'coupon_disabled'      => '優惠碼已被停用',
+        'coupon_not_applicable'=> '優惠碼不適用於此商品',
+        'coupon_use_limit'     => '優惠碼使用次數已達上限',
+        'class_required'       => '您的帳戶等級不足，無法購買此商品',
+        'node_group_required'  => '您所在的使用者群組無法購買此商品',
+        'new_user_required'    => '此商品僅限新使用者購買',
+        'invalid_amount'       => '儲值金額無效',
+        'unknown_type'         => '未知訂單類型',
+    ],
+    'user_coupon' => [
+        'invalid'   => '優惠碼無效',
+        'available' => '優惠碼可用',
+    ],
 ];

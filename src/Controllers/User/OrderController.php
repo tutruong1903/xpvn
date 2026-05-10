@@ -9,6 +9,7 @@ use App\Models\Invoice;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\UserCoupon;
+use App\Services\I18n;
 use App\Utils\Cookie;
 use App\Utils\Tools;
 use Exception;
@@ -71,9 +72,56 @@ final class OrderController extends BaseController
         $product->type_text = $product->type();
         $product->content = json_decode($product->content);
 
+        $user = $this->user;
+        $limit = json_decode($product->limit);
+        $can_buy = true;
+        $eligibility = [];
+
+        if ($limit->class_required !== '') {
+            $required = (int) $limit->class_required;
+            $pass = $user->class >= $required;
+            if (! $pass) {
+                $can_buy = false;
+            }
+            $eligibility[] = [
+                'type'     => 'class',
+                'current'  => $user->class,
+                'required' => $required,
+                'pass'     => $pass,
+            ];
+        }
+
+        if ($limit->node_group_required !== '') {
+            $required = (int) $limit->node_group_required;
+            $pass = $user->node_group === $required;
+            if (! $pass) {
+                $can_buy = false;
+            }
+            $eligibility[] = [
+                'type'     => 'node_group',
+                'current'  => $user->node_group,
+                'required' => $required,
+                'pass'     => $pass,
+            ];
+        }
+
+        if ($limit->new_user_required !== 0) {
+            $order_count = (new Order())->where('user_id', $user->id)->count();
+            $pass = $order_count === 0;
+            if (! $pass) {
+                $can_buy = false;
+            }
+            $eligibility[] = [
+                'type' => 'new_user',
+                'pass' => $pass,
+            ];
+        }
+
         return $response->write(
             $this->view()
                 ->assign('product', $product)
+                ->assign('can_buy', $can_buy)
+                ->assign('eligibility', $eligibility)
                 ->fetch('user/order/create.tpl')
         );
     }
@@ -114,18 +162,20 @@ final class OrderController extends BaseController
 
     public function process(ServerRequest $request, Response $response, array $args): ResponseInterface
     {
+        $locale = $this->getLocale();
         return match ($request->getParam('type')) {
             'product' => $this->product($request, $response, $args),
             'topup' => $this->topup($request, $response, $args),
             default => $response->withJson([
                 'ret' => 0,
-                'msg' => '未知订单类型',
+                'msg' => I18n::trans('user_order.unknown_type', $locale),
             ]),
         };
     }
 
     public function product(ServerRequest $request, Response $response, array $args): ResponseInterface
     {
+        $locale = $this->getLocale();
         $coupon_raw = $this->antiXss->xss_clean($request->getParam('coupon'));
         $product_id = $this->antiXss->xss_clean($request->getParam('product_id'));
 
@@ -134,7 +184,7 @@ final class OrderController extends BaseController
         if ($product === null || $product->stock === 0) {
             return $response->withJson([
                 'ret' => 0,
-                'msg' => '商品不存在或库存不足',
+                'msg' => I18n::trans('user_order.product_not_found', $locale),
             ]);
         }
 
@@ -144,7 +194,7 @@ final class OrderController extends BaseController
         if ($user->is_shadow_banned) {
             return $response->withJson([
                 'ret' => 0,
-                'msg' => '商品不存在或库存不足',
+                'msg' => I18n::trans('user_order.product_not_found', $locale),
             ]);
         }
 
@@ -156,7 +206,7 @@ final class OrderController extends BaseController
             if ($coupon === null || ($coupon->expire_time !== 0 && $coupon->expire_time < time())) {
                 return $response->withJson([
                     'ret' => 0,
-                    'msg' => '优惠码不存在或已过期',
+                    'msg' => I18n::trans('user_order.coupon_not_found', $locale),
                 ]);
             }
 
@@ -165,14 +215,14 @@ final class OrderController extends BaseController
             if ($coupon_limit->disabled) {
                 return $response->withJson([
                     'ret' => 0,
-                    'msg' => '优惠码已被禁用',
+                    'msg' => I18n::trans('user_order.coupon_disabled', $locale),
                 ]);
             }
 
             if ($coupon_limit->product_id !== '' && ! in_array($product_id, explode(',', $coupon_limit->product_id))) {
                 return $response->withJson([
                     'ret' => 0,
-                    'msg' => '优惠码不适用于此商品',
+                    'msg' => I18n::trans('user_order.coupon_not_applicable', $locale),
                 ]);
             }
 
@@ -183,7 +233,7 @@ final class OrderController extends BaseController
                 if ($user_use_count >= $coupon_use_limit) {
                     return $response->withJson([
                         'ret' => 0,
-                        'msg' => '优惠码使用次数已达上限',
+                        'msg' => I18n::trans('user_order.coupon_use_limit', $locale),
                     ]);
                 }
             }
@@ -197,7 +247,7 @@ final class OrderController extends BaseController
             if ($coupon_total_use_limit > 0 && $coupon->use_count >= $coupon_total_use_limit) {
                 return $response->withJson([
                     'ret' => 0,
-                    'msg' => '优惠码使用次数已达上限',
+                    'msg' => I18n::trans('user_order.coupon_use_limit', $locale),
                 ]);
             }
 
@@ -217,7 +267,7 @@ final class OrderController extends BaseController
         if ($product_limit->class_required !== '' && $user->class < (int) $product_limit->class_required) {
             return $response->withJson([
                 'ret' => 0,
-                'msg' => '你的账户等级不足，无法购买此商品',
+                'msg' => I18n::trans('user_order.class_required', $locale),
             ]);
         }
 
@@ -225,7 +275,7 @@ final class OrderController extends BaseController
             && $user->node_group !== (int) $product_limit->node_group_required) {
             return $response->withJson([
                 'ret' => 0,
-                'msg' => '你所在的用户组无法购买此商品',
+                'msg' => I18n::trans('user_order.node_group_required', $locale),
             ]);
         }
 
@@ -234,7 +284,7 @@ final class OrderController extends BaseController
             if ($order_count > 0) {
                 return $response->withJson([
                     'ret' => 0,
-                    'msg' => '此商品仅限新用户购买',
+                    'msg' => I18n::trans('user_order.new_user_required', $locale),
                 ]);
             }
         }
@@ -296,13 +346,14 @@ final class OrderController extends BaseController
 
     public function topup(ServerRequest $request, Response $response, array $args): ResponseInterface
     {
+        $locale = $this->getLocale();
         $amount = $this->antiXss->xss_clean($request->getParam('amount'));
         $amount = is_numeric($amount) ? round((float) $amount, 2) : null;
 
         if ($amount === null || $amount <= 0) {
             return $response->withJson([
                 'ret' => 0,
-                'msg' => '充值金额无效',
+                'msg' => I18n::trans('user_order.invalid_amount', $locale),
             ]);
         }
 

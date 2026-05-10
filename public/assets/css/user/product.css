@@ -173,21 +173,34 @@
     color: #712ae2;
 }
 
-.product-card__icon {
-    width: 3rem;
-    height: 3rem;
-    background: #f3f3f4;
-    border-radius: 0.75rem;
-    display: flex;
+/* ── Eligibility pill badge ───────────────────────────────── */
+.product-card__eligibility {
+    display: inline-flex;
     align-items: center;
-    justify-content: center;
+    gap: 0.25rem;
+    padding: 0.3rem 0.625rem 0.3rem 0.45rem;
+    border-radius: 9999px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
     flex-shrink: 0;
+    white-space: nowrap;
+    align-self: flex-start;
 }
 
-.product-card__icon .material-symbols-outlined {
-    color: #712ae2;
-    font-size: 1.5rem;
+.product-card__eligibility .material-symbols-outlined {
+    font-size: 0.9rem;
     font-variation-settings: 'FILL' 1;
+}
+
+.product-card__eligibility--eligible {
+    background: #dcfce7;
+    color: #15803d;
+}
+
+.product-card__eligibility--ineligible {
+    background: #fee2e2;
+    color: #b91c1c;
 }
 
 /* Pricing */

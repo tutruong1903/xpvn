@@ -214,4 +214,20 @@ return [
         'status_unused'  => 'Chưa sử dụng',
         'status_used'    => 'Đã sử dụng',
     ],
+    'user_order' => [
+        'product_not_found'    => 'Sản phẩm không tồn tại hoặc đã hết hàng',
+        'coupon_not_found'     => 'Mã giảm giá không tồn tại hoặc đã hết hạn',
+        'coupon_disabled'      => 'Mã giảm giá đã bị vô hiệu hóa',
+        'coupon_not_applicable'=> 'Mã giảm giá không áp dụng cho sản phẩm này',
+        'coupon_use_limit'     => 'Mã giảm giá đã đạt giới hạn sử dụng',
+        'class_required'       => 'Cấp độ tài khoản không đủ để mua sản phẩm này',
+        'node_group_required'  => 'Nhóm người dùng của bạn không thể mua sản phẩm này',
+        'new_user_required'    => 'Sản phẩm này chỉ dành cho người dùng mới',
+        'invalid_amount'       => 'Số tiền nạp không hợp lệ',
+        'unknown_type'         => 'Loại đơn hàng không xác định',
+    ],
+    'user_coupon' => [
+        'invalid'   => 'Mã giảm giá không hợp lệ',
+        'available' => 'Mã giảm giá hợp lệ',
+    ],
 ];

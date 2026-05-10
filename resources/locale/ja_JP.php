@@ -214,4 +214,20 @@ return [
         'status_unused'  => '未使用',
         'status_used'    => '使用済み',
     ],
+    'user_order' => [
+        'product_not_found'    => '商品が存在しないか在庫不足です',
+        'coupon_not_found'     => 'クーポンコードが存在しないか期限切れです',
+        'coupon_disabled'      => 'クーポンコードは無効化されています',
+        'coupon_not_applicable'=> 'クーポンコードはこの商品に適用できません',
+        'coupon_use_limit'     => 'クーポンコードの使用回数が上限に達しました',
+        'class_required'       => 'アカウントレベルが不足のため、この商品を購入できません',
+        'node_group_required'  => 'お客様のユーザーグループではこの商品を購入できません',
+        'new_user_required'    => 'この商品は新規ユーザー限定です',
+        'invalid_amount'       => 'チャージ金額が無効です',
+        'unknown_type'         => '不明な注文タイプ',
+    ],
+    'user_coupon' => [
+        'invalid'   => 'クーポンコードは無効です',
+        'available' => 'クーポンコードは有効です',
+    ],
 ];

@@ -215,5 +215,21 @@ return [
         'status_unused'  => 'Unused',
         'status_used'    => 'Used',
     ],
+    'user_order' => [
+        'product_not_found'    => 'Product does not exist or is out of stock',
+        'coupon_not_found'     => 'Coupon does not exist or has expired',
+        'coupon_disabled'      => 'Coupon has been disabled',
+        'coupon_not_applicable'=> 'Coupon is not applicable to this product',
+        'coupon_use_limit'     => 'Coupon usage limit has been reached',
+        'class_required'       => 'Your account level is insufficient to purchase this product',
+        'node_group_required'  => 'Your user group cannot purchase this product',
+        'new_user_required'    => 'This product is only available for new users',
+        'invalid_amount'       => 'Top-up amount is invalid',
+        'unknown_type'         => 'Unknown order type',
+    ],
+    'user_coupon' => [
+        'invalid'   => 'Coupon code is invalid',
+        'available' => 'Coupon code is valid',
+    ],
 ];
 

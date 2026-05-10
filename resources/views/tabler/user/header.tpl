@@ -26,6 +26,7 @@
     <link href="/assets/css/user/invite.css{asset_ver path="/assets/css/user/invite.css"}" rel="stylesheet"/>
     
     <link href="/assets/css/user/product.css{asset_ver path="/assets/css/user/product.css"}" rel="stylesheet"/>
+    <link href="/assets/css/user/order.css{asset_ver path="/assets/css/user/order.css"}" rel="stylesheet"/>
     
     <!-- JS files -->
     <script src="/assets/js/fuck.min.js"></script>
@@ -80,6 +81,13 @@
     <script src="/assets/js/locales/user/product/zh_CN.js{asset_ver path="/assets/js/locales/user/product/zh_CN.js"}"></script>
     <script src="/assets/js/locales/user/product/zh_TW.js{asset_ver path="/assets/js/locales/user/product/zh_TW.js"}"></script>
     <script src="/assets/js/locales/user/product/ja_JP.js{asset_ver path="/assets/js/locales/user/product/ja_JP.js"}"></script>
+    
+    <!-- i18n - Order component locales -->
+    <script src="/assets/js/locales/user/order/en_US.js{asset_ver path="/assets/js/locales/user/order/en_US.js"}"></script>
+    <script src="/assets/js/locales/user/order/vn_VN.js{asset_ver path="/assets/js/locales/user/order/vn_VN.js"}"></script>
+    <script src="/assets/js/locales/user/order/zh_CN.js{asset_ver path="/assets/js/locales/user/order/zh_CN.js"}"></script>
+    <script src="/assets/js/locales/user/order/zh_TW.js{asset_ver path="/assets/js/locales/user/order/zh_TW.js"}"></script>
+    <script src="/assets/js/locales/user/order/ja_JP.js{asset_ver path="/assets/js/locales/user/order/ja_JP.js"}"></script>
     
     <!-- i18n - Footer dialog locales (shared across all user pages) -->
     <script src="/assets/js/locales/user/footer/en_US.js{asset_ver path="/assets/js/locales/user/footer/en_US.js"}"></script>

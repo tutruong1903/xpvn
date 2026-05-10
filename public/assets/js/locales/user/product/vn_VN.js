@@ -13,7 +13,13 @@ window.i18nLocales.user.product.vn_VN = {
     tab_time: "Thời gian",
 
     // Product card labels
-    label_service_class: "Hạng dịch vụ",
+    label_service_class: "Cấp được cấp",
+
+    // Level names
+    level_basic: "Basic",
+    level_standard: "Standard",
+    level_premium: "Premium",
+    level_vip: "VIP",
     label_duration: "Thời hạn sử dụng",
     label_bandwidth: "Dung lượng",
     label_speed: "Tốc độ tối đa",
@@ -35,8 +41,12 @@ window.i18nLocales.user.product.vn_VN = {
     price_cycle: "Thanh toán theo chu kỳ hàng tháng",
 
     // Buttons
-    btn_buy: "Mua ngay",
+    btn_buy: "Xem chi tiết",
     btn_sold_out: "Hết hàng",
+
+    // Folded corner eligibility
+    corner_eligible: "Đủ điều kiện",
+    corner_ineligible: "Không đủ điều kiện",
 
     // Empty state
     empty_title: "Không có sản phẩm",

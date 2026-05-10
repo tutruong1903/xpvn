@@ -188,6 +188,19 @@
             productDict,
         );
 
+        // User order section
+        var orderDict = getUserSectionDict(locale, "order");
+        applyAttributeFromDict(
+            "[data-i18n-user-order]",
+            "data-i18n-user-order",
+            orderDict,
+        );
+        document.querySelectorAll("[data-i18n-user-order-ph]").forEach(function (el) {
+            var key = el.getAttribute("data-i18n-user-order-ph");
+            var val = resolveKey(orderDict, key);
+            if (val) el.setAttribute("placeholder", val);
+        });
+
         // User ticket section
         var ticketDict = getUserSectionDict(locale, "ticket");
         applyAttributeFromDict(

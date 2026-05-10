@@ -215,4 +215,20 @@ return [
         'status_unused'  => '未使用',
         'status_used'    => '已使用',
     ],
+    'user_order' => [
+        'product_not_found'    => '商品不存在或库存不足',
+        'coupon_not_found'     => '优惠码不存在或已过期',
+        'coupon_disabled'      => '优惠码已被禁用',
+        'coupon_not_applicable'=> '优惠码不适用于此商品',
+        'coupon_use_limit'     => '优惠码使用次数已达上限',
+        'class_required'       => '你的账户等级不足，无法购买此商品',
+        'node_group_required'  => '你所在的用户组无法购买此商品',
+        'new_user_required'    => '此商品仅限新用户购买',
+        'invalid_amount'       => '充值金额无效',
+        'unknown_type'         => '未知订单类型',
+    ],
+    'user_coupon' => [
+        'invalid'   => '优惠码无效',
+        'available' => '优惠码可用',
+    ],
 ];

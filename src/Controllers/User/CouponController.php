@@ -8,6 +8,7 @@ use App\Controllers\BaseController;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\UserCoupon;
+use App\Services\I18n;
 use Psr\Http\Message\ResponseInterface;
 use Slim\Http\Response;
 use Slim\Http\ServerRequest;
@@ -22,12 +23,13 @@ final class CouponController extends BaseController
     {
         $coupon_raw = $this->antiXss->xss_clean($request->getParam('coupon'));
         $product_id = $this->antiXss->xss_clean($request->getParam('product_id'));
-        $invalid_coupon_msg = '优惠码无效';
+        $locale     = $this->getLocale();
+        $invalid    = I18n::trans('user_coupon.invalid', $locale);
 
         if ($coupon_raw === '') {
             return $response->withJson([
                 'ret' => 0,
-                'msg' => $invalid_coupon_msg,
+                'msg' => $invalid,
             ]);
         }
 
@@ -36,7 +38,7 @@ final class CouponController extends BaseController
         if ($coupon === null || ($coupon->expire_time !== 0 && $coupon->expire_time < time())) {
             return $response->withJson([
                 'ret' => 0,
-                'msg' => $invalid_coupon_msg,
+                'msg' => $invalid,
             ]);
         }
 
@@ -45,7 +47,7 @@ final class CouponController extends BaseController
         if ($product === null) {
             return $response->withJson([
                 'ret' => 0,
-                'msg' => $invalid_coupon_msg,
+                'msg' => $invalid,
             ]);
         }
 
@@ -54,14 +56,14 @@ final class CouponController extends BaseController
         if ($limit->disabled) {
             return $response->withJson([
                 'ret' => 0,
-                'msg' => $invalid_coupon_msg,
+                'msg' => $invalid,
             ]);
         }
 
         if ($limit->product_id !== '' && ! in_array($product_id, explode(',', $limit->product_id))) {
             return $response->withJson([
                 'ret' => 0,
-                'msg' => $invalid_coupon_msg,
+                'msg' => $invalid,
             ]);
         }
 
@@ -73,7 +75,7 @@ final class CouponController extends BaseController
             if ($user_use_count >= $use_limit) {
                 return $response->withJson([
                     'ret' => 0,
-                    'msg' => $invalid_coupon_msg,
+                    'msg' => $invalid,
                 ]);
             }
         }
@@ -83,7 +85,7 @@ final class CouponController extends BaseController
         if ($total_use_limit > 0 && $coupon->use_count >= $total_use_limit) {
             return $response->withJson([
                 'ret' => 0,
-                'msg' => $invalid_coupon_msg,
+                'msg' => $invalid,
             ]);
         }
 
@@ -99,7 +101,7 @@ final class CouponController extends BaseController
 
         return $response->withJson([
             'ret' => 1,
-            'msg' => '优惠码可用',
+            'msg' => I18n::trans('user_coupon.available', $locale),
             'data' => [
                 'coupon-code' => $coupon->code,
                 'product-buy-discount' => $discount,

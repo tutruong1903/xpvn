@@ -13,7 +13,13 @@ window.i18nLocales.user.product.en_US = {
     tab_time: "Time",
 
     // Product card labels
-    label_service_class: "Service Level",
+    label_service_class: "Granted Level",
+
+    // Level names
+    level_basic: "Basic",
+    level_standard: "Standard",
+    level_premium: "Premium",
+    level_vip: "VIP",
     label_duration: "Validity Period",
     label_bandwidth: "Data Cap",
     label_speed: "Max Speed",
@@ -35,8 +41,12 @@ window.i18nLocales.user.product.en_US = {
     price_cycle: "Billed monthly",
 
     // Buttons
-    btn_buy: "Buy Now",
+    btn_buy: "View Details",
     btn_sold_out: "Sold Out",
+
+    // Folded corner eligibility
+    corner_eligible: "Eligible",
+    corner_ineligible: "Ineligible",
 
     // Empty state
     empty_title: "No products available",

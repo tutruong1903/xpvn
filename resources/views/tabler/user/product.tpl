@@ -45,9 +45,10 @@
                                                     <p class="product-card__name">{$tabp->name}</p>
                                                     <span class="product-card__badge" data-i18n-user-product="badge_time_traffic">Thời gian + Lưu lượng</span>
                                                 </div>
-                                                <div class="product-card__icon">
-                                                    <span class="material-symbols-outlined">bolt</span>
-                                                </div>
+                                                <span class="product-card__eligibility {if $tabp->can_buy}product-card__eligibility--eligible{else}product-card__eligibility--ineligible{/if}" data-i18n-user-product="{if $tabp->can_buy}corner_eligible{else}corner_ineligible{/if}">
+                                                    <span class="material-symbols-outlined">{if $tabp->can_buy}check_circle{else}cancel{/if}</span>
+                                                    {if $tabp->can_buy}Có thể mua{else}Không thể mua{/if}
+                                                </span>
                                             </div>
 
                                             <!-- Price -->
@@ -66,7 +67,17 @@
                                                         <span class="material-symbols-outlined">military_tech</span>
                                                         <span class="product-card__feature-label" data-i18n-user-product="label_service_class">Hạng dịch vụ</span>
                                                     </div>
-                                                    <span class="product-card__feature-value">Lv. {$tabp->content->class}</span>
+                                                    <span class="product-card__feature-value">
+                                                        {if $tabp->content->class == 0}
+                                                            <span data-i18n-user-product="level_basic">Basic</span>
+                                                        {elseif $tabp->content->class == 1}
+                                                            <span data-i18n-user-product="level_standard">Standard</span>
+                                                        {elseif $tabp->content->class == 2}
+                                                            <span data-i18n-user-product="level_premium">Premium</span>
+                                                        {else}
+                                                            <span data-i18n-user-product="level_vip">VIP</span>
+                                                        {/if}
+                                                    </span>
                                                 </li>
                                                 <li class="product-card__feature">
                                                     <div class="product-card__feature-left">
@@ -118,7 +129,7 @@
                                             {if $tabp->stock === -1 || $tabp->stock > 0}
                                                 <a href="/user/order/create?product_id={$tabp->id}"
                                                    class="product-card__btn"
-                                                   data-i18n-user-product="btn_buy">Mua ngay</a>
+                                                   data-i18n-user-product="btn_buy">Xem chi tiết</a>
                                             {else}
                                                 <span class="product-card__btn product-card__btn--disabled"
                                                       data-i18n-user-product="btn_sold_out">Hết hàng</span>
@@ -151,9 +162,10 @@
                                                     <p class="product-card__name">{$bandwidth->name}</p>
                                                     <span class="product-card__badge" data-i18n-user-product="badge_traffic">Lưu lượng</span>
                                                 </div>
-                                                <div class="product-card__icon">
-                                                    <span class="material-symbols-outlined">data_usage</span>
-                                                </div>
+                                                <span class="product-card__eligibility {if $bandwidth->can_buy}product-card__eligibility--eligible{else}product-card__eligibility--ineligible{/if}" data-i18n-user-product="{if $bandwidth->can_buy}corner_eligible{else}corner_ineligible{/if}">
+                                                    <span class="material-symbols-outlined">{if $bandwidth->can_buy}check_circle{else}cancel{/if}</span>
+                                                    {if $bandwidth->can_buy}Có thể mua{else}Không thể mua{/if}
+                                                </span>
                                             </div>
 
                                             <div class="product-card__price-block">
@@ -179,7 +191,7 @@
                                             {if $bandwidth->stock === -1 || $bandwidth->stock > 0}
                                                 <a href="/user/order/create?product_id={$bandwidth->id}"
                                                    class="product-card__btn"
-                                                   data-i18n-user-product="btn_buy">Mua ngay</a>
+                                                   data-i18n-user-product="btn_buy">Xem chi tiết</a>
                                             {else}
                                                 <span class="product-card__btn product-card__btn--disabled"
                                                       data-i18n-user-product="btn_sold_out">Hết hàng</span>
@@ -212,9 +224,10 @@
                                                     <p class="product-card__name">{$time->name}</p>
                                                     <span class="product-card__badge" data-i18n-user-product="badge_time">Thời gian</span>
                                                 </div>
-                                                <div class="product-card__icon">
-                                                    <span class="material-symbols-outlined">schedule</span>
-                                                </div>
+                                                <span class="product-card__eligibility {if $time->can_buy}product-card__eligibility--eligible{else}product-card__eligibility--ineligible{/if}" data-i18n-user-product="{if $time->can_buy}corner_eligible{else}corner_ineligible{/if}">
+                                                    <span class="material-symbols-outlined">{if $time->can_buy}check_circle{else}cancel{/if}</span>
+                                                    {if $time->can_buy}Có thể mua{else}Không thể mua{/if}
+                                                </span>
                                             </div>
 
                                             <div class="product-card__price-block">
@@ -231,7 +244,17 @@
                                                         <span class="material-symbols-outlined">military_tech</span>
                                                         <span class="product-card__feature-label" data-i18n-user-product="label_service_class">Hạng dịch vụ</span>
                                                     </div>
-                                                    <span class="product-card__feature-value">Lv. {$time->content->class}</span>
+                                                    <span class="product-card__feature-value">
+                                                        {if $time->content->class == 0}
+                                                            <span data-i18n-user-product="level_basic">Basic</span>
+                                                        {elseif $time->content->class == 1}
+                                                            <span data-i18n-user-product="level_standard">Standard</span>
+                                                        {elseif $time->content->class == 2}
+                                                            <span data-i18n-user-product="level_premium">Premium</span>
+                                                        {else}
+                                                            <span data-i18n-user-product="level_vip">VIP</span>
+                                                        {/if}
+                                                    </span>
                                                 </li>
                                                 <li class="product-card__feature">
                                                     <div class="product-card__feature-left">
@@ -273,7 +296,7 @@
                                             {if $time->stock === -1 || $time->stock > 0}
                                                 <a href="/user/order/create?product_id={$time->id}"
                                                    class="product-card__btn"
-                                                   data-i18n-user-product="btn_buy">Mua ngay</a>
+                                                   data-i18n-user-product="btn_buy">Xem chi tiết</a>
                                             {else}
                                                 <span class="product-card__btn product-card__btn--disabled"
                                                       data-i18n-user-product="btn_sold_out">Hết hàng</span>

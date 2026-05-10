@@ -13,7 +13,13 @@ window.i18nLocales.user.product.zh_CN = {
     tab_time: "时间包",
 
     // Product card labels
-    label_service_class: "服务等级",
+    label_service_class: "授予等级",
+
+    // Level names
+    level_basic: "Basic",
+    level_standard: "Standard",
+    level_premium: "Premium",
+    level_vip: "VIP",
     label_duration: "有效时长",
     label_bandwidth: "可用流量",
     label_speed: "最大速度",
@@ -35,8 +41,12 @@ window.i18nLocales.user.product.zh_CN = {
     price_cycle: "按月计费",
 
     // Buttons
-    btn_buy: "立即购买",
+    btn_buy: "查看详情",
     btn_sold_out: "已售罄",
+
+    // Folded corner eligibility
+    corner_eligible: "可购买",
+    corner_ineligible: "不可购",
 
     // Empty state
     empty_title: "暂无商品",

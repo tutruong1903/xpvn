@@ -13,7 +13,13 @@ window.i18nLocales.user.product.ja_JP = {
     tab_time: "時間",
 
     // Product card labels
-    label_service_class: "サービスレベル",
+    label_service_class: "付与レベル",
+
+    // Level names
+    level_basic: "Basic",
+    level_standard: "Standard",
+    level_premium: "Premium",
+    level_vip: "VIP",
     label_duration: "有効期間",
     label_bandwidth: "データ容量",
     label_speed: "最大速度",
@@ -35,8 +41,12 @@ window.i18nLocales.user.product.ja_JP = {
     price_cycle: "月次請求",
 
     // Buttons
-    btn_buy: "今すぐ購入",
+    btn_buy: "詳細を見る",
     btn_sold_out: "売り切れ",
+
+    // Folded corner eligibility
+    corner_eligible: "購入可",
+    corner_ineligible: "購入不可",
 
     // Empty state
     empty_title: "商品がありません",

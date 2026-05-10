@@ -12,6 +12,27 @@ window.i18nLocales.user.invoice.ja_JP = {
     index_stat_paid:          "支払い済み",
     index_stat_total_paid:    "累計支払額 ($)",
 
+    // 請求書詳細ページ
+    view_title:              "請求書詳細",
+    view_btn_order:          "注文を見る",
+    section_basic_info:      "基本情報",
+    section_invoice_details: "請求明細",
+    section_payment:         "支払い",
+    tab_balance_pay:         "残高払い",
+    tab_gateway_pay:         "ゲートウェイ払い",
+    label_order_id:          "注文ID",
+    label_invoice_amount:    "請求金額",
+    label_invoice_status:    "請求ステータス",
+    label_create_time:       "作成日時",
+    label_update_time:       "更新日時",
+    label_pay_time:          "支払日時",
+    label_gateway_tradeno:   "ゲートウェイ取引番号",
+    label_item_name:         "名称",
+    label_item_price:        "価格",
+    label_balance_available: "利用可能残高",
+    btn_pay:                 "今すぐ支払う",
+    no_payment_method:       "利用可能な支払い方法がありません",
+
     // 列ヘッダー
     fields: {
         op:          "操作",

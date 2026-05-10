@@ -234,4 +234,11 @@ return [
         'invalid'   => '优惠码无效',
         'available' => '优惠码可用',
     ],
+    'user_invoice' => [
+        'not_found'             => '账单不存在',
+        'pay_failed'            => '支付失败，请稍后再试',
+        'topup_not_supported'   => '该账单不支持使用余额支付',
+        'insufficient_balance'  => '余额不足',
+        'partial_payment_log'   => '余额部分支付账单 #',
+    ],
 ];

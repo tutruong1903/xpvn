@@ -225,6 +225,13 @@
 
     // User invoice section
     var invoiceDict = getUserSectionDict(locale, "invoice");
+    // Attribute-based: data-i18n-user-invoice="key" — used by invoice view page
+    applyAttributeFromDict(
+      "[data-i18n-user-invoice]",
+      "data-i18n-user-invoice",
+      invoiceDict,
+    );
+    // Dot-notation: data-i18n="user.invoice.*" — used by invoice index page
     var _userInvoiceDict = flattenAdminSection(
       flattenNestedSection(invoiceDict),
       "user.invoice.",

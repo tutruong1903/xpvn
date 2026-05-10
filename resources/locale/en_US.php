@@ -234,5 +234,12 @@ return [
         'invalid'   => 'Coupon code is invalid',
         'available' => 'Coupon code is valid',
     ],
+    'user_invoice' => [
+        'not_found'             => 'Invoice not found',
+        'pay_failed'            => 'Payment failed, please try again later',
+        'topup_not_supported'   => 'This invoice does not support balance payment',
+        'insufficient_balance'  => 'Insufficient balance',
+        'partial_payment_log'   => 'Partial payment via balance for invoice #',
+    ],
 ];
 

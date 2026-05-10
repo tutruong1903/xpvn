@@ -8,6 +8,7 @@ use App\Controllers\BaseController;
 use App\Models\Invoice;
 use App\Models\Paylist;
 use App\Models\UserMoneyLog;
+use App\Services\I18n;
 use App\Services\Payment;
 use App\Utils\Tools;
 use Exception;
@@ -82,6 +83,7 @@ final class InvoiceController extends BaseController
 
     public function payBalance(ServerRequest $request, Response $response, array $args): ResponseInterface
     {
+        $locale     = $this->getLocale();
         $invoice_id = $this->antiXss->xss_clean($request->getParam('invoice_id'));
 
         $invoice = (new Invoice())->where('user_id', $this->user->id)->where('id', $invoice_id)->first();
@@ -89,7 +91,7 @@ final class InvoiceController extends BaseController
         if ($invoice === null) {
             return $response->withJson([
                 'ret' => 0,
-                'msg' => '账单不存在',
+                'msg' => I18n::trans('user_invoice.not_found', $locale),
             ]);
         }
 
@@ -98,19 +100,17 @@ final class InvoiceController extends BaseController
         if ($user->is_shadow_banned) {
             return $response->withJson([
                 'ret' => 0,
-                'msg' => '支付失败，请稍后再试',
+                'msg' => I18n::trans('user_invoice.pay_failed', $locale),
             ]);
         }
 
-        // 账单是否为充值
         if ($invoice->type === 'topup') {
             return $response->withJson([
                 'ret' => 0,
-                'msg' => '该账单不支持使用余额支付',
+                'msg' => I18n::trans('user_invoice.topup_not_supported', $locale),
             ]);
         }
 
-        // 组合支付
         if ($user->money > 0) {
             $money_before = $user->money;
 
@@ -124,7 +124,7 @@ final class InvoiceController extends BaseController
                 $invoice_content = json_decode($invoice->content);
                 $invoice_content[] = [
                     'content_id' => count($invoice_content),
-                    'name' => '余额部分支付',
+                    'name' => I18n::trans('user_invoice.partial_payment_log', $locale) . $invoice->id,
                     'price' => '-' . $paid,
                 ];
                 $invoice->content = json_encode($invoice_content);
@@ -138,7 +138,7 @@ final class InvoiceController extends BaseController
                 $money_before,
                 (float) $user->money,
                 -$paid,
-                '支付账单 #' . $invoice->id
+                I18n::trans('user_invoice.partial_payment_log', $locale) . $invoice->id
             );
 
             $invoice->update_time = time();
@@ -147,7 +147,7 @@ final class InvoiceController extends BaseController
         } else {
             return $response->withJson([
                 'ret' => 0,
-                'msg' => '余额不足',
+                'msg' => I18n::trans('user_invoice.insufficient_balance', $locale),
             ]);
         }
 

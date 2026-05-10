@@ -234,4 +234,11 @@ return [
         'invalid'   => '優惠碼無效',
         'available' => '優惠碼可用',
     ],
+    'user_invoice' => [
+        'not_found'             => '帳單不存在',
+        'pay_failed'            => '支付失敗，請稍後再試',
+        'topup_not_supported'   => '此帳單不支援使用餘額支付',
+        'insufficient_balance'  => '餘額不足',
+        'partial_payment_log'   => '餘額部分支付帳單 #',
+    ],
 ];

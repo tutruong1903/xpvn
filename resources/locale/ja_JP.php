@@ -233,4 +233,11 @@ return [
         'invalid'   => 'クーポンコードは無効です',
         'available' => 'クーポンコードは有効です',
     ],
+    'user_invoice' => [
+        'not_found'             => '請求書が見つかりません',
+        'pay_failed'            => '支払いに失敗しました。しばらくしてから再試行してください',
+        'topup_not_supported'   => 'この請求書は残高払いに対応していません',
+        'insufficient_balance'  => '残高不足',
+        'partial_payment_log'   => '残高による一部支払い — 請求書 #',
+    ],
 ];

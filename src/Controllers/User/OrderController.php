@@ -361,7 +361,7 @@ final class OrderController extends BaseController
         $order->user_id = $this->user->id;
         $order->product_id = 0;
         $order->product_type = 'topup';
-        $order->product_name = '余额充值';
+        $order->product_name = 'topup';
         $order->product_content = json_encode(['amount' => $amount]);
         $order->coupon = '';
         $order->price = $amount;
@@ -373,7 +373,7 @@ final class OrderController extends BaseController
         $invoice_content = [];
         $invoice_content[] = [
             'content_id' => 0,
-            'name' => '余额充值',
+            'name' => 'topup',
             'price' => $amount,
         ];
 

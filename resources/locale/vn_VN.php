@@ -233,4 +233,11 @@ return [
         'invalid'   => 'Mã giảm giá không hợp lệ',
         'available' => 'Mã giảm giá hợp lệ',
     ],
+    'user_invoice' => [
+        'not_found'             => 'Hóa đơn không tồn tại',
+        'pay_failed'            => 'Thanh toán thất bại, vui lòng thử lại sau',
+        'topup_not_supported'   => 'Hóa đơn này không hỗ trợ thanh toán bằng số dư',
+        'insufficient_balance'  => 'Số dư không đủ',
+        'partial_payment_log'   => 'Thanh toán một phần bằng số dư cho hóa đơn #',
+    ],
 ];

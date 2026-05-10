@@ -3,6 +3,34 @@ window.i18nLocales.user = window.i18nLocales.user || {};
 window.i18nLocales.user.order = window.i18nLocales.user.order || {};
 
 window.i18nLocales.user.order.zh_CN = {
+    // 订单列表页
+    index_title:              "订单列表",
+    index_subtitle:           "查看并管理账户中的订单。",
+    index_search_placeholder: "快速搜索 ID、商品或状态...",
+
+    // 列标题
+    fields: {
+        op:           "操作",
+        id:           "订单ID",
+        product_id:   "商品ID",
+        product_type: "商品类型",
+        product_name: "商品名称",
+        coupon:       "优惠码",
+        price:        "金额",
+        status:       "状态",
+        create_time:  "创建时间",
+        update_time:  "更新时间",
+    },
+
+    // Order index
+    index_title: "订单列表",
+    index_subtitle: "查看并管理账户中的订单",
+    index_search_placeholder: "快速搜索 ID、商品或状态...",
+    index_stat_total: "总订单数",
+    index_stat_pending: "待付款",
+    index_stat_activated: "已激活",
+    index_stat_spent: "累计消费 ($)",
+
     // Page header
     page_title: "创建订单",
     breadcrumb_orders: "订单",

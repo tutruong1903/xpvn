@@ -3,6 +3,34 @@ window.i18nLocales.user = window.i18nLocales.user || {};
 window.i18nLocales.user.order = window.i18nLocales.user.order || {};
 
 window.i18nLocales.user.order.vn_VN = {
+    // Trang danh sách đơn hàng
+    index_title:              "Danh sách đơn hàng",
+    index_subtitle:           "Xem và quản lý các đơn hàng trong tài khoản của bạn.",
+    index_search_placeholder: "Tìm kiếm nhanh ID, sản phẩm hoặc trạng thái...",
+
+    // Nhãn cột bảng
+    fields: {
+        op:           "Thao tác",
+        id:           "Mã đơn",
+        product_id:   "Mã sản phẩm",
+        product_type: "Loại sản phẩm",
+        product_name: "Tên sản phẩm",
+        coupon:       "Mã giảm giá",
+        price:        "Số tiền",
+        status:       "Trạng thái",
+        create_time:  "Thời gian tạo",
+        update_time:  "Cập nhật lúc",
+    },
+
+    // Order index
+    index_title: "Danh sách đơn hàng",
+    index_subtitle: "Xem và quản lý các đơn hàng trong tài khoản",
+    index_search_placeholder: "Tìm theo ID, sản phẩm hoặc trạng thái...",
+    index_stat_total: "Tổng đơn hàng",
+    index_stat_pending: "Chờ thanh toán",
+    index_stat_activated: "Đã kích hoạt",
+    index_stat_spent: "Tổng chi tiêu ($)",
+
     // Page header
     page_title: "Tạo Đơn Hàng",
     breadcrumb_orders: "Đơn hàng",

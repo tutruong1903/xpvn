@@ -3,6 +3,34 @@ window.i18nLocales.user = window.i18nLocales.user || {};
 window.i18nLocales.user.order = window.i18nLocales.user.order || {};
 
 window.i18nLocales.user.order.zh_TW = {
+    // 訂單列表頁
+    index_title:              "訂單列表",
+    index_subtitle:           "查看並管理帳戶中的訂單。",
+    index_search_placeholder: "快速搜尋 ID、商品或狀態...",
+
+    // 列標題
+    fields: {
+        op:           "操作",
+        id:           "訂單ID",
+        product_id:   "商品ID",
+        product_type: "商品類型",
+        product_name: "商品名稱",
+        coupon:       "優惠碼",
+        price:        "金額",
+        status:       "狀態",
+        create_time:  "建立時間",
+        update_time:  "更新時間",
+    },
+
+    // Order index
+    index_title: "訂單列表",
+    index_subtitle: "查看並管理帳戶中的訂單",
+    index_search_placeholder: "快速搜尋 ID、商品或狀態...",
+    index_stat_total: "總訂單數",
+    index_stat_pending: "待付款",
+    index_stat_activated: "已啟用",
+    index_stat_spent: "累計消費 ($)",
+
     // Page header
     page_title: "建立訂單",
     breadcrumb_orders: "訂單",

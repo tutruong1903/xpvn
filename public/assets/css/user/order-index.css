@@ -1,0 +1,8 @@
+/* ================================================================
+   LUMINOUS GUARDIAN — User Order Index page styles
+   Specific to: resources/views/tabler/user/order/index.tpl
+   All lmn-* base classes are shared via admin/user-index.css.
+   ================================================================ */
+
+/* Re-use all shared lmn-* component styles */
+@import url('../admin/user-index.css');

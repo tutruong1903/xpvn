@@ -89,6 +89,13 @@
     <script src="/assets/js/locales/user/order/zh_TW.js{asset_ver path="/assets/js/locales/user/order/zh_TW.js"}"></script>
     <script src="/assets/js/locales/user/order/ja_JP.js{asset_ver path="/assets/js/locales/user/order/ja_JP.js"}"></script>
     
+    <!-- i18n - DataTable locales (shared across all user pages with datatable) -->
+    <script src="/assets/js/locales/user/datatable/en_US.js{asset_ver path="/assets/js/locales/user/datatable/en_US.js"}"></script>
+    <script src="/assets/js/locales/user/datatable/vn_VN.js{asset_ver path="/assets/js/locales/user/datatable/vn_VN.js"}"></script>
+    <script src="/assets/js/locales/user/datatable/zh_CN.js{asset_ver path="/assets/js/locales/user/datatable/zh_CN.js"}"></script>
+    <script src="/assets/js/locales/user/datatable/zh_TW.js{asset_ver path="/assets/js/locales/user/datatable/zh_TW.js"}"></script>
+    <script src="/assets/js/locales/user/datatable/ja_JP.js{asset_ver path="/assets/js/locales/user/datatable/ja_JP.js"}"></script>
+    
     <!-- i18n - Footer dialog locales (shared across all user pages) -->
     <script src="/assets/js/locales/user/footer/en_US.js{asset_ver path="/assets/js/locales/user/footer/en_US.js"}"></script>
     <script src="/assets/js/locales/user/footer/vn_VN.js{asset_ver path="/assets/js/locales/user/footer/vn_VN.js"}"></script>

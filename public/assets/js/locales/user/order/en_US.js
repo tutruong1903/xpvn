@@ -3,6 +3,34 @@ window.i18nLocales.user = window.i18nLocales.user || {};
 window.i18nLocales.user.order = window.i18nLocales.user.order || {};
 
 window.i18nLocales.user.order.en_US = {
+    // Order list page
+    index_title:              "Order List",
+    index_subtitle:           "View and manage orders in your account.",
+    index_search_placeholder: "Quick search ID, product or status...",
+
+    // Table column headers
+    fields: {
+        op:           "Actions",
+        id:           "Order ID",
+        product_id:   "Product ID",
+        product_type: "Product Type",
+        product_name: "Product Name",
+        coupon:       "Coupon",
+        price:        "Amount",
+        status:       "Status",
+        create_time:  "Created At",
+        update_time:  "Updated At",
+    },
+
+    // Order index
+    index_title: "Order List",
+    index_subtitle: "View and manage orders in your account",
+    index_search_placeholder: "Search by ID, product or status...",
+    index_stat_total: "Total Orders",
+    index_stat_pending: "Pending Payment",
+    index_stat_activated: "Activated",
+    index_stat_spent: "Total Spent ($)",
+
     // Page header
     page_title: "Create Order",
     breadcrumb_orders: "Orders",

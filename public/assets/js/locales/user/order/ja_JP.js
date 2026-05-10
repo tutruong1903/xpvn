@@ -3,6 +3,34 @@ window.i18nLocales.user = window.i18nLocales.user || {};
 window.i18nLocales.user.order = window.i18nLocales.user.order || {};
 
 window.i18nLocales.user.order.ja_JP = {
+    // 注文一覧ページ
+    index_title:              "注文一覧",
+    index_subtitle:           "アカウント内の注文を確認・管理します。",
+    index_search_placeholder: "ID、商品またはステータスで検索...",
+
+    // 列ヘッダー
+    fields: {
+        op:           "操作",
+        id:           "注文ID",
+        product_id:   "商品ID",
+        product_type: "商品タイプ",
+        product_name: "商品名",
+        coupon:       "クーポン",
+        price:        "金額",
+        status:       "ステータス",
+        create_time:  "作成日時",
+        update_time:  "更新日時",
+    },
+
+    // Order index
+    index_title: "注文一覧",
+    index_subtitle: "アカウントの注文を確認・管理する",
+    index_search_placeholder: "ID、商品、ステータスで検索...",
+    index_stat_total: "総注文数",
+    index_stat_pending: "支払い待ち",
+    index_stat_activated: "有効化済み",
+    index_stat_spent: "累計支出 ($)",
+
     // Page header
     page_title: "注文を作成",
     breadcrumb_orders: "注文",

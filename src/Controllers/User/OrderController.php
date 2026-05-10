@@ -396,23 +396,57 @@ final class OrderController extends BaseController
     {
         $orders = (new Order())->orderBy('id', 'desc')->where('user_id', $this->user->id)->get();
 
+        $total              = $orders->count();
+        $pending_payment    = $orders->where('status', 'pending_payment')->count();
+        $activated          = $orders->where('status', 'activated')->count();
+        $total_spent        = $orders->where('status', 'activated')->sum('price');
+
         foreach ($orders as $order) {
-            $order->op = '<a class="btn btn-primary" href="/user/order/' . $order->id . '/view">查看</a>';
+            $order->op = '<div class="lmn-act-wrap">';
 
             if ($order->status === 'pending_payment') {
                 $invoice_id = (new Invoice())->where('order_id', $order->id)->first()->id;
-                $order->op .= '
-                <a class="btn btn-red" href="/user/invoice/' . $invoice_id . '/view">支付</a>';
+                $order->op .=
+                    '<a class="lmn-act-btn lmn-act-btn--warn" href="/user/invoice/' . $invoice_id . '/view" title="Pay">' .
+                        '<span class="material-symbols-outlined">payment</span>' .
+                    '</a>';
             }
 
-            $order->product_type = $order->productType();
-            $order->status = $order->status();
+            $order->op .=
+                    '<a class="lmn-act-btn lmn-act-btn--edit" href="/user/order/' . $order->id . '/view" title="View">' .
+                        '<span class="material-symbols-outlined">visibility</span>' .
+                    '</a>' .
+                '</div>';
+
+            $statusText = $order->status();
+            $order->status = match ($order->status) {
+                'pending_payment'    => '<span class="lmn-badge lmn-badge--class-std">'   . $statusText . '</span>',
+                'pending_activation' => '<span class="lmn-badge lmn-badge--class-basic">' . $statusText . '</span>',
+                'activated'          => '<span class="lmn-badge lmn-badge--active">'      . $statusText . '</span>',
+                'expired'            => '<span class="lmn-badge lmn-badge--inactive">'    . $statusText . '</span>',
+                'cancelled'          => '<span class="lmn-badge lmn-badge--banned">'      . $statusText . '</span>',
+                default              => '<span class="lmn-badge lmn-badge--inactive">'    . $statusText . '</span>',
+            };
+
+            $typeText = $order->productType();
+            $order->product_type = match ($order->product_type) {
+                'tabp'      => '<span class="lmn-badge lmn-badge--class-premium">' . $typeText . '</span>',
+                'time'      => '<span class="lmn-badge lmn-badge--class-std">'     . $typeText . '</span>',
+                'bandwidth' => '<span class="lmn-badge lmn-badge--class-basic">'   . $typeText . '</span>',
+                'topup'     => '<span class="lmn-badge lmn-badge--class-vip">'     . $typeText . '</span>',
+                default     => '<span class="lmn-badge lmn-badge--inactive">'      . $typeText . '</span>',
+            };
+
             $order->create_time = Tools::toDateTime($order->create_time);
             $order->update_time = Tools::toDateTime($order->update_time);
         }
 
         return $response->withJson([
-            'orders' => $orders,
+            'orders'          => $orders,
+            'total'           => $total,
+            'pending_payment' => $pending_payment,
+            'activated'       => $activated,
+            'total_spent'     => $total_spent,
         ]);
     }
 }

@@ -200,6 +200,18 @@
             var val = resolveKey(orderDict, key);
             if (val) el.setAttribute("placeholder", val);
         });
+        // User order dot-notation (data-i18n="user.order.*") — used by order index page
+        var _userOrderDict = flattenAdminSection(flattenNestedSection(orderDict), 'user.order.');
+        applyAttributeFromDict(
+            "[data-i18n^='user.order.']",
+            "data-i18n",
+            _userOrderDict,
+        );
+        document.querySelectorAll("[data-i18n-placeholder^='user.order.']").forEach(function (el) {
+            var key = el.getAttribute("data-i18n-placeholder");
+            var val = _userOrderDict[key];
+            if (val) el.setAttribute("placeholder", val);
+        });
 
         // User ticket section
         var ticketDict = getUserSectionDict(locale, "ticket");

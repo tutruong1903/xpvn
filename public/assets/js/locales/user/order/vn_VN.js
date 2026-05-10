@@ -31,6 +31,23 @@ window.i18nLocales.user.order.vn_VN = {
     index_stat_activated: "Đã kích hoạt",
     index_stat_spent: "Tổng chi tiêu ($)",
 
+    // Trang chi tiết đơn hàng
+    view_title:              "Chi tiết đơn hàng",
+    view_btn_invoice:        "Xem hóa đơn",
+    section_basic_info:      "Thông tin cơ bản",
+    section_product_content: "Nội dung sản phẩm",
+    section_invoice:         "Hóa đơn liên quan",
+    label_order_status:      "Trạng thái đơn hàng",
+    label_order_amount:      "Số tiền đơn hàng",
+    label_create_time:       "Thời gian tạo",
+    label_update_time:       "Cập nhật lúc",
+    label_invoice_content:   "Các khoản thanh toán",
+    label_invoice_amount:    "Số tiền hóa đơn",
+    label_invoice_status:    "Trạng thái hóa đơn",
+    label_pay_time:          "Thời gian thanh toán",
+    label_item_name:         "Tên khoản mục",
+    label_item_price:        "Số tiền",
+
     // Page header
     page_title: "Tạo Đơn Hàng",
     breadcrumb_orders: "Đơn hàng",

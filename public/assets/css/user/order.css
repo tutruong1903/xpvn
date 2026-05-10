@@ -673,3 +673,193 @@
     height: 33vh;
     background: linear-gradient(to top right, rgba(238, 230, 255, 0.35), transparent);
 }
+
+/* ================================================================
+   Order View Page
+   ================================================================ */
+
+/* ── Layout ── */
+.order-view-layout {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.order-view-layout > .container-xl:first-child {
+    padding-top: 1.5rem;
+    padding-bottom: 0;
+}
+
+.order-view-layout > .page-body {
+    padding-top: 1rem;
+    flex: 1;
+}
+
+/* ── Page header ── */
+.order-view-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.order-view-header__content h2 {
+    font-family: 'Manrope', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: #1a1c1c;
+    line-height: 1.2;
+    margin: 0 0 0.25rem;
+}
+
+.order-view-header__content p {
+    font-size: 0.875rem;
+    color: #767586;
+    margin: 0;
+}
+
+.order-view-header__actions {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+[data-bs-theme="dark"] .order-view-header__content h2 {
+    color: #e2e2e5;
+}
+
+/* ── Back link ── */
+.order-view-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: #767586;
+    text-decoration: none;
+    margin-bottom: 0.75rem;
+    transition: color 0.2s;
+}
+
+.order-view-back:hover {
+    color: #712ae2;
+}
+
+.order-view-back .material-symbols-outlined {
+    font-size: 1rem;
+}
+
+/* ── View Invoice button ── */
+.order-view-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5625rem 1.125rem;
+    background: #712ae2;
+    color: #ffffff;
+    font-size: 0.875rem;
+    font-weight: 700;
+    border-radius: 0.75rem;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+    border: none;
+    cursor: pointer;
+}
+
+.order-view-btn:hover {
+    background: #5f22c4;
+    color: #ffffff;
+    box-shadow: 0 4px 16px rgba(113, 42, 226, 0.25);
+    transform: translateY(-1px);
+}
+
+.order-view-btn:active {
+    transform: scale(0.97);
+}
+
+.order-view-btn .material-symbols-outlined {
+    font-size: 1.125rem;
+    font-variation-settings: 'FILL' 1;
+}
+
+/* ── Status badge ── */
+.order-view-status {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    background: rgba(113, 42, 226, 0.1);
+    color: #712ae2;
+}
+
+/* ── Invoice items table ── */
+.order-invoice-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+}
+
+.order-invoice-table thead th {
+    padding: 0.625rem 0.75rem;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #767586;
+    border-bottom: 1px solid rgba(199, 196, 215, 0.3);
+    text-align: left;
+}
+
+.order-invoice-table tbody td {
+    padding: 0.75rem;
+    color: #1a1c1c;
+    font-weight: 500;
+    border-bottom: 1px solid rgba(199, 196, 215, 0.2);
+}
+
+.order-invoice-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.order-invoice-table tbody tr:hover td {
+    background: rgba(113, 42, 226, 0.03);
+}
+
+[data-bs-theme="dark"] .order-invoice-table tbody td {
+    color: #e2e2e5;
+    border-bottom-color: rgba(255,255,255,0.07);
+}
+
+[data-bs-theme="dark"] .order-invoice-table thead th {
+    border-bottom-color: rgba(255,255,255,0.1);
+}
+
+/* ── Invoice summary row (amount / status / time) ── */
+.order-invoice-summary {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(199, 196, 215, 0.3);
+}
+
+[data-bs-theme="dark"] .order-invoice-summary {
+    border-top-color: rgba(255,255,255,0.08);
+}
+
+/* ── Dark mode overrides ── */
+[data-bs-theme="dark"] .order-view-back {
+    color: #8e8da0;
+}
+
+[data-bs-theme="dark"] .order-view-back:hover {
+    color: #a78bfa;
+}

@@ -31,6 +31,23 @@ window.i18nLocales.user.order.ja_JP = {
     index_stat_activated: "有効化済み",
     index_stat_spent: "累計支出 ($)",
 
+    // 注文詳細ページ
+    view_title:              "注文詳細",
+    view_btn_invoice:        "請求書を見る",
+    section_basic_info:      "基本情報",
+    section_product_content: "商品内容",
+    section_invoice:         "関連請求書",
+    label_order_status:      "注文ステータス",
+    label_order_amount:      "注文金額",
+    label_create_time:       "作成日時",
+    label_update_time:       "更新日時",
+    label_invoice_content:   "請求明細",
+    label_invoice_amount:    "請求金額",
+    label_invoice_status:    "請求ステータス",
+    label_pay_time:          "支払日時",
+    label_item_name:         "名称",
+    label_item_price:        "価格",
+
     // Page header
     page_title: "注文を作成",
     breadcrumb_orders: "注文",

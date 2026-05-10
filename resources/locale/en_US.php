@@ -192,6 +192,9 @@ return [
         'status_refunded_balance' => 'Refunded (Balance)',
         'status_partially_paid' => 'Partially Paid',
         'status_unknown'       => 'Unknown',
+        'type_product'         => 'Product',
+        'type_topup'           => 'Top-up',
+        'type_unknown'         => 'Unknown',
     ],
     'admin_coupon' => [
         'add_success'    => 'Coupon added successfully',

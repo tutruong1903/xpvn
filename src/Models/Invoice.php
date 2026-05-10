@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Services\I18n;
 use Illuminate\Database\Query\Builder;
 use function in_array;
 use function json_decode;
@@ -29,29 +30,36 @@ final class Invoice extends Model
     protected $connection = 'default';
     protected $table = 'invoice';
 
+    private function locale(): string
+    {
+        return $_COOKIE['sspanel_locale'] ?? $_ENV['locale'] ?? 'en_US';
+    }
+
     /**
      * 账单状态
      */
     public function status(): string
     {
+        $locale = $this->locale();
         return match ($this->status) {
-            'unpaid' => '未支付',
-            'paid_gateway' => '已支付（支付网关）',
-            'paid_balance' => '已支付（账户余额）',
-            'paid_admin' => '已支付（管理员）',
-            'cancelled' => '已取消',
-            'refunded_balance' => '已退款（账户余额）',
-            'partially_paid' => '部分支付',
-            default => '未知',
+            'unpaid'           => I18n::trans('admin_invoice.status_unpaid', $locale),
+            'paid_gateway'     => I18n::trans('admin_invoice.status_paid_gateway', $locale),
+            'paid_balance'     => I18n::trans('admin_invoice.status_paid_balance', $locale),
+            'paid_admin'       => I18n::trans('admin_invoice.status_paid_admin', $locale),
+            'cancelled'        => I18n::trans('admin_invoice.status_cancelled', $locale),
+            'refunded_balance' => I18n::trans('admin_invoice.status_refunded_balance', $locale),
+            'partially_paid'   => I18n::trans('admin_invoice.status_partially_paid', $locale),
+            default            => I18n::trans('admin_invoice.status_unknown', $locale),
         };
     }
 
     public function type(): string
     {
+        $locale = $this->locale();
         return match ($this->type) {
-            'product' => '商品',
-            'topup' => '充值',
-            default => '未知',
+            'product' => I18n::trans('admin_invoice.type_product', $locale),
+            'topup'   => I18n::trans('admin_invoice.type_topup', $locale),
+            default   => I18n::trans('admin_invoice.type_unknown', $locale),
         };
     }
 
@@ -67,13 +75,13 @@ final class Invoice extends Model
                 $user->money - $this->price,
                 $user->money,
                 $this->price,
-                '账单 #' . $this->id . ' 退款至账户余额'
+                'Invoice #' . $this->id . ' refunded to account balance'
             );
 
             $content = json_decode($this->content, true);
             $content[] = [
                 'content_id' => count($content),
-                'name' => '退款至账户余额',
+                'name' => 'Refunded to account balance',
                 'price' => '-' . $this->price,
             ];
 

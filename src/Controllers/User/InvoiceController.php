@@ -162,16 +162,50 @@ final class InvoiceController extends BaseController
     {
         $invoices = (new Invoice())->orderBy('id', 'desc')->where('user_id', $this->user->id)->get();
 
+        $total       = $invoices->count();
+        $unpaid      = $invoices->whereIn('status', ['unpaid', 'partially_paid'])->count();
+        $paid        = $invoices->whereIn('status', ['paid_gateway', 'paid_balance', 'paid_admin'])->count();
+        $total_paid  = $invoices->whereIn('status', ['paid_gateway', 'paid_balance', 'paid_admin'])->sum('price');
+
         foreach ($invoices as $invoice) {
-            $invoice->op = '<a class="btn btn-primary" href="/user/invoice/' . $invoice->id . '/view">查看</a>';
-            $invoice->status = $invoice->status();
+            $invoice->op = '<div class="lmn-act-wrap">';
+
+            if (in_array($invoice->status, ['unpaid', 'partially_paid'])) {
+                $invoice->op .=
+                    '<a class="lmn-act-btn lmn-act-btn--warn" href="/user/invoice/' . $invoice->id . '/view" title="Pay">' .
+                        '<span class="material-symbols-outlined">payment</span>' .
+                    '</a>';
+            }
+
+            $invoice->op .=
+                    '<a class="lmn-act-btn lmn-act-btn--edit" href="/user/invoice/' . $invoice->id . '/view" title="View">' .
+                        '<span class="material-symbols-outlined">visibility</span>' .
+                    '</a>' .
+                '</div>';
+
+            $statusText = $invoice->status();
+            $invoice->status = match ($invoice->status) {
+                'unpaid'           => '<span class="lmn-badge lmn-badge--class-std">'     . $statusText . '</span>',
+                'partially_paid'   => '<span class="lmn-badge lmn-badge--class-basic">'   . $statusText . '</span>',
+                'paid_gateway',
+                'paid_balance',
+                'paid_admin'       => '<span class="lmn-badge lmn-badge--active">'        . $statusText . '</span>',
+                'refunded_balance' => '<span class="lmn-badge lmn-badge--class-premium">' . $statusText . '</span>',
+                'cancelled'        => '<span class="lmn-badge lmn-badge--banned">'        . $statusText . '</span>',
+                default            => '<span class="lmn-badge lmn-badge--inactive">'      . $statusText . '</span>',
+            };
+
             $invoice->create_time = Tools::toDateTime($invoice->create_time);
             $invoice->update_time = Tools::toDateTime($invoice->update_time);
-            $invoice->pay_time = Tools::toDateTime($invoice->pay_time);
+            $invoice->pay_time    = Tools::toDateTime($invoice->pay_time);
         }
 
         return $response->withJson([
-            'invoices' => $invoices,
+            'invoices'    => $invoices,
+            'total'       => $total,
+            'unpaid'      => $unpaid,
+            'paid'        => $paid,
+            'total_paid'  => $total_paid,
         ]);
     }
 }

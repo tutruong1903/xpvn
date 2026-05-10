@@ -31,6 +31,23 @@ window.i18nLocales.user.order.zh_CN = {
     index_stat_activated: "已激活",
     index_stat_spent: "累计消费 ($)",
 
+    // 订单详情页
+    view_title:              "订单详情",
+    view_btn_invoice:        "查看账单",
+    section_basic_info:      "基本信息",
+    section_product_content: "商品内容",
+    section_invoice:         "关联账单",
+    label_order_status:      "订单状态",
+    label_order_amount:      "订单金额",
+    label_create_time:       "创建时间",
+    label_update_time:       "更新时间",
+    label_invoice_content:   "账单明细",
+    label_invoice_amount:    "账单金额",
+    label_invoice_status:    "账单状态",
+    label_pay_time:          "支付时间",
+    label_item_name:         "名称",
+    label_item_price:        "价格",
+
     // Page header
     page_title: "创建订单",
     breadcrumb_orders: "订单",

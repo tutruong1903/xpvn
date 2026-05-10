@@ -31,6 +31,23 @@ window.i18nLocales.user.order.zh_TW = {
     index_stat_activated: "已啟用",
     index_stat_spent: "累計消費 ($)",
 
+    // 訂單詳情頁
+    view_title:              "訂單詳情",
+    view_btn_invoice:        "查看帳單",
+    section_basic_info:      "基本資訊",
+    section_product_content: "商品內容",
+    section_invoice:         "關聯帳單",
+    label_order_status:      "訂單狀態",
+    label_order_amount:      "訂單金額",
+    label_create_time:       "建立時間",
+    label_update_time:       "更新時間",
+    label_invoice_content:   "帳單明細",
+    label_invoice_amount:    "帳單金額",
+    label_invoice_status:    "帳單狀態",
+    label_pay_time:          "付款時間",
+    label_item_name:         "名稱",
+    label_item_price:        "價格",
+
     // Page header
     page_title: "建立訂單",
     breadcrumb_orders: "訂單",

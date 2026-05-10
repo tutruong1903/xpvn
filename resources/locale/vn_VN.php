@@ -191,6 +191,9 @@ return [
         'status_refunded_balance' => 'Đã hoàn tiền (Số dư)',
         'status_partially_paid' => 'Thanh toán một phần',
         'status_unknown'       => 'Không xác định',
+        'type_product'         => 'Sản phẩm',
+        'type_topup'           => 'Nạp tiền',
+        'type_unknown'         => 'Không xác định',
     ],
     'admin_coupon' => [
         'add_success'    => 'Thêm mã giảm giá thành công',

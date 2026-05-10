@@ -192,6 +192,9 @@ return [
         'status_refunded_balance' => '已退款（账户余额）',
         'status_partially_paid' => '部分支付',
         'status_unknown'       => '未知',
+        'type_product'         => '商品',
+        'type_topup'           => '充值',
+        'type_unknown'         => '未知',
     ],
     'admin_coupon' => [
         'add_success'    => '优惠码添加成功',

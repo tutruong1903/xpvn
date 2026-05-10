@@ -31,6 +31,23 @@ window.i18nLocales.user.order.en_US = {
     index_stat_activated: "Activated",
     index_stat_spent: "Total Spent ($)",
 
+    // Order view page
+    view_title:              "Order Details",
+    view_btn_invoice:        "View Invoice",
+    section_basic_info:      "Basic Information",
+    section_product_content: "Product Contents",
+    section_invoice:         "Related Invoice",
+    label_order_status:      "Order Status",
+    label_order_amount:      "Order Amount",
+    label_create_time:       "Created At",
+    label_update_time:       "Updated At",
+    label_invoice_content:   "Invoice Items",
+    label_invoice_amount:    "Invoice Amount",
+    label_invoice_status:    "Invoice Status",
+    label_pay_time:          "Paid At",
+    label_item_name:         "Item Name",
+    label_item_price:        "Price",
+
     // Page header
     page_title: "Create Order",
     breadcrumb_orders: "Orders",

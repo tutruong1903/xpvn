@@ -191,6 +191,9 @@ return [
         'status_refunded_balance' => '返金済み（残高）',
         'status_partially_paid' => '一部支払済み',
         'status_unknown'       => '不明',
+        'type_product'         => '商品',
+        'type_topup'           => 'チャージ',
+        'type_unknown'         => '不明',
     ],
     'admin_coupon' => [
         'add_success'    => 'クーポンを追加しました',

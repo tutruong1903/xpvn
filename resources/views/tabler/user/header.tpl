@@ -89,6 +89,13 @@
     <script src="/assets/js/locales/user/order/zh_TW.js{asset_ver path="/assets/js/locales/user/order/zh_TW.js"}"></script>
     <script src="/assets/js/locales/user/order/ja_JP.js{asset_ver path="/assets/js/locales/user/order/ja_JP.js"}"></script>
     
+    <!-- i18n - Invoice component locales -->
+    <script src="/assets/js/locales/user/invoice/en_US.js{asset_ver path="/assets/js/locales/user/invoice/en_US.js"}"></script>
+    <script src="/assets/js/locales/user/invoice/vn_VN.js{asset_ver path="/assets/js/locales/user/invoice/vn_VN.js"}"></script>
+    <script src="/assets/js/locales/user/invoice/zh_CN.js{asset_ver path="/assets/js/locales/user/invoice/zh_CN.js"}"></script>
+    <script src="/assets/js/locales/user/invoice/zh_TW.js{asset_ver path="/assets/js/locales/user/invoice/zh_TW.js"}"></script>
+    <script src="/assets/js/locales/user/invoice/ja_JP.js{asset_ver path="/assets/js/locales/user/invoice/ja_JP.js"}"></script>
+    
     <!-- i18n - DataTable locales (shared across all user pages with datatable) -->
     <script src="/assets/js/locales/user/datatable/en_US.js{asset_ver path="/assets/js/locales/user/datatable/en_US.js"}"></script>
     <script src="/assets/js/locales/user/datatable/vn_VN.js{asset_ver path="/assets/js/locales/user/datatable/vn_VN.js"}"></script>

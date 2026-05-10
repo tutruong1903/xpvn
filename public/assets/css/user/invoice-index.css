@@ -1,0 +1,8 @@
+/* ================================================================
+   LUMINOUS GUARDIAN — User Invoice Index page styles
+   Specific to: resources/views/tabler/user/invoice/index.tpl
+   All lmn-* base classes are shared via admin/user-index.css.
+   ================================================================ */
+
+/* Re-use all shared lmn-* component styles */
+@import url('../admin/user-index.css');

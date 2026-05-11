@@ -273,6 +273,18 @@
         if (val) el.setAttribute("placeholder", val);
       });
 
+    // User detect section
+    var detectDict = getUserSectionDict(locale, "detect");
+    var _userDetectDict = flattenAdminSection(
+      flattenNestedSection(detectDict),
+      "user.detect.",
+    );
+    applyAttributeFromDict(
+      "[data-i18n^='user.detect.']",
+      "data-i18n",
+      _userDetectDict,
+    );
+
     // User ticket section
     var ticketDict = getUserSectionDict(locale, "ticket");
     applyAttributeFromDict(

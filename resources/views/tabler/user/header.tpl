@@ -103,6 +103,13 @@
     <script src="/assets/js/locales/user/money/zh_TW.js{asset_ver path="/assets/js/locales/user/money/zh_TW.js"}"></script>
     <script src="/assets/js/locales/user/money/ja_JP.js{asset_ver path="/assets/js/locales/user/money/ja_JP.js"}"></script>
     
+    <!-- i18n - Detect component locales -->
+    <script src="/assets/js/locales/user/detect/en_US.js{asset_ver path="/assets/js/locales/user/detect/en_US.js"}"></script>
+    <script src="/assets/js/locales/user/detect/vn_VN.js{asset_ver path="/assets/js/locales/user/detect/vn_VN.js"}"></script>
+    <script src="/assets/js/locales/user/detect/zh_CN.js{asset_ver path="/assets/js/locales/user/detect/zh_CN.js"}"></script>
+    <script src="/assets/js/locales/user/detect/zh_TW.js{asset_ver path="/assets/js/locales/user/detect/zh_TW.js"}"></script>
+    <script src="/assets/js/locales/user/detect/ja_JP.js{asset_ver path="/assets/js/locales/user/detect/ja_JP.js"}"></script>
+    
     <!-- i18n - DataTable locales (shared across all user pages with datatable) -->
     <script src="/assets/js/locales/user/datatable/en_US.js{asset_ver path="/assets/js/locales/user/datatable/en_US.js"}"></script>
     <script src="/assets/js/locales/user/datatable/vn_VN.js{asset_ver path="/assets/js/locales/user/datatable/vn_VN.js"}"></script>

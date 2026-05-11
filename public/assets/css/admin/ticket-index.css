@@ -1,0 +1,8 @@
+/* ================================================================
+   LUMINOUS GUARDIAN — Admin Ticket Index page styles
+   Specific to: resources/views/tabler/admin/ticket/index.tpl
+   All lmn-* base classes are shared with user-index.css.
+   ================================================================ */
+
+/* Re-use all shared lmn-* component styles */
+@import url('user-index.css');

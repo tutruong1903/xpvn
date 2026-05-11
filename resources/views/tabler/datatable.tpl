@@ -136,13 +136,22 @@
     /**
      * Translate .lmn-badge spans using the 'badges' locale section.
      * Reads class modifier: lmn-badge--active → badges.active
+     * Checks admin.user, admin.ticket (and other sections) for badge translations.
      * Exposed globally so pages can call it after every draw.
      */
     function _translateBadges() {
         var locale = (window.sspanelI18n && window.sspanelI18n.getLocale) ? window.sspanelI18n.getLocale() : 'en_US';
         var admin   = (window.i18nLocales && window.i18nLocales.admin) || {};
-        var userSec = (admin.user && admin.user[locale]) || (admin.user && admin.user['en_US']) || {};
-        var badges  = userSec.badges || {};
+        var badges  = {};
+        var sections = ['user', 'ticket', 'node', 'docs', 'ann'];
+        for (var i = 0; i < sections.length; i++) {
+            var sec = (admin[sections[i]] && admin[sections[i]][locale]) || (admin[sections[i]] && admin[sections[i]]['en_US']) || {};
+            if (sec.badges) {
+                for (var bk in sec.badges) {
+                    if (!badges[bk]) badges[bk] = sec.badges[bk];
+                }
+            }
+        }
         if (!Object.keys(badges).length) return;
 
         document.querySelectorAll('#data-table .lmn-badge').forEach(function (el) {

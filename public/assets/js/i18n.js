@@ -249,6 +249,30 @@
         if (val) el.setAttribute("placeholder", val);
       });
 
+    // User money section
+    var moneyDict = getUserSectionDict(locale, "money");
+    applyAttributeFromDict(
+      "[data-i18n-user-money]",
+      "data-i18n-user-money",
+      moneyDict,
+    );
+    var _userMoneyDict = flattenAdminSection(
+      flattenNestedSection(moneyDict),
+      "user.money.",
+    );
+    applyAttributeFromDict(
+      "[data-i18n^='user.money.']",
+      "data-i18n",
+      _userMoneyDict,
+    );
+    document
+      .querySelectorAll("[data-i18n-placeholder^='user.money.']")
+      .forEach(function (el) {
+        var key = el.getAttribute("data-i18n-placeholder");
+        var val = _userMoneyDict[key];
+        if (val) el.setAttribute("placeholder", val);
+      });
+
     // User ticket section
     var ticketDict = getUserSectionDict(locale, "ticket");
     applyAttributeFromDict(
@@ -552,6 +576,60 @@
       .forEach(function (el) {
         var key = el.getAttribute("data-i18n-placeholder");
         var val = _adminGiftcardDict[key];
+        if (val) el.setAttribute("placeholder", val);
+      });
+
+    // Admin ticket section — handles ticket list page (admin.ticket.*).
+    var _adminTicketDict = flattenAdminSection(
+      flattenNestedSection(getAdminSectionDict(locale, "ticket")),
+      "admin.ticket.",
+    );
+    applyAttributeFromDict(
+      "[data-i18n^='admin.ticket.']",
+      "data-i18n",
+      _adminTicketDict,
+    );
+    document
+      .querySelectorAll("[data-i18n-placeholder^='admin.ticket.']")
+      .forEach(function (el) {
+        var key = el.getAttribute("data-i18n-placeholder");
+        var val = _adminTicketDict[key];
+        if (val) el.setAttribute("placeholder", val);
+      });
+
+    // Admin docs section — handles document management page (admin.docs.*).
+    var _adminDocsDict = flattenAdminSection(
+      flattenNestedSection(getAdminSectionDict(locale, "docs")),
+      "admin.docs.",
+    );
+    applyAttributeFromDict(
+      "[data-i18n^='admin.docs.']",
+      "data-i18n",
+      _adminDocsDict,
+    );
+    document
+      .querySelectorAll("[data-i18n-placeholder^='admin.docs.']")
+      .forEach(function (el) {
+        var key = el.getAttribute("data-i18n-placeholder");
+        var val = _adminDocsDict[key];
+        if (val) el.setAttribute("placeholder", val);
+      });
+
+    // Admin ann section — handles announcement management page (admin.ann.*).
+    var _adminAnnDict = flattenAdminSection(
+      flattenNestedSection(getAdminSectionDict(locale, "ann")),
+      "admin.ann.",
+    );
+    applyAttributeFromDict(
+      "[data-i18n^='admin.ann.']",
+      "data-i18n",
+      _adminAnnDict,
+    );
+    document
+      .querySelectorAll("[data-i18n-placeholder^='admin.ann.']")
+      .forEach(function (el) {
+        var key = el.getAttribute("data-i18n-placeholder");
+        var val = _adminAnnDict[key];
         if (val) el.setAttribute("placeholder", val);
       });
   }

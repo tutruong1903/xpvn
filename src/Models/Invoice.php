@@ -75,7 +75,13 @@ final class Invoice extends Model
                 $user->money - $this->price,
                 $user->money,
                 $this->price,
-                'Invoice #' . $this->id . ' refunded to account balance'
+                [
+                    'en_US' => 'Invoice #' . $this->id . ' refunded to account balance',
+                    'zh_CN' => '账单 #' . $this->id . ' 已退款至余额',
+                    'zh_TW' => '帳單 #' . $this->id . ' 已退款至餘額',
+                    'ja_JP' => '請求書 #' . $this->id . ' が残高に返金されました',
+                    'vn_VN' => 'Hóa đơn #' . $this->id . ' đã hoàn tiền vào số dư',
+                ]
             );
 
             $content = json_decode($this->content, true);

@@ -6,6 +6,7 @@ namespace App\Controllers\User;
 
 use App\Controllers\BaseController;
 use App\Models\Invoice;
+use App\Models\Order;
 use App\Models\Paylist;
 use App\Models\UserMoneyLog;
 use App\Services\I18n;
@@ -138,12 +139,27 @@ final class InvoiceController extends BaseController
                 $money_before,
                 (float) $user->money,
                 -$paid,
-                I18n::trans('user_invoice.partial_payment_log', $locale) . $invoice->id
+                [
+                    'en_US' => I18n::trans('user_invoice.partial_payment_log', 'en_US') . $invoice->id,
+                    'zh_CN' => I18n::trans('user_invoice.partial_payment_log', 'zh_CN') . $invoice->id,
+                    'zh_TW' => I18n::trans('user_invoice.partial_payment_log', 'zh_TW') . $invoice->id,
+                    'ja_JP' => I18n::trans('user_invoice.partial_payment_log', 'ja_JP') . $invoice->id,
+                    'vn_VN' => I18n::trans('user_invoice.partial_payment_log', 'vn_VN') . $invoice->id,
+                ]
             );
 
             $invoice->update_time = time();
             $invoice->pay_time = time();
             $invoice->save();
+
+            if ($invoice->status === 'paid_balance') {
+                $order = (new Order())->find($invoice->order_id);
+                if ($order !== null && $order->status === 'pending_payment') {
+                    $order->status = 'pending_activation';
+                    $order->update_time = time();
+                    $order->save();
+                }
+            }
         } else {
             return $response->withJson([
                 'ret' => 0,

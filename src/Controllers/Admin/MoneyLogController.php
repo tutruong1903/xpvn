@@ -47,9 +47,11 @@ final class MoneyLogController extends BaseController
     public function ajax(ServerRequest $request, Response $response, array $args): ResponseInterface
     {
         $money_logs = (new UserMoneyLog())->orderBy('id', 'desc')->get();
+        $locale = $this->getLocale();
 
         foreach ($money_logs as $money_log) {
             $money_log->create_time = Tools::toDateTime((int) $money_log->create_time);
+            $money_log->remark = $money_log->getLocalizedRemark($locale);
         }
 
         return $response->withJson([

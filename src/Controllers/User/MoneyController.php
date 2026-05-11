@@ -16,24 +16,70 @@ use function time;
 
 final class MoneyController extends BaseController
 {
+    private const PER_PAGE = 20;
+
     /**
      * @throws Exception
      */
     public function index(ServerRequest $request, Response $response, array $args): ResponseInterface
     {
-        $user = $this->user;
-        $moneylogs = (new UserMoneyLog())->where('user_id', $user->id)->orderBy('id', 'desc')->get();
+        $user  = $this->user;
+        $page  = max(1, (int) ($request->getQueryParam('page', 1)));
+        $limit = self::PER_PAGE;
+
+        $query     = (new UserMoneyLog())->where('user_id', $user->id);
+        $total     = $query->count();
+        $moneylogs = (clone $query)
+            ->orderBy('id', 'desc')
+            ->skip(($page - 1) * $limit)
+            ->take($limit)
+            ->get();
+
+        // Compute aggregated stats
+        $total_credit = (float) (new UserMoneyLog())
+            ->where('user_id', $user->id)
+            ->where('amount', '>', 0)
+            ->sum('amount');
+
+        $total_debit = abs((float) (new UserMoneyLog())
+            ->where('user_id', $user->id)
+            ->where('amount', '<', 0)
+            ->sum('amount'));
+
+        $locale = $this->getLocale();
 
         foreach ($moneylogs as $moneylog) {
             $moneylog->create_time = Tools::toDateTime($moneylog->create_time);
+            $moneylog->remark = $moneylog->getLocalizedRemark($locale);
         }
 
-        $moneylog_count = $moneylogs->count();
+        // i18n-aware field labels passed to template
+        $fields = [
+            'id'          => '事件ID',
+            'before'      => '变动前余额',
+            'after'       => '变动后余额',
+            'amount'      => '变动金额',
+            'remark'      => '备注',
+            'create_time' => '变动时间',
+        ];
+
+        $total_pages  = (int) ceil($total / $limit);
+        $page_start  = max(1, $page - 2);
+        $page_end    = min($total_pages, $page + 2);
 
         return $response->write(
             $this->view()
                 ->assign('moneylogs', $moneylogs)
-                ->assign('moneylog_count', $moneylog_count)
+                ->assign('moneylog_count', $total)
+                ->assign('current_page', $page)
+                ->assign('total_pages', $total_pages)
+                ->assign('page_start', $page_start)
+                ->assign('page_end', $page_end)
+                ->assign('per_page', $limit)
+                ->assign('total_credit', $total_credit)
+                ->assign('total_debit', $total_debit)
+                ->assign('current_balance', (float) $user->money)
+                ->assign('details', ['field' => $fields])
                 ->fetch('user/money.tpl')
         );
     }
@@ -73,7 +119,13 @@ final class MoneyController extends BaseController
             $money_before,
             (float) $user->money,
             $giftcard->balance,
-            '礼品卡充值 ' . $giftcard->card
+            [
+                'en_US' => 'Gift card top-up ' . $giftcard->card,
+                'zh_CN' => '礼品卡充值 ' . $giftcard->card,
+                'zh_TW' => '禮品卡儲值 ' . $giftcard->card,
+                'ja_JP' => 'ギフトカードチャージ ' . $giftcard->card,
+                'vn_VN' => 'Nạp thẻ quà tặng ' . $giftcard->card,
+            ]
         );
 
         return $response->withJson([

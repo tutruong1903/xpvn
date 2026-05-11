@@ -214,7 +214,21 @@ final class UserController extends BaseController
         ) {
             $money = (float) $request->getParam('money');
             $diff = $money - $user->money;
-            $remark = ($diff > 0 ? '管理员添加余额' : '管理员扣除余额');
+            $remark = $diff > 0
+                ? [
+                    'en_US' => 'Admin added balance',
+                    'zh_CN' => '管理员添加余额',
+                    'zh_TW' => '管理員添加餘額',
+                    'ja_JP' => '管理者による残高追加',
+                    'vn_VN' => 'Quản trị viên cộng số dư',
+                ]
+                : [
+                    'en_US' => 'Admin deducted balance',
+                    'zh_CN' => '管理员扣除余额',
+                    'zh_TW' => '管理員扣除餘額',
+                    'ja_JP' => '管理者による残高差引',
+                    'vn_VN' => 'Quản trị viên trừ số dư',
+                ];
             (new UserMoneyLog())->add($id, (float) $user->money, $money, $diff, $remark);
             $user->money = $money;
         }

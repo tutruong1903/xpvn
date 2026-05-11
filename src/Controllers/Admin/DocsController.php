@@ -16,17 +16,26 @@ use function time;
 
 final class DocsController extends BaseController
 {
-    private static array $details =
-        [
-            'field' => [
-                'op' => '操作',
-                'id' => 'ID',
-                'status' => '状态',
-                'sort' => '排序',
-                'date' => '日期',
-                'title' => '标题',
+    private static array $details = [
+        'field' => [
+            'op' => '操作',
+            'id' => 'ID',
+            'status' => '状态',
+            'sort' => '排序',
+            'date' => '日期',
+            'title' => '标题',
+        ],
+        'filter' => [
+            [
+                'field'      => 'status',
+                'label'      => '状态',
+                'label_key'  => 'filter.status_label',
+                'i18n_ns'    => 'docs',
+                'values'     => ['' => '全部', 'Published' => '已发布', 'Draft' => '未发布'],
+                'value_keys' => ['' => 'filter.all', 'Published' => 'filter.published', 'Draft' => 'filter.draft'],
             ],
-        ];
+        ],
+    ];
 
     private static array $update_field = [
         'status',
@@ -208,15 +217,41 @@ final class DocsController extends BaseController
     {
         $docs = (new Docs())->orderBy('id')->get();
 
+        $total = 0;
+        $published = 0;
+        $draft = 0;
+
         foreach ($docs as $doc) {
-            $doc->op = '<button class="btn btn-red" id="delete-doc-' . $doc->id . '" 
-            onclick="deleteDoc(' . $doc->id . ')">删除</button>
-            <a class="btn btn-primary" href="/admin/docs/' . $doc->id . '/edit">编辑</a>';
-            $doc->status = $doc->status();
+            $total++;
+
+            if ($doc->status === 1) {
+                $published++;
+            } else {
+                $draft++;
+            }
+
+            $doc->op =
+                '<div class="lmn-act-wrap">' .
+                    '<a class="lmn-act-btn lmn-act-btn--edit" href="/admin/docs/' . $doc->id . '/edit" title="Edit">' .
+                        '<span class="material-symbols-outlined">edit</span>' .
+                    '</a>' .
+                    '<button class="lmn-act-btn lmn-act-btn--del" onclick="deleteDoc(' . $doc->id . ')" title="Delete">' .
+                        '<span class="material-symbols-outlined">delete</span>' .
+                    '</button>' .
+                '</div>';
+
+            $doc->status = match ($doc->status) {
+                1 => '<span class="lmn-badge lmn-badge--status_published">Published</span>',
+                0 => '<span class="lmn-badge lmn-badge--status_draft">Draft</span>',
+                default => '<span class="lmn-badge lmn-badge--status_unknown">Unknown</span>',
+            };
         }
 
         return $response->withJson([
-            'docs' => $docs,
+            'docs'      => $docs,
+            'total'     => $total,
+            'published' => $published,
+            'draft'     => $draft,
         ]);
     }
 }

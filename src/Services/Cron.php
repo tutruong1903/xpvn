@@ -388,7 +388,13 @@ final class Cron
                 $user->money - $content->amount,
                 $user->money,
                 $content->amount,
-                "充值订单 #{$order->id}"
+                [
+                    'en_US' => 'Top-up order #' . $order->id,
+                    'zh_CN' => '充值订单 #' . $order->id,
+                    'zh_TW' => '儲值訂單 #' . $order->id,
+                    'ja_JP' => 'チャージ注文 #' . $order->id,
+                    'vn_VN' => 'Đơn nạp tiền #' . $order->id,
+                ]
             );
             echo "充值订单 #{$order->id} 已激活。\n";
         }

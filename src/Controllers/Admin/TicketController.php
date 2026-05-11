@@ -27,18 +27,53 @@ use function time;
 
 final class TicketController extends BaseController
 {
-    private static array $details =
-        [
-            'field' => [
-                'op' => '操作',
-                'id' => '工单ID',
-                'title' => '主题',
-                'status' => '工单状态',
-                'type' => '工单类型',
-                'userid' => '提交用户',
-                'datetime' => '创建时间',
+    private static array $details = [
+        'field' => [
+            'op' => '操作',
+            'id' => '工单ID',
+            'title' => '主题',
+            'status' => '工单状态',
+            'type' => '工单类型',
+            'userid' => '提交用户',
+            'datetime' => '创建时间',
+        ],
+        'filter' => [
+            [
+                'field'      => 'status',
+                'label'      => '状态',
+                'label_key'  => 'filter.status_label',
+                'i18n_ns'    => 'ticket',
+                'values'     => [
+                    ''           => '全部',
+                    'open'       => '进行中',
+                    'closed'     => '已结单',
+                    'wait_user'  => '等待用户回复',
+                    'wait_admin' => '等待管理员',
+                ],
+                'value_keys' => [
+                    ''           => 'filter.all',
+                    'open'       => 'filter.status_open',
+                    'closed'     => 'filter.status_closed',
+                    'wait_user'  => 'filter.status_wait_user',
+                    'wait_admin' => 'filter.status_wait_admin',
+                ],
             ],
-        ];
+            [
+                'field'      => 'type',
+                'label'      => '类型',
+                'label_key'  => 'filter.type_label',
+                'i18n_ns'    => 'ticket',
+                'values'     => [
+                    ''        => '全部',
+                    'howto'   => '使用说明',
+                    'billing' => '支付',
+                    'account' => '账户',
+                    'other'   => '其他',
+                ],
+                'value_keys' => ['' => 'filter.all'],
+            ],
+        ],
+    ];
 
     /**
      * @throws Exception
@@ -231,25 +266,66 @@ final class TicketController extends BaseController
     {
         $tickets = (new Ticket())->orderBy('id', 'desc')->get();
 
-        foreach ($tickets as $ticket) {
-            $ticket->op = '<button class="btn btn-red" id="delete-ticket" 
-            onclick="deleteTicket(' . $ticket->id . ')">删除</button>';
+        $total = 0;
+        $open = 0;
+        $closed = 0;
+        $waitAdmin = 0;
 
-            if ($ticket->status !== 'closed') {
-                $ticket->op .= '
-                <button class="btn btn-orange" id="close-ticket" 
-                onclick="closeTicket(' . $ticket->id . ')">关闭</button>';
+        foreach ($tickets as $ticket) {
+            $total++;
+
+            if ($ticket->status === 'closed') {
+                $closed++;
+            } else {
+                $open++;
             }
 
-            $ticket->op .= '
-            <a class="btn btn-primary" href="/admin/ticket/' . $ticket->id . '/view">查看</a>';
-            $ticket->status = $ticket->status();
-            $ticket->type = $ticket->type();
+            if ($ticket->status === 'open_wait_admin') {
+                $waitAdmin++;
+            }
+
+            $ticket->op =
+                '<div class="lmn-act-wrap">' .
+                    '<a class="lmn-act-btn lmn-act-btn--edit" href="/admin/ticket/' . $ticket->id . '/view" title="View">' .
+                        '<span class="material-symbols-outlined">visibility</span>' .
+                    '</a>';
+
+            if ($ticket->status !== 'closed') {
+                $ticket->op .=
+                    '<button class="lmn-act-btn lmn-act-btn--warn" onclick="closeTicket(' . $ticket->id . ')" title="Close">' .
+                        '<span class="material-symbols-outlined">cancel</span>' .
+                    '</button>';
+            }
+
+            $ticket->op .=
+                    '<button class="lmn-act-btn lmn-act-btn--del" onclick="deleteTicket(' . $ticket->id . ')" title="Delete">' .
+                        '<span class="material-symbols-outlined">delete</span>' .
+                    '</button>' .
+                '</div>';
+
+            $ticket->status = match ($ticket->status) {
+                'closed' => '<span class="lmn-badge lmn-badge--status_closed">Closed</span>',
+                'open_wait_user' => '<span class="lmn-badge lmn-badge--status_open_wait_user">Waiting for User</span>',
+                'open_wait_admin' => '<span class="lmn-badge lmn-badge--status_open_wait_admin">Waiting for Admin</span>',
+                default => '<span class="lmn-badge lmn-badge--inactive">Unknown</span>',
+            };
+
+            $ticket->type = match ($ticket->type) {
+                'howto' => '<span class="lmn-badge lmn-badge--type_howto">Usage Guide</span>',
+                'billing' => '<span class="lmn-badge lmn-badge--type_billing">Payment</span>',
+                'account' => '<span class="lmn-badge lmn-badge--type_account">Account</span>',
+                default => '<span class="lmn-badge lmn-badge--type_other">Other</span>',
+            };
+
             $ticket->datetime = Tools::toDateTime((int) $ticket->datetime);
         }
 
         return $response->withJson([
-            'tickets' => $tickets,
+            'tickets'    => $tickets,
+            'total'      => $total,
+            'open'       => $open,
+            'closed'     => $closed,
+            'wait_admin' => $waitAdmin,
         ]);
     }
 }

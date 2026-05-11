@@ -1,0 +1,638 @@
+/* ================================================================
+   LUMINOUS GUARDIAN — User Money / Balance History page styles
+   Specific to: resources/views/tabler/user/money.tpl
+   Design: Bento-style cards, No-line Rule, Tonal Layering
+   ================================================================ */
+
+/* ----------------------------------------------------------
+   Content wrapper — breathable padding for all screen sizes
+   ---------------------------------------------------------- */
+.page-body {
+    padding: 2rem;
+}
+.money-content-wrap {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+@media (min-width: 992px) {
+    .money-content-wrap {
+        padding-left: 2.5rem;
+        padding-right: 2.5rem;
+    }
+}
+
+/* ----------------------------------------------------------
+   Page Header
+   ---------------------------------------------------------- */
+.money-page-header {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+@media (min-width: 768px) {
+    .money-page-header {
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: space-between;
+    }
+}
+
+.money-page-header__content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.money-page-title {
+    font-family: 'Manrope', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--lg-on-surface, #1a1c1c);
+    margin: 0;
+    line-height: 1.2;
+}
+
+.money-page-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9375rem;
+    color: var(--lg-on-surface-variant, #464554);
+    margin: 0;
+    max-width: 32rem;
+}
+
+.money-page-header__actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-shrink: 0;
+}
+
+/* ----------------------------------------------------------
+   Action Buttons
+   ---------------------------------------------------------- */
+.money-btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1.25rem;
+    background: var(--lg-surface-container-lowest, #ffffff);
+    border: 1px solid rgba(199, 196, 215, 0.7);
+    border-radius: 9999px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--lg-on-surface, #1a1c1c);
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+    text-decoration: none;
+}
+
+.money-btn-outline:hover {
+    border-color: var(--lg-primary, #712ae2);
+    color: var(--lg-primary, #712ae2);
+}
+
+.money-btn-outline .material-symbols-outlined {
+    font-size: 1.125rem;
+}
+
+.money-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1.5rem;
+    background: linear-gradient(135deg, #712ae2, #8a4cfc);
+    border: none;
+    border-radius: 9999px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #ffffff;
+    cursor: pointer;
+    box-shadow: 0 10px 20px -5px rgba(113, 42, 226, 0.3);
+    transition: box-shadow 0.2s, transform 0.15s;
+    text-decoration: none;
+}
+
+.money-btn-primary:hover {
+    box-shadow: 0 15px 25px -5px rgba(113, 42, 226, 0.4);
+    color: #ffffff;
+}
+
+.money-btn-primary:active {
+    transform: scale(0.97);
+}
+
+.money-btn-primary .material-symbols-outlined {
+    font-size: 1.125rem;
+}
+
+/* ----------------------------------------------------------
+   Balance Summary — Bento Grid
+   ---------------------------------------------------------- */
+.money-bento-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    margin-bottom: 2.5rem;
+}
+
+@media (min-width: 992px) {
+    .money-bento-grid {
+        grid-template-columns: 1fr 2fr;
+    }
+}
+
+/* Primary balance card */
+.money-balance-card {
+    position: relative;
+    overflow: hidden;
+    background: var(--lg-surface-container-lowest, #ffffff);
+    border-radius: 2rem;
+    padding: 2rem;
+    box-shadow: 0 1px 3px rgba(113, 42, 226, 0.04);
+}
+
+.money-balance-card__glow {
+    position: absolute;
+    right: -3rem;
+    top: -3rem;
+    width: 12rem;
+    height: 12rem;
+    background: rgba(113, 42, 226, 0.05);
+    border-radius: 9999px;
+    transition: transform 0.7s;
+}
+
+.money-balance-card:hover .money-balance-card__glow {
+    transform: scale(1.5);
+}
+
+.money-balance-card__label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--lg-on-surface-variant, #464554);
+    margin: 0 0 0.5rem 0;
+    position: relative;
+    z-index: 1;
+}
+
+.money-balance-card__value-row {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.money-balance-card__amount {
+    font-family: 'Manrope', sans-serif;
+    font-size: 2.25rem;
+    font-weight: 800;
+    color: var(--lg-on-surface, #1a1c1c);
+    letter-spacing: -0.02em;
+    line-height: 1;
+}
+
+.money-balance-card__currency {
+    font-family: 'Manrope', sans-serif;
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--lg-primary, #712ae2);
+}
+
+.money-balance-card__footer {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    margin-top: 1.5rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--lg-secondary, #0051d5);
+    position: relative;
+    z-index: 1;
+}
+
+.money-balance-card__footer .material-symbols-outlined {
+    font-size: 0.875rem;
+}
+
+/* Secondary stat cards grid */
+.money-stat-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+}
+
+.money-stat-card {
+    background: var(--lg-surface-container-low, #f3f3f4);
+    border-radius: 2rem;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.money-stat-card__icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    background: var(--lg-surface-container-lowest, #ffffff);
+    border-radius: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.money-stat-card__icon .material-symbols-outlined {
+    font-size: 1.25rem;
+    font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+.money-stat-card__icon--credit .material-symbols-outlined {
+    color: var(--lg-secondary, #0051d5);
+}
+
+.money-stat-card__icon--debit .material-symbols-outlined {
+    color: var(--lg-error, #ba1a1a);
+}
+
+.money-stat-card__label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--lg-on-surface-variant, #464554);
+    margin: 0;
+}
+
+.money-stat-card__value {
+    font-family: 'Manrope', sans-serif;
+    font-size: 1.375rem;
+    font-weight: 700;
+    color: var(--lg-on-surface, #1a1c1c);
+    margin: 0.25rem 0 0;
+}
+
+/* ----------------------------------------------------------
+   Table Card
+   ---------------------------------------------------------- */
+.money-table-card {
+    background: var(--lg-surface-container-lowest, #ffffff);
+    border-radius: 2rem;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(113, 42, 226, 0.04);
+    margin-bottom: 2.5rem;
+}
+
+.money-table-card__header {
+    padding: 1.75rem 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(199, 196, 215, 0.12);
+}
+
+.money-table-card__title {
+    font-family: 'Manrope', sans-serif;
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--lg-on-surface, #1a1c1c);
+    margin: 0;
+}
+
+.money-table-card .table {
+    margin: 0;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.money-table-card .table thead tr {
+    background: rgba(243, 243, 244, 0.5);
+}
+
+.money-table-card .table thead th {
+    padding: 1.125rem 1.5rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.6875rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--lg-on-surface-variant, #464554);
+    border: none;
+    white-space: nowrap;
+}
+
+.money-table-card .table thead th:first-child {
+    padding-left: 2.5rem;
+}
+
+.money-table-card .table thead th:last-child {
+    padding-right: 2.5rem;
+    text-align: right;
+}
+
+.money-table-card .table thead th.text-end {
+    text-align: right;
+}
+
+.money-table-card .table tbody tr {
+    border-top: 1px solid rgba(199, 196, 215, 0.08);
+    transition: background 0.2s;
+}
+
+.money-table-card .table tbody tr:hover {
+    background: var(--lg-surface-container-low, #f3f3f4);
+}
+
+.money-table-card .table tbody td {
+    padding: 1.25rem 1.5rem;
+    border: none;
+    vertical-align: middle;
+}
+
+.money-table-card .table tbody td:first-child {
+    padding-left: 2.5rem;
+}
+
+.money-table-card .table tbody td:last-child {
+    padding-right: 2.5rem;
+}
+
+/* Transaction ID badge */
+.money-txn-id {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--lg-primary, #712ae2);
+}
+
+/* Amount badges */
+.money-amount-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8125rem;
+    font-weight: 700;
+}
+
+.money-amount-badge--credit {
+    background: rgba(0, 81, 213, 0.08);
+    color: var(--lg-secondary, #0051d5);
+}
+
+.money-amount-badge--debit {
+    background: rgba(186, 26, 26, 0.08);
+    color: var(--lg-error, #ba1a1a);
+}
+
+.money-amount-badge--neutral {
+    background: rgba(113, 42, 226, 0.08);
+    color: var(--lg-primary, #712ae2);
+}
+
+/* Balance cells */
+.money-balance-before {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--lg-on-surface-variant, #464554);
+}
+
+.money-balance-after {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--lg-on-surface, #1a1c1c);
+}
+
+.money-remark {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.875rem;
+    color: var(--lg-on-surface-variant, #464554);
+    max-width: 16rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.money-time {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--lg-on-surface, #1a1c1c);
+    white-space: nowrap;
+}
+
+/* ----------------------------------------------------------
+   Empty State
+   ---------------------------------------------------------- */
+.money-empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5rem 2rem;
+    text-align: center;
+}
+
+.money-empty-state__icon {
+    width: 4rem;
+    height: 4rem;
+    background: var(--lg-surface-container-low, #f3f3f4);
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.money-empty-state__icon .material-symbols-outlined {
+    font-size: 2rem;
+    color: var(--lg-outline, #767586);
+}
+
+.money-empty-state__title {
+    font-family: 'Manrope', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--lg-on-surface, #1a1c1c);
+    margin: 0 0 0.5rem;
+}
+
+.money-empty-state__desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9375rem;
+    color: var(--lg-on-surface-variant, #464554);
+    max-width: 24rem;
+    margin: 0;
+}
+
+/* ----------------------------------------------------------
+   Pagination
+   ---------------------------------------------------------- */
+.money-pagination {
+    padding: 1.25rem 2.5rem;
+    border-top: 1px solid rgba(199, 196, 215, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.money-pagination__info {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--lg-on-surface-variant, #464554);
+}
+
+.money-pagination__controls {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+}
+
+.money-pagination__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border: none;
+    border-radius: 0.5rem;
+    background: transparent;
+    color: var(--lg-on-surface-variant, #464554);
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.money-pagination__btn:hover {
+    background: var(--lg-surface-container-low, #f3f3f4);
+}
+
+.money-pagination__btn--active {
+    background: var(--lg-primary, #712ae2);
+    color: #ffffff;
+}
+
+.money-pagination__btn--active:hover {
+    background: var(--lg-primary, #712ae2);
+    color: #ffffff;
+}
+
+.money-pagination__btn--nav {
+    color: var(--lg-outline, #767586);
+}
+
+.money-pagination__btn--nav .material-symbols-outlined {
+    font-size: 1.25rem;
+}
+
+/* ----------------------------------------------------------
+   Modal overrides (Luminous Guardian)
+   ---------------------------------------------------------- */
+.money-modal .modal-content {
+    border: none;
+    border-radius: 1.5rem;
+    box-shadow: 0 24px 64px rgba(113, 42, 226, 0.14);
+    overflow: hidden;
+}
+
+.money-modal .modal-header {
+    border-bottom: 1px solid rgba(199, 196, 215, 0.12);
+    padding: 1.5rem 2rem;
+}
+
+.money-modal .modal-title {
+    font-family: 'Manrope', sans-serif;
+    font-size: 1.0625rem;
+    font-weight: 700;
+    color: var(--lg-on-surface, #1a1c1c);
+}
+
+.money-modal .modal-body {
+    padding: 1.5rem 2rem;
+}
+
+.money-modal .modal-footer {
+    border-top: 1px solid rgba(199, 196, 215, 0.1);
+    padding: 1.25rem 2rem;
+}
+
+.money-modal .form-control {
+    border-radius: 0.75rem;
+    border: 1px solid rgba(199, 196, 215, 0.5);
+    padding: 0.75rem 1rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9375rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.money-modal .form-control:focus {
+    border-color: var(--lg-primary, #712ae2);
+    box-shadow: 0 0 0 3px rgba(113, 42, 226, 0.08);
+}
+
+/* ----------------------------------------------------------
+   Dark Mode
+   ---------------------------------------------------------- */
+[data-bs-theme="dark"] .money-balance-card,
+[data-bs-theme="dark"] .money-table-card {
+    background: var(--lg-surface-container-lowest, #0f1111);
+}
+
+[data-bs-theme="dark"] .money-stat-card {
+    background: var(--lg-surface-container-low, #1f2121);
+}
+
+[data-bs-theme="dark"] .money-stat-card__icon {
+    background: var(--lg-surface-container, #232525);
+}
+
+[data-bs-theme="dark"] .money-btn-outline {
+    background: var(--lg-surface-container-low, #1f2121);
+    border-color: rgba(255, 255, 255, 0.1);
+    color: var(--lg-on-surface, #e2e3e3);
+}
+
+[data-bs-theme="dark"] .money-btn-outline:hover {
+    border-color: var(--lg-primary, #712ae2);
+    color: var(--lg-primary, #712ae2);
+}
+
+[data-bs-theme="dark"] .money-table-card thead tr {
+    background: rgba(31, 33, 33, 0.5);
+}
+
+[data-bs-theme="dark"] .money-table-card .table tbody tr:hover {
+    background: var(--lg-surface-container-low, #1f2121);
+}
+
+[data-bs-theme="dark"] .money-modal .modal-content {
+    background: var(--lg-surface-container, #232525);
+}
+
+[data-bs-theme="dark"] .money-modal .form-control {
+    background: var(--lg-surface-container-low, #1f2121);
+    border-color: rgba(255, 255, 255, 0.1);
+    color: var(--lg-on-surface, #e2e3e3);
+}
+
+[data-bs-theme="dark"] .money-empty-state__icon {
+    background: var(--lg-surface-container, #232525);
+}

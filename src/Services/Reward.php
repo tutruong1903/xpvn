@@ -71,7 +71,13 @@ final class Reward
                 (float) $money_before,
                 (float) $ref_user->money,
                 $ref_get,
-                '邀请用户 #' . $user_id . ' 返利',
+                [
+                    'en_US' => 'Referral reward from user #' . $user_id,
+                    'zh_CN' => '邀请用户 #' . $user_id . ' 返利',
+                    'zh_TW' => '邀請用戶 #' . $user_id . ' 返利',
+                    'ja_JP' => 'ユーザー #' . $user_id . ' の紹介報酬',
+                    'vn_VN' => 'Hoa hồng giới thiệu từ người dùng #' . $user_id,
+                ],
             );
             // 添加返利记录
             (new Payback())->add(
@@ -107,7 +113,13 @@ final class Reward
                     (float) $money_before,
                     (float) $user->money,
                     $invite_reg_money_reward,
-                    '被用户 #' . $ref_user_id . ' 邀请注册奖励',
+                    [
+                        'en_US' => 'Registration reward via invite from user #' . $ref_user_id,
+                        'zh_CN' => '被用户 #' . $ref_user_id . ' 邀请注册奖励',
+                        'zh_TW' => '被用戶 #' . $ref_user_id . ' 邀請註冊獎勵',
+                        'ja_JP' => 'ユーザー #' . $ref_user_id . ' からの招待登録報酬',
+                        'vn_VN' => 'Thưởng đăng ký từ lời mời của người dùng #' . $ref_user_id,
+                    ],
                 );
             }
 

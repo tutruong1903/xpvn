@@ -26,17 +26,26 @@ use const PHP_EOL;
 
 final class AnnController extends BaseController
 {
-    private static array $details =
-        [
-            'field' => [
-                'op' => '操作',
-                'id' => 'ID',
-                'status' => '状态',
-                'sort' => '排序',
-                'date' => '日期',
-                'content' => '内容（节选）',
+    private static array $details = [
+        'field' => [
+            'op' => '操作',
+            'id' => 'ID',
+            'status' => '状态',
+            'sort' => '排序',
+            'date' => '日期',
+            'content' => '内容（节选）',
+        ],
+        'filter' => [
+            [
+                'field'      => 'status',
+                'label'      => '状态',
+                'label_key'  => 'filter.status_label',
+                'i18n_ns'    => 'ann',
+                'values'     => ['' => '全部', 'Published' => '已发布', 'Pinned' => '置顶', 'Draft' => '未发布'],
+                'value_keys' => ['' => 'filter.all', 'Published' => 'filter.published', 'Pinned' => 'filter.pinned', 'Draft' => 'filter.draft'],
             ],
-        ];
+        ],
+    ];
 
     private static array $update_field = [
         'status',
@@ -238,16 +247,46 @@ final class AnnController extends BaseController
     {
         $anns = (new Ann())->orderBy('id')->get();
 
+        $total = 0;
+        $published = 0;
+        $pinned = 0;
+        $draft = 0;
+
         foreach ($anns as $ann) {
-            $ann->op = '<button class="btn btn-red" id="delete-announcement-' . $ann->id . '" 
-            onclick="deleteAnn(' . $ann->id . ')">删除</button>
-            <a class="btn btn-primary" href="/admin/announcement/' . $ann->id . '/edit">编辑</a>';
-            $ann->status = $ann->status();
+            $total++;
+
+            match ($ann->status) {
+                1 => $published++,
+                2 => $pinned++,
+                default => $draft++,
+            };
+
+            $ann->op =
+                '<div class="lmn-act-wrap">' .
+                    '<a class="lmn-act-btn lmn-act-btn--edit" href="/admin/announcement/' . $ann->id . '/edit" title="Edit">' .
+                        '<span class="material-symbols-outlined">edit</span>' .
+                    '</a>' .
+                    '<button class="lmn-act-btn lmn-act-btn--del" onclick="deleteAnn(' . $ann->id . ')" title="Delete">' .
+                        '<span class="material-symbols-outlined">delete</span>' .
+                    '</button>' .
+                '</div>';
+
+            $ann->status = match ($ann->status) {
+                1 => '<span class="lmn-badge lmn-badge--status_published">Published</span>',
+                2 => '<span class="lmn-badge lmn-badge--status_pinned">Pinned</span>',
+                0 => '<span class="lmn-badge lmn-badge--status_draft">Draft</span>',
+                default => '<span class="lmn-badge lmn-badge--status_unknown">Unknown</span>',
+            };
+
             $ann->content = strlen($ann->content) > 40 ? mb_substr(strip_tags($ann->content), 0, 40, 'UTF-8') . '...' : $ann->content;
         }
 
         return $response->withJson([
-            'anns' => $anns,
+            'anns'      => $anns,
+            'total'     => $total,
+            'published' => $published,
+            'pinned'    => $pinned,
+            'draft'     => $draft,
         ]);
     }
 }

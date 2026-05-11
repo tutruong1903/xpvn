@@ -35,5 +35,46 @@ window.i18nLocales.admin.docs.zh_TW = {
         status_published: "已發布",
         status_draft:     "未發布",
         status_unknown:   "未知"
+    },
+
+    create: {
+        title:            "建立文檔",
+        subtitle:         "為用戶撰寫並發布新文檔。",
+        settings_title:   "發布設定",
+
+        field_title:      "文檔標題",
+        ph_title:         "在此輸入精彩標題...",
+
+        field_status:     "狀態",
+        status_draft:     "未發布",
+        status_published: "已發布",
+
+        field_sort:       "顯示排序",
+
+        llm_btn:          "AI 生成",
+        llm_modal_title:  "使用 LLM 自動生成文檔",
+        llm_ph:           "請輸入文檔生成提示",
+        llm_cancel:       "取消",
+        llm_generate:     "生成",
+
+        save_btn:         "儲存文檔",
+        cancel_btn:       "取消變更"
+    },
+
+    edit: {
+        title:            "編輯文檔",
+        subtitle:         "更新該文檔的內容與發布設定。",
+        settings_title:   "發布設定",
+
+        field_title:      "文檔標題",
+
+        field_status:     "狀態",
+        status_draft:     "未發布",
+        status_published: "已發布",
+
+        field_sort:       "顯示排序",
+
+        save_btn:         "儲存變更",
+        cancel_btn:       "取消變更"
     }
 };

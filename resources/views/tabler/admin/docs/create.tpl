@@ -1,98 +1,101 @@
 {include file='admin/header.tpl'}
 
+<link href="/assets/css/admin/ann-create.css{asset_ver path="/assets/css/admin/ann-create.css"}" rel="stylesheet"/>
+
+<div class="page-body">
     <div class="container-xl">
-        <div class="page-header d-print-none">
-            <div class="row align-items-center">
-                <div class="col">
-                    <h2 class="page-title">
-                        <span class="home-title">创建文档</span>
-                    </h2>
-                    <div class="page-pretitle my-3">
-                        <span class="home-subtitle">创建站点文档</span>
-                    </div>
-                </div>
-                <div class="col-auto ms-auto d-print-none">
-                    <div class="btn-list">
-                        <button href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#generate-docs">
-                            <i class="icon ti ti-robot-face"></i>
-                            LLM 文档生成
-                        </button>
-                        <button id="create" href="#" class="btn btn-primary">
-                            <i class="icon ti ti-device-floppy"></i>
-                            保存
-                        </button>
-                    </div>
-                </div>
-            </div>
+
+        <div class="lmn-ann-header">
+            <h1 class="lmn-ann-title" data-i18n="admin.docs.create.title">创建文档</h1>
+            <p class="lmn-ann-subtitle" data-i18n="admin.docs.create.subtitle">为用户撰写并发布新文档。</p>
         </div>
-    </div>
-    <div class="page-body">
-        <div class="container-xl">
-            <div class="row row-cards">
-                <div class="col-md-9 col-sm-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="mb-3">
-                                <label class="form-label col-3 col-form-label">文档标题</label>
-                                <div class="col">
-                                    <input id="title" type="text" class="form-control" value="">
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <form method="post">
-                                    <textarea id="tinymce"></textarea>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <h3 class="card-title">选项</h3>
-                            <div class="form-group mb-3 row">
-                                <label class="form-label col-3 col-form-label">状态</label>
-                                <div class="col">
-                                    <select id="status" class="col form-select" value="1">
-                                        <option value="0">未发布</option>
-                                        <option value="1">已发布</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group mb-3 row">
-                                <label class="form-label">排序</label>
-                                <div class="col">
-                                    <input id="sort" type="text" class="form-control" value="0">
-                                </div>
-                            </div>
+
+        <div class="lmn-ann-grid">
+
+            <!-- Editor Column -->
+            <div>
+                <div class="lmn-ann-card">
+                    <div class="lmn-ann-card-body">
+                        <input id="title" type="text" class="lmn-ann-title-input"
+                               data-i18n-placeholder="admin.docs.create.ph_title"
+                               placeholder="在此输入精彩标题...">
+                        <div class="lmn-ann-editor-wrap">
+                            <form method="post">
+                                <textarea id="tinymce"></textarea>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="modal modal-blur fade" id="generate-docs" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">使用 LLM 自动生成文档</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="mb-3">
-                        <input id="question" class="form-control" rows="12" placeholder="请输入文档生成提示">
+
+            <!-- Sidebar: Publish Settings -->
+            <div>
+                <div class="lmn-ann-card">
+                    <div class="lmn-ann-card-header">
+                        <span class="material-symbols-outlined lmn-ann-card-icon">publish</span>
+                        <h2 class="lmn-ann-card-title" data-i18n="admin.docs.create.settings_title">发布设置</h2>
+                    </div>
+
+                    <div class="lmn-ann-fields">
+                        <div class="lmn-ann-field">
+                            <label class="lmn-ann-label" data-i18n="admin.docs.create.field_status">状态</label>
+                            <select id="status" class="lmn-ann-select">
+                                <option value="0" data-i18n="admin.docs.create.status_draft">未发布</option>
+                                <option value="1" data-i18n="admin.docs.create.status_published">已发布</option>
+                            </select>
+                        </div>
+
+                        <div class="lmn-ann-field">
+                            <label class="lmn-ann-label" data-i18n="admin.docs.create.field_sort">显示排序</label>
+                            <input id="sort" type="number" class="lmn-ann-input" value="0" min="0" max="999">
+                        </div>
+                    </div>
+
+                    <div class="lmn-ann-actions">
+                        <button id="create" type="button" class="lmn-ann-btn-save">
+                            <span class="material-symbols-outlined">save</span>
+                            <span data-i18n="admin.docs.create.save_btn">保存文档</span>
+                        </button>
+                        <button type="button" class="lmn-ann-btn-llm"
+                                data-bs-toggle="modal" data-bs-target="#generate-docs">
+                            <span class="material-symbols-outlined">smart_toy</span>
+                            <span data-i18n="admin.docs.create.llm_btn">AI 生成</span>
+                        </button>
+                        <a href="/admin/docs" class="lmn-ann-btn-cancel" data-i18n="admin.docs.create.cancel_btn">取消更改</a>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn me-auto" data-bs-dismiss="modal">取消</button>
-                    <button id="generate" type="button" class="btn btn-primary" data-bs-dismiss="modal">生成</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- LLM Generate Modal -->
+<div class="modal modal-blur fade" id="generate-docs" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" data-i18n="admin.docs.create.llm_modal_title">使用 LLM 自动生成文档</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <input id="question" class="form-control"
+                           data-i18n-placeholder="admin.docs.create.llm_ph"
+                           placeholder="请输入文档生成提示">
                 </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn me-auto" data-bs-dismiss="modal"
+                        data-i18n="admin.docs.create.llm_cancel">取消</button>
+                <button id="generate" type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                        data-i18n="admin.docs.create.llm_generate">生成</button>
             </div>
         </div>
     </div>
 </div>
 
-{include file='tinymce.tpl'}
+{include file='tinymce-docs.tpl'}
 
 <script>
     $("#generate").click(function () {
@@ -117,16 +120,20 @@
     });
 
     $("#create").click(function () {
+        // Use FormData to avoid double-encoding base64 image data URIs
+        var fd = new FormData();
+        fd.append('status', $('#status').val());
+        fd.append('sort', $('#sort').val());
+        fd.append('title', $('#title').val());
+        fd.append('content', tinyMCE.activeEditor.getContent());
+
         $.ajax({
             url: '/admin/docs',
             type: 'POST',
             dataType: "json",
-            data: {
-                {foreach $update_field as $key}
-                {$key}: $('#{$key}').val(),
-                {/foreach}
-                content: tinyMCE.activeEditor.getContent(),
-            },
+            data: fd,
+            processData: false,
+            contentType: false,
             success: function (data) {
                 if (data.ret === 1) {
                     $('#success-message').text(data.msg);

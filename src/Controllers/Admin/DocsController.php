@@ -6,6 +6,7 @@ namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
 use App\Models\Docs;
+use App\Services\I18n;
 use App\Services\LLM;
 use App\Utils\Tools;
 use Exception;
@@ -81,10 +82,12 @@ final class DocsController extends BaseController
         $title = $request->getParam('title');
         $content = $request->getParam('content');
 
+        $locale = $this->getLocale();
+
         if ($title === '' || $content === '') {
             return $response->withJson([
                 'ret' => 0,
-                'msg' => '文档标题和内容不能为空',
+                'msg' => I18n::trans('admin_docs.title_content_empty', $locale),
             ]);
         }
 
@@ -98,13 +101,13 @@ final class DocsController extends BaseController
         if (! $doc->save()) {
             return $response->withJson([
                 'ret' => 0,
-                'msg' => '文档添加失败',
+                'msg' => I18n::trans('admin_docs.add_failed', $locale),
             ]);
         }
 
         return $response->withJson([
             'ret' => 1,
-            'msg' => '文档添加成功',
+            'msg' => I18n::trans('admin_docs.add_success', $locale),
         ]);
     }
 
@@ -123,7 +126,7 @@ final class DocsController extends BaseController
 
         return $response->withJson([
             'ret' => 1,
-            'msg' => '文档生成成功',
+            'msg' => I18n::trans('admin_docs.generate_success', $this->getLocale()),
             'content' => $content,
         ]);
     }
@@ -155,10 +158,12 @@ final class DocsController extends BaseController
         $title = $request->getParam('title');
         $content = $request->getParam('content');
 
+        $locale = $this->getLocale();
+
         if ($title === '' || $content === '') {
             return $response->withJson([
                 'ret' => 0,
-                'msg' => '文档标题和内容不能为空',
+                'msg' => I18n::trans('admin_docs.title_content_empty', $locale),
             ]);
         }
 
@@ -167,7 +172,7 @@ final class DocsController extends BaseController
         if ($doc === null) {
             return $response->withJson([
                 'ret' => 0,
-                'msg' => '文档不存在',
+                'msg' => I18n::trans('admin_docs.not_found', $locale),
             ]);
         }
 
@@ -180,13 +185,13 @@ final class DocsController extends BaseController
         if (! $doc->save()) {
             return $response->withJson([
                 'ret' => 0,
-                'msg' => '文档更新失败',
+                'msg' => I18n::trans('admin_docs.update_failed', $locale),
             ]);
         }
 
         return $response->withJson([
             'ret' => 1,
-            'msg' => '文档更新成功',
+            'msg' => I18n::trans('admin_docs.update_success', $locale),
         ]);
     }
 
@@ -197,16 +202,18 @@ final class DocsController extends BaseController
     {
         $doc = (new Docs())->find($args['id']);
 
+        $locale = $this->getLocale();
+
         if (! $doc->delete()) {
             return $response->withJson([
                 'ret' => 0,
-                'msg' => '删除失败',
+                'msg' => I18n::trans('admin_docs.delete_failed', $locale),
             ]);
         }
 
         return $response->withJson([
             'ret' => 1,
-            'msg' => '删除成功',
+            'msg' => I18n::trans('admin_docs.delete_success', $locale),
         ]);
     }
 

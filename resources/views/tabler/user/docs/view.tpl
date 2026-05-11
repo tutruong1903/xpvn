@@ -1,27 +1,26 @@
 {include file='user/header.tpl'}
 
-<div class="page-wrapper">
+<div class="docs-view-wrapper">
     <div class="container-xl">
-        <div class="page-header d-print-none text-white">
-            <div class="row align-items-center">
-                <div class="col">
-                    <h2 class="page-title">
-                        {$doc->title}
-                    </h2>
-                </div>
+
+        <!-- Page header -->
+        <div class="docs-view-header">
+            <h1 class="docs-view-title">{$doc->title}</h1>
+            <div class="docs-view-meta">
+                <i class="ti ti-calendar docs-view-meta-icon"></i>
+                <span data-i18n-user-docs="view_published">Ngày đăng:</span>
+                <span>{$doc->date}</span>
             </div>
         </div>
-    </div>
-    <div class="page-body">
-        <div class="container-xl">
-            <div class="card card-lg">
-                <div class="card-body ">
-                    <div class="row g-4">
-                        {$doc->content}
-                    </div>
-                </div>
+
+        <!-- Content card -->
+        <div class="docs-view-card">
+            <div class="docs-view-content">
+                {$doc->content}
             </div>
         </div>
-    </div>
+
+    </div><!-- /.container-xl -->
+</div><!-- /.docs-view-wrapper -->
 
 {include file='user/footer.tpl'}

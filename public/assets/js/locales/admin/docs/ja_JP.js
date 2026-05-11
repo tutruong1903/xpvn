@@ -35,5 +35,46 @@ window.i18nLocales.admin.docs.ja_JP = {
         status_published: "公開中",
         status_draft:     "下書き",
         status_unknown:   "不明"
+    },
+
+    create: {
+        title:            "ドキュメント作成",
+        subtitle:         "ユーザー向けの新しいドキュメントを作成・公開する。",
+        settings_title:   "公開設定",
+
+        field_title:      "ドキュメントタイトル",
+        ph_title:         "タイトルを入力してください...",
+
+        field_status:     "ステータス",
+        status_draft:     "下書き",
+        status_published: "公開中",
+
+        field_sort:       "表示順",
+
+        llm_btn:          "AI 生成",
+        llm_modal_title:  "LLM でドキュメントを自動生成",
+        llm_ph:           "ドキュメント生成プロンプトを入力してください",
+        llm_cancel:       "キャンセル",
+        llm_generate:     "生成",
+
+        save_btn:         "ドキュメントを保存",
+        cancel_btn:       "変更を破棄"
+    },
+
+    edit: {
+        title:            "ドキュメント編集",
+        subtitle:         "このドキュメントの内容と設定を更新する。",
+        settings_title:   "公開設定",
+
+        field_title:      "ドキュメントタイトル",
+
+        field_status:     "ステータス",
+        status_draft:     "下書き",
+        status_published: "公開中",
+
+        field_sort:       "表示順",
+
+        save_btn:         "変更を保存",
+        cancel_btn:       "変更を破棄"
     }
 };

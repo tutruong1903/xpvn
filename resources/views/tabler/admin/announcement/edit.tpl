@@ -1,65 +1,67 @@
 {include file='admin/header.tpl'}
 
+<link href="/assets/css/admin/ann-create.css{asset_ver path="/assets/css/admin/ann-create.css"}" rel="stylesheet"/>
+
+<div class="page-body">
     <div class="container-xl">
-        <div class="page-header d-print-none">
-            <div class="row align-items-center">
-                <div class="col">
-                    <h2 class="page-title">
-                        <span class="home-title">编辑公告 #{$ann->id}</span>
-                    </h2>
-                    <div class="page-pretitle my-3">
-                        <span class="home-subtitle">编辑站点公告</span>
-                    </div>
-                </div>
-                <div class="col-auto ms-auto d-print-none">
-                    <div class="btn-list">
-                        <button id="save" href="#" class="btn btn-primary">
-                            <i class="icon ti ti-device-floppy"></i>
-                            保存
-                        </button>
-                    </div>
-                </div>
-            </div>
+
+        <div class="lmn-ann-header">
+            <h1 class="lmn-ann-title">
+                <span data-i18n="admin.ann.edit.title">编辑公告</span>
+                <span style="color:#712ae2"> #{$ann->id}</span>
+            </h1>
+            <p class="lmn-ann-subtitle" data-i18n="admin.ann.edit.subtitle">更新该公告的内容与发布设置。</p>
         </div>
-    </div>
-    <div class="page-body">
-        <div class="container-xl">
-            <div class="row row-cards">
-                <div class="col-md-9 col-sm-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="mb-3">
-                                <form method="post">
-                                    <textarea id="tinymce">{$ann->content}</textarea>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <h3 class="card-title">选项</h3>
-                            <div class="form-group mb-3 row">
-                                <label class="form-label col-3 col-form-label">状态</label>
-                                <div class="col">
-                                    <select id="status" class="col form-select" value="{$ann->status}">
-                                        <option value="0" {if $ann->status == 0}selected{/if}>未发布</option>
-                                        <option value="1" {if $ann->status == 1}selected{/if}>已发布</option>
-                                        <option value="2" {if $ann->status == 2}selected{/if}>置顶</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group mb-3 row">
-                                <label class="form-label">排序</label>
-                                <div class="col">
-                                    <input id="sort" type="text" class="form-control" value="{$ann->sort}">
-                                </div>
-                            </div>
+
+        <div class="lmn-ann-grid">
+
+            <!-- Editor Column -->
+            <div>
+                <div class="lmn-ann-card">
+                    <div class="lmn-ann-card-body">
+                        <div class="lmn-ann-editor-wrap">
+                            <form method="post">
+                                <textarea id="tinymce">{$ann->content}</textarea>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <!-- Sidebar: Publish Settings -->
+            <div>
+                <div class="lmn-ann-card">
+                    <div class="lmn-ann-card-header">
+                        <span class="material-symbols-outlined lmn-ann-card-icon">edit_note</span>
+                        <h2 class="lmn-ann-card-title" data-i18n="admin.ann.edit.settings_title">发布设置</h2>
+                    </div>
+
+                    <div class="lmn-ann-fields">
+                        <div class="lmn-ann-field">
+                            <label class="lmn-ann-label" data-i18n="admin.ann.edit.field_status">状态</label>
+                            <select id="status" class="lmn-ann-select">
+                                <option value="0" {if $ann->status == 0}selected{/if} data-i18n="admin.ann.edit.status_draft">未发布</option>
+                                <option value="1" {if $ann->status == 1}selected{/if} data-i18n="admin.ann.edit.status_published">已发布</option>
+                                <option value="2" {if $ann->status == 2}selected{/if} data-i18n="admin.ann.edit.status_pinned">置顶</option>
+                            </select>
+                        </div>
+
+                        <div class="lmn-ann-field">
+                            <label class="lmn-ann-label" data-i18n="admin.ann.edit.field_sort">显示排序</label>
+                            <input id="sort" type="number" class="lmn-ann-input" value="{$ann->sort}" min="0" max="999">
+                        </div>
+                    </div>
+
+                    <div class="lmn-ann-actions">
+                        <button id="save" type="button" class="lmn-ann-btn-save">
+                            <span class="material-symbols-outlined">save</span>
+                            <span data-i18n="admin.ann.edit.save_btn">保存更改</span>
+                        </button>
+                        <a href="/admin/announcement" class="lmn-ann-btn-cancel" data-i18n="admin.ann.edit.cancel_btn">取消更改</a>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>

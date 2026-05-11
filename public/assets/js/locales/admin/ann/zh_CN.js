@@ -38,5 +38,46 @@ window.i18nLocales.admin.ann.zh_CN = {
         status_pinned:    "置顶",
         status_draft:     "未发布",
         status_unknown:   "未知"
+    },
+
+    create: {
+        title:            "创建公告",
+        subtitle:         "向用户发布重要新闻和公告。",
+        settings_title:   "发布设置",
+
+        field_status:     "状态",
+        status_draft:     "未发布",
+        status_published: "已发布",
+        status_pinned:    "置顶",
+
+        field_sort:       "显示排序",
+        field_email_class:"邮件通知等级",
+        class_all:        "0 — 所有成员",
+        class_standard:   "1 — 标准及以上",
+        class_premium:    "2 — 高级及以上",
+        class_vip:        "3 — 仅 VIP",
+        hint_class:       "0 = 所有成员",
+
+        field_email_notify:  "发送邮件通知",
+        email_notify_desc:   "公告将通过邮箱发送",
+
+        save_btn:   "保存公告",
+        cancel_btn: "取消更改"
+    },
+
+    edit: {
+        title:          "编辑公告",
+        subtitle:       "更新该公告的内容与发布设置。",
+        settings_title: "发布设置",
+
+        field_status:     "状态",
+        status_draft:     "未发布",
+        status_published: "已发布",
+        status_pinned:    "置顶",
+
+        field_sort: "显示排序",
+
+        save_btn:   "保存更改",
+        cancel_btn: "取消更改"
     }
 };

@@ -35,8 +35,12 @@ final class ServerController extends BaseController
                 'traffic_rate' => $node->traffic_rate,
                 'is_dynamic_rate' => $node->is_dynamic_rate,
                 'node_bandwidth' => Tools::autoBytes($node->node_bandwidth),
-                'node_bandwidth_limit' => $node->node_bandwidth_limit === 0 ? '无限制' :
+                'node_bandwidth_limit' => $node->node_bandwidth_limit === 0 ? '∞' :
                     Tools::autoBytes($node->node_bandwidth_limit),
+                'node_bandwidth_pct' => $node->node_bandwidth_limit > 0
+                    ? min(100, round($node->node_bandwidth / $node->node_bandwidth_limit * 100, 1))
+                    : 0,
+                'node_speedlimit' => $node->node_speedlimit,
             ];
         }
 

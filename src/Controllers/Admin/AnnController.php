@@ -9,6 +9,7 @@ use App\Models\Ann;
 use App\Models\Config;
 use App\Models\EmailQueue;
 use App\Models\User;
+use App\Services\I18n;
 use App\Services\Notification;
 use App\Utils\Tools;
 use Exception;
@@ -91,10 +92,12 @@ final class AnnController extends BaseController
         $email_notify = $request->getParam('email_notify') === 'true' ? 1 : 0;
         $content = $request->getParam('content');
 
+        $locale = $this->getLocale();
+
         if ($content === '') {
             return $response->withJson([
                 'ret' => 0,
-                'msg' => '内容不能为空',
+                'msg' => I18n::trans('admin_ann.content_empty', $locale),
             ]);
         }
 
@@ -107,7 +110,7 @@ final class AnnController extends BaseController
         if (! $ann->save()) {
             return $response->withJson([
                 'ret' => 0,
-                'msg' => '公告保存失败',
+                'msg' => I18n::trans('admin_ann.add_failed', $locale),
             ]);
         }
 
@@ -115,7 +118,7 @@ final class AnnController extends BaseController
             $users = (new User())->where('class', '>=', $email_notify_class)
                 ->where('is_banned', '=', 0)
                 ->get();
-            $subject = $_ENV['appName'] . ' - 新公告发布';
+            $subject = $_ENV['appName'] . ' - System Notification';
 
             foreach ($users as $user) {
                 (new EmailQueue())->add(
@@ -139,14 +142,18 @@ final class AnnController extends BaseController
             } catch (TelegramSDKException | GuzzleException) {
                 return $response->withJson([
                     'ret' => 0,
-                    'msg' => $email_notify === 1 ? '公告添加成功，邮件发送成功，IM Bot 发送失败' : '公告添加成功，IM Bot 发送失败',
+                    'msg' => $email_notify === 1
+                        ? I18n::trans('admin_ann.add_success_email_success_bot_failed', $locale)
+                        : I18n::trans('admin_ann.add_success_bot_failed', $locale),
                 ]);
             }
         }
 
         return $response->withJson([
             'ret' => 1,
-            'msg' => $email_notify === 1 ? '公告添加成功，邮件发送成功' : '公告添加成功',
+            'msg' => $email_notify === 1
+                ? I18n::trans('admin_ann.add_success_email_success', $locale)
+                : I18n::trans('admin_ann.add_success', $locale),
         ]);
     }
 
@@ -174,10 +181,12 @@ final class AnnController extends BaseController
         $sort = (int) $request->getParam('sort');
         $content = $request->getParam('content');
 
+        $locale = $this->getLocale();
+
         if ($content === '') {
             return $response->withJson([
                 'ret' => 0,
-                'msg' => '内容不能为空',
+                'msg' => I18n::trans('admin_ann.content_empty', $locale),
             ]);
         }
 
@@ -186,7 +195,7 @@ final class AnnController extends BaseController
         if ($ann === null) {
             return $response->withJson([
                 'ret' => 0,
-                'msg' => '公告不存在',
+                'msg' => I18n::trans('admin_ann.not_found', $locale),
             ]);
         }
 
@@ -198,7 +207,7 @@ final class AnnController extends BaseController
         if (! $ann->save()) {
             return $response->withJson([
                 'ret' => 0,
-                'msg' => '公告更新失败',
+                'msg' => I18n::trans('admin_ann.update_failed', $locale),
             ]);
         }
 
@@ -211,14 +220,14 @@ final class AnnController extends BaseController
             } catch (TelegramSDKException | GuzzleException) {
                 return $response->withJson([
                     'ret' => 0,
-                    'msg' => '公告更新成功，IM Bot 发送失败',
+                    'msg' => I18n::trans('admin_ann.update_success_bot_failed', $locale),
                 ]);
             }
         }
 
         return $response->withJson([
             'ret' => 1,
-            'msg' => '公告更新成功',
+            'msg' => I18n::trans('admin_ann.update_success', $locale),
         ]);
     }
 
@@ -227,16 +236,18 @@ final class AnnController extends BaseController
      */
     public function delete(ServerRequest $request, Response $response, array $args): ResponseInterface
     {
+        $locale = $this->getLocale();
+
         if ((new Ann())->find($args['id'])->delete()) {
             return $response->withJson([
                 'ret' => 1,
-                'msg' => '删除成功',
+                'msg' => I18n::trans('admin_ann.delete_success', $locale),
             ]);
         }
 
         return $response->withJson([
             'ret' => 0,
-            'msg' => '删除失败',
+            'msg' => I18n::trans('admin_ann.delete_failed', $locale),
         ]);
     }
 

@@ -26,7 +26,7 @@ window.i18nLocales.user.sidebar.vn_VN = {
     nodes: "Danh sách node",
     rate: "Tỷ lệ lưu lượng",
     announcement: "Thông báo",
-    docs: "Hướng dẫn",
+    docs: "Tài liệu",
     
     // Audit section
     rules: "Quy tắc",

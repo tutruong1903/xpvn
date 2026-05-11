@@ -1,88 +1,152 @@
 {include file="user/header.tpl"}
 
-<div class="page-wrapper">
+<div class="server-page-wrapper">
     <div class="container-xl">
-        <div class="page-header d-print-none text-white">
-            <div class="row align-items-center">
+
+        <!-- Page header -->
+        <div class="server-page-header">
+            <div class="row align-items-center g-3">
                 <div class="col">
-                    <h2 class="page-title">
-                        <span class="home-title">节点列表</span>
-                    </h2>
-                    <div class="page-pretitle my-3">
-                        <span class="home-subtitle">查看节点在线情况</span>
-                    </div>
+                    <h1 class="server-page-title" data-i18n-user-server="page_title">Danh sách máy chủ</h1>
+                    <p class="server-page-subtitle" data-i18n-user-server="page_subtitle">
+                        Theo dõi trạng thái và kết nối đến các cụm máy chủ trong mạng lưới với tốc độ ánh sáng.
+                    </p>
                 </div>
             </div>
         </div>
-    </div>
+
+    </div><!-- /.container-xl (header) -->
+
     <div class="page-body">
         <div class="container-xl">
-            <div class="row row-deck row-cards">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="tab-content">
-                                <div class="row row-deck row-cards">
-                                    {foreach $servers as $server}
-                                        <div class="col-lg-4 col-md-6 col-sm-12">
-                                            <div class="card">
-                                                {if $server['class'] === 0}
-                                                    <div class="ribbon bg-blue">免费</div>
-                                                {else}
-                                                    <div class="ribbon bg-blue">LV. {$server['class']}</div>
-                                                {/if}
-                                                <div class="card-body">
-                                                    <div class="row g-3 align-items-center">
-                                                        <div class="col-auto">
-                                                            <span class="status-indicator status-{$server['color']}
-                                                                 status-indicator-animated">
-                                                                <span class="status-indicator-circle"></span>
-                                                                <span class="status-indicator-circle"></span>
-                                                                <span class="status-indicator-circle"></span>
-                                                            </span>
-                                                        </div>
-                                                        <div class="col">
-                                                            <h2 class="page-title" style="font-size: 16px;">
-                                                                {$server['name']}&nbsp;
-                                                                <span class="card-subtitle my-2"
-                                                                      style="font-size: 10px;">  {$server['node_bandwidth']} /
-                                                                    {$server['node_bandwidth_limit']}
-                                                                </span>
-                                                            </h2>
-                                                            <div class="text-secondary badges-list">
-                                                                <span class="badge bg-blue-lt">
-                                                                    <i class="ti ti-users"></i>
-                                                                    {$server['online_user']}</span>
-                                                                <span class="badge bg-blue-lt">
-                                                                    {if $server['is_dynamic_rate']}
-                                                                        动态倍率
-                                                                    {else}
-                                                                        {$server['traffic_rate']} 倍
-                                                                    {/if}
-                                                                </span>
-                                                                <span class="badge bg-blue-lt">{$server['sort']}</span>
-                                                                {if $server['connection_type'] !== 0}
-                                                                <span class="badge bg-blue-lt">IPv6</span>
-                                                                {/if}
-                                                                {if $user->class < $server['class']}
-                                                                <span class="badge bg-red-lt">无权限</span>
-                                                                <span class="badge bg-pink-lt">当前账户等级小于节点等级</span>
-                                                                <span class="badge bg-green-lt">前往 <a href="/user/product">商品页面</a> 订购时间流量包</span>
-                                                                {/if}
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    {/foreach}
+
+            <!-- Server grid -->
+            <div class="row row-deck row-cards" id="server-grid">
+
+                {foreach $servers as $server}
+                {assign var="sort_lower" value=$server['sort']|lower|replace:' ':'-'}
+                <div class="col-xl-3 col-lg-3 col-md-6 server-card-col{if $user->class < $server['class']} is-locked{/if}"
+                     data-status="{$server['online']}"
+                     data-level="{$server['class']}">
+
+                    <div class="server-card{if $user->class < $server['class']} is-locked{/if}">
+
+                        <!-- Badge -->
+                        {if $server['class'] === 0}
+                            <span class="server-badge server-badge-free" data-i18n-user-server="badge_free">MIỄN PHÍ</span>
+                        {else}
+                            <span class="server-badge server-badge-premium" data-i18n-user-server="badge_premium">PREMIUM</span>
+                        {/if}
+
+                        <!-- Header: icon + name + status -->
+                        <div class="server-card-header">
+                            <div class="server-icon server-icon-{$sort_lower}">
+                                {if $server['sort'] === 'Trojan'}
+                                    <i class="ti ti-shield-check"></i>
+                                {elseif $server['sort'] === 'Vmess' || $server['sort'] === 'VLESS'}
+                                    <i class="ti ti-world-www"></i>
+                                {elseif $server['sort'] === 'WireGuard'}
+                                    <i class="ti ti-lock"></i>
+                                {elseif $server['sort'] === 'TUIC'}
+                                    <i class="ti ti-bolt"></i>
+                                {elseif $server['sort'] === 'Shadowsocks' || $server['sort'] === 'Shadowsocks2022'}
+                                    <i class="ti ti-eye-off"></i>
+                                {else}
+                                    <i class="ti ti-world"></i>
+                                {/if}
+                            </div>
+                            <div class="min-w-0">
+                                <div class="server-status
+                                    {if $server['online'] === 1}server-status-online
+                                    {elseif $server['online'] === -1}server-status-offline
+                                    {else}server-status-new{/if}">
+                                    <span class="server-status-dot"></span>
+                                    <span {if $server['online'] === 1}data-i18n-user-server="status_online"
+                                          {elseif $server['online'] === -1}data-i18n-user-server="status_offline"
+                                          {else}data-i18n-user-server="status_new"{/if}>
+                                        {if $server['online'] === 1}TRỰC TUYẾN
+                                        {elseif $server['online'] === -1}NGOẠI TUYẾN
+                                        {else}NODE MỚI{/if}
+                                    </span>
+                                </div>
+                                <h3 class="server-name">{$server['name']}</h3>
+                            </div>
+                        </div>
+
+                        <!-- Bandwidth -->
+                        <div class="server-bandwidth">
+                            <div class="server-bandwidth-label">
+                                <span data-i18n-user-server="bandwidth_used">Băng thông đã dùng</span>
+                                <span class="server-bandwidth-values ms-1">
+                                    {$server['node_bandwidth']} / {$server['node_bandwidth_limit']}
+                                </span>
+                            </div>
+                            <div class="server-bandwidth-bar">
+                                <div class="server-bandwidth-bar-fill
+                                    {if $server['node_bandwidth_pct'] >= 80}high
+                                    {elseif $server['node_bandwidth_pct'] >= 50}medium{/if}"
+                                     style="width: {$server['node_bandwidth_pct']}%">
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Stats -->
+                        <div class="server-stats">
+                            <div>
+                                <div class="server-stat-label" data-i18n-user-server="stat_latency">ĐỘ TRỄ</div>
+                                <div class="server-stat-value">
+                                    <span data-i18n-user-server="latency_na">--</span><span class="server-stat-unit">ms</span>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="server-stat-label" data-i18n-user-server="stat_load">TẢI TRỌNG</div>
+                                <div class="server-stat-value">
+                                    {$server['node_bandwidth_pct']}<span class="server-stat-unit">%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Protocol tags -->
+                        <div class="server-tags">
+                            <span class="server-tag">{$server['sort']}</span>
+
+                            {if $server['connection_type'] === 2}
+                                <span class="server-tag" data-i18n-user-server="tag_dual">Dual Stack</span>
+                            {elseif $server['connection_type'] === 1}
+                                <span class="server-tag" data-i18n-user-server="tag_ipv6">IPv6</span>
+                            {/if}
+
+                            {if $server['is_dynamic_rate']}
+                                <span class="server-tag" data-i18n-user-server="tag_dynamic_rate">Động</span>
+                            {/if}
+
+                            {if $user->class < $server['class']}
+                                <span class="server-tag server-tag-locked" data-i18n-user-server="tag_no_access">Chưa đủ cấp</span>
+                                <a href="/user/product" class="server-tag server-tag-upgrade text-decoration-none"
+                                   data-i18n-user-server="tag_upgrade">Nâng cấp</a>
+                            {/if}
+                        </div>
+
+                    </div><!-- /.server-card -->
+                </div><!-- /.col -->
+                {/foreach}
+
+                {if empty($servers)}
+                <div class="col-12">
+                    <div class="server-empty">
+                        <div class="server-empty-icon">
+                            <i class="ti ti-server-off"></i>
+                        </div>
+                        <div class="server-empty-title" data-i18n-user-server="empty_title">Không có máy chủ nào</div>
+                        <div data-i18n-user-server="empty_subtitle">Không có máy chủ nào khớp với bộ lọc hiện tại.</div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
+                {/if}
+
+            </div><!-- /#server-grid -->
+
+        </div><!-- /.container-xl -->
+    </div><!-- /.page-body -->
 
     {include file="user/footer.tpl"}
+</div><!-- /.server-page-wrapper -->

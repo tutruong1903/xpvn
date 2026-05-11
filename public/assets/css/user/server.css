@@ -1,0 +1,435 @@
+/* ============================================================
+   Server List Page — Guardian / Luminous Theme
+   ============================================================ */
+
+/* Page header */
+
+.server-page-wrapper {
+    padding: 2rem;
+}
+
+.server-page-header {
+    padding: 0 0 1.5rem;
+}
+
+.server-breadcrumb {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #94a3b8;
+    margin-bottom: 0.75rem;
+}
+
+.server-page-title {
+    font-family: 'Manrope', 'Inter', sans-serif;
+    font-weight: 800;
+    font-size: 2rem;
+    color: var(--tblr-body-color);
+    margin: 0 0 0.5rem;
+    line-height: 1.2;
+}
+
+.server-page-subtitle {
+    color: #64748b;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    max-width: 480px;
+    margin: 0;
+}
+
+/* Header action buttons */
+.server-btn-filter {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: transparent;
+    border: 1.5px solid #e2e8f0;
+    color: #64748b;
+    border-radius: 10px;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.server-btn-filter:hover,
+.server-btn-filter.active {
+    border-color: #7c3aed;
+    color: #7c3aed;
+    background: #f5f3ff;
+}
+
+.server-btn-refresh {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: #7c3aed;
+    border: none;
+    color: #ffffff;
+    border-radius: 10px;
+    padding: 0.5rem 1.25rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.server-btn-refresh:hover {
+    background: #6d28d9;
+    color: #ffffff;
+}
+
+.server-btn-refresh i {
+    transition: transform 0.4s ease;
+}
+
+.server-btn-refresh:active i {
+    transform: rotate(360deg);
+}
+
+/* Filter panel */
+.server-filter-panel {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+[data-bs-theme="dark"] .server-filter-panel {
+    background: var(--tblr-card-bg);
+    border-color: var(--tblr-border-color);
+}
+
+.server-filter-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #94a3b8;
+    margin-bottom: 0.5rem;
+}
+
+.server-filter-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+}
+
+.server-filter-chip {
+    padding: 0.3rem 0.85rem;
+    border-radius: 20px;
+    border: 1.5px solid #e2e8f0;
+    background: transparent;
+    color: #64748b;
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.server-filter-chip:hover {
+    border-color: #a78bfa;
+    color: #7c3aed;
+}
+
+.server-filter-chip.active {
+    background: #7c3aed;
+    border-color: #7c3aed;
+    color: #ffffff;
+}
+
+/* ============================================================
+   Server Card
+   ============================================================ */
+
+.server-card {
+    background: #ffffff;
+    border-radius: 16px;
+    border: 1px solid rgba(139, 92, 246, 0.1);
+    padding: 1.5rem;
+    box-shadow: 0 2px 12px rgba(139, 92, 246, 0.06);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+}
+
+.server-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 28px rgba(139, 92, 246, 0.14);
+}
+
+.server-card.is-locked {
+    opacity: 0.7;
+}
+
+[data-bs-theme="dark"] .server-card {
+    background: var(--tblr-card-bg);
+    border-color: rgba(139, 92, 246, 0.15);
+}
+
+/* Badge */
+.server-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    padding: 0.22rem 0.65rem;
+    border-radius: 20px;
+    text-transform: uppercase;
+    line-height: 1;
+}
+
+.server-badge-premium {
+    background: #7c3aed;
+    color: #ffffff;
+}
+
+.server-badge-free {
+    background: #ede9fe;
+    color: #7c3aed;
+}
+
+[data-bs-theme="dark"] .server-badge-free {
+    background: rgba(124, 58, 237, 0.2);
+}
+
+/* Card header: icon + name + status */
+.server-card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.85rem;
+    margin-bottom: 1.25rem;
+    padding-right: 3.5rem; /* leave space for badge */
+}
+
+.server-icon {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.35rem;
+    background: linear-gradient(135deg, #7c3aed, #a78bfa);
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
+}
+
+.server-icon-trojan { background: linear-gradient(135deg, #7c3aed, #a78bfa); }
+.server-icon-vmess  { background: linear-gradient(135deg, #2563eb, #60a5fa); }
+.server-icon-vless  { background: linear-gradient(135deg, #0891b2, #22d3ee); }
+.server-icon-wireguard { background: linear-gradient(135deg, #059669, #34d399); }
+.server-icon-tuic   { background: linear-gradient(135deg, #d97706, #fbbf24); }
+.server-icon-shadowsocks  { background: linear-gradient(135deg, #dc2626, #f87171); }
+.server-icon-shadowsocks2022 { background: linear-gradient(135deg, #dc2626, #f87171); }
+
+/* Status text */
+.server-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.2rem;
+}
+
+.server-status-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.server-status-online .server-status-dot  { background: #10b981; }
+.server-status-offline .server-status-dot { background: #ef4444; }
+.server-status-new .server-status-dot     { background: #f59e0b; }
+
+.server-status-online  { color: #10b981; }
+.server-status-offline { color: #ef4444; }
+.server-status-new     { color: #f59e0b; }
+
+.server-name {
+    font-family: 'Manrope', 'Inter', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--tblr-body-color);
+    margin: 0;
+    line-height: 1.3;
+}
+
+/* Bandwidth section */
+.server-bandwidth {
+    margin-bottom: 1.1rem;
+}
+
+.server-bandwidth-label {
+    font-size: 0.75rem;
+    color: #94a3b8;
+    margin-bottom: 0.45rem;
+}
+
+.server-bandwidth-values {
+    font-weight: 600;
+    color: var(--tblr-body-color);
+}
+
+.server-bandwidth-bar {
+    height: 5px;
+    background: #f1f5f9;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+[data-bs-theme="dark"] .server-bandwidth-bar {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.server-bandwidth-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #7c3aed, #a78bfa);
+    border-radius: 3px;
+    transition: width 0.6s ease;
+    min-width: 2px;
+}
+
+.server-bandwidth-bar-fill.high {
+    background: linear-gradient(90deg, #dc2626, #f87171);
+}
+
+.server-bandwidth-bar-fill.medium {
+    background: linear-gradient(90deg, #d97706, #fbbf24);
+}
+
+/* Stats grid */
+.server-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    padding-top: 0.25rem;
+    border-top: 1px solid #f1f5f9;
+}
+
+[data-bs-theme="dark"] .server-stats {
+    border-top-color: var(--tblr-border-color);
+}
+
+.server-stat-label {
+    font-size: 0.65rem;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    margin-bottom: 0.2rem;
+    font-weight: 600;
+}
+
+.server-stat-value {
+    font-family: 'Manrope', 'Inter', sans-serif;
+    font-size: 1.45rem;
+    font-weight: 800;
+    color: var(--tblr-body-color);
+    line-height: 1;
+}
+
+.server-stat-unit {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #94a3b8;
+    margin-left: 1px;
+}
+
+/* Protocol tags */
+.server-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid #f1f5f9;
+}
+
+[data-bs-theme="dark"] .server-tags {
+    border-top-color: var(--tblr-border-color);
+}
+
+.server-tag {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.65rem;
+    border-radius: 20px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    color: #64748b;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+[data-bs-theme="dark"] .server-tag {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: var(--tblr-border-color);
+    color: #94a3b8;
+}
+
+.server-tag-locked {
+    background: #fef2f2;
+    border-color: #fecaca;
+    color: #ef4444;
+}
+
+[data-bs-theme="dark"] .server-tag-locked {
+    background: rgba(239, 68, 68, 0.1);
+    border-color: rgba(239, 68, 68, 0.3);
+}
+
+.server-tag-upgrade {
+    background: #fef9c3;
+    border-color: #fde68a;
+    color: #b45309;
+}
+
+[data-bs-theme="dark"] .server-tag-upgrade {
+    background: rgba(251, 191, 36, 0.1);
+    border-color: rgba(251, 191, 36, 0.3);
+    color: #fbbf24;
+}
+
+/* Empty state */
+.server-empty {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: #94a3b8;
+}
+
+.server-empty-icon {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    opacity: 0.4;
+}
+
+.server-empty-title {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--tblr-body-color);
+    margin-bottom: 0.5rem;
+}
+
+/* Hidden card (filtered out) */
+.server-card-col.hidden {
+    display: none;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+    .server-page-title {
+        font-size: 1.5rem;
+    }
+
+    .server-stat-value {
+        font-size: 1.2rem;
+    }
+}

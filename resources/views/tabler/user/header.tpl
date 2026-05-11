@@ -27,6 +27,9 @@
     
     <link href="/assets/css/user/product.css{asset_ver path="/assets/css/user/product.css"}" rel="stylesheet"/>
     <link href="/assets/css/user/order.css{asset_ver path="/assets/css/user/order.css"}" rel="stylesheet"/>
+    <link href="/assets/css/user/server.css{asset_ver path="/assets/css/user/server.css"}" rel="stylesheet"/>
+    <link href="/assets/css/user/announcement.css{asset_ver path="/assets/css/user/announcement.css"}" rel="stylesheet"/>
+    <link href="/assets/css/user/docs.css{asset_ver path="/assets/css/user/docs.css"}" rel="stylesheet"/>
     
     <!-- JS files -->
     <script src="/assets/js/fuck.min.js"></script>
@@ -102,6 +105,13 @@
     <script src="/assets/js/locales/user/money/zh_CN.js{asset_ver path="/assets/js/locales/user/money/zh_CN.js"}"></script>
     <script src="/assets/js/locales/user/money/zh_TW.js{asset_ver path="/assets/js/locales/user/money/zh_TW.js"}"></script>
     <script src="/assets/js/locales/user/money/ja_JP.js{asset_ver path="/assets/js/locales/user/money/ja_JP.js"}"></script>
+    
+    <!-- i18n - Server component locales -->
+    <script src="/assets/js/locales/user/server/en_US.js{asset_ver path="/assets/js/locales/user/server/en_US.js"}"></script>
+    <script src="/assets/js/locales/user/server/vn_VN.js{asset_ver path="/assets/js/locales/user/server/vn_VN.js"}"></script>
+    <script src="/assets/js/locales/user/server/zh_CN.js{asset_ver path="/assets/js/locales/user/server/zh_CN.js"}"></script>
+    <script src="/assets/js/locales/user/server/zh_TW.js{asset_ver path="/assets/js/locales/user/server/zh_TW.js"}"></script>
+    <script src="/assets/js/locales/user/server/ja_JP.js{asset_ver path="/assets/js/locales/user/server/ja_JP.js"}"></script>
     
     <!-- i18n - Detect component locales -->
     <script src="/assets/js/locales/user/detect/en_US.js{asset_ver path="/assets/js/locales/user/detect/en_US.js"}"></script>

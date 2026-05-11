@@ -285,6 +285,30 @@
       _userDetectDict,
     );
 
+    // User server section
+    var serverDict = getUserSectionDict(locale, "server");
+    applyAttributeFromDict(
+      "[data-i18n-user-server]",
+      "data-i18n-user-server",
+      serverDict,
+    );
+
+    // User announcement section
+    var annDict = getUserSectionDict(locale, "ann");
+    applyAttributeFromDict(
+      "[data-i18n-user-ann]",
+      "data-i18n-user-ann",
+      annDict,
+    );
+
+    // User docs section
+    var docsDict = getUserSectionDict(locale, "docs");
+    applyAttributeFromDict(
+      "[data-i18n-user-docs]",
+      "data-i18n-user-docs",
+      docsDict,
+    );
+
     // User ticket section
     var ticketDict = getUserSectionDict(locale, "ticket");
     applyAttributeFromDict(

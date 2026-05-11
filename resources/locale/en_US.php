@@ -241,5 +241,21 @@ return [
         'insufficient_balance'  => 'Insufficient balance',
         'partial_payment_log'   => 'Partial payment via balance for invoice #',
     ],
+    'admin_log' => [
+        'login_type_success' => 'Success',
+        'login_type_fail'    => 'Failed',
+        'pay_status_unpaid'  => 'Unpaid',
+        'pay_status_paid'    => 'Paid',
+        'pay_status_unknown' => 'Unknown',
+    ],
+    'admin_detect' => [
+        'type_plaintext'  => 'Plaintext Match',
+        'type_hex'        => 'Hex Match',
+        'add_success'     => 'Added successfully',
+        'add_failed'      => 'Failed to add',
+        'delete_btn'      => 'Delete',
+        'delete_success'  => 'Deleted successfully',
+        'delete_failed'   => 'Failed to delete',
+    ],
 ];
 

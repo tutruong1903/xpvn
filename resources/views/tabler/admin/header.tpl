@@ -185,6 +185,18 @@
     <script src="/assets/js/locales/admin/ann/zh_CN.js{asset_ver path="/assets/js/locales/admin/ann/zh_CN.js"}"></script>
     <script src="/assets/js/locales/admin/ann/zh_TW.js{asset_ver path="/assets/js/locales/admin/ann/zh_TW.js"}"></script>
     <script src="/assets/js/locales/admin/ann/ja_JP.js{asset_ver path="/assets/js/locales/admin/ann/ja_JP.js"}"></script>
+
+    <script src="/assets/js/locales/admin/log/en_US.js{asset_ver path="/assets/js/locales/admin/log/en_US.js"}"></script>
+    <script src="/assets/js/locales/admin/log/vn_VN.js{asset_ver path="/assets/js/locales/admin/log/vn_VN.js"}"></script>
+    <script src="/assets/js/locales/admin/log/zh_CN.js{asset_ver path="/assets/js/locales/admin/log/zh_CN.js"}"></script>
+    <script src="/assets/js/locales/admin/log/zh_TW.js{asset_ver path="/assets/js/locales/admin/log/zh_TW.js"}"></script>
+    <script src="/assets/js/locales/admin/log/ja_JP.js{asset_ver path="/assets/js/locales/admin/log/ja_JP.js"}"></script>
+
+    <script src="/assets/js/locales/admin/detect/en_US.js{asset_ver path="/assets/js/locales/admin/detect/en_US.js"}"></script>
+    <script src="/assets/js/locales/admin/detect/vn_VN.js{asset_ver path="/assets/js/locales/admin/detect/vn_VN.js"}"></script>
+    <script src="/assets/js/locales/admin/detect/zh_CN.js{asset_ver path="/assets/js/locales/admin/detect/zh_CN.js"}"></script>
+    <script src="/assets/js/locales/admin/detect/zh_TW.js{asset_ver path="/assets/js/locales/admin/detect/zh_TW.js"}"></script>
+    <script src="/assets/js/locales/admin/detect/ja_JP.js{asset_ver path="/assets/js/locales/admin/detect/ja_JP.js"}"></script>
     
     <script src="/assets/js/i18n.js{asset_ver path="/assets/js/i18n.js"}"></script>
     

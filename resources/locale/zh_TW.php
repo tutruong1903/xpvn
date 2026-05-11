@@ -241,4 +241,20 @@ return [
         'insufficient_balance'  => '餘額不足',
         'partial_payment_log'   => '餘額部分支付帳單 #',
     ],
+    'admin_log' => [
+        'login_type_success' => '成功',
+        'login_type_fail'    => '失敗',
+        'pay_status_unpaid'  => '未支付',
+        'pay_status_paid'    => '已支付',
+        'pay_status_unknown' => '未知',
+    ],
+    'admin_detect' => [
+        'type_plaintext'  => '數據包明文匹配',
+        'type_hex'        => '數據包十六進位匹配',
+        'add_success'     => '新增成功',
+        'add_failed'      => '新增失敗',
+        'delete_btn'      => '刪除',
+        'delete_success'  => '刪除成功',
+        'delete_failed'   => '刪除失敗',
+    ],
 ];

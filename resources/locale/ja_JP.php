@@ -240,4 +240,20 @@ return [
         'insufficient_balance'  => '残高不足',
         'partial_payment_log'   => '残高による一部支払い — 請求書 #',
     ],
+    'admin_log' => [
+        'login_type_success' => '成功',
+        'login_type_fail'    => '失敗',
+        'pay_status_unpaid'  => '未払い',
+        'pay_status_paid'    => '支払い済み',
+        'pay_status_unknown' => '不明',
+    ],
+    'admin_detect' => [
+        'type_plaintext'  => 'パケット平文マッチ',
+        'type_hex'        => 'パケット16進数マッチ',
+        'add_success'     => '追加しました',
+        'add_failed'      => '追加に失敗しました',
+        'delete_btn'      => '削除',
+        'delete_success'  => '削除しました',
+        'delete_failed'   => '削除に失敗しました',
+    ],
 ];

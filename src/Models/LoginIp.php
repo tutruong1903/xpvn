@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Services\I18n;
 use App\Services\Notification;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Database\Query\Builder;
@@ -39,7 +40,11 @@ final class LoginIp extends Model
      */
     public function type(): string
     {
-        return $this->type === 0 ? '成功' : '失败';
+        $locale = $_COOKIE['sspanel_locale'] ?? $_ENV['locale'] ?? 'en_US';
+
+        return $this->type === 0
+            ? I18n::trans('admin_log.login_type_success', $locale)
+            : I18n::trans('admin_log.login_type_fail', $locale);
     }
 
     /**

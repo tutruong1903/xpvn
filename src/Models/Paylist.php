@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Services\I18n;
 use Illuminate\Database\Query\Builder;
 
 /**
@@ -28,10 +29,12 @@ final class Paylist extends Model
      */
     public function status(): string
     {
+        $locale = $_COOKIE['sspanel_locale'] ?? $_ENV['locale'] ?? 'en_US';
+
         return match ($this->status) {
-            0 => '未支付',
-            1 => '已支付',
-            default => '未知',
+            0 => I18n::trans('admin_log.pay_status_unpaid', $locale),
+            1 => I18n::trans('admin_log.pay_status_paid', $locale),
+            default => I18n::trans('admin_log.pay_status_unknown', $locale),
         };
     }
 }

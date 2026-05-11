@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Services\I18n;
 use Illuminate\Database\Query\Builder;
 
 /**
@@ -25,6 +26,10 @@ final class DetectRule extends Model
      */
     public function type(): string
     {
-        return $this->type === 1 ? '数据包明文匹配' : '数据包 hex 匹配';
+        $locale = $_COOKIE['sspanel_locale'] ?? $_ENV['locale'] ?? 'en_US';
+
+        return $this->type === 1
+            ? I18n::trans('admin_detect.type_plaintext', $locale)
+            : I18n::trans('admin_detect.type_hex', $locale);
     }
 }

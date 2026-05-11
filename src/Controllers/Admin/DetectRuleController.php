@@ -6,6 +6,7 @@ namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
 use App\Models\DetectRule;
+use App\Services\I18n;
 use Exception;
 use Psr\Http\Message\ResponseInterface;
 use Slim\Http\Response;
@@ -77,13 +78,13 @@ final class DetectRuleController extends BaseController
         if (! $rule->save()) {
             return $response->withJson([
                 'ret' => 0,
-                'msg' => '添加失败',
+                'msg' => I18n::trans('admin_detect.add_failed', $this->getLocale()),
             ]);
         }
 
         return $response->withJson([
             'ret' => 1,
-            'msg' => '添加成功',
+            'msg' => I18n::trans('admin_detect.add_success', $this->getLocale()),
         ]);
     }
 
@@ -95,13 +96,13 @@ final class DetectRuleController extends BaseController
         if (! $rule->delete()) {
             return $response->withJson([
                 'ret' => 0,
-                'msg' => '删除失败',
+                'msg' => I18n::trans('admin_detect.delete_failed', $this->getLocale()),
             ]);
         }
 
         return $response->withJson([
             'ret' => 1,
-            'msg' => '删除成功',
+            'msg' => I18n::trans('admin_detect.delete_success', $this->getLocale()),
         ]);
     }
 
@@ -110,8 +111,9 @@ final class DetectRuleController extends BaseController
         $rules = (new DetectRule())->orderBy('id', 'desc')->get();
 
         foreach ($rules as $rule) {
+            $locale = $this->getLocale();
             $rule->op = '<button class="btn btn-red" id="delete-rule-' . $rule->id .
-                '" onclick="deleteRule(' . $rule->id . ')">删除</button>';
+                '" onclick="deleteRule(' . $rule->id . ')">' . I18n::trans('admin_detect.delete_btn', $locale) . '</button>';
             $rule->type = $rule->type();
         }
 

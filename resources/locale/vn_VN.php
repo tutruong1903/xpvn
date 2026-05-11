@@ -240,4 +240,20 @@ return [
         'insufficient_balance'  => 'Số dư không đủ',
         'partial_payment_log'   => 'Thanh toán một phần bằng số dư cho hóa đơn #',
     ],
+    'admin_log' => [
+        'login_type_success' => 'Thành công',
+        'login_type_fail'    => 'Thất bại',
+        'pay_status_unpaid'  => 'Chưa thanh toán',
+        'pay_status_paid'    => 'Đã thanh toán',
+        'pay_status_unknown' => 'Không rõ',
+    ],
+    'admin_detect' => [
+        'type_plaintext'  => 'Khớp văn bản gói dữ liệu',
+        'type_hex'        => 'Khớp hex gói dữ liệu',
+        'add_success'     => 'Thêm thành công',
+        'add_failed'      => 'Thêm thất bại',
+        'delete_btn'      => 'Xóa',
+        'delete_success'  => 'Xóa thành công',
+        'delete_failed'   => 'Xóa thất bại',
+    ],
 ];

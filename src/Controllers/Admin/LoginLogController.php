@@ -51,7 +51,7 @@ final class LoginLogController extends BaseController
         $length = $request->getParam('length');
         $page = $request->getParam('start') / $length + 1;
         $draw = $request->getParam('draw');
-
+        $locale = $this->getLocale();
         $login_log = LoginIp::query();
 
         $search = $request->getParam('search')['value'];
@@ -77,7 +77,7 @@ final class LoginLogController extends BaseController
         $logins = $login_log->paginate($length, '*', '', $page);
 
         foreach ($logins as $login) {
-            $login->location = Tools::getIpLocation($login->ip);
+            $login->location = Tools::getIpLocation($login->ip, $locale);
             $login->datetime = Tools::toDateTime((int) $login->datetime);
             $login->type = $login->type();
         }

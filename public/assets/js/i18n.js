@@ -632,6 +632,35 @@
         var val = _adminAnnDict[key];
         if (val) el.setAttribute("placeholder", val);
       });
+
+    // Admin log section — handles log pages (admin.log.login.*, admin.log.subscribe.*, etc.).
+    var _adminLogDict = flattenAdminSection(
+      flattenNestedSection(getAdminSectionDict(locale, "log")),
+      "admin.log.",
+    );
+    applyAttributeFromDict(
+      "[data-i18n^='admin.log.']",
+      "data-i18n",
+      _adminLogDict,
+    );
+
+    // Admin detect section — handles detect rules/logs/bans (admin.detect.*).
+    var _adminDetectDict = flattenAdminSection(
+      flattenNestedSection(getAdminSectionDict(locale, "detect")),
+      "admin.detect.",
+    );
+    applyAttributeFromDict(
+      "[data-i18n^='admin.detect.']",
+      "data-i18n",
+      _adminDetectDict,
+    );
+    document
+      .querySelectorAll("[data-i18n-placeholder^='admin.detect.']")
+      .forEach(function (el) {
+        var key = el.getAttribute("data-i18n-placeholder");
+        var val = _adminDetectDict[key];
+        if (val) el.setAttribute("placeholder", val);
+      });
   }
 
   /**

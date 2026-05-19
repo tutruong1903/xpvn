@@ -15,11 +15,61 @@ use Psr\Http\Client\ClientExceptionInterface;
 use Psr\Http\Message\ResponseInterface;
 use RedisException;
 use Telegram\Bot\Exceptions\TelegramSDKException;
+use function error_log;
 use function in_array;
+use function json_encode;
+use function str_contains;
 use function strtotime;
+use function strtolower;
+use function substr;
 
 final class SubController extends BaseController
 {
+    private function detectSubtype(string $userAgent): string
+    {
+        $ua = strtolower(substr($userAgent, 0, 20));
+
+        if (str_contains($ua, 'hiddify') || str_contains($ua, 'sing-box') || str_contains($ua, 'sfi') || str_contains($ua, 'sfa') || str_contains($ua, 'sfm')) {
+            return 'singbox';
+        }
+
+        if (str_contains($ua, 'clash') || str_contains($ua, 'stash') || str_contains($ua, 'flclash')) {
+            return 'clash';
+        }
+
+        if (str_contains($ua, 'shadowrocket')) {
+            return 'sip008';
+        }
+
+        if (str_contains($ua, 'v2rayng') || str_contains($ua, 'v2rayn') || str_contains($ua, 'nekoray')) {
+            return 'v2ray';
+        }
+
+        if (str_contains($ua, 'trojan')) {
+            return 'trojan';
+        }
+
+        return 'clash';
+    }
+
+    /**
+     * @throws ClientExceptionInterface
+     * @throws GuzzleException
+     * @throws RedisException
+     * @throws TelegramSDKException
+     */
+    public function universal($request, $response, $args): ResponseInterface
+    {
+        $headers = $request->getHeaders();
+        error_log('[Universal Sub] Token: ' . ($args['token'] ?? 'N/A'));
+        error_log('[Universal Sub] Headers: ' . json_encode($headers, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+
+        $args['subtype'] = $this->detectSubtype($request->getHeaderLine('User-Agent'));
+        error_log('[Universal Sub] Detected subtype: ' . $args['subtype']);
+
+        return $this->index($request, $response, $args);
+    }
+
     /**
      * @throws ClientExceptionInterface
      * @throws GuzzleException
@@ -28,7 +78,7 @@ final class SubController extends BaseController
      */
     public function index($request, $response, $args): ResponseInterface
     {
-        $err_msg = '订阅链接无效';
+        $err_msg = 'Invalid subscription link';
         $subtype = $args['subtype'];
         $subtype_list = ['json', 'clash', 'sip008', 'singbox', 'v2rayjson', 'sip002', 'ss', 'v2ray', 'trojan'];
 

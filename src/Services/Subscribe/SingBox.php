@@ -131,6 +131,12 @@ final class SingBox extends Base
 
                     $node['tls'] = array_filter($node['tls']);
                     $node['transport'] = array_filter($node['transport']);
+                    if ($node['transport'] === []) {
+                        unset($node['transport']);
+                    }
+                    if ($node['tls'] === []) {
+                        unset($node['tls']);
+                    }
 
                     break;
                 case 14:
@@ -164,6 +170,12 @@ final class SingBox extends Base
 
                     $node['tls'] = array_filter($node['tls']);
                     $node['transport'] = array_filter($node['transport']);
+                    if ($node['transport'] === []) {
+                        unset($node['transport']);
+                    }
+                    if ($node['tls'] === []) {
+                        unset($node['tls']);
+                    }
 
                     break;
                 default:
@@ -172,6 +184,10 @@ final class SingBox extends Base
             }
 
             if ($node === []) {
+                continue;
+            }
+
+            if (empty($node['tag']) || empty($node['server'])) {
                 continue;
             }
 

@@ -7,6 +7,7 @@ namespace App\Controllers;
 use App\Models\Config;
 use App\Models\User;
 use App\Services\Cache;
+use App\Services\I18n;
 use App\Utils\ResponseHelper;
 use App\Utils\Tools;
 use Exception;
@@ -28,8 +29,6 @@ use function time;
 
 final class OAuthController extends BaseController
 {
-    private static string $err_msg = 'OAuth 请求失败';
-
     /**
      * @throws SmartyException
      * @throws GuzzleException
@@ -54,6 +53,7 @@ final class OAuthController extends BaseController
     {
         $user = $this->user;
         $redis = (new Cache())->initRedis();
+        $locale = $this->getLocale();
 
         if ($request->getParam('code') === null) {
             $state = Tools::genRandomChar(16);
@@ -74,7 +74,7 @@ final class OAuthController extends BaseController
         $state = $request->getParam('state');
 
         if ($state !== $redis->get('slack_state:' . $user->id)) {
-            return ResponseHelper::error($response, self::$err_msg);
+            return ResponseHelper::error($response, I18n::trans('oauth.err_msg', $locale));
         }
 
         $client = new Client();
@@ -99,7 +99,7 @@ final class OAuthController extends BaseController
         ]);
 
         if (! json_decode($code_response->getBody()->__toString())->ok) {
-            return ResponseHelper::error($response, self::$err_msg);
+            return ResponseHelper::error($response, I18n::trans('oauth.err_msg', $locale));
         }
 
         $parser = new Parser(new JoseEncoder());
@@ -109,7 +109,7 @@ final class OAuthController extends BaseController
 
         if ((new User())->where('im_type', 1)->where('im_value', $slack_user_id)->first() !== null ||
             ($user->im_type === 1 && $user->im_value === $slack_user_id)) {
-            return ResponseHelper::error($response, 'Slack 账户已绑定');
+            return ResponseHelper::error($response, I18n::trans('oauth.slack_bound', $locale));
         }
 
         $user->im_type = 1;
@@ -127,6 +127,7 @@ final class OAuthController extends BaseController
     {
         $user = $this->user;
         $redis = (new Cache())->initRedis();
+        $locale = $this->getLocale();
 
         if ($request->getParam('code') === null) {
             $state = Tools::genRandomChar(16);
@@ -146,7 +147,7 @@ final class OAuthController extends BaseController
         $state = $request->getParam('state');
 
         if ($state !== $redis->get('discord_state:' . $user->id)) {
-            return ResponseHelper::error($response, self::$err_msg);
+            return ResponseHelper::error($response, I18n::trans('oauth.err_msg', $locale));
         }
 
         $client = new Client();
@@ -171,7 +172,7 @@ final class OAuthController extends BaseController
         ]);
 
         if ($code_response->getStatusCode() !== 200) {
-            return ResponseHelper::error($response, self::$err_msg);
+            return ResponseHelper::error($response, I18n::trans('oauth.err_msg', $locale));
         }
 
         $access_token = json_decode($code_response->getBody()->getContents())->access_token;
@@ -187,14 +188,14 @@ final class OAuthController extends BaseController
         ]);
 
         if ($user_response->getStatusCode() !== 200) {
-            return ResponseHelper::error($response, self::$err_msg);
+            return ResponseHelper::error($response, I18n::trans('oauth.err_msg', $locale));
         }
 
         $discord_user_id = json_decode($user_response->getBody()->getContents(), true)['id'];
 
         if ((new User())->where('im_type', 2)->where('im_value', $discord_user_id)->first() !== null ||
             ($user->im_type === 2 && $user->im_value === $discord_user_id)) {
-            return ResponseHelper::error($response, 'Discord 账户已绑定');
+            return ResponseHelper::error($response, I18n::trans('oauth.discord_bound', $locale));
         }
 
         $user->im_type = 2;
@@ -225,6 +226,7 @@ final class OAuthController extends BaseController
 
     public function telegram(ServerRequest $request, Response $response, array $args): ResponseInterface
     {
+        $locale = $this->getLocale();
         $user_auth = json_decode($request->getParam('user'), true);
 
         $check_hash = $user_auth['hash'];
@@ -241,7 +243,7 @@ final class OAuthController extends BaseController
         $hash = hash_hmac('sha256', $data_check_string, $secret_key);
 
         if (strcmp($hash, $check_hash) !== 0 || (time() - $user_auth['auth_date']) > 86400) {
-            return ResponseHelper::error($response, self::$err_msg);
+            return ResponseHelper::error($response, I18n::trans('oauth.err_msg', $locale));
         }
 
         $telegram_id = $this->antiXss->xss_clean($user_auth['id']);
@@ -249,7 +251,7 @@ final class OAuthController extends BaseController
 
         if ((new User())->where('im_type', 4)->where('im_value', $telegram_id)->first() !== null ||
             ($user->im_type === 4 && $user->im_value === $telegram_id)) {
-            return ResponseHelper::error($response, 'Telegram 账户已绑定');
+            return ResponseHelper::error($response, I18n::trans('oauth.telegram_bound', $locale));
         }
 
         $user->im_type = 4;
@@ -257,6 +259,6 @@ final class OAuthController extends BaseController
 
         $user->save();
 
-        return ResponseHelper::success($response, '绑定成功');
+        return ResponseHelper::success($response, I18n::trans('oauth.bind_success', $locale));
     }
 }

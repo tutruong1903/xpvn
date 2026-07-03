@@ -57,6 +57,9 @@
                 <button class="lmn-billing-tab-btn" data-tab="resend">
                     <span>Resend</span>
                 </button>
+                <button class="lmn-billing-tab-btn" data-tab="google_app_password">
+                    <span>Google App Password</span>
+                </button>
             </div>
 
             <!-- Content Area -->
@@ -83,6 +86,7 @@
                                     <option value="alibabacloud" {if $settings['email_driver'] === "alibabacloud"}selected{/if}>AlibabaCloud DM</option>
                                     <option value="resend" {if $settings['email_driver'] === "resend"}selected{/if}>Resend</option>
                                     <option value="postmark" {if $settings['email_driver'] === "postmark"}selected{/if}>Postmark</option>
+                                    <option value="google_app_password" {if $settings['email_driver'] === "google_app_password"}selected{/if}>Google App Password</option>
                                 </select>
                             </div>
                             <div class="lmn-edit-field">
@@ -424,6 +428,33 @@
                                 <label class="lmn-edit-label">From</label>
                                 <input id="resend_from" type="text" class="lmn-edit-input"
                                        value="{$settings['resend_from']}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Google App Password Panel -->
+                <div class="lmn-billing-panel" id="panel-google_app_password">
+                    <div class="lmn-edit-card">
+                        <div class="lmn-edit-card-header">
+                            <span class="material-symbols-outlined lmn-edit-card-icon">mail_lock</span>
+                            <h2 class="lmn-edit-card-title">Google App Password</h2>
+                        </div>
+                        <div class="lmn-edit-fields">
+                            <div class="lmn-edit-field">
+                                <label class="lmn-edit-label">Gmail Address</label>
+                                <input id="google_app_password_username" type="text" class="lmn-edit-input"
+                                       value="{$settings['google_app_password_username']|default:''}" placeholder="your-email@gmail.com">
+                            </div>
+                            <div class="lmn-edit-field">
+                                <label class="lmn-edit-label">App Password</label>
+                                <input id="google_app_password_password" type="text" class="lmn-edit-input"
+                                       value="{$settings['google_app_password_password']|default:''}" placeholder="xxxx xxxx xxxx xxxx">
+                            </div>
+                            <div class="lmn-edit-field">
+                                <label class="lmn-edit-label">Sender Name</label>
+                                <input id="google_app_password_sender_name" type="text" class="lmn-edit-input"
+                                       value="{$settings['google_app_password_sender_name']|default:''}" placeholder="Your Site Name">
                             </div>
                         </div>
                     </div>

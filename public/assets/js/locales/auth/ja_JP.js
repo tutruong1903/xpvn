@@ -52,3 +52,26 @@ window.i18nLocales.ja_JP.register = {
     tos_terms_3: "利用規約に違反したユーザーは、アカウントが削除され、サービスの利用権が取り消されます。",
     tos_close: "閉じる"
 };
+
+window.i18nLocales.ja_JP.password_reset = {
+    brand: "Ether Velocity",
+    heading: "パスワードをお忘れですか",
+    subtitle: "登録されたメールアドレスにパスワードリセットリンクを送信します。",
+    email_label: "登録メールアドレス",
+    email_placeholder: "name@company.com",
+    send_button: "メールを送信",
+    has_account: "すでにアカウントをお持ちですか？",
+    login_link: "ログイン"
+};
+
+window.i18nLocales.ja_JP.password_token = {
+    brand: "Ether Velocity",
+    heading: "新しいパスワードを設定",
+    password_label: "新しいパスワード",
+    password_placeholder: "新しいパスワードを入力",
+    confirm_password_label: "新しいパスワードを確認",
+    confirm_password_placeholder: "新しいパスワードを再入力",
+    reset_button: "リセット",
+    has_account: "すでにアカウントをお持ちですか？",
+    login_link: "ログイン"
+};

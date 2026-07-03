@@ -34,7 +34,9 @@ return new class() implements MigrationInterface {
         ALTER TABLE user MODIFY COLUMN `class` smallint(6) unsigned NOT NULL DEFAULT 0 COMMENT '等级';
         ALTER TABLE user MODIFY COLUMN `class_expire` datetime NOT NULL DEFAULT '1989-06-04 00:05:00' COMMENT '等级过期时间';
         ALTER TABLE user MODIFY COLUMN `theme` varchar(255) NOT NULL DEFAULT 'tabler' COMMENT '网站主题';
+        ALTER TABLE user ADD COLUMN IF NOT EXISTS `ga_token` varchar(255) NOT NULL DEFAULT '' COMMENT 'GA密钥';
         ALTER TABLE user MODIFY COLUMN `ga_token` varchar(255) NOT NULL DEFAULT '' COMMENT 'GA密钥';
+        ALTER TABLE user ADD COLUMN IF NOT EXISTS `ga_enable` tinyint(1) unsigned NOT NULL DEFAULT 0 COMMENT 'GA开关';
         ALTER TABLE user MODIFY COLUMN `ga_enable` tinyint(1) unsigned NOT NULL DEFAULT 0 COMMENT 'GA开关';
         ALTER TABLE user MODIFY COLUMN `remark` text NOT NULL DEFAULT '' COMMENT '备注';
         ALTER TABLE user MODIFY COLUMN `node_group` smallint(6) unsigned NOT NULL DEFAULT 0 COMMENT '节点分组';

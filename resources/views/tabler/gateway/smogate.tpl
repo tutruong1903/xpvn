@@ -1,5 +1,5 @@
 <div class="card-inner">
-    <h4>
+    <h4 data-i18n="user.gateway.smogate.title">
         支付宝当面付
     </h4>
     <p class="card-heading"></p>
@@ -7,7 +7,7 @@
     <input hidden id="invoice_id" name="invoice_id" value="{$invoice->id}">
     <div id="smogate-qrcode"></div>
     <button class="btn btn-flat waves-attach" id="smogate-button" type="button" onclick="smogate();">
-        充值
+        <span data-i18n="user.gateway.smogate.btn_recharge">充值</span>
     </button>
 </div>
 
@@ -31,7 +31,7 @@
                 if (data.ret === 1) {
                     pid = data.pid;
                     paymentButton.remove();
-                    paymentButton.append('<div class="text-center"><p>支付宝扫描支付</p></div>');
+                    paymentButton.append('<div class="text-center"><p>' + (window.sspanelI18n ? window.sspanelI18n.t('user.gateway.smogate.scan_hint') : '支付宝扫描支付') + '</p></div>');
                     new QRCode("smogate-qrcode", {
                         render: "canvas",
                         width: 200,
@@ -39,7 +39,7 @@
                         text: encodeURI(data.qrcode)
                     });
                     
-                    paymentButton.append('<div class="text-center my-3"><p>支付成功后请手动刷新页面</p></div>');
+                    paymentButton.append('<div class="text-center my-3"><p>' + (window.sspanelI18n ? window.sspanelI18n.t('user.gateway.smogate.refresh_hint') : '支付成功后请手动刷新页面') + '</p></div>');
                     paymentButton.attr('href', data.qrcode);
                 } else {
                     $('#fail-message').text(data.msg);

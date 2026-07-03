@@ -66,7 +66,7 @@ final class EmailController extends BaseController
         try {
             Mail::send(
                 $to,
-                '测试邮件',
+                'Test email',
                 'test.tpl'
             );
         } catch (Throwable $e) {

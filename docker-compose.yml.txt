@@ -1,0 +1,84 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: sspanel-app
+    restart: unless-stopped
+    volumes:
+      # Mount source code để hot-reload khi dev
+      - .:/var/www/html
+      # Giữ vendor trong container, không bị ghi đè bởi mount trên
+      - /var/www/html/vendor
+      # Mount riêng config (read-only)
+      - ./config/.config.php:/var/www/html/config/.config.php:ro
+      - ./config/appprofile.php:/var/www/html/config/appprofile.php:ro
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_started
+    networks:
+      - sspanel
+
+  nginx:
+    image: nginx:alpine
+    container_name: sspanel-nginx
+    restart: unless-stopped
+    ports:
+      - "${HTTP_PORT:-8080}:80"
+    volumes:
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - app
+    networks:
+      - sspanel
+
+  db:
+    image: mariadb:10.11
+    container_name: sspanel-db
+    restart: unless-stopped
+    environment:
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MARIADB_DATABASE: ${DB_DATABASE:-sspanel}
+      MARIADB_USER: ${DB_USERNAME:-sspanel}
+      MARIADB_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./docker/mysql/disable_strict.cnf:/etc/mysql/conf.d/disable_strict.cnf:ro
+      - ./docker/mysql/init.sql:/docker-entrypoint-initdb.d/01-init.sql:ro
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    networks:
+      - sspanel
+
+  redis:
+    image: redis:7-alpine
+    container_name: sspanel-redis
+    restart: unless-stopped
+    command: >
+      sh -c '
+        if [ -n "$${REDIS_PASSWORD}" ]; then
+          exec redis-server --requirepass "$${REDIS_PASSWORD}";
+        else
+          exec redis-server;
+        fi
+      '
+    environment:
+      REDIS_PASSWORD: ${REDIS_PASSWORD:-}
+    volumes:
+      - redis_data:/data
+    networks:
+      - sspanel
+
+volumes:
+  db_data:
+  redis_data:
+
+networks:
+  sspanel:
+    driver: bridge
+    name: sspanel

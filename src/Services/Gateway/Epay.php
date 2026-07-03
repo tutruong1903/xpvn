@@ -17,6 +17,7 @@ use App\Services\Auth;
 use App\Services\Gateway\Epay\EpayNotify;
 use App\Services\Gateway\Epay\EpaySubmit;
 use App\Services\Gateway\Epay\EpayTool;
+use App\Services\I18n;
 use App\Services\View;
 use Exception;
 use GuzzleHttp\Client;
@@ -78,7 +79,7 @@ final class Epay extends Base
         if ($price <= 0) {
             return $response->withJson([
                 'ret' => 0,
-                'msg' => '非法的金额',
+                'msg' => I18n::trans('gateway.invalid_amount'),
             ]);
         }
 
@@ -134,7 +135,7 @@ final class Epay extends Base
             if ($res['code'] !== 1 || ! isset($res['payurl'])) {
                 return $response->withJson([
                     'ret' => 0,
-                    'msg' => '请求支付失败，网关错误',
+                    'msg' => I18n::trans('gateway.payment_failed'),
                     //TODO: use syslog to log this error
                 ]);
             }
@@ -143,7 +144,7 @@ final class Epay extends Base
         } catch (GuzzleException) {
             return $response->withJson([
                 'ret' => 0,
-                'msg' => '请求支付失败，网关错误',
+                'msg' => I18n::trans('gateway.payment_failed'),
             ]);
         }
     }

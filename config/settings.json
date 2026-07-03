@@ -342,6 +342,33 @@
         "mark": "BCC Backup Email Address"
     },
     {
+        "item": "google_app_password_username",
+        "value": "",
+        "class": "email",
+        "is_public": 0,
+        "type": "string",
+        "default": "",
+        "mark": "Google App Password Username (Gmail)"
+    },
+    {
+        "item": "google_app_password_password",
+        "value": "",
+        "class": "email",
+        "is_public": 0,
+        "type": "string",
+        "default": "",
+        "mark": "Google App Password"
+    },
+    {
+        "item": "google_app_password_sender_name",
+        "value": "",
+        "class": "email",
+        "is_public": 0,
+        "type": "string",
+        "default": "",
+        "mark": "Google App Password Sender Name"
+    },
+    {
         "item": "mailgun_key",
         "value": "",
         "class": "email",

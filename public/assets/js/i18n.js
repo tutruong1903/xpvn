@@ -309,6 +309,17 @@
       docsDict,
     );
 
+    // User gateway section — handles payment gateway pages (user.gateway.*).
+    var _userGatewayDict = flattenAdminSection(
+      flattenNestedSection(getUserSectionDict(locale, "gateway")),
+      "user.gateway.",
+    );
+    applyAttributeFromDict(
+      "[data-i18n^='user.gateway.']",
+      "data-i18n",
+      _userGatewayDict,
+    );
+
     // User ticket section
     var ticketDict = getUserSectionDict(locale, "ticket");
     applyAttributeFromDict(
@@ -780,6 +791,31 @@
     /** Alias: re-apply strings for current locale (same as applyTranslations(getLocale())). */
     updateContent: function () {
       applyTranslations(getLocale());
+    },
+    /** Translate a single key, returns the key itself if not found. */
+    t: function (key) {
+      var locale = getLocale();
+      // Try top-level dict first
+      var dict = getTranslations(locale);
+      var val = resolveKey(dict, key);
+      if (val) return replacePlaceholders(val);
+      // Try user.* or admin.* namespaced keys
+      var parts = key.split(".");
+      if (parts.length >= 3) {
+        var ns = parts[0];
+        var section = parts[1];
+        var subKey = parts.slice(2).join(".");
+        if (ns === "user") {
+          var userDict = getUserSectionDict(locale, section);
+          val = resolveKey(userDict, subKey);
+          if (val) return replacePlaceholders(val);
+        } else if (ns === "admin") {
+          var adminDict = getAdminSectionDict(locale, section);
+          val = resolveKey(adminDict, subKey);
+          if (val) return replacePlaceholders(val);
+        }
+      }
+      return key;
     },
   };
 })();

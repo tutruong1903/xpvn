@@ -52,3 +52,26 @@ window.i18nLocales.en_US.register = {
     tos_terms_3: "Any user who violates the terms will have their account deleted and service access revoked.",
     tos_close: "Close"
 };
+
+window.i18nLocales.en_US.password_reset = {
+    brand: "Ether Velocity",
+    heading: "Forgot password",
+    subtitle: "We will send a password reset link to your registered email.",
+    email_label: "Registered email",
+    email_placeholder: "name@company.com",
+    send_button: "Send email",
+    has_account: "Already have an account?",
+    login_link: "Login here"
+};
+
+window.i18nLocales.en_US.password_token = {
+    brand: "Ether Velocity",
+    heading: "Set new password",
+    password_label: "New password",
+    password_placeholder: "Enter new password",
+    confirm_password_label: "Confirm new password",
+    confirm_password_placeholder: "Re-enter new password",
+    reset_button: "Reset",
+    has_account: "Already have an account?",
+    login_link: "Login here"
+};

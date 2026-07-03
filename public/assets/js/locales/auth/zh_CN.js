@@ -52,3 +52,26 @@ window.i18nLocales.zh_CN.register = {
     tos_terms_3: "任何违反使用条款的用户，我们将会删除违规账户并收回使用本站服务的权利。",
     tos_close: "关闭"
 };
+
+window.i18nLocales.zh_CN.password_reset = {
+    brand: "Ether Velocity",
+    heading: "忘记密码",
+    subtitle: "我们将向你的注册邮箱发送一封邮件，邮件内容中包含一个可以重设密码的链接",
+    email_label: "注册邮箱",
+    email_placeholder: "name@company.com",
+    send_button: "发送邮件",
+    has_account: "已有账户？",
+    login_link: "点击登录"
+};
+
+window.i18nLocales.zh_CN.password_token = {
+    brand: "Ether Velocity",
+    heading: "设置新密码",
+    password_label: "新密码",
+    password_placeholder: "请输入新密码",
+    confirm_password_label: "再次输入新密码",
+    confirm_password_placeholder: "请再次输入新密码",
+    reset_button: "重置",
+    has_account: "已有账户？",
+    login_link: "点击登录"
+};

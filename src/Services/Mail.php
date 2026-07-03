@@ -6,6 +6,7 @@ namespace App\Services;
 
 use App\Models\Config;
 use App\Services\Mail\AlibabaCloud;
+use App\Services\Mail\GoogleAppPassword;
 use App\Services\Mail\Mailchimp;
 use App\Services\Mail\Mailgun;
 use App\Services\Mail\NullMail;
@@ -25,10 +26,11 @@ use Smarty\Smarty;
  */
 final class Mail
 {
-    public static function getClient(): AlibabaCloud|Mailchimp|Mailgun|NullMail|Postal|Postmark|Resend|SendGrid|Ses|Smtp
+    public static function getClient(): AlibabaCloud|GoogleAppPassword|Mailchimp|Mailgun|NullMail|Postal|Postmark|Resend|SendGrid|Ses|Smtp
     {
         return match (Config::obtain('email_driver')) {
             'alibabacloud' => new AlibabaCloud(),
+            'google_app_password' => new GoogleAppPassword(),
             'mailchimp' => new Mailchimp(),
             'mailgun' => new Mailgun(),
             'postal' => new Postal(),

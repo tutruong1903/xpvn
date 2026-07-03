@@ -135,26 +135,29 @@
                     <div class="form-group">
                         <label class="auth-label" data-i18n="register.email_code_label">Email verification code</label>
                         <div style="display: flex; gap: 0.5rem;">
-                            <input 
-                                id="emailcode" 
-                                type="text" 
-                                class="auth-input" 
-                                style="flex: 1;"
-                                placeholder="Enter verification code"
-                                data-i18n-placeholder="register.email_code_placeholder"
-                                required
-                            />
-                            <button 
-                                id="send-verify-email" 
-                                type="button"
-                                class="auth-btn-secondary"
-                                style="white-space: nowrap; padding: 0.75rem 1.5rem;"
-                                hx-post="/auth/send" 
-                                hx-swap="none" 
-                                hx-disabled-elt="this"
-                                hx-vals='js:{ email: document.getElementById("email").value }'>
-                                <span data-i18n="register.email_code_get">Get code</span>
-                            </button>
+                            <div style="flex: 1; min-width: 0;">
+                                <input 
+                                    id="emailcode" 
+                                    type="text" 
+                                    class="auth-input" 
+                                    placeholder="Enter verification code"
+                                    data-i18n-placeholder="register.email_code_placeholder"
+                                    required
+                                />
+                            </div>
+                            <div style="flex: 1; min-width: 0;">
+                                <button 
+                                    id="send-verify-email" 
+                                    type="button"
+                                    class="auth-btn-secondary"
+                                    style="white-space: nowrap; padding: 0.75rem 1rem; box-sizing: border-box; width: 100%; display: flex; justify-content: center; align-items: center;"
+                                    hx-post="/auth/send" 
+                                    hx-swap="none" 
+                                    hx-disabled-elt="this"
+                                    hx-vals='js:{ email: document.getElementById("email").value }'>
+                                    <span data-i18n="register.email_code_get">Get code</span>
+                                </button>
+                            </div>
                         </div>
                     </div>
                     {/if}

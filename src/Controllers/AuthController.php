@@ -196,11 +196,11 @@ final class AuthController extends BaseController
             $email_code = Tools::genRandomChar(6);
             $redis = (new Cache())->initRedis();
             $redis->setex('email_verify:' . $email_code, Config::obtain('email_verify_code_ttl'), $email);
-
+            error_log(print_r($email_code, true));
             try {
                 Mail::send(
                     $email,
-                    $_ENV['appName'] . '- 验证邮件',
+                    $_ENV['appName'],
                     'verify_code.tpl',
                     [
                         'code' => $email_code,
@@ -366,9 +366,8 @@ final class AuthController extends BaseController
         }
         // check email
         $user = (new User())->where('email', $email)->first();
-
         if ($user !== null) {
-            return ResponseHelper::error($response, I18n::trans('auth.email_invalid', $locale));
+            return ResponseHelper::error($response, I18n::trans('auth.email_already_registered', $locale));
         }
 
         if (Config::obtain('reg_email_verify')) {

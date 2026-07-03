@@ -6,10 +6,10 @@
             <div class="row align-items-center">
                 <div class="col">
                     <h2 class="page-title">
-                        <span class="home-title">流量倍率</span>
+                        <span class="home-title" data-i18n-user-rate="page_title">流量倍率</span>
                     </h2>
                     <div class="page-pretitle my-3">
-                        <span class="home-subtitle">查看节点的每小时流量倍率</span>
+                        <span class="home-subtitle" data-i18n-user-rate="page_subtitle">查看节点的每小时流量倍率</span>
                     </div>
                 </div>
             </div>
@@ -22,7 +22,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex">
-                                <h3 class="card-title">流量倍率图表</h3>
+                                <h3 class="card-title" data-i18n-user-rate="chart_title">流量倍率图表</h3>
                                 <div class="ms-auto">
                                     <div class="dropdown">
                                         <a id="dropdown-toggle" class="dropdown-toggle text-secondary" href="#" data-bs-toggle="dropdown"
@@ -48,6 +48,13 @@
 
     <script>
         document.body.addEventListener("drawChart", function(evt) {
+            var locale  = window.sspanelI18n ? window.sspanelI18n.getLocale() : 'en_US';
+            var rateLoc = (window.i18nLocales && window.i18nLocales.user && window.i18nLocales.user.rate && window.i18nLocales.user.rate[locale]) || {};
+
+            var seriesName = (rateLoc && rateLoc.series_name) || '倍率';
+            var xAxisText  = (rateLoc && rateLoc.x_axis)      || '小时';
+            var yAxisText  = (rateLoc && rateLoc.y_axis)      || '倍率';
+
             let chart = window.ApexCharts && new ApexCharts(document.getElementById('rate-chart'), {
                 chart: {
                     type: "bar",
@@ -80,7 +87,7 @@
                     opacity: 1,
                 },
                 series: [{
-                    name: "倍率",
+                    name: seriesName,
                     data: []
                 }],
                 tooltip: {
@@ -97,7 +104,7 @@
                 },
                 xaxis: {
                     title: {
-                        text: '小时',
+                        text: xAxisText,
                     },
                     labels: {
                         padding: 0,
@@ -113,7 +120,7 @@
                 },
                 yaxis: {
                     title: {
-                        text: '倍率',
+                        text: yAxisText,
                         rotate: 0,
                     },
                     labels: {
@@ -129,7 +136,7 @@
             chart.render();
             chart.updateOptions({
                 series: [{
-                    name: "倍率",
+                    name: seriesName,
                     data: evt.detail.data
                 }],
             });

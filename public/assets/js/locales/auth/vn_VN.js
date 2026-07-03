@@ -52,3 +52,26 @@ window.i18nLocales.vn_VN.register = {
     tos_terms_3: "Bất kỳ người dùng nào vi phạm điều khoản sẽ bị xóa tài khoản và thu hồi quyền sử dụng dịch vụ.",
     tos_close: "Đóng"
 };
+
+window.i18nLocales.vn_VN.password_reset = {
+    brand: "Ether Velocity",
+    heading: "Quên mật khẩu",
+    subtitle: "Chúng tôi sẽ gửi một liên kết đặt lại mật khẩu đến email đã đăng ký của bạn.",
+    email_label: "Email đã đăng ký",
+    email_placeholder: "name@company.com",
+    send_button: "Gửi email",
+    has_account: "Đã có tài khoản?",
+    login_link: "Đăng nhập ngay"
+};
+
+window.i18nLocales.vn_VN.password_token = {
+    brand: "Ether Velocity",
+    heading: "Đặt mật khẩu mới",
+    password_label: "Mật khẩu mới",
+    password_placeholder: "Nhập mật khẩu mới",
+    confirm_password_label: "Xác nhận mật khẩu mới",
+    confirm_password_placeholder: "Nhập lại mật khẩu mới",
+    reset_button: "Đặt lại",
+    has_account: "Đã có tài khoản?",
+    login_link: "Đăng nhập ngay"
+};

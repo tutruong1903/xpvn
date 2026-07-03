@@ -113,6 +113,12 @@
     <script src="/assets/js/locales/user/server/zh_TW.js{asset_ver path="/assets/js/locales/user/server/zh_TW.js"}"></script>
     <script src="/assets/js/locales/user/server/ja_JP.js{asset_ver path="/assets/js/locales/user/server/ja_JP.js"}"></script>
     
+    <script src="/assets/js/locales/user/rate/en_US.js{asset_ver path="/assets/js/locales/user/rate/en_US.js"}"></script>
+    <script src="/assets/js/locales/user/rate/vn_VN.js{asset_ver path="/assets/js/locales/user/rate/vn_VN.js"}"></script>
+    <script src="/assets/js/locales/user/rate/zh_CN.js{asset_ver path="/assets/js/locales/user/rate/zh_CN.js"}"></script>
+    <script src="/assets/js/locales/user/rate/zh_TW.js{asset_ver path="/assets/js/locales/user/rate/zh_TW.js"}"></script>
+    <script src="/assets/js/locales/user/rate/ja_JP.js{asset_ver path="/assets/js/locales/user/rate/ja_JP.js"}"></script>
+    
     <!-- i18n - Detect component locales -->
     <script src="/assets/js/locales/user/detect/en_US.js{asset_ver path="/assets/js/locales/user/detect/en_US.js"}"></script>
     <script src="/assets/js/locales/user/detect/vn_VN.js{asset_ver path="/assets/js/locales/user/detect/vn_VN.js"}"></script>

@@ -52,3 +52,26 @@ window.i18nLocales.zh_TW.register = {
     tos_terms_3: "任何違反使用條款的使用者，我們將刪除違規帳戶並收回使用本站服務的權利。",
     tos_close: "關閉"
 };
+
+window.i18nLocales.zh_TW.password_reset = {
+    brand: "Ether Velocity",
+    heading: "忘記密碼",
+    subtitle: "我們將向你的註冊郵箱發送一封郵件，郵件內容中包含一個可以重設密碼的連結",
+    email_label: "註冊郵箱",
+    email_placeholder: "name@company.com",
+    send_button: "發送郵件",
+    has_account: "已有帳戶？",
+    login_link: "點擊登入"
+};
+
+window.i18nLocales.zh_TW.password_token = {
+    brand: "Ether Velocity",
+    heading: "設定新密碼",
+    password_label: "新密碼",
+    password_placeholder: "請輸入新密碼",
+    confirm_password_label: "再次輸入新密碼",
+    confirm_password_placeholder: "請再次輸入新密碼",
+    reset_button: "重設",
+    has_account: "已有帳戶？",
+    login_link: "點擊登入"
+};

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Services\I18n;
 use App\Services\Notification;
 use App\Utils\Tools;
 use Exception;
@@ -44,7 +45,7 @@ final class SubscribeLog extends Model
         try {
             return Tools::getIpLocation($this->request_ip);
         } catch (Exception) {
-            return '未知';
+            return I18n::trans('subscribe_log.unknown_location');
         }
     }
 

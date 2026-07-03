@@ -111,6 +111,10 @@ return [
         'title_required' => 'Title is required',
         'comment_required' => 'Comment is required',
     ],
+    'rate' => [
+        'node_not_found' => 'Node not found',
+        'no_nodes' => 'No nodes available',
+    ],
     'admin_billing' => [
         'save_success'           => 'Saved successfully',
         'save_failed'            => 'Save failed',
@@ -279,6 +283,52 @@ return [
         'delete_btn'      => 'Delete',
         'delete_success'  => 'Deleted successfully',
         'delete_failed'   => 'Failed to delete',
+    ],
+    'password' => [
+        'captcha_error' => 'The system cannot accept your verification result, please refresh the page and try again.',
+        'email_required' => 'Email is required',
+        'request_too_frequent' => 'Your requests are too frequent, please try again later',
+        'reset_mail_sent' => 'If your account exists in our database, a password reset link will be sent to your registered email',
+        'email_send_failed' => 'Email sending failed',
+        'password_mismatch' => 'The two passwords do not match',
+        'password_too_short' => 'Password is too short',
+        'link_invalid' => 'Link is invalid',
+        'reset_failed' => 'Reset failed, please try again',
+        'reset_success' => 'Password reset successfully',
+    ],
+    'money_log' => [
+        'id' => 'Event ID',
+        'user_id' => 'User ID',
+        'before' => 'Balance Before',
+        'after' => 'Balance After',
+        'amount' => 'Amount',
+        'remark' => 'Remark',
+        'create_time' => 'Time',
+    ],
+    'paylist' => [
+        'id' => 'Event ID',
+        'userid' => 'User ID',
+        'total' => 'Amount',
+        'status' => 'Status',
+        'gateway' => 'Payment Gateway',
+        'tradeno' => 'Gateway Order No.',
+        'datetime' => 'Payment Time',
+        'invoice_id' => 'Invoice ID',
+    ],
+    'oauth' => [
+        'err_msg' => 'OAuth request failed',
+        'slack_bound' => 'Slack account already bound',
+        'discord_bound' => 'Discord account already bound',
+        'telegram_bound' => 'Telegram account already bound',
+        'bind_success' => 'Bound successfully',
+    ],
+    'gateway' => [
+        'invalid_amount' => 'Invalid amount',
+        'payment_failed' => 'Payment request failed, gateway error',
+        'exchange_failed' => 'Exchange rate fetch failed',
+    ],
+    'subscribe_log' => [
+        'unknown_location' => 'Unknown',
     ],
 ];
 

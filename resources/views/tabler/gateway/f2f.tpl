@@ -1,13 +1,13 @@
 <script src="//{$config['jsdelivr_url']}/npm/jquery/dist/jquery.min.js"></script>
 
 <div class="card-inner">
-    <h4>
+    <h4 data-i18n="user.gateway.f2f.title">
         支付宝当面付
     </h4>
     <p class="card-heading"></p>
     <div id="f2f-qrcode"></div>
     <button class="btn btn-flat waves-attach" id="f2fpay-button" type="button" onclick="f2fpay();">
-        生成付款QR Code
+        <span data-i18n="user.gateway.f2f.btn_generate_qr">生成付款QR Code</span>
     </button>
 </div>
 
@@ -25,7 +25,7 @@
             success: (data) => {
                 if (data.ret === 1) {
                     f2fQrcode.remove();
-                    f2fQrcode.append('<div class="text-center"><p>手机支付宝扫描支付</p></div>');
+                    f2fQrcode.append('<div class="text-center"><p>' + (window.sspanelI18n ? window.sspanelI18n.t('user.gateway.f2f.scan_hint') : '手机支付宝扫描支付') + '</p></div>');
                     new QRCode("f2f-qrcode", {
                         text: data.qrcode,
                         width: 200,
@@ -34,7 +34,7 @@
                         colorLight: '#ffffff',
                         correctLevel: QRCode.CorrectLevel.H,
                     });
-                    f2fQrcode.append('<div class="text-center my-3"><p>支付成功后请手动刷新页面</p></div>');
+                    f2fQrcode.append('<div class="text-center my-3"><p>' + (window.sspanelI18n ? window.sspanelI18n.t('user.gateway.f2f.refresh_hint') : '支付成功后请手动刷新页面') + '</p></div>');
                     f2fQrcode.attr('href', data.qrcode);
                 } else {
                     $('#fail-message').text(data.msg);

@@ -6,6 +6,7 @@ namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
 use App\Models\UserMoneyLog;
+use App\Services\I18n;
 use App\Utils\Tools;
 use Exception;
 use Psr\Http\Message\ResponseInterface;
@@ -34,9 +35,15 @@ final class MoneyLogController extends BaseController
      */
     public function index(ServerRequest $request, Response $response, array $args): ResponseInterface
     {
+        $locale = $this->getLocale();
+        $details = self::$details;
+        foreach ($details['field'] as $key => $value) {
+            $details['field'][$key] = I18n::trans('money_log.' . $key, $locale);
+        }
+
         return $response->write(
             $this->view()
-                ->assign('details', self::$details)
+                ->assign('details', $details)
                 ->fetch('admin/log/money.tpl')
         );
     }

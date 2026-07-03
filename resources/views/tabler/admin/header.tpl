@@ -198,6 +198,12 @@
     <script src="/assets/js/locales/admin/detect/zh_TW.js{asset_ver path="/assets/js/locales/admin/detect/zh_TW.js"}"></script>
     <script src="/assets/js/locales/admin/detect/ja_JP.js{asset_ver path="/assets/js/locales/admin/detect/ja_JP.js"}"></script>
     
+    <script src="/assets/js/locales/admin/dashboard/en_US.js{asset_ver path="/assets/js/locales/admin/dashboard/en_US.js"}"></script>
+    <script src="/assets/js/locales/admin/dashboard/vn_VN.js{asset_ver path="/assets/js/locales/admin/dashboard/vn_VN.js"}"></script>
+    <script src="/assets/js/locales/admin/dashboard/zh_CN.js{asset_ver path="/assets/js/locales/admin/dashboard/zh_CN.js"}"></script>
+    <script src="/assets/js/locales/admin/dashboard/zh_TW.js{asset_ver path="/assets/js/locales/admin/dashboard/zh_TW.js"}"></script>
+    <script src="/assets/js/locales/admin/dashboard/ja_JP.js{asset_ver path="/assets/js/locales/admin/dashboard/ja_JP.js"}"></script>
+    
     <script src="/assets/js/i18n.js{asset_ver path="/assets/js/i18n.js"}"></script>
     
     <style>

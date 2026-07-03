@@ -28,6 +28,8 @@ public/clients/*.*
 !public/clients/.gitkeep
 
 storage/framework/smarty/cache/*
+storage/db_data/
+storage/redis_data/
 storage/framework/smarty/compile/*
 storage/framework/twig/cache/*
 !storage/framework/smarty/cache/.gitkeep
